@@ -56,11 +56,11 @@ class Configuration {
         // Legal info
 
         fun getTermsOfUseWebLink(): String {
-            return "https://ktvincco.com/openaudiotools/termsofuse/"
+            return "https://ktvincco.com/openaudiotools_termsofuse/"
         }
 
         fun getPrivacyPolicyWebLink(): String {
-            return "https://ktvincco.com/openaudiotools/privacypolicy/"
+            return "https://ktvincco.com/openaudiotools_privacypolicy/"
         }
 
         fun getUserAgreementVersion(): Int {

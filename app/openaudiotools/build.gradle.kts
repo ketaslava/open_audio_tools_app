@@ -36,8 +36,8 @@ dependencies {
 val appName = "OpenAudioTools"
 
 // Configs
-val version = "2.2.1" // == CHANGE BEFORE RELEASE (1/2) == //
-val androidVersionCode = 10 // == CHANGE BEFORE RELEASE (2/2) == //
+val version = "2.2.222" // == CHANGE BEFORE RELEASE (1/2) == //
+val androidVersionCode = 13 // == CHANGE BEFORE RELEASE (2/2) == //
 
 kotlin {
 
@@ -164,7 +164,7 @@ compose.desktop {
 }
 
 // Auto update app version in configs
-tasks.register("generateVersion") {
+tasks.register("generateAppInfo") {
     doLast {
         val file = file("src/commonMain/kotlin/com/ktvincco/openaudiotools/AppInfo.kt")
         file.writeText("""
@@ -177,4 +177,4 @@ tasks.register("generateVersion") {
         """.trimIndent())
     }
 }
-tasks.getByName("preBuild").dependsOn("generateVersion")
+tasks.getByName("preBuild").dependsOn("generateAppInfo")
