@@ -29,6 +29,7 @@ dependencies {
     implementation(libs.kotlinx.datetime)
     debugImplementation(compose.uiTooling)
     implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.swing)
     implementation(libs.androidx.activity.ktx)
 }
 
@@ -36,8 +37,8 @@ dependencies {
 val appName = "OpenAudioTools"
 
 // Configs
-val version = "2.2.222" // == CHANGE BEFORE RELEASE (1/2) == //
-val androidVersionCode = 13 // == CHANGE BEFORE RELEASE (2/2) == //
+val version = "2.3.4" // == CHANGE BEFORE RELEASE (1/2) == //
+val androidVersionCode = 14 // == CHANGE BEFORE RELEASE (2/2) == //
 
 kotlin {
 
@@ -76,6 +77,8 @@ kotlin {
             dependencies {
                 implementation(compose.preview)
                 implementation(libs.androidx.activity.compose)
+                implementation(libs.androidx.lifecycle.process)
+                implementation(libs.review.ktx)
             }
         }
         val commonMain by getting {
@@ -94,7 +97,6 @@ kotlin {
         val desktopMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
-                implementation(libs.kotlinx.coroutines.swing)
             }
         }
         /*val wasmJsMain by getting {

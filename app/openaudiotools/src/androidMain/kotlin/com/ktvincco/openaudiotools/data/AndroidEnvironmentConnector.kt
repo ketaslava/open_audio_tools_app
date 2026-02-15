@@ -17,10 +17,15 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.util.Locale
 import androidx.core.net.toUri
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.ProcessLifecycleOwner
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.number
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
+import com.google.android.play.core.review.ReviewManagerFactory
+import com.google.android.play.core.review.ReviewManager
 
 
 class AndroidEnvironmentConnector (private val activity: Activity): EnvironmentConnector {
@@ -161,7 +166,64 @@ class AndroidEnvironmentConnector (private val activity: Activity): EnvironmentC
     }
 
 
+    // App-level lifecycle callbacks
+    private val onPausedCallbacks = mutableListOf<() -> Unit>()
+    private val onResumedCallbacks = mutableListOf<() -> Unit>()
+
+    // We register observer only once
+    private var lifecycleObserverRegistered = false
+
+
+    private fun ensureLifecycleObserver() {
+        if (lifecycleObserverRegistered) return
+
+        lifecycleObserverRegistered = true
+
+        ProcessLifecycleOwner.get().lifecycle.addObserver(
+            object : DefaultLifecycleObserver {
+
+                override fun onStart(owner: LifecycleOwner) {
+                    // App moved to foreground
+                    onResumedCallbacks.forEach { it.invoke() }
+                }
+
+                override fun onStop(owner: LifecycleOwner) {
+                    // App moved to background
+                    onPausedCallbacks.forEach { it.invoke() }
+                }
+            }
+        )
+    }
+
+
+    override fun addOnAppPausedCallback(callback: () -> Unit) {
+        ensureLifecycleObserver()
+        onPausedCallbacks += callback
+    }
+
+
+    override fun addOnAppResumedCallback(callback: () -> Unit) {
+        ensureLifecycleObserver()
+        onResumedCallbacks += callback
+    }
+
+
+    private val reviewManager: ReviewManager by lazy {
+        ReviewManagerFactory.create(activity)
+    }
+    override fun promptUserToMakeAStoreReview() {
+        val request = reviewManager.requestReviewFlow()
+        request.addOnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                return@addOnCompleteListener
+            }
+            val reviewInfo = task.result
+            reviewManager.launchReviewFlow(activity, reviewInfo)
+        }
+    }
+
+
     override fun forceGC() {
-        // Not used cause no reason
+        // Not used
     }
 }

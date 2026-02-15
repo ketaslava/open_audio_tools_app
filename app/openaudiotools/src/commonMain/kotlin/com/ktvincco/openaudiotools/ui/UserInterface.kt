@@ -40,6 +40,7 @@ import com.ktvincco.openaudiotools.ui.analysis_mode_pages.VoiceSmoothness
 import com.ktvincco.openaudiotools.ui.components.HelpMenu
 import com.ktvincco.openaudiotools.ui.components.MainMenu
 import com.ktvincco.openaudiotools.ui.components.PageWithBottomControls
+import com.ktvincco.openaudiotools.ui.components.ReviewForm
 import com.ktvincco.openaudiotools.ui.pages.Reading
 import com.ktvincco.openaudiotools.ui.pages.SettingsPage
 import com.ktvincco.openaudiotools.ui.pages.VoiceChangeGuidelines
@@ -82,7 +83,7 @@ class UserInterface (
                         "FirstStartScreen" -> FirstStartScreen(modelData).draw()
                         "AccessDeniedScreen" -> AccessDeniedScreen(modelData).draw()
 
-                        else -> mainScreen()
+                        else -> MainScreen()
                     }
 
                     // Overlays
@@ -104,6 +105,15 @@ class UserInterface (
                     ) {
                         HelpMenu(modelData).draw()
                     }
+
+                    // Review Form overlay
+                    AnimatedVisibility(
+                        modelData.reviewDialogState.collectAsState().value != "Closed",
+                        enter = fadeIn(),
+                        exit = fadeOut()
+                    ) {
+                        ReviewForm(modelData).draw()
+                    }
                 }
             }
         }
@@ -111,7 +121,7 @@ class UserInterface (
 
 
     @Composable
-    fun mainScreen() {
+    fun MainScreen() {
         Box (
             modifier = Modifier
                 .fillMaxSize()

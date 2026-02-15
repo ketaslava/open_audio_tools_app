@@ -134,6 +134,21 @@ class DesktopEnvironmentConnector: EnvironmentConnector {
     }
 
 
+    override fun addOnAppPausedCallback(callback: () -> Unit) {
+        return // No pauses and no resumes
+    }
+
+
+    override fun addOnAppResumedCallback(callback: () -> Unit) {
+        return // No pauses and no resumes
+    }
+
+
+    override fun promptUserToMakeAStoreReview() {
+        return
+    }
+
+
     override fun forceGC() {
         System.gc()
     }

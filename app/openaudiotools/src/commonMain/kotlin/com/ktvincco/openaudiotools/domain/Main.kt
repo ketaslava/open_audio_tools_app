@@ -30,6 +30,8 @@ class Main (private val modelData: ModelData,
     private val telemetry = Telemetry(database, environmentConnector)
     private val recorder = Recorder(modelData, logger, permissionController, audioRecorder,
         database, environmentConnector, soundFile, audioPlayer, telemetry)
+    private val feedbackService = FeedbackService(
+        modelData, logger, database, telemetry, environmentConnector)
 
 
     fun setup() {
@@ -142,6 +144,16 @@ class Main (private val modelData: ModelData,
         // Telemetry events
         telemetry.newInstallationLaunchReport()
         telemetry.sixHoursActivityReport()
+        telemetry.enableUsageTimer()
+        environmentConnector.addOnAppPausedCallback {
+            telemetry.disableUsageTimer()
+        }
+        environmentConnector.addOnAppResumedCallback {
+            telemetry.enableUsageTimer()
+        }
+
+        // Feedback service
+        feedbackService.initialize()
     }
 
 }

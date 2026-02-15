@@ -273,11 +273,30 @@ class ModelData {
     }
 
 
+    // ReviewDialog
+    private val _reviewDialogState = MutableStateFlow("Closed")
+    val reviewDialogState: StateFlow<String> = _reviewDialogState
+    fun setReviewDialogState(newValue: String) {
+        _reviewDialogState.value = newValue
+    }
+    private var reviewDialogWasCompletedCallback: (exitPoint: String) -> Unit = {}
+    fun assignReviewDialogWasCompletedCallback(callback: (exitPoint: String) -> Unit) {
+        reviewDialogWasCompletedCallback = callback }
+    fun reviewDialogWasCompleted(exitPoint: String) { reviewDialogWasCompletedCallback(exitPoint) }
+
+
     // Language was selected
     private var languageSelectedCallback: (languageCode: String) -> Unit = {}
     fun assignLanguageSelectedCallback(callback: (languageCode: String) -> Unit) {
         languageSelectedCallback = callback }
     fun languageSelected(languageCode: String) { languageSelectedCallback(languageCode) }
+
+
+    // Form
+    private var formCallback: (data: Map<String, String>) -> Unit = {}
+    fun assignFormSubmittedCallback(callback: (data: Map<String, String>) -> Unit) {
+        formCallback = callback }
+    fun formSubmitted(data: Map<String, String>) { formCallback(data) }
 
 
     // Record Button

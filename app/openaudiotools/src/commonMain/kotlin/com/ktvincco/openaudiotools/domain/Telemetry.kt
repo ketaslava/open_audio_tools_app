@@ -7,6 +7,14 @@ import com.ktvincco.openaudiotools.data.Database
 import com.ktvincco.openaudiotools.data.EnvironmentConnector
 import com.ktvincco.openaudiotools.passCheckpointGate
 import com.ktvincco.openaudiotools.timeGate
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.NonCancellable.isActive
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.ensureActive
+import kotlinx.coroutines.launch
 import kotlinx.serialization.json.*
 import java.security.SecureRandom
 
@@ -16,6 +24,10 @@ class Telemetry (private val database: Database,
 
     // State
     private var isEnabled = false
+
+    // Coroutines
+    private val telemetryScope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
+    private var usageTimerJob: Job? = null
 
 
     fun generateInstallationId(): String {
@@ -142,6 +154,23 @@ class Telemetry (private val database: Database,
     }
 
 
+    fun sixHoursUsageTimeReport() {
+
+        // Six hours gate
+        if (!timeGate("sixHoursUsageTimeReport",
+                21600, 1, database)) { return }
+
+        // Combine
+        val statement = mapOf (
+            "statementType" to "sixHoursUsageTimeReport",
+            "usageTime" to (database.loadString("usageTime") ?: "0"),
+        )
+
+        // Send
+        sendStandardStatement(statement)
+    }
+
+
     // Information about function used in application
     fun usageReportByFunction(usedFunctionName: String) {
 
@@ -157,5 +186,50 @@ class Telemetry (private val database: Database,
 
         // Send
         sendStandardStatement(statement)
+    }
+
+
+    // ==== Activity ====
+
+
+    fun enableUsageTimer() {
+
+        if (!isEnabled) return
+
+        // Prevent double start
+        if (usageTimerJob != null) return
+
+        usageTimerJob = telemetryScope.launch {
+            while (true) {
+
+                // suspends, does NOT block a thread
+                delay(30_000) // 30 sec
+
+                // Proper cooperative cancellation check (non-deprecated)
+                ensureActive()
+
+                try {
+                    updateUsageTime()
+                } catch (t: Throwable) {
+                    if (Configuration.getIsEnableTelemetryLogs()) {
+                        println("UsageTimer error: ${t.message}")
+                    }
+                }
+            }
+        }
+    }
+
+
+    fun disableUsageTimer() {
+        usageTimerJob?.cancel()
+        usageTimerJob = null
+    }
+
+
+    fun updateUsageTime() {
+        var usageTime = database.loadString("usageTime")?.toInt() ?: 0
+        usageTime += 30
+        database.saveString("usageTime", usageTime.toString())
+        sixHoursUsageTimeReport()
     }
 }
