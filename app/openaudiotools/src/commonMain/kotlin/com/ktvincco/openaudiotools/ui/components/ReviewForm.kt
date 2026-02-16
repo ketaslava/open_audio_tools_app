@@ -52,6 +52,10 @@ class ReviewForm (
         // Get state
         val dialogState = modelData.reviewDialogState.collectAsState().value
 
+        // Feedback form
+        var starsCount by remember { mutableStateOf(0) }
+        var textInput by remember { mutableStateOf("") }
+
         Box(
             Modifier
                 .fillMaxSize()
@@ -238,9 +242,6 @@ class ReviewForm (
 
 
             if (dialogState == "HowManyStars") {
-
-                var starsCount by remember { mutableStateOf(0) }
-
                 Column(
                     Modifier
                         .fillMaxWidth(0.8f)
@@ -334,22 +335,9 @@ class ReviewForm (
                             .clip(shape = RoundedCornerShape(10.dp))
                             .background(ColorPalette.getLightButtonColor())
                             .clickable {
-
                                 // Process input
-                                if (starsCount == 0) { return@clickable }
-
-                                // Submit rating
-                                modelData.formSubmitted(mapOf(
-                                    "formType" to "feedbackRating",
-                                    "starsCount" to starsCount.toString(),
-                                ))
-
-                                // Process dialog
-                                if (starsCount <= 3) {
+                                if (starsCount > 0) {
                                     modelData.setReviewDialogState("TellUsEverything")
-                                } else {
-                                    modelData.reviewDialogWasCompleted("starRating")
-                                    modelData.setReviewDialogState("ThankYou")
                                 }
                             }
                     ) {
@@ -430,7 +418,7 @@ class ReviewForm (
                                 .background(ColorPalette.getLightButtonColor())
                                 .weight(1F)
                                 .clickable {
-                                    modelData.setReviewDialogState("TellUsEverything")
+                                    modelData.setReviewDialogState("HowManyStars")
                                 }
                         ) {
                             DynamicText(
@@ -584,7 +572,7 @@ class ReviewForm (
                                 .background(ColorPalette.getLightButtonColor())
                                 .weight(1F)
                                 .clickable {
-                                    modelData.setReviewDialogState("TellUsEverything")
+                                    modelData.setReviewDialogState("HowManyStars")
                                 }
                         ) {
                             DynamicText(
@@ -599,8 +587,6 @@ class ReviewForm (
 
 
             if (dialogState == "TellUsEverything") {
-
-                var textInput by remember { mutableStateOf("") }
 
                 Column(
                     Modifier
@@ -653,8 +639,9 @@ class ReviewForm (
                                     modelData.setReviewDialogState("Min16Symbols")
                                 } else {
                                     modelData.formSubmitted(mapOf(
-                                        "formType" to "feedbackText",
-                                        "textInput1" to  textInput
+                                        "formType" to "userFeedbackFormWith5StarRatingAndText",
+                                        "5StarRating" to starsCount.toString(),
+                                        "text" to  textInput
                                     ))
                                     modelData.reviewDialogWasCompleted("feedbackForm")
                                     modelData.setReviewDialogState("ThankYou")

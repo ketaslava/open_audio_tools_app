@@ -144,11 +144,6 @@ class DesktopEnvironmentConnector: EnvironmentConnector {
     }
 
 
-    override fun promptUserToMakeAStoreReview() {
-        return
-    }
-
-
     override fun forceGC() {
         System.gc()
     }

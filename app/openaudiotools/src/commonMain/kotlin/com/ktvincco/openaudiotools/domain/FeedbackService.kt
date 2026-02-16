@@ -1,6 +1,7 @@
 package com.ktvincco.openaudiotools.domain
 
 
+import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.data.Database
 import com.ktvincco.openaudiotools.data.EnvironmentConnector
 import com.ktvincco.openaudiotools.data.Logger
@@ -27,8 +28,8 @@ class FeedbackService (private val modelData: ModelData,
 
     // Settings
     private val isAlwaysShowReviewDialogForDebug = false // false
-    private val promptReviewAfterUsageTime = 900 // 15 min
-    private val reviewPromptCooldownTime = 2700 // 45 min
+    private val promptReviewAfterUsageTime = 900 // 900 (15 min)
+    private val reviewPromptCooldownTime = 2700 // 2700 (45 min)
     private val updateTimeStep = 5
 
 
@@ -56,8 +57,14 @@ class FeedbackService (private val modelData: ModelData,
 
         // Feedback form receiver
         modelData.assignFormSubmittedCallback { data ->
-            if (data["formType"] == "feedbackText") {
-                var text = data["textInput1"] ?: ""
+            if (data["formType"] == "userFeedbackFormWith5StarRatingAndText") {
+
+                // Process rating
+                database.saveString(
+                    "userFeedbackForm5StarRating", data["5StarRating"] ?: "0")
+
+                // Process text
+                var text = data["text"] ?: ""
                 // Sanitize string
                 text = text.trim()
                     .replace(Regex("[^\\p{L}\\p{N}\\p{P}\\p{Z}\\n\\t]"), " ")
@@ -65,21 +72,20 @@ class FeedbackService (private val modelData: ModelData,
                     .replace(Regex("[\\t ]+"), " ")
                     .replace(Regex("\\n{3,}"), "\n\n")
                     .take(8192)
-                database.saveString("unsentFeedbackText", text)
-            }
-            if (data["formType"] == "feedbackRating") {
-                database.saveString("unsentFeedbackRating", data["starsCount"] ?: "0")
+                database.saveString("userFeedbackFormText", text)
+
+                // Set flag
+                database.saveString("isWeHaveUnsentUserFeedbackFormWith5StarRatingAndText", "Yes")
             }
         }
 
         // Dialog closure processing
         modelData.assignReviewDialogWasCompletedCallback { exitPoint ->
-            if (exitPoint == "starRating") {
-                database.saveString("isReviewCompleted", "Yes")
-                environmentConnector.promptUserToMakeAStoreReview()
-            }
             if (exitPoint == "feedbackForm") {
                 database.saveString("isReviewCompleted", "Yes")
+                if (Configuration.IS_STORE_RELEASE) {
+                    environmentConnector.openWebLink(Configuration.STORE_PAGE_URL)
+                }
             }
             if (exitPoint == "Later") {
                 database.saveString("reviewDialogCooldownUntil",
@@ -93,28 +99,23 @@ class FeedbackService (private val modelData: ModelData,
     }
 
 
-    private fun checkUnsentFeedback() {
-        val unsentFeedbackText = database.loadString("unsentFeedbackText") ?: ""
-        if (unsentFeedbackText != "") {
+    private fun checkUnsentFeedbackForms() {
+
+        // Get Flag
+        val unsentUserFeedbackFormFlag = database.loadString(
+            "isWeHaveUnsentUserFeedbackFormWith5StarRatingAndText") ?: ""
+
+        // Check unsent status
+        if (unsentUserFeedbackFormFlag == "Yes") {
+            // Sent data
             telemetry.sendStandardStatement(mapOf(
-                "statementType" to "userFeedback",
-                "feedbackType" to "Text",
-                "text" to unsentFeedbackText
+                "statementType" to "userFeedbackFormWith5StarRatingAndText",
+                "5StarRating" to (database.loadString("userFeedbackForm5StarRating") ?: "0"),
+                "text" to (database.loadString("userFeedbackFormText") ?: "Error"),
             )) { result ->
                 if (result) {
-                    database.saveString("unsentFeedbackText", "")
-                }
-            }
-        }
-        val unsentFeedbackRating = database.loadString("unsentFeedbackRating") ?: ""
-        if (unsentFeedbackRating != "") {
-            telemetry.sendStandardStatement(mapOf(
-                "statementType" to "userFeedback",
-                "feedbackType" to "5StarRating",
-                "rating" to unsentFeedbackRating
-            )) { result ->
-                if (result) {
-                    database.saveString("unsentFeedbackRating", "")
+                    // Set flag
+                    database.saveString("isWeHaveUnsentUserFeedbackFormWith5StarRatingAndText", "No")
                 }
             }
         }
@@ -133,7 +134,7 @@ class FeedbackService (private val modelData: ModelData,
 
                 // Update Feedback Prompts
                 updateRequestToLeaveARatingAndReview()
-                checkUnsentFeedback()
+                checkUnsentFeedbackForms()
             }
         }
     }

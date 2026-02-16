@@ -12,6 +12,5 @@ interface EnvironmentConnector {
     fun getDefaultLanguageCode(): String
     fun addOnAppPausedCallback(callback: () -> Unit)
     fun addOnAppResumedCallback(callback: () -> Unit)
-    fun promptUserToMakeAStoreReview()
     fun forceGC()
 }

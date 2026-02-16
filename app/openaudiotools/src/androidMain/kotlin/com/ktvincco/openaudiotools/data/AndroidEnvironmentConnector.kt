@@ -24,8 +24,6 @@ import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.number
 import kotlin.time.Clock
 import kotlin.time.ExperimentalTime
-import com.google.android.play.core.review.ReviewManagerFactory
-import com.google.android.play.core.review.ReviewManager
 
 
 class AndroidEnvironmentConnector (private val activity: Activity): EnvironmentConnector {
@@ -205,21 +203,6 @@ class AndroidEnvironmentConnector (private val activity: Activity): EnvironmentC
     override fun addOnAppResumedCallback(callback: () -> Unit) {
         ensureLifecycleObserver()
         onResumedCallbacks += callback
-    }
-
-
-    private val reviewManager: ReviewManager by lazy {
-        ReviewManagerFactory.create(activity)
-    }
-    override fun promptUserToMakeAStoreReview() {
-        val request = reviewManager.requestReviewFlow()
-        request.addOnCompleteListener { task ->
-            if (!task.isSuccessful) {
-                return@addOnCompleteListener
-            }
-            val reviewInfo = task.result
-            reviewManager.launchReviewFlow(activity, reviewInfo)
-        }
     }
 
 

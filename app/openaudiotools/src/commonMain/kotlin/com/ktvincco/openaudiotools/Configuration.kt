@@ -5,6 +5,7 @@ import androidx.compose.ui.graphics.Color
 
 class Configuration {
 
+    @Suppress("MayBeConstant")
     companion object {
 
         // Debug
@@ -20,6 +21,11 @@ class Configuration {
         fun getIsEnableTelemetryLogs(): Boolean {
             return true
         }
+
+        // Release variant
+
+        val IS_STORE_RELEASE = true
+        val STORE_PAGE_URL = "https://play.google.com/store/apps/details?id=com.ktvincco.openaudiotools"
 
         // Audio processing
 
