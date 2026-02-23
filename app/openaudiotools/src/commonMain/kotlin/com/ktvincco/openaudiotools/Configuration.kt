@@ -24,7 +24,7 @@ class Configuration {
 
         // Release variant
 
-        val IS_STORE_RELEASE = true
+        val IS_STORE_RELEASE = true // == CHANGE BEFORE RELEASE (3/3) == //
         val STORE_PAGE_URL = "https://play.google.com/store/apps/details?id=com.ktvincco.openaudiotools"
 
         // Audio processing
@@ -52,7 +52,7 @@ class Configuration {
         // Telemetry
 
         fun getIsEnableTelemetry(): Boolean {
-            return true
+            return true // true
         }
 
         fun getTelemetryApiEndpointUrl(): String {

@@ -203,18 +203,13 @@ class Telemetry (private val database: Database,
             while (true) {
 
                 // suspends, does NOT block a thread
-                delay(30_000) // 30 sec
+                delay(5_000) // 5 sec
 
                 // Proper cooperative cancellation check (non-deprecated)
                 ensureActive()
 
-                try {
-                    updateUsageTime()
-                } catch (t: Throwable) {
-                    if (Configuration.getIsEnableTelemetryLogs()) {
-                        println("UsageTimer error: ${t.message}")
-                    }
-                }
+                // Update
+                updateUsageTime()
             }
         }
     }
@@ -228,7 +223,7 @@ class Telemetry (private val database: Database,
 
     fun updateUsageTime() {
         var usageTime = database.loadString("usageTime")?.toInt() ?: 0
-        usageTime += 30
+        usageTime += 5
         database.saveString("usageTime", usageTime.toString())
         sixHoursUsageTimeReport()
     }
