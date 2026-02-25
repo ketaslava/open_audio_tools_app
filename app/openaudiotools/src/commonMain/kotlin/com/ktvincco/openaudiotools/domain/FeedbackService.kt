@@ -33,6 +33,10 @@ class FeedbackService (private val modelData: ModelData,
     private val updateTimeStep = 5
 
 
+    // Variables
+    private var isSendingData = false
+
+
     private fun updateRequestToLeaveARatingAndReview() {
 
         // Check review process is not completed
@@ -107,7 +111,10 @@ class FeedbackService (private val modelData: ModelData,
 
         // Check unsent status
         if (unsentUserFeedbackFormFlag == "Yes") {
+            // Check state
+            if (isSendingData) { return }
             // Sent data
+            isSendingData = true
             telemetry.sendStandardStatement(mapOf(
                 "statementType" to "userFeedbackFormWith5StarRatingAndText",
                 "5StarRating" to (database.loadString("userFeedbackForm5StarRating") ?: "0"),
@@ -117,6 +124,7 @@ class FeedbackService (private val modelData: ModelData,
                     // Set flag
                     database.saveString("isWeHaveUnsentUserFeedbackFormWith5StarRatingAndText", "No")
                 }
+                isSendingData = false
             }
         }
     }
