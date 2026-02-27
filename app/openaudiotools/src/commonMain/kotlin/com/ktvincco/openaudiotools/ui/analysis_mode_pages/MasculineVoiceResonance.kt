@@ -17,7 +17,7 @@ import com.ktvincco.openaudiotools.ui.components.graphNameText
 import com.ktvincco.openaudiotools.ui.components.miniDisplayBox
 
 
-class FemaleVoiceResonance (
+class MasculineVoiceResonance (
     private val modelData: ModelData
 ) {
 
@@ -42,10 +42,10 @@ class FemaleVoiceResonance (
             miniDisplayBox(modelData, parameterId = "Loudness")
 
             miniDisplayBox(modelData,
-                parameterId = "Pitch", normalRangeMin = 175F,
-                normalRangeMax = 350F, isEnableDeadZoneLow = true, isEnableDeadZoneHigh = true,
-                d2ParameterId = "VoiceWeight", d2NormalRangeMin = 0F,
-                d2NormalRangeMax = 0.25F, d2IsEnableDeadZoneHigh = true)
+                parameterId = "Pitch", normalRangeMin = 50F,
+                normalRangeMax = 150F, isEnableDeadZoneLow = true, isEnableDeadZoneHigh = true,
+                d2ParameterId = "VoiceWeight",
+                d2NormalRangeMin = 0.25F, d2NormalRangeMax = 0.75F, d2IsEnableDeadZoneLow = true)
 
             // ####### Graphs ####### //
 
@@ -61,8 +61,8 @@ class FemaleVoiceResonance (
             Graph().draw(
                 data = loudnessData,
                 modelData = modelData,
-                pointerPosition = pointerPosition,
                 xLabelMax = dataDurationSec,
+                pointerPosition = pointerPosition,
                 isEnableAutoScroll = recordingState,
                 autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
@@ -86,8 +86,8 @@ class FemaleVoiceResonance (
                 autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
-                        minLabel = 175F,
-                        maxLabel = 330F,
+                        minLabel = 50F,
+                        maxLabel = 150F,
                         color = ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
                     )
                 ),
@@ -109,8 +109,8 @@ class FemaleVoiceResonance (
                 autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
-                        minLabel = 0F,
-                        maxLabel = 0.25F,
+                        minLabel = 0.25F,
+                        maxLabel = 0.75F,
                         color = ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
                     )
                 ),
@@ -131,17 +131,17 @@ class FemaleVoiceResonance (
 
             miniDisplayBox(modelData,
                 parameterId = "Pitch",
-                normalRangeMin = 175F, normalRangeMax = 350F,
+                normalRangeMin = 50F, normalRangeMax = 150F,
                 isEnableDeadZoneLow = true, isEnableDeadZoneHigh = true)
 
             miniDisplayBox(modelData,
-                parameterId = "ActiveFirstFormant", nameAddition = " (A) ",
-                normalRangeMin = 700F, normalRangeMax = 900F,
+                parameterId = "ActiveFirstFormant",
+                normalRangeMin = 500F, normalRangeMax = 700F,
                 isEnableDeadZoneLow = true, isEnableDeadZoneHigh = true,
-                d2ParameterId = "ActiveSecondFormant", d2NameAddition = " (A) ",
-                d2NormalRangeMin = 1200F, d2NormalRangeMax = 1500F,
+                d2ParameterId = "ActiveSecondFormant",
+                d2NormalRangeMin = 900F, d2NormalRangeMax = 1200F,
                 d2IsEnableDeadZoneLow = true, d2IsEnableDeadZoneHigh = true
-                )
+            )
 
             // ======= Active First Formant ======= //
 
@@ -158,8 +158,8 @@ class FemaleVoiceResonance (
                 autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
-                        minLabel = 700F,
-                        maxLabel = 900F,
+                        minLabel = 500F,
+                        maxLabel = 700F,
                         color = ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
                     )
                 ),
@@ -183,8 +183,8 @@ class FemaleVoiceResonance (
                 autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
-                        minLabel = 1200F,
-                        maxLabel = 1500F,
+                        minLabel = 900F,
+                        maxLabel = 1200F,
                         color = ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
                     )
                 ),
@@ -201,15 +201,15 @@ class FemaleVoiceResonance (
 
             miniDisplayBox(modelData,
                 parameterId = "Pitch",
-                normalRangeMin = 175F, normalRangeMax = 350F,
+                normalRangeMin = 50F, normalRangeMax = 150F,
                 isEnableDeadZoneLow = true, isEnableDeadZoneHigh = true)
 
             miniDisplayBox(modelData,
-                parameterId = "ActiveFirstFormant", nameAddition = " (I) ",
-                normalRangeMin = 350F, normalRangeMax = 550F,
+                parameterId = "ActiveFirstFormant",
+                normalRangeMin = 150F, normalRangeMax = 350F,
                 isEnableDeadZoneLow = true, isEnableDeadZoneHigh = true,
-                d2ParameterId = "ActiveSecondFormant", d2NameAddition = " (I) ",
-                d2NormalRangeMin = 2200F, d2NormalRangeMax = 2800F,
+                d2ParameterId = "ActiveSecondFormant",
+                d2NormalRangeMin = 1800F, d2NormalRangeMax = 2400F,
                 d2IsEnableDeadZoneLow = true, d2IsEnableDeadZoneHigh = true
             )
 
@@ -228,8 +228,8 @@ class FemaleVoiceResonance (
                 autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
-                        minLabel = 350F,
-                        maxLabel = 550F,
+                        minLabel = 150F,
+                        maxLabel = 350F,
                         color = ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
                     )
                 ),
@@ -253,8 +253,8 @@ class FemaleVoiceResonance (
                 autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
-                        minLabel = 2200F,
-                        maxLabel = 2800F,
+                        minLabel = 1800F,
+                        maxLabel = 2400F,
                         color = ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
                     )
                 ),
@@ -271,15 +271,15 @@ class FemaleVoiceResonance (
 
             miniDisplayBox(modelData,
                 parameterId = "Pitch",
-                normalRangeMin = 175F, normalRangeMax = 350F,
+                normalRangeMin = 50F, normalRangeMax = 150F,
                 isEnableDeadZoneLow = true, isEnableDeadZoneHigh = true)
 
             miniDisplayBox(modelData,
-                parameterId = "ActiveFirstFormant", nameAddition = " (U) ",
-                normalRangeMin = 400F, normalRangeMax = 550F,
+                parameterId = "ActiveFirstFormant",
+                normalRangeMin = 250F, normalRangeMax = 400F,
                 isEnableDeadZoneLow = true, isEnableDeadZoneHigh = true,
-                d2ParameterId = "ActiveSecondFormant", d2NameAddition = " (U) ",
-                d2NormalRangeMin = 900F, d2NormalRangeMax = 1200F,
+                d2ParameterId = "ActiveSecondFormant",
+                d2NormalRangeMin = 600F, d2NormalRangeMax = 900F,
                 d2IsEnableDeadZoneLow = true, d2IsEnableDeadZoneHigh = true
             )
 
@@ -298,8 +298,8 @@ class FemaleVoiceResonance (
                 autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
-                        minLabel = 400F,
-                        maxLabel = 550F,
+                        minLabel = 250F,
+                        maxLabel = 400F,
                         color = ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
                     )
                 ),
@@ -323,8 +323,8 @@ class FemaleVoiceResonance (
                 autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
-                        minLabel = 900F,
-                        maxLabel = 1200F,
+                        minLabel = 600F,
+                        maxLabel = 900F,
                         color = ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
                     )
                 ),

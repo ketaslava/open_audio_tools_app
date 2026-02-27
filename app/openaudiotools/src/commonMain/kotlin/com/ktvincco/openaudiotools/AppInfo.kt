@@ -2,5 +2,5 @@ package com.ktvincco.openaudiotools
 
 object AppInfo {
     const val NAME = "OpenAudioTools"
-    const val VERSION = "2.3.456"
+    const val VERSION = "2.3.56"
 }

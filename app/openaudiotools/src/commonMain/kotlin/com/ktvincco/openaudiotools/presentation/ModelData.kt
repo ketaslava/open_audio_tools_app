@@ -198,10 +198,10 @@ class ModelData {
     fun openSingingPage() { _currentPage.value = "Singing" }
     fun openPitchAndResonancePage() { _currentPage.value = "PitchAndResonance" }
     fun openVoiceSmoothnessPage() { _currentPage.value = "VoiceSmoothness" }
-    fun openFemaleVoicePage() { _currentPage.value = "FemaleVoice" }
-    fun openFemaleVoiceResonancePage() { _currentPage.value = "FemaleVoiceResonance" }
-    fun openMaleVoicePage() { _currentPage.value = "MaleVoice" }
-    fun openMaleVoiceResonancePage() { _currentPage.value = "MaleVoiceResonance" }
+    fun openFeminineVoicePage() { _currentPage.value = "FeminineVoice" }
+    fun openFeminineVoiceResonancePage() { _currentPage.value = "FeminineVoiceResonance" }
+    fun openMasculineVoicePage() { _currentPage.value = "MasculineVoice" }
+    fun openMasculineVoiceResonancePage() { _currentPage.value = "MasculineVoiceResonance" }
 
 
     // Recording control layout

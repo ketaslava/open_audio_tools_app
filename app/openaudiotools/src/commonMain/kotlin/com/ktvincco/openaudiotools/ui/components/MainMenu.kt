@@ -34,7 +34,7 @@ class MainMenu (private val modelData: ModelData) {
 
 
     @Composable
-    fun openMainMenuButton() {
+    fun OpenMainMenuButton() {
         Row (
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -65,17 +65,17 @@ class MainMenu (private val modelData: ModelData) {
             if (text == "VoiceSmoothness") {
                 text = "Voice Smoothness"
             }
-            if (text == "FemaleVoice") {
-                text = "Female Voice"
+            if (text == "FeminineVoice") {
+                text = "Feminine Voice"
             }
-            if (text == "FemaleVoiceResonance") {
-                text = "Female Voice Resonance"
+            if (text == "FeminineVoiceResonance") {
+                text = "Feminine Voice Resonance"
             }
-            if (text == "MaleVoice") {
-                text = "Male Voice"
+            if (text == "MasculineVoice") {
+                text = "Masculine Voice"
             }
-            if (text == "MaleVoiceResonance") {
-                text = "Male Voice Resonance"
+            if (text == "MasculineVoiceResonance") {
+                text = "Masculine Voice Resonance"
             }
 
             DynamicText(
@@ -204,23 +204,23 @@ class MainMenu (private val modelData: ModelData) {
                 BaseComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-                menuItem("Female Voice") {
-                    modelData.openFemaleVoicePage()
+                menuItem("Feminine Voice") {
+                    modelData.openFeminineVoicePage()
                     modelData.setMainMenuState(false)
                 }
 
-                menuItem("Female Voice Resonance") {
-                    modelData.openFemaleVoiceResonancePage()
+                menuItem("Feminine Voice Resonance") {
+                    modelData.openFeminineVoiceResonancePage()
                     modelData.setMainMenuState(false)
                 }
 
-                menuItem("Male Voice") {
-                    modelData.openMaleVoicePage()
+                menuItem("Masculine Voice") {
+                    modelData.openMasculineVoicePage()
                     modelData.setMainMenuState(false)
                 }
 
-                menuItem("Male Voice Resonance") {
-                    modelData.openMaleVoiceResonancePage()
+                menuItem("Masculine Voice Resonance") {
+                    modelData.openMasculineVoiceResonancePage()
                     modelData.setMainMenuState(false)
                 }
             }

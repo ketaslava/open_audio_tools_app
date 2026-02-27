@@ -17,8 +17,8 @@ import com.ktvincco.openaudiotools.ui.components.graphNameText
 import com.ktvincco.openaudiotools.ui.components.miniDisplayBox
 
 
-class FemaleVoice (
-    private val modelData: ModelData
+class MasculineVoice (
+    private val modelData: ModelData,
 ) {
 
     // Loudness
@@ -39,14 +39,14 @@ class FemaleVoice (
             miniDisplayBox(modelData,
                 parameterId = "Loudness",
                 d2ParameterId = "Pitch",
-                d2NormalRangeMin = 175F, d2NormalRangeMax = 350F,
+                d2NormalRangeMin = 50F, d2NormalRangeMax = 150F,
                 d2IsEnableDeadZoneLow = true, d2IsEnableDeadZoneHigh = true)
 
             miniDisplayBox(modelData,
-                parameterId = "Prosody", normalRangeMin = 0.25F, normalRangeMax = 0.75F,
-                isEnableDeadZoneLow = true,
+                parameterId = "Prosody", normalRangeMax = 0.25F,
+                isEnableDeadZoneHigh = true,
                 d2ParameterId = "HarmonicToNoiseRatio",
-                d2NormalRangeMin = 0.8F, d2IsEnableDeadZoneLow = true)
+                d2NormalRangeMin = 0.75F, d2IsEnableDeadZoneLow = true)
 
             miniDisplayBox(modelData,
                 parameterId = "Rythm", normalRangeMax = 600F,
@@ -87,15 +87,15 @@ class FemaleVoice (
                 yLabelMax = 500F,
                 horizontalLinesCount = 9,
                 pointerPosition = pointerPosition,
+                isEnableAutoScroll = recordingState,
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
-                        minLabel = 175F,
-                        maxLabel = 330F,
+                        minLabel = 50F,
+                        maxLabel = 150F,
                         color = ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
                     )
                 ),
-                isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(350.dp)
@@ -110,15 +110,15 @@ class FemaleVoice (
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
+                isEnableAutoScroll = recordingState,
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
-                        minLabel = 0.25F,
-                        maxLabel = 0.75F,
+                        minLabel = 0F,
+                        maxLabel = 0.25F,
                         color = ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
                     )
                 ),
-                isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)
@@ -133,15 +133,15 @@ class FemaleVoice (
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
                 pointerPosition = pointerPosition,
+                isEnableAutoScroll = recordingState,
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 graphZones = listOf(
                     GraphZone(
-                        minLabel = 0.8F,
+                        minLabel = 0.75F,
                         maxLabel = 1F,
                         color = ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
                     )
                 ),
-                isEnableAutoScroll = recordingState,
-                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(200.dp)

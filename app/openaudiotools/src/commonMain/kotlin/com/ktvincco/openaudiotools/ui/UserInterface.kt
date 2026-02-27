@@ -28,10 +28,10 @@ import com.ktvincco.openaudiotools.ui.screens.LegalInfoScreen
 import com.ktvincco.openaudiotools.ui.screens.LoadingScreenOverlay
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.ui.analysis_mode_pages.AllInfo
-import com.ktvincco.openaudiotools.ui.analysis_mode_pages.FemaleVoice
-import com.ktvincco.openaudiotools.ui.analysis_mode_pages.FemaleVoiceResonance
-import com.ktvincco.openaudiotools.ui.analysis_mode_pages.MaleVoice
-import com.ktvincco.openaudiotools.ui.analysis_mode_pages.MaleVoiceResonance
+import com.ktvincco.openaudiotools.ui.analysis_mode_pages.FeminineVoice
+import com.ktvincco.openaudiotools.ui.analysis_mode_pages.FeminineVoiceResonance
+import com.ktvincco.openaudiotools.ui.analysis_mode_pages.MasculineVoice
+import com.ktvincco.openaudiotools.ui.analysis_mode_pages.MasculineVoiceResonance
 import com.ktvincco.openaudiotools.ui.analysis_mode_pages.PitchAndResonance
 import com.ktvincco.openaudiotools.ui.analysis_mode_pages.Singing
 import com.ktvincco.openaudiotools.ui.analysis_mode_pages.SpeakerVoice
@@ -195,21 +195,21 @@ class UserInterface (
                                 VoiceSmoothness(modelData).content())
                         }
 
-                        if (currentPage == "FemaleVoice") {
+                        if (currentPage == "FeminineVoice") {
                             PageWithBottomControls(modelData).draw(
-                                FemaleVoice(modelData).content())
+                                FeminineVoice(modelData).content())
                         }
-                        if (currentPage == "FemaleVoiceResonance") {
+                        if (currentPage == "FeminineVoiceResonance") {
                             PageWithBottomControls(modelData).draw(
-                                FemaleVoiceResonance(modelData).content())
+                                FeminineVoiceResonance(modelData).content())
                         }
-                        if (currentPage == "MaleVoice") {
+                        if (currentPage == "MasculineVoice") {
                             PageWithBottomControls(modelData).draw(
-                                MaleVoice(modelData).content())
+                                MasculineVoice(modelData).content())
                         }
-                        if (currentPage == "MaleVoiceResonance") {
+                        if (currentPage == "MasculineVoiceResonance") {
                             PageWithBottomControls(modelData).draw(
-                                MaleVoiceResonance(modelData).content())
+                                MasculineVoiceResonance(modelData).content())
                         }
 
                         // Main Menu
@@ -231,7 +231,7 @@ class UserInterface (
                     }
                 }
                 // Main Menu Bottom Bar
-                MainMenu(modelData).openMainMenuButton()
+                MainMenu(modelData).OpenMainMenuButton()
             }
 
             Popup(modelData).Popup()
