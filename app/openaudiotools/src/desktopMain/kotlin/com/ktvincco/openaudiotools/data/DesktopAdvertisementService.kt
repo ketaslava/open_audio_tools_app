@@ -31,7 +31,7 @@ class DesktopAdvertisementService: AdvertisementService {
     }
 
     override fun openAdPrivacySettings() {
-        TODO("Not yet implemented")
+
     }
 
 }

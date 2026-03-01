@@ -120,7 +120,7 @@ class SettingsPage (
                     )
 
                     DynamicText(
-                        text = "[ Change AD Privacy Settings ]",
+                        text = "[ Open AD Privacy Settings ]",
                         isTranslatable = false,
                         modelData = modelData,
                         textAlign = TextAlign.Start,
