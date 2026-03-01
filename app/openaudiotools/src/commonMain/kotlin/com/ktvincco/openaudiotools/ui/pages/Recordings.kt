@@ -49,7 +49,7 @@ class Recordings (private val modelData: ModelData) {
 
 
     @Composable
-    fun draw() {
+    fun Draw() {
 
         val recordingFileList = modelData.recordingFileList.collectAsState().value
         var currentSelectionId by remember { mutableStateOf(-1) }

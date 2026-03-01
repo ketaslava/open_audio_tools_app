@@ -47,7 +47,7 @@ class ReviewForm (
 ) {
 
     @Composable
-    fun draw() {
+    fun Draw() {
 
         // Get state
         val dialogState = modelData.reviewDialogState.collectAsState().value

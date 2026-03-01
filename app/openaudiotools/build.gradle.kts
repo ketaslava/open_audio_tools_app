@@ -37,8 +37,8 @@ dependencies {
 val appName = "OpenAudioTools"
 
 // Configs
-val version = "2.3.56" // == CHANGE BEFORE RELEASE (1/3) == //
-val androidVersionCode = 18 // == CHANGE BEFORE RELEASE (2/3) == //
+val version = "2.4.0" // == CHANGE BEFORE RELEASE (1/6) == //
+val androidVersionCode = 19 // == CHANGE BEFORE RELEASE (2/6) == //
 
 kotlin {
 
@@ -78,6 +78,7 @@ kotlin {
                 implementation(compose.preview)
                 implementation(libs.androidx.activity.compose)
                 implementation(libs.androidx.lifecycle.process)
+                implementation(libs.play.services.ads)
             }
         }
         val commonMain by getting {

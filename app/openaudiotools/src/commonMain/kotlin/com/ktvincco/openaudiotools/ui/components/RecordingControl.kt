@@ -52,7 +52,7 @@ class RecordingControl (
 
 
     @Composable
-    fun draw() {
+    fun Draw() {
         Column(
             Modifier
                 .fillMaxWidth(),

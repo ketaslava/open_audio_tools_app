@@ -2,6 +2,7 @@ package com.ktvincco.openaudiotools
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.Dp
+import com.ktvincco.openaudiotools.data.AdvertisementService
 import com.ktvincco.openaudiotools.data.AudioPlayer
 import com.ktvincco.openaudiotools.data.AudioRecorder
 import com.ktvincco.openaudiotools.data.Database
@@ -24,18 +25,20 @@ fun App(
     database: Database,
     soundFile: SoundFile,
     audioPlayer: AudioPlayer,
-    environmentConnector: EnvironmentConnector
+    environmentConnector: EnvironmentConnector,
+    advertisementService: AdvertisementService
 ) {
 
     // Create components
     val modelData = ModelData()
     val domainMain = Main(modelData, logger, permissionController,
-        audioRecorder, database, soundFile, audioPlayer, environmentConnector)
+        audioRecorder, database, soundFile, audioPlayer, environmentConnector,
+        advertisementService)
     val userInterface = UserInterface(modelData)
 
     // Run actions
     domainMain.setup()
-    userInterface.draw()
+    userInterface.InterfaceRoot()
 }
 
 

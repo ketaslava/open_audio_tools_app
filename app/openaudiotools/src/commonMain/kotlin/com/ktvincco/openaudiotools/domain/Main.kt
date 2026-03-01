@@ -2,6 +2,7 @@ package com.ktvincco.openaudiotools.domain
 
 import com.ktvincco.openaudiotools.AppInfo
 import com.ktvincco.openaudiotools.Configuration
+import com.ktvincco.openaudiotools.data.AdvertisementService
 import com.ktvincco.openaudiotools.data.AudioPlayer
 import com.ktvincco.openaudiotools.data.AudioRecorder
 import com.ktvincco.openaudiotools.data.Database
@@ -18,7 +19,8 @@ class Main (private val modelData: ModelData,
             private val database: Database,
             private val soundFile: SoundFile,
             private val audioPlayer: AudioPlayer,
-            private val environmentConnector: EnvironmentConnector
+            private val environmentConnector: EnvironmentConnector,
+            private val advertisementService: AdvertisementService,
 ){
 
     companion object {
@@ -32,6 +34,7 @@ class Main (private val modelData: ModelData,
         database, environmentConnector, soundFile, audioPlayer, telemetry)
     private val feedbackService = FeedbackService(
         modelData, logger, database, telemetry, environmentConnector)
+    private val advertisementManager = AdvertisementManager(modelData, advertisementService)
 
 
     fun setup() {
@@ -154,6 +157,9 @@ class Main (private val modelData: ModelData,
 
         // Feedback service
         feedbackService.initialize()
+
+        // Advertisement
+        advertisementManager.initialize()
     }
 
 }

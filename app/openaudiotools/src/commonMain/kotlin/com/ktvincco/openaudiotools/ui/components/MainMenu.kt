@@ -98,7 +98,7 @@ class MainMenu (private val modelData: ModelData) {
 
 
     @Composable
-    fun draw() {
+    fun Draw() {
         Column(
             Modifier
                 .fillMaxHeight()
@@ -134,17 +134,17 @@ class MainMenu (private val modelData: ModelData) {
                 BaseComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-                menuItem("Dashboard") {
+                MenuItem("Dashboard") {
                     modelData.openDashboardPage()
                     modelData.setMainMenuState(false)
                 }
 
-                menuItem("Settings") {
+                MenuItem("Settings") {
                     modelData.openSettingsPage()
                     modelData.setMainMenuState(false)
                 }
 
-                menuItem("Voice Change Guidelines") {
+                MenuItem("Voice Change Guidelines") {
                     modelData.openVoiceChangeGuidelinesPage()
                     modelData.setMainMenuState(false)
                 }
@@ -152,22 +152,22 @@ class MainMenu (private val modelData: ModelData) {
                 BaseComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-                menuItem("All Info") {
+                MenuItem("All Info") {
                     modelData.openAllInfoPage()
                     modelData.setMainMenuState(false)
                 }
 
-                menuItem("Spectrum") {
+                MenuItem("Spectrum") {
                     modelData.openSpectrumInfoPage()
                     modelData.setMainMenuState(false)
                 }
 
-                menuItem("Reading") {
+                MenuItem("Reading") {
                     modelData.openReadingPage()
                     modelData.setMainMenuState(false)
                 }
 
-                menuItem("Recordings") {
+                MenuItem("Recordings") {
                     modelData.openRecordingsPage()
                     modelData.setMainMenuState(false)
                 }
@@ -175,7 +175,7 @@ class MainMenu (private val modelData: ModelData) {
                 BaseComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-                menuItem("Speaker Voice") {
+                MenuItem("Speaker Voice") {
                     modelData.openSpeakerVoicePage()
                     modelData.setMainMenuState(false)
                 }
@@ -183,7 +183,7 @@ class MainMenu (private val modelData: ModelData) {
                 BaseComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-                menuItem("Singing") {
+                MenuItem("Singing") {
                     modelData.openSingingPage()
                     modelData.setMainMenuState(false)
                 }
@@ -191,12 +191,12 @@ class MainMenu (private val modelData: ModelData) {
                 BaseComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-                menuItem("Pitch And Resonance") {
+                MenuItem("Pitch And Resonance") {
                     modelData.openPitchAndResonancePage()
                     modelData.setMainMenuState(false)
                 }
 
-                menuItem("Voice Smoothness") {
+                MenuItem("Voice Smoothness") {
                     modelData.openVoiceSmoothnessPage()
                     modelData.setMainMenuState(false)
                 }
@@ -204,22 +204,22 @@ class MainMenu (private val modelData: ModelData) {
                 BaseComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-                menuItem("Feminine Voice") {
+                MenuItem("Feminine Voice") {
                     modelData.openFeminineVoicePage()
                     modelData.setMainMenuState(false)
                 }
 
-                menuItem("Feminine Voice Resonance") {
+                MenuItem("Feminine Voice Resonance") {
                     modelData.openFeminineVoiceResonancePage()
                     modelData.setMainMenuState(false)
                 }
 
-                menuItem("Masculine Voice") {
+                MenuItem("Masculine Voice") {
                     modelData.openMasculineVoicePage()
                     modelData.setMainMenuState(false)
                 }
 
-                menuItem("Masculine Voice Resonance") {
+                MenuItem("Masculine Voice Resonance") {
                     modelData.openMasculineVoiceResonancePage()
                     modelData.setMainMenuState(false)
                 }
@@ -228,7 +228,7 @@ class MainMenu (private val modelData: ModelData) {
     }
 
     @Composable
-    fun menuItem(text: String, callback: () -> Unit) {
+    fun MenuItem(text: String, callback: () -> Unit) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center,

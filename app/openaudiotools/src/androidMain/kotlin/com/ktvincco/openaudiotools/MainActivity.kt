@@ -15,6 +15,7 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat.setDecorFitsSystemWindows
+import com.ktvincco.openaudiotools.data.AndroidAdvertisementService
 import com.ktvincco.openaudiotools.data.AndroidAudioPlayer
 import com.ktvincco.openaudiotools.data.AndroidAudioRecorder
 import com.ktvincco.openaudiotools.data.AndroidDatabase
@@ -34,6 +35,7 @@ class MainActivity : ComponentActivity() {
     private val androidSoundFile = AndroidSoundFile()
     private val androidAudioPlayer = AndroidAudioPlayer()
     private val environmentConnector = AndroidEnvironmentConnector(this)
+    private val advertisementService = AndroidAdvertisementService(this)
 
 
     // On Create
@@ -45,28 +47,19 @@ class MainActivity : ComponentActivity() {
         setDecorFitsSystemWindows(window, false)
 
         // Immersive mode
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            // Android 11+
-            window.insetsController?.let { controller ->
-                // Hide status bar and navigation
-                controller.hide(WindowInsets.Type.systemBars())
-                // Set return by swipe behaviour
-                controller.systemBarsBehavior =
-                    WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-            }
-        } else {
-            // Immersive mode for old android
-            @Suppress("DEPRECATION")
-            window.decorView.systemUiVisibility =
-                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY or
-                        View.SYSTEM_UI_FLAG_FULLSCREEN or
-                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+        // Android 11+
+        window.insetsController?.let { controller ->
+            // Hide status bar and navigation
+            controller.hide(WindowInsets.Type.systemBars())
+            // Set return by swipe behaviour
+            controller.systemBarsBehavior =
+                WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
 
         // Launch common app
         setContent {
             App(androidLogger, permissionController, audioRecorder, androidDatabase,
-                androidSoundFile, androidAudioPlayer, environmentConnector)
+                androidSoundFile, androidAudioPlayer, environmentConnector, advertisementService)
         }
 
         // Process system "back" event

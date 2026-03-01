@@ -32,6 +32,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
@@ -46,8 +47,9 @@ class SettingsPage (
 ) {
 
     @Composable
-    fun draw() {
+    fun Draw() {
 
+        // Language selection
         var isOpenLanguageSelectionMenu by remember { mutableStateOf(false) }
         val availableLanguages = Dictionary.getAvailableLanguagesWithLangCodes()
         var currentLanguage = "Original"
@@ -58,67 +60,104 @@ class SettingsPage (
             }
         }
 
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceBetween,
+        // Settings page body
+        Box(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = 16.dp)
+                .fillMaxWidth()
+                .fillMaxHeight()
         ) {
-            val scrollState = rememberScrollState()
 
+            // Settings
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .verticalScroll(state = scrollState)
+                    .fillMaxSize()
+                    .padding(horizontal = 16.dp)
             ) {
+                val scrollState = rememberScrollState()
 
-                DynamicText(
-                    text = "Settings",
-                    modelData = modelData,
-                    color = ColorPalette.getTextColor(),
-                    fontSize = 28.sp,
-                    lineHeight = 36.sp,
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier
-                        .padding(horizontal = 16.dp, vertical = 24.dp)
-                )
-
-                BaseComponents().HorizontalDivider(
-                    color = ColorPalette.getMarkupColor(), thickness = 1.dp)
-
-                DynamicText(
-                    textByParts = listOf("Language", ":", " ", currentLanguage),
-                    modelData = modelData,
-                    color = ColorPalette.getTextColor(),
-                    fontSize = 16.sp,
-                    lineHeight = 24.sp,
-                    modifier = Modifier
-                        .clickable { isOpenLanguageSelectionMenu = true }
-                        .padding(start = 16.dp, end = 16.dp, top = 24.dp, bottom = 24.dp)
                         .fillMaxWidth()
-                )
+                        .verticalScroll(state = scrollState)
+                ) {
 
-                BaseComponents().HorizontalDivider(
-                    color = ColorPalette.getMarkupColor(), thickness = 1.dp)
+                    DynamicText(
+                        text = "Settings",
+                        modelData = modelData,
+                        color = ColorPalette.getTextColor(),
+                        fontSize = 28.sp,
+                        lineHeight = 36.sp,
+                        modifier = Modifier
+                            .padding(horizontal = 16.dp, vertical = 24.dp)
+                    )
+
+                    // Language selection
+
+                    BaseComponents().HorizontalDivider(
+                        color = ColorPalette.getMarkupColor(), thickness = 1.dp
+                    )
+
+                    DynamicText(
+                        textByParts = listOf("Language", ":", " ", currentLanguage),
+                        modelData = modelData,
+                        color = ColorPalette.getTextColor(),
+                        fontSize = 16.sp,
+                        lineHeight = 24.sp,
+                        modifier = Modifier
+                            .clickable { isOpenLanguageSelectionMenu = true }
+                            .padding(start = 16.dp, end = 16.dp, top = 24.dp, bottom = 24.dp)
+                            .fillMaxWidth()
+                    )
+
+                    // Advertisement Privacy
+
+                    BaseComponents().HorizontalDivider(
+                        color = ColorPalette.getMarkupColor(), thickness = 1.dp
+                    )
+
+                    DynamicText(
+                        text = "[ Change AD Privacy Settings ]",
+                        isTranslatable = false,
+                        modelData = modelData,
+                        textAlign = TextAlign.Start,
+                        fontSize = 16.sp,
+                        lineHeight = 16.sp,
+                        color = ColorPalette.getTextColor(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { modelData.openAdPrivacySettings() }
+                            .padding(horizontal = 16.dp, vertical = 24.dp)
+                    )
+
+                    BaseComponents().HorizontalDivider(
+                        color = ColorPalette.getMarkupColor(), thickness = 1.dp
+                    )
+                }
             }
-        }
-        AnimatedVisibility(
-            isOpenLanguageSelectionMenu,
-            enter = slideInVertically(initialOffsetY = {it * 2}) + fadeIn(),
-            exit = slideOutVertically(targetOffsetY = {it}) + fadeOut()
-        ) {
-            languageSelectionMenu (availableLanguages) { selectedLanguageCode ->
-                modelData.languageSelected(selectedLanguageCode)
-                isOpenLanguageSelectionMenu = false
+
+            // Overlay menus
+
+            // Language selection
+            AnimatedVisibility(
+                isOpenLanguageSelectionMenu,
+                enter = slideInVertically(initialOffsetY = { it * 2 }) + fadeIn(),
+                exit = slideOutVertically(targetOffsetY = { it }) + fadeOut()
+            ) {
+                LanguageSelectionMenu(availableLanguages) { selectedLanguageCode ->
+                    modelData.languageSelected(selectedLanguageCode)
+                    isOpenLanguageSelectionMenu = false
+                }
             }
         }
     }
 
 
     @Composable
-    fun languageSelectionMenu(
+    fun LanguageSelectionMenu(
         languages: List<Pair<String, String>>,
         onLanguageSelection: (selectedLanguageCode: String) -> Unit
     ) {
@@ -134,7 +173,7 @@ class SettingsPage (
             Spacer(modifier = Modifier.height(16.dp))
 
             DynamicText(
-                text = "Select Language",
+                text = "Select the Language",
                 modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 24.sp,
@@ -158,7 +197,7 @@ class SettingsPage (
                     BaseComponents().HorizontalDivider(
                         color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-                    menuItem(language.first) {
+                    MenuItem(language.first) {
                         onLanguageSelection.invoke(language.second)
                     }
 
@@ -174,7 +213,7 @@ class SettingsPage (
 
 
     @Composable
-    fun menuItem(text: String, callback: () -> Unit) {
+    fun MenuItem(text: String, callback: () -> Unit) {
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier

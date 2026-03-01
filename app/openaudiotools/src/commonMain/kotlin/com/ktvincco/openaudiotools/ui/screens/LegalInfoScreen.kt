@@ -33,7 +33,7 @@ class LegalInfoScreen (
 ) {
 
     @Composable
-    fun draw() {
+    fun Draw() {
         val scrollState = rememberScrollState()
 
         // Content

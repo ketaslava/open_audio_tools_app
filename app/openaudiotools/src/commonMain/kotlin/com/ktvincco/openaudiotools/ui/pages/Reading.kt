@@ -48,7 +48,7 @@ class Reading (
     private val modelData: ModelData
 ) {
     @Composable
-    fun draw() {
+    fun Draw() {
 
         var isOpenTextSelectionMenu by remember { mutableStateOf(false) }
         var currentTextId by remember { mutableStateOf(0) }
@@ -131,10 +131,10 @@ class Reading (
                         )
                     }
                 }
-                RecordingControl(modelData).draw()
+                RecordingControl(modelData).Draw()
             }
             AnimatedVisibility(isOpenTextSelectionMenu) {
-                textSelectionMenu (texts) { selectedTextId ->
+                TextSelectionMenu (texts) { selectedTextId ->
                     currentTextId = selectedTextId
                     isOpenTextSelectionMenu = false
                 }
@@ -145,7 +145,7 @@ class Reading (
 
 
     @Composable
-    fun textSelectionMenu(textsForReading: Array<TextForReading>,
+    fun TextSelectionMenu(textsForReading: Array<TextForReading>,
                           onTextSelection: (selectedTextId: Int) -> Unit) {
         Column(
             Modifier
@@ -183,7 +183,7 @@ class Reading (
                     BaseComponents().HorizontalDivider(
                         color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-                    menuItem(textForReading.getHeadline()) {
+                    MenuItem(textForReading.getHeadline()) {
                         onTextSelection.invoke(index)
                     }
 
@@ -199,7 +199,7 @@ class Reading (
 
 
     @Composable
-    fun menuItem(text: String, callback: () -> Unit) {
+    fun MenuItem(text: String, callback: () -> Unit) {
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier

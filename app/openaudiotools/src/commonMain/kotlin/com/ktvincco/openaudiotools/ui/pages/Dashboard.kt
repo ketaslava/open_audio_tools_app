@@ -35,7 +35,7 @@ class Dashboard (
 ) {
 
     @Composable
-    fun draw() {
+    fun Draw() {
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -116,11 +116,9 @@ class Dashboard (
                         .fillMaxWidth()
                 )
 
-
                 BaseComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp
                 )
-
 
                 DynamicText(
                     text = "About Open Audio Tools",
@@ -151,7 +149,6 @@ class Dashboard (
                 BaseComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp
                 )
-
 
                 DynamicText(
                     text = "Getting Started",
@@ -268,7 +265,7 @@ class Dashboard (
                 DynamicText(
                     text = "Communication:\n\n" +
                             "   * Email: ktvincco@gmail.com\n" +
-                            "   * BlueSky: @ketaslava.bsky.social  (Preferred)\n\n" +
+                            "   * Instagram: @ketaslava (Preferred)\n\n" +
                             "Join the Community:\n\n" +
                             "   * YouTube: @ketaslava, @ktvincco_production\n" +
                             "   * Instagram: @ketaslava, @ktvincco\n" +
@@ -285,7 +282,6 @@ class Dashboard (
                 BaseComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-
                 DynamicText(
                     text = "Legal Info",
                     isTranslatable = false,
@@ -298,7 +294,6 @@ class Dashboard (
                         .padding(horizontal = 16.dp, vertical = 24.dp)
                 )
 
-
                 DynamicText(
                     text = "[Legal Info]",
                     isTranslatable = false,
@@ -309,7 +304,7 @@ class Dashboard (
                     color = ColorPalette.getTextColor(),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { modelData.setLegalInfoScreenState(true) }
+                        .clickable { modelData.openAdPrivacySettings() }
                         .padding(horizontal = 16.dp, vertical = 12.dp)
                 )
 

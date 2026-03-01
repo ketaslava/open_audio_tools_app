@@ -36,7 +36,7 @@ class HelpMenu (
 ) {
 
     @Composable
-    fun draw() {
+    fun Draw() {
 
         // Get parameter description
         val parameterId = modelData.helpMenuParameterId.collectAsState().value

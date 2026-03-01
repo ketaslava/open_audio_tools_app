@@ -1,7 +1,14 @@
 package com.ktvincco.openaudiotools.presentation
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateMapOf
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 import com.ktvincco.openaudiotools.data.sound_processing_algorithms.RecordingQuality
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -398,4 +405,17 @@ class ModelData {
         reportAbsenceOfTranslationCallback = callback }
     fun reportAbsenceOfTranslation(originalText: String) {
         reportAbsenceOfTranslationCallback(originalText) }
+
+    // AD Privacy
+    private var openAdPrivacySettingsCallback: () -> Unit = {}
+    fun assignOpenAdPrivacySettingsCallback(callback: () -> Unit) {
+        openAdPrivacySettingsCallback = callback }
+    fun openAdPrivacySettings() { openAdPrivacySettingsCallback() }
+
+    // Banner Ad
+    private val _bannerAdvertisement = MutableStateFlow<@Composable () -> Unit>({})
+    val bannerAdBlock: StateFlow<@Composable () -> Unit> = _bannerAdvertisement
+    fun setBannerAdBlock(newBannerAdvertisement: @Composable () -> Unit) {
+        _bannerAdvertisement.value = newBannerAdvertisement
+    }
 }

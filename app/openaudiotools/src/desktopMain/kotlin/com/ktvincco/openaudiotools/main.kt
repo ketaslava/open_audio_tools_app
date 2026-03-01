@@ -5,6 +5,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
+import com.ktvincco.openaudiotools.data.DesktopAdvertisementService
 import com.ktvincco.openaudiotools.data.DesktopAudioPlayer
 import com.ktvincco.openaudiotools.data.DesktopAudioRecorder
 import com.ktvincco.openaudiotools.data.DesktopDatabase
@@ -34,10 +35,12 @@ fun main() = application {
         val desktopSoundFile = DesktopSoundFile()
         val desktopAudioPlayer = DesktopAudioPlayer()
         val desktopEnvironmentConnector = DesktopEnvironmentConnector()
+        val desktopAdvertisementService = DesktopAdvertisementService()
 
         // Launch common app
         App(desktopLogger, desktopPermissionController, desktopAudioRecorder,
-            desktopDatabase, desktopSoundFile, desktopAudioPlayer, desktopEnvironmentConnector)
+            desktopDatabase, desktopSoundFile, desktopAudioPlayer, desktopEnvironmentConnector,
+            desktopAdvertisementService)
     }
 }
 

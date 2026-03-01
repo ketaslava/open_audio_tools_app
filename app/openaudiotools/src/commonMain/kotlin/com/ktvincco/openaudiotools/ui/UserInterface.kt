@@ -18,7 +18,6 @@ import androidx.compose.runtime.key
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.ktvincco.openaudiotools.ColorPalette
-import com.ktvincco.openaudiotools.MainApplicationTheme
 import com.ktvincco.openaudiotools.ui.basics.Popup
 import com.ktvincco.openaudiotools.ui.pages.Dashboard
 import com.ktvincco.openaudiotools.ui.pages.Recordings
@@ -44,78 +43,116 @@ import com.ktvincco.openaudiotools.ui.components.ReviewForm
 import com.ktvincco.openaudiotools.ui.pages.Reading
 import com.ktvincco.openaudiotools.ui.pages.SettingsPage
 import com.ktvincco.openaudiotools.ui.pages.VoiceChangeGuidelines
+import com.sun.jdi.InterfaceType
 
 
 class UserInterface (
     private val modelData: ModelData,
 ) {
 
+    @Composable
+    fun InterfaceRoot() {
+        Column (
+            Modifier
+                .fillMaxHeight()
+                .fillMaxWidth()
+                .background(ColorPalette.getBackgroundColor()),
+        ) {
+            Box(
+                Modifier
+                    .fillMaxHeight()
+                    .fillMaxWidth()
+                    .weight(1F)
+            ) {
+                InterfaceOrigin()
+            }
+            Box(
+                Modifier
+                    .fillMaxWidth()
+            ) {
+                BottomSpace()
+            }
+        }
+    }
+
 
     @Composable
-    fun draw() {
+    fun BottomSpace() {
+        Box(
+            Modifier
+                .fillMaxWidth()
+                .background(ColorPalette.getBlockColor())
+        ) {
+            // Banner AD
+            modelData.bannerAdBlock.collectAsState().value()
+        }
+    }
+
+
+    @Composable
+    fun InterfaceOrigin() {
         // UI refresh
         val refreshKey = modelData.refreshKey.collectAsState().value
         key(refreshKey) {
-            MainApplicationTheme {
-                Box(
-                    Modifier
-                        .fillMaxHeight()
-                        .fillMaxWidth()
-                        .background(ColorPalette.getBackgroundColor()),
+            Box(
+                Modifier
+                    .fillMaxHeight()
+                    .fillMaxWidth()
+                    .background(ColorPalette.getBackgroundColor()),
+            ) {
+                // UI switch
+                val isShowUi = modelData.isShowUi.collectAsState().value
+                if (!isShowUi) {
+                    return@Box
+                }
+
+                // Front screens
+
+                if (modelData.legalInfoScreenState.collectAsState().value) {
+                    LegalInfoScreen(modelData).Draw()
+                    return@Box
+                }
+
+                // Draw pages
+                val currentPage = modelData.currentPage.collectAsState().value
+
+                when (currentPage) {
+                    "FirstStartScreen" -> FirstStartScreen(modelData).draw()
+                    "AccessDeniedScreen" -> AccessDeniedScreen(modelData).draw()
+
+                    else -> MainScreen()
+                }
+
+                // Overlays
+
+                // Loading screen overlay
+                AnimatedVisibility(
+                    modelData.isShowLoadingScreenOverlay.collectAsState().value,
+                    enter = fadeIn(),
+                    exit = fadeOut()
                 ) {
-                    // UI switch
-                    val isShowUi = modelData.isShowUi.collectAsState().value
-                    if (!isShowUi) {
-                        return@Box
-                    }
+                    LoadingScreenOverlay(modelData).draw()
+                }
 
-                    // Front screens
+                // Help Menu overlay
+                AnimatedVisibility(
+                    modelData.helpMenuState.collectAsState().value,
+                    enter = fadeIn(),
+                    exit = fadeOut()
+                ) {
+                    HelpMenu(modelData).Draw()
+                }
 
-                    if (modelData.legalInfoScreenState.collectAsState().value) {
-                        LegalInfoScreen(modelData).draw()
-                        return@Box
-                    }
-
-                    // Draw pages
-                    val currentPage = modelData.currentPage.collectAsState().value
-
-                    when (currentPage) {
-                        "FirstStartScreen" -> FirstStartScreen(modelData).draw()
-                        "AccessDeniedScreen" -> AccessDeniedScreen(modelData).draw()
-
-                        else -> MainScreen()
-                    }
-
-                    // Overlays
-
-                    // Loading screen overlay
-                    AnimatedVisibility(
-                        modelData.isShowLoadingScreenOverlay.collectAsState().value,
-                        enter = fadeIn(),
-                        exit = fadeOut()
-                    ) {
-                        LoadingScreenOverlay(modelData).draw()
-                    }
-
-                    // Help Menu overlay
-                    AnimatedVisibility(
-                        modelData.helpMenuState.collectAsState().value,
-                        enter = fadeIn(),
-                        exit = fadeOut()
-                    ) {
-                        HelpMenu(modelData).draw()
-                    }
-
-                    // Review Form overlay
-                    AnimatedVisibility(
-                        modelData.reviewDialogState.collectAsState().value != "Closed",
-                        enter = fadeIn(),
-                        exit = fadeOut()
-                    ) {
-                        ReviewForm(modelData).draw()
-                    }
+                // Review Form overlay
+                AnimatedVisibility(
+                    modelData.reviewDialogState.collectAsState().value != "Closed",
+                    enter = fadeIn(),
+                    exit = fadeOut()
+                ) {
+                    ReviewForm(modelData).Draw()
                 }
             }
+
         }
     }
 
@@ -150,65 +187,65 @@ class UserInterface (
                         val currentPage = modelData.currentPage.collectAsState().value
 
                         if (currentPage == "Dashboard") {
-                            Dashboard(modelData).draw()
+                            Dashboard(modelData).Draw()
                         }
                         if (currentPage == "Settings") {
-                            SettingsPage(modelData).draw()
+                            SettingsPage(modelData).Draw()
                         }
                         if (currentPage == "VoiceChangeGuidelines") {
                             PageWithBottomControls(
-                                modelData).draw(VoiceChangeGuidelines
+                                modelData).Draw(VoiceChangeGuidelines
                                 (modelData).content(), false)
                         }
 
                         if (currentPage == "AllInfo") {
-                            PageWithBottomControls(modelData).draw(
+                            PageWithBottomControls(modelData).Draw(
                                 AllInfo(modelData).content())
                         }
                         if (currentPage == "SpectrumInfo") {
-                            PageWithBottomControls(modelData).draw(
+                            PageWithBottomControls(modelData).Draw(
                                 SpectrumInfo(modelData).content())
                         }
                         if (currentPage == "Reading") {
-                            Reading(modelData).draw()
+                            Reading(modelData).Draw()
                         }
                         if (currentPage == "Recordings") {
-                            Recordings(modelData).draw()
+                            Recordings(modelData).Draw()
                         }
 
                         if (currentPage == "SpeakerVoice") {
-                            PageWithBottomControls(modelData).draw(
+                            PageWithBottomControls(modelData).Draw(
                                 SpeakerVoice(modelData).content())
                         }
 
                         if (currentPage == "Singing") {
-                            PageWithBottomControls(modelData).draw(
+                            PageWithBottomControls(modelData).Draw(
                                 Singing(modelData).content())
                         }
 
                         if (currentPage == "PitchAndResonance") {
-                            PageWithBottomControls(modelData).draw(
+                            PageWithBottomControls(modelData).Draw(
                                 PitchAndResonance(modelData).content())
                         }
                         if (currentPage == "VoiceSmoothness") {
-                            PageWithBottomControls(modelData).draw(
+                            PageWithBottomControls(modelData).Draw(
                                 VoiceSmoothness(modelData).content())
                         }
 
                         if (currentPage == "FeminineVoice") {
-                            PageWithBottomControls(modelData).draw(
+                            PageWithBottomControls(modelData).Draw(
                                 FeminineVoice(modelData).content())
                         }
                         if (currentPage == "FeminineVoiceResonance") {
-                            PageWithBottomControls(modelData).draw(
+                            PageWithBottomControls(modelData).Draw(
                                 FeminineVoiceResonance(modelData).content())
                         }
                         if (currentPage == "MasculineVoice") {
-                            PageWithBottomControls(modelData).draw(
+                            PageWithBottomControls(modelData).Draw(
                                 MasculineVoice(modelData).content())
                         }
                         if (currentPage == "MasculineVoiceResonance") {
-                            PageWithBottomControls(modelData).draw(
+                            PageWithBottomControls(modelData).Draw(
                                 MasculineVoiceResonance(modelData).content())
                         }
 
@@ -225,7 +262,7 @@ class UserInterface (
                                 enter = slideInVertically(initialOffsetY = {it * 2}) + fadeIn(),
                                 exit = slideOutVertically(targetOffsetY = {it}) + fadeOut()
                             ) {
-                                MainMenu(modelData).draw()
+                                MainMenu(modelData).Draw()
                             }
                         }
                     }

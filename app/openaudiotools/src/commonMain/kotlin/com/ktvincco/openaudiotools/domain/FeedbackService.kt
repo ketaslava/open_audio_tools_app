@@ -50,7 +50,9 @@ class FeedbackService (private val modelData: ModelData,
         if (modelData.recordingState.value) return
 
         // Check usage time > 15 min
-        val usageTime = database.loadString("usageTime")?.toInt() ?: 0
+        var usageTimeStr = database.loadString("usageTime")?: ""
+        if (usageTimeStr == "") { usageTimeStr = "0" }
+        val usageTime = usageTimeStr.toInt()
         if (usageTime < promptReviewAfterUsageTime &&
             !isAlwaysShowReviewDialogForDebug) return
 

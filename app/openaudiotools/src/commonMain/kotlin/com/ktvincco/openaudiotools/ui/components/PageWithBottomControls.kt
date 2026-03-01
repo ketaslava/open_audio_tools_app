@@ -17,7 +17,7 @@ class PageWithBottomControls (
 ) {
 
     @Composable
-    fun draw(content: @Composable ColumnScope.() -> Unit,
+    fun Draw(content: @Composable ColumnScope.() -> Unit,
              isEnableRecordingControl: Boolean = true) {
 
         Column(
@@ -42,7 +42,7 @@ class PageWithBottomControls (
             )
 
             if(isEnableRecordingControl) {
-                RecordingControl(modelData).draw()
+                RecordingControl(modelData).Draw()
             }
         }
     }

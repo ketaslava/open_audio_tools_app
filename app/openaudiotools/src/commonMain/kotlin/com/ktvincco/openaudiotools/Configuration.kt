@@ -24,8 +24,14 @@ class Configuration {
 
         // Release variant
 
-        val IS_STORE_RELEASE = true // == CHANGE BEFORE RELEASE (3/3) == //
-        val STORE_PAGE_URL = "https://play.google.com/store/apps/details?id=com.ktvincco.openaudiotools"
+        val IS_STORE_RELEASE = true // == CHANGE BEFORE RELEASE (3/6) == //
+        val STORE_PAGE_URL = "https://play.google.com/store/apps/details?id=com.ktvincco.openaudiotools" // == CHANGE BEFORE RELEASE (4/6) == //
+
+        // Advertisement
+
+        val IS_ENABLE_ADS = true // == CHANGE BEFORE RELEASE (5/6) == //
+
+        val IS_ENABLE_ADS_IN_TEST_MODE = false // false // == CHANGE BEFORE RELEASE (6/6) == //
 
         // Audio processing
 
