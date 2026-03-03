@@ -224,7 +224,8 @@ class Telemetry (private val database: Database,
     fun updateUsageTime() {
         var usageTimeStr = database.loadString("usageTime")?: ""
         if (usageTimeStr == "") { usageTimeStr = "0" }
-        val usageTime = usageTimeStr.toInt()
+        var usageTime = usageTimeStr.toInt()
+        usageTime += 5
         database.saveString("usageTime", usageTime.toString())
         sixHoursUsageTimeReport()
     }
