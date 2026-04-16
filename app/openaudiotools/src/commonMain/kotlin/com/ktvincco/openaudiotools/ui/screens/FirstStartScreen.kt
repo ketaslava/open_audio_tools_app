@@ -22,6 +22,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.TextUnitType
@@ -75,8 +76,8 @@ class FirstStartScreen (
                             isTranslatable = false,
                             modelData = modelData,
                             color = ColorPalette.getTextColor(),
-                            fontSize = 24.sp,
-                            lineHeight = 24.sp,
+                            fontSize = 28.sp,
+                            lineHeight = 28.sp,
                             modifier = Modifier
                                 .padding(horizontal = 16.dp, vertical = 24.dp)
                         )
@@ -104,7 +105,7 @@ class FirstStartScreen (
                         Spacer(modifier = Modifier.height(12.dp))
 
                         DynamicText(
-                            text = "Terms Of Use",
+                            text = "[ Terms Of Use ]",
                             isTranslatable = false,
                             modelData = modelData,
                             textAlign = TextAlign.Start,
@@ -118,7 +119,7 @@ class FirstStartScreen (
                                 .padding(horizontal = 16.dp, vertical = 12.dp)
                         )
                         DynamicText(
-                            text = "Privacy Policy",
+                            text = "[ Privacy Policy ]",
                             isTranslatable = false,
                             modelData = modelData,
                             textAlign = TextAlign.Start,
@@ -132,7 +133,7 @@ class FirstStartScreen (
                                 .padding(horizontal = 16.dp, vertical = 12.dp)
                         )
                         DynamicText(
-                            text = "Legal Info",
+                            text = "[ Legal Info ]",
                             isTranslatable = false,
                             modelData = modelData,
                             textAlign = TextAlign.Start,
@@ -154,7 +155,10 @@ class FirstStartScreen (
 
                         BaseComponents().Checkbox(
                             "I have read and accept the Terms of Use",
-                            modelData = modelData, Modifier) { state ->
+                            modelData = modelData, Modifier,
+                            fontSize = 16.sp,
+                            checkboxCodingColorForDisabled = Color.Red
+                        ) { state ->
                             isCheckboxTermsOfUseChecked = state
                         }
 
@@ -162,7 +166,10 @@ class FirstStartScreen (
 
                         BaseComponents().Checkbox(
                             "I have read and accept the Privacy Policy",
-                            modelData = modelData, Modifier) { state ->
+                            modelData = modelData, Modifier,
+                            fontSize = 16.sp,
+                            checkboxCodingColorForDisabled = Color.Red
+                        ) { state ->
                             isCheckboxPrivacyPolicyChecked = state
                         }
 

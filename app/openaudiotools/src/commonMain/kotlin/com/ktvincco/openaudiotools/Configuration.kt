@@ -76,7 +76,7 @@ class Configuration {
         }
 
         fun getUserAgreementVersion(): Int {
-            return 2 // If version will change, new user agreement screen will be shown
+            return 3 // If version will change, new user agreement screen will be shown
         }
 
         fun getSourceCodeWebLink(): String {

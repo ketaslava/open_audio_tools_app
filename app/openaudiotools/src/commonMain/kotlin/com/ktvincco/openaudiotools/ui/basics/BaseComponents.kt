@@ -20,12 +20,18 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.IntSize
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.presentation.ModelData
+import jdk.jfr.Enabled
 import openaudiotools.app.openaudiotools.generated.resources.Res
 import openaudiotools.app.openaudiotools.generated.resources.check_box_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import openaudiotools.app.openaudiotools.generated.resources.check_box_outline_blank_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
@@ -37,7 +43,12 @@ class BaseComponents {
 
     @Composable
     fun Checkbox(text: String, modelData: ModelData,
-                 modifier: Modifier, callback: (state: Boolean) -> Unit) {
+                 modifier: Modifier, fontSize: TextUnit = 16.sp,
+                 checkboxCodingColorForEnabled: Color = Color.White,
+                 checkboxCodingColorForDisabled: Color = Color.White,
+                 textCodingColorForEnabled: Color = ColorPalette.getTextColor(),
+                 textCodingColorForDisabled: Color = ColorPalette.getTextColor(),
+                 callback: (state: Boolean) -> Unit) {
 
         var isCheckboxChecked by remember { mutableStateOf(false) }
 
@@ -56,9 +67,12 @@ class BaseComponents {
             if (isCheckboxChecked) {
                 icon = Res.drawable.check_box_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
             }
+            val checkboxCodingColor = if (isCheckboxChecked) {
+                checkboxCodingColorForEnabled } else { checkboxCodingColorForDisabled }
             Image(
                 painterResource(icon),
                 null,
+                colorFilter = ColorFilter.tint(checkboxCodingColor),
                 modifier = Modifier
                     .width(52.dp)
                     .height(52.dp)
@@ -70,10 +84,13 @@ class BaseComponents {
                     }
             )
             Spacer(modifier = Modifier.width(5.dp))
+            val textCodingColor = if (isCheckboxChecked) {
+                textCodingColorForEnabled } else { textCodingColorForDisabled }
             DynamicText(
                 text = text,
                 modelData = modelData,
-                color = ColorPalette.getTextColor()
+                color = textCodingColor,
+                fontSize = fontSize,
             )
         }
     }
