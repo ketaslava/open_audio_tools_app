@@ -32,7 +32,7 @@ class DesktopAudioRecorder : AudioRecorder {
         val sampleRate = Configuration.getSampleRate().toFloat()
         val bytesPerSample = 2F  // 16‑bit = 2 bytes
         val channels       = 1F
-        val bufferMs       = 200F
+        val bufferMs       = 192F
         val lineBufferSize = (sampleRate * channels * bytesPerSample * (bufferMs / 1000F)).toInt()
 
         // Choose the source
