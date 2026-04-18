@@ -1,5 +1,6 @@
 package com.ktvincco.openaudiotools.domain
 
+import androidx.compose.runtime.collectAsState
 import com.ktvincco.openaudiotools.AppInfo
 import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.data.AdvertisementService
@@ -11,6 +12,7 @@ import com.ktvincco.openaudiotools.data.Logger
 import com.ktvincco.openaudiotools.data.PermissionController
 import com.ktvincco.openaudiotools.data.SoundFile
 import com.ktvincco.openaudiotools.presentation.ModelData
+
 
 class Main (private val modelData: ModelData,
             private val logger: Logger,
@@ -38,6 +40,9 @@ class Main (private val modelData: ModelData,
 
 
     fun setup() {
+
+        // Callbacks
+        assignCallbacks()
 
         // Info
         modelData.setAppInfo("Name", AppInfo.NAME)
@@ -80,6 +85,13 @@ class Main (private val modelData: ModelData,
     }
 
 
+    fun assignCallbacks() {
+        modelData.assignOnPageOpenedCallback {
+            database.saveString("currentPage", modelData.currentPage.value)
+        }
+    }
+
+
     private fun requestPermissions() {
         permissionController.requestPermissions { result ->
 
@@ -112,11 +124,11 @@ class Main (private val modelData: ModelData,
 
         // Open dashboard or FirstStartScreen
         if (isComplete) {
+            // Default start
 
             // Open page
-            modelData.openAllInfoPage()
-            // DEV
-            // modelData.openSettingsPage()
+            modelData.openPageByName(database.loadString(
+                "currentPage") ?: "Dashboard")
 
             // Setup next
             setup3()
@@ -124,6 +136,7 @@ class Main (private val modelData: ModelData,
             // Telemetry checkpoint
             telemetry.usageReportByCheckpoint("secondLaunch")
         } else {
+            // First start
             modelData.openFirstStartScreen {
                 database.saveString("IsFirstStartComplete", "Yes")
                 database.saveString("AcceptedUserAgreementVersion",

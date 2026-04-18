@@ -60,29 +60,6 @@ class ModelData {
     }
 
 
-    // First start screen
-    private var firstStartScreenClosedCallback: () -> Unit = {}
-    fun firstStartScreenClosed() {
-        firstStartScreenClosedCallback()
-    }
-
-
-    // Current page
-    val _currentPage = MutableStateFlow("Dashboard")
-    val currentPage: StateFlow<String> = _currentPage
-    fun openFirstStartScreen(callback: () -> Unit) {
-        firstStartScreenClosedCallback = callback
-        _currentPage.value = "FirstStartScreen"
-    }
-
-
-    // Default pages
-    fun openDashboardPage() { _currentPage.value = "Dashboard" }
-    fun openSettingsPage() { _currentPage.value = "Settings" }
-    fun openRecordingsPage() { _currentPage.value = "Recordings" }
-    fun openAccessDeniedScreen() { _currentPage.value = "AccessDeniedScreen" }
-
-
     // Legal Info Screen
     private val _legalInfoScreenState = MutableStateFlow(false)
     val legalInfoScreenState: StateFlow<Boolean> = _legalInfoScreenState
@@ -194,21 +171,52 @@ class ModelData {
         popupWithTextInputCallback.invoke(exitButtonType, inputText)
     }
 
+
+    // Current page
+    val _currentPage = MutableStateFlow("Dashboard")
+    val currentPage: StateFlow<String> = _currentPage
+    private var onPageOpenedCallback: () -> Unit = {}
+    fun assignOnPageOpenedCallback(callback: () -> Unit) {
+        onPageOpenedCallback = callback
+    }
+
+
+    // Open page by name
+    fun openPageByName(name: String) { _currentPage.value = name; onPageOpenedCallback() }
+
+
     // Default pages
-    fun openVoiceChangeGuidelinesPage() { _currentPage.value = "VoiceChangeGuidelines" }
+    fun openDashboardPage() { _currentPage.value = "Dashboard"; onPageOpenedCallback() }
+    fun openSettingsPage() { _currentPage.value = "Settings"; onPageOpenedCallback() }
+    fun openRecordingsPage() { _currentPage.value = "Recordings"; onPageOpenedCallback() }
+    fun openAccessDeniedScreen() { _currentPage.value = "AccessDeniedScreen"; onPageOpenedCallback() }
+    fun openVoiceChangeGuidelinesPage() { _currentPage.value = "VoiceChangeGuidelines"; onPageOpenedCallback() }
+
 
     // Mode pages
-    fun openAllInfoPage() { _currentPage.value = "AllInfo" }
-    fun openSpectrumInfoPage() { _currentPage.value = "SpectrumInfo" }
-    fun openReadingPage() { _currentPage.value = "Reading" }
-    fun openSpeakerVoicePage() { _currentPage.value = "SpeakerVoice" }
-    fun openSingingPage() { _currentPage.value = "Singing" }
-    fun openPitchAndResonancePage() { _currentPage.value = "PitchAndResonance" }
-    fun openVoiceSmoothnessPage() { _currentPage.value = "VoiceSmoothness" }
-    fun openFeminineVoicePage() { _currentPage.value = "FeminineVoice" }
-    fun openFeminineVoiceResonancePage() { _currentPage.value = "FeminineVoiceResonance" }
-    fun openMasculineVoicePage() { _currentPage.value = "MasculineVoice" }
-    fun openMasculineVoiceResonancePage() { _currentPage.value = "MasculineVoiceResonance" }
+    fun openAllInfoPage() { _currentPage.value = "AllInfo"; onPageOpenedCallback() }
+    fun openSpectrumInfoPage() { _currentPage.value = "SpectrumInfo"; onPageOpenedCallback() }
+    fun openReadingPage() { _currentPage.value = "Reading"; onPageOpenedCallback() }
+    fun openSpeakerVoicePage() { _currentPage.value = "SpeakerVoice"; onPageOpenedCallback() }
+    fun openSingingPage() { _currentPage.value = "Singing"; onPageOpenedCallback() }
+    fun openPitchAndResonancePage() { _currentPage.value = "PitchAndResonance"; onPageOpenedCallback() }
+    fun openVoiceSmoothnessPage() { _currentPage.value = "VoiceSmoothness"; onPageOpenedCallback() }
+    fun openFeminineVoicePage() { _currentPage.value = "FeminineVoice"; onPageOpenedCallback() }
+    fun openFeminineVoiceResonancePage() { _currentPage.value = "FeminineVoiceResonance"; onPageOpenedCallback() }
+    fun openMasculineVoicePage() { _currentPage.value = "MasculineVoice"; onPageOpenedCallback() }
+    fun openMasculineVoiceResonancePage() { _currentPage.value = "MasculineVoiceResonance"; onPageOpenedCallback() }
+
+
+    // First start screen
+    fun openFirstStartScreen(callback: () -> Unit) {
+        firstStartScreenClosedCallback = callback
+        _currentPage.value = "FirstStartScreen"
+        onPageOpenedCallback()
+    }
+    private var firstStartScreenClosedCallback: () -> Unit = {}
+    fun firstStartScreenClosed() {
+        firstStartScreenClosedCallback()
+    }
 
 
     // Recording control layout
