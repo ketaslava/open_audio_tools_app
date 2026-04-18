@@ -181,7 +181,7 @@ class ModelData {
     }
 
 
-    // Open page by name
+    // Open page by name - DO NOT USE IT FOR NAVIGATION, THIS IS FOR PAGE REOPENING ONLY
     fun openPageByName(name: String) { _currentPage.value = name; onPageOpenedCallback() }
 
 
