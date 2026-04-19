@@ -335,6 +335,13 @@ class ModelData {
     fun playFileButtonClicked(fileName: String) { playFileButtonCallback(fileName) }
 
 
+    // Stop Playback
+    private var stopPlaybackCallback: () -> Unit = {}
+    fun assignStopPlaybackCallback(callback: () -> Unit) {
+        stopPlaybackCallback = callback }
+    fun stopPlayback() { stopPlaybackCallback() }
+
+
     // Reset Button
     private var resetButtonCallback: () -> Unit = {}
     fun assignResetButtonCallback(callback: () -> Unit) {

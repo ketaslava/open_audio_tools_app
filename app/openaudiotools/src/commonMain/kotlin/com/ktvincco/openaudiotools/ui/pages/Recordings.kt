@@ -97,7 +97,8 @@ class Recordings (private val modelData: ModelData) {
                         BaseComponents().HorizontalDivider(
                             color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-                        menuItem(index, fileName, index == currentSelectionId) { id ->
+                        MenuItem(index, fileName, index == currentSelectionId) { id ->
+                            modelData.stopPlayback()
                             currentSelectionId = id
                         }
 
@@ -110,7 +111,7 @@ class Recordings (private val modelData: ModelData) {
                 }
             }
             if (currentSelectionId in recordingFileList.indices) {
-                actionBar(recordingFileList[currentSelectionId]) {
+                ActionBar(recordingFileList[currentSelectionId]) {
                     currentSelectionId = -1
                 }
             }
@@ -119,7 +120,7 @@ class Recordings (private val modelData: ModelData) {
 
 
     @Composable
-    fun menuItem(id: Int, text: String, isSelected: Boolean, callback: (id: Int) -> Unit) {
+    fun MenuItem(id: Int, text: String, isSelected: Boolean, callback: (id: Int) -> Unit) {
 
         val color = if(isSelected) { ColorPalette.getSelectionColor() } else { Color.Transparent }
 
@@ -145,7 +146,7 @@ class Recordings (private val modelData: ModelData) {
 
     // Screen bottom action bar to manipulate recordings
     @Composable
-    fun actionBar(selectedFileName: String, resetSelection: () -> Unit) {
+    fun ActionBar(selectedFileName: String, resetSelection: () -> Unit) {
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,

@@ -107,6 +107,11 @@ class Recorder (
             updateUi()
         }
 
+        // Stop callback
+        modelData.assignStopPlaybackCallback {
+            stopPlaying()
+        }
+
         // Rewind callback
         modelData.assignRewindCallback { newPointerPosition ->
             rewindTo(newPointerPosition)
