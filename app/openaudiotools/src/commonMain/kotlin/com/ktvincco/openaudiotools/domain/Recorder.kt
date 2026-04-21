@@ -71,12 +71,19 @@ class Recorder (
 
         // Audio recorder callback
         audioRecorder.setDataCallback { newDataRaw: ShortArray ->
-
+            // Optimization: avoid MutableList and intermediate allocations
             val msv = Short.MAX_VALUE.toFloat()
-            val nd: MutableList<Float> = mutableListOf()
-            for (i in newDataRaw) { nd.add(i.toFloat() / msv) }
+            val floatData = FloatArray(newDataRaw.size)
+            for (i in newDataRaw.indices) {
+                floatData[i] = newDataRaw[i].toFloat() / msv
+            }
 
-            rawData += nd.toFloatArray()
+            // Append to rawData
+            val oldSize = rawData.size
+            val newRawData = FloatArray(oldSize + floatData.size)
+            rawData.copyInto(newRawData)
+            floatData.copyInto(newRawData, destinationOffset = oldSize)
+            rawData = newRawData
 
             processRawData()
         }
