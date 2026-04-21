@@ -13,7 +13,7 @@ Using interfaces/classes like `EnvironmentConnector`, `Database`, and `Permissio
 allows the core logic to remain platform-independent.
 
 Centralized State: Having a single `ModelData` makes it easy to understand the current state of
- the entire application from one place.
+the entire application from one place.
 
 Modular UI Components:
 The UI is broken down into small, reusable pieces (components, basics, pages).
