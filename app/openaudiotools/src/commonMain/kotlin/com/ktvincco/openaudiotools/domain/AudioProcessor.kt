@@ -1,3 +1,16 @@
+/**
+ * AudioProcessor is the core mathematical engine of the application.
+ * 
+ * It is responsible for:
+ * 1. Receiving raw PCM audio chunks.
+ * 2. Orchestrating the execution of various DSP algorithms (Pitch, VAD, Formants, etc.).
+ * 3. Aggregating processed data into Spectrograms and Graphs.
+ * 4. Pushing the updated state to ModelData for UI rendering.
+ * 
+ * Note: Currently, it processes all features simultaneously. Future improvements 
+ * should focus on selective processing based on the active UI page to save resources.
+ */
+
 package com.ktvincco.openaudiotools.domain
 
 import com.ktvincco.openaudiotools.data.AudioPlayer

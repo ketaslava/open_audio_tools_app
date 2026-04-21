@@ -1,0 +1,37 @@
+# Architecture Explanation: OpenAudioTools
+
+OpenAudioTools follows a **Layered Architecture** with elements of **Clean Architecture**, designed to be reactive and cross-platform (Compose Multiplatform).
+
+## 1. Layers
+
+### Data Layer (`com.ktvincco.openaudiotools.data`)
+- **Algorithms**: Pure functions for audio processing (FFT, Pitch, VAD, etc.). They are stateless and decoupled from the app logic.
+- **Hardware Interfacing**: Implementation of `AudioRecorder`, `AudioPlayer`, and `Database`.
+- **Infrastructure**: Logging, file management, and environment-specific connectors.
+
+### Domain Layer (`com.ktvincco.openaudiotools.domain`)
+- **Main**: Orchestrates the app startup, permission handling, and component initialization.
+- **Recorder**: Manages the recording/playback lifecycle, state transitions (Ready -> Recording -> Playback), and file operations.
+- **AudioProcessor**: The engine that drives audio analysis. It takes raw PCM data and transforms it into visualizable metrics (graphs and spectrograms).
+
+### Presentation Layer (`com.ktvincco.openaudiotools.presentation`)
+- **ModelData**: A centralized "Source of Truth". It holds the UI state using `StateFlow` and `mutableStateMapOf`. It also acts as an event bus by holding callbacks that the UI triggers and the Domain layer implements.
+
+### UI Layer (`com.ktvincco.openaudiotools.ui`)
+- Built with **Jetpack Compose**.
+- Observes `ModelData` and renders components based on the current state.
+- Pages are structured to be modular, often wrapped in a `PageWithBottomControls` for consistency.
+
+## 2. Data Flow
+
+1. **Input**: `AudioRecorder` captures raw audio and passes it to `Recorder`.
+2. **Processing**: `Recorder` feeds chunks of audio into `AudioProcessor`. `AudioProcessor` runs algorithms and calculates metrics.
+3. **State Update**: `AudioProcessor` pushes the calculated data into `ModelData`.
+4. **Reaction**: The UI, observing `ModelData`, recomposes and shows the new graphs/spectrograms.
+5. **User Action**: The UI calls a function in `ModelData` (e.g., `playButtonClicked()`), which triggers a callback assigned by `Recorder`.
+
+## 3. Key Components
+
+- **ModelData**: The glue between Domain and UI.
+- **AudioProcessor**: Centralizes the execution of mathematical models on audio data.
+- **EnvironmentConnector**: Abstracts platform-specific features (like opening web links or forcing GC).
