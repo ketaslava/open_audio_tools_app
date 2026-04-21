@@ -1,0 +1,9 @@
+# Suggestions for Improvement
+
+VERY IMPORTANT: Processing Pipeline Monolith [LATER]
+`AudioProcessor.processData` calculates every single metric for every chunk of audio.
+Issue: This is extremely CPU-intensive and unnecessary if the user is only looking at one specific
+chart (e.g., just Pitch).
+Suggestion: Implement a "Pull" or "On-Demand" processing architecture. Only trigger algorithms whose
+outputs are currently required by the active UI page. This aligns with your goal of adding AI, which
+will be even more resource-heavy.

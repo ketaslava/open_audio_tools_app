@@ -1,0 +1,9 @@
+# Design rules
+
+* Model Data Decomposition
+1. When introducing new states to the model data, we have to allocate them into boxes (classes)
+according their type. Then, we can access the states like: ModelData -> ContainerClass -> State
+2. We have to design logic elements inside ModelData with minimal interactions between them.
+All real logic should be processed inside the Domain layer. Interactions between ContainerClass*es
+are fully prohibited.
+

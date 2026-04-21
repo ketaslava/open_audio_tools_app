@@ -1,8 +1,0 @@
-# Good Design Points
-
-- **Pure Functional Algorithms**: The audio processing algorithms in `com.ktvincco.openaudiotools.data.sound_processing_algorithms` are stateless and decoupled from the UI/Domain logic. This makes them easy to test and migrate to C++ (as planned).
-- **Clear Layer Separation**: The project follows a clear hierarchy (Data -> Domain -> Presentation -> UI).
-- **Abstraction of Platform Services**: Using interfaces/classes like `EnvironmentConnector`, `Database`, and `PermissionController` allows the core logic to remain platform-independent.
-- **Centralized State**: Having a single `ModelData` makes it easy to understand the current state of the entire application from one place.
-- **Modular UI Components**: The UI is broken down into small, reusable pieces (components, basics, pages).
-- **Reactive Flow**: The use of `StateFlow` and Compose's `collectAsState` ensures the UI is always in sync with the underlying data without manual refreshes (mostly).
