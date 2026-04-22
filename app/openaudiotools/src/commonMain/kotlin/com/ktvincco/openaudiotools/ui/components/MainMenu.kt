@@ -77,6 +77,9 @@ class MainMenu (private val modelData: ModelData) {
             if (text == "MasculineVoiceResonance") {
                 text = "Masculine Voice Resonance"
             }
+            if (text == "FrequentlyAskedQuestions") {
+                text = "FAQs"
+            }
 
             DynamicText(
                 text = text,
@@ -221,6 +224,14 @@ class MainMenu (private val modelData: ModelData) {
 
                 MenuItem("Masculine Voice Resonance") {
                     modelData.openMasculineVoiceResonancePage()
+                    modelData.setMainMenuState(false)
+                }
+
+                BaseComponents().HorizontalDivider(
+                    color = ColorPalette.getMarkupColor(), thickness = 1.dp)
+
+                MenuItem("FAQs") {
+                    modelData.openFrequentlyAskedQuestionsPage()
                     modelData.setMainMenuState(false)
                 }
             }

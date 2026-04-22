@@ -40,6 +40,7 @@ import com.ktvincco.openaudiotools.ui.components.HelpMenu
 import com.ktvincco.openaudiotools.ui.components.MainMenu
 import com.ktvincco.openaudiotools.ui.components.PageWithBottomControls
 import com.ktvincco.openaudiotools.ui.components.ReviewForm
+import com.ktvincco.openaudiotools.ui.pages.FrequentlyAskedQuestions
 import com.ktvincco.openaudiotools.ui.pages.Reading
 import com.ktvincco.openaudiotools.ui.pages.SettingsPage
 import com.ktvincco.openaudiotools.ui.pages.VoiceChangeGuidelines
@@ -196,6 +197,9 @@ class UserInterface (
                             PageWithBottomControls(
                                 modelData).Draw(VoiceChangeGuidelines
                                 (modelData).content(), false)
+                        }
+                        if (currentPage == "FrequentlyAskedQuestions") {
+                            FrequentlyAskedQuestions(modelData).Draw()
                         }
 
                         if (currentPage == "AllInfo") {

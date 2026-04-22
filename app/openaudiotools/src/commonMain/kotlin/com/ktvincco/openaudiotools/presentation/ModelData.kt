@@ -191,6 +191,7 @@ class ModelData {
     fun openRecordingsPage() { _currentPage.value = "Recordings"; onPageOpenedCallback() }
     fun openAccessDeniedScreen() { _currentPage.value = "AccessDeniedScreen"; onPageOpenedCallback() }
     fun openVoiceChangeGuidelinesPage() { _currentPage.value = "VoiceChangeGuidelines"; onPageOpenedCallback() }
+    fun openFrequentlyAskedQuestionsPage() { _currentPage.value = "FrequentlyAskedQuestions"; onPageOpenedCallback() }
 
 
     // Mode pages
