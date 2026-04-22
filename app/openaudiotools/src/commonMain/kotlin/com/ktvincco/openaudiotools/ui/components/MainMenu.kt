@@ -47,7 +47,7 @@ class MainMenu (private val modelData: ModelData) {
                 .padding(horizontal = 32.dp)
         ) {
             val currentPageId = modelData.currentPage.collectAsState().value
-            val text = PageRegistry.getPageDisplayName(currentPageId)
+            val text = PageRegistry.getDisplayName(currentPageId)
 
             DynamicText(
                 text = text,
@@ -197,6 +197,11 @@ class MainMenu (private val modelData: ModelData) {
 
                 BaseComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
+
+                MenuItem("User Guide") {
+                    modelData.openPage("UserGuide")
+                    modelData.setMainMenuState(false)
+                }
 
                 MenuItem("FAQs") {
                     modelData.openPage("FrequentlyAskedQuestions")

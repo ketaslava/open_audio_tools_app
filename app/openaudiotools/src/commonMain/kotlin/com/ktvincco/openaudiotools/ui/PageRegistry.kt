@@ -8,7 +8,7 @@ import com.ktvincco.openaudiotools.ui.pages.*
 
 
 /**
- * The single source of pages for Page Navigation.
+ * The Single Source of Truth for Page Navigation.
  * To add a new page, simply add a new entry to the [pages] map.
  */
 
@@ -26,6 +26,7 @@ object PageRegistry {
         "Recordings" to PageInfo("Recordings") { Recordings(it).Draw() },
         "FrequentlyAskedQuestions" to PageInfo("FAQs") { FrequentlyAskedQuestions(it).Draw() },
         "Reading" to PageInfo("Reading") { Reading(it).Draw() },
+        "UserGuide" to PageInfo("User Guide") { UserGuide(it).Draw() },
         "VoiceChangeGuidelines" to PageInfo("Voice Change Guidelines") { 
             PageWithBottomControls(it).Draw(VoiceChangeGuidelines(it).content(), false) 
         },
@@ -48,7 +49,7 @@ object PageRegistry {
         pages[id]?.draw?.invoke(modelData) ?: Dashboard(modelData).Draw()
     }
 
-    fun getPageDisplayName(id: String): String {
+    fun getDisplayName(id: String): String {
         return pages[id]?.displayName ?: id
     }
 }
