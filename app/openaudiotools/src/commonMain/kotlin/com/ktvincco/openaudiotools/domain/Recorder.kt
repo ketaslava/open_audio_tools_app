@@ -379,7 +379,7 @@ class Recorder (
 
             // Set UI
             modelData.setRecordingControlLayoutAsPlayer()
-            modelData.openAllInfoPage()
+            modelData.openPage("AllInfo")
             modelData.setMainMenuState(false)
 
             // Update UI

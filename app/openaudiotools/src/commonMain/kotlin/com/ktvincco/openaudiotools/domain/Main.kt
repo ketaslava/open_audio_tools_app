@@ -101,7 +101,7 @@ class Main (private val modelData: ModelData,
                 setup2()
             } else {
                 logger.logW(LOG_TAG, "WARNING access denied")
-                modelData.openAccessDeniedScreen()
+                modelData.openPage("AccessDeniedScreen")
                 modelData.setIsShowUi(true)
             }
         }
@@ -127,7 +127,7 @@ class Main (private val modelData: ModelData,
             // Default start
 
             // Open page
-            modelData.openPageByName(database.loadString(
+            modelData.openPage(database.loadString(
                 "currentPage") ?: "Dashboard")
 
             // Setup next
@@ -143,7 +143,7 @@ class Main (private val modelData: ModelData,
                     Configuration.getUserAgreementVersion().toString())
 
                 // Open page
-                modelData.openDashboardPage()
+                modelData.openPage("Dashboard")
 
                 // Setup next
                 setup3()

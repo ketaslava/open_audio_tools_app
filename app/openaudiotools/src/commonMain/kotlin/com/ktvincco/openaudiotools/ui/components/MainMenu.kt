@@ -26,6 +26,7 @@ import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.ui.basics.BaseComponents
 import com.ktvincco.openaudiotools.presentation.ModelData
+import com.ktvincco.openaudiotools.ui.PageRegistry
 import openaudiotools.app.openaudiotools.generated.resources.Res
 import openaudiotools.app.openaudiotools.generated.resources.menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import org.jetbrains.compose.resources.painterResource
@@ -45,41 +46,8 @@ class MainMenu (private val modelData: ModelData) {
                 .clickable { modelData.switchMainMenuState() }
                 .padding(horizontal = 32.dp)
         ) {
-            var text = modelData.currentPage.collectAsState().value
-
-            if (text == "VoiceChangeGuidelines") {
-                text = "Voice Change Guidelines"
-            }
-            if (text == "AllInfo") {
-                text = "All Info"
-            }
-            if (text == "SpectrumInfo") {
-                text = "Spectrum"
-            }
-            if (text == "SpeakerVoice") {
-                text = "Speaker Voice"
-            }
-            if (text == "PitchAndResonance") {
-                text = "Pitch And Resonance"
-            }
-            if (text == "VoiceSmoothness") {
-                text = "Voice Smoothness"
-            }
-            if (text == "FeminineVoice") {
-                text = "Feminine Voice"
-            }
-            if (text == "FeminineVoiceResonance") {
-                text = "Feminine Voice Resonance"
-            }
-            if (text == "MasculineVoice") {
-                text = "Masculine Voice"
-            }
-            if (text == "MasculineVoiceResonance") {
-                text = "Masculine Voice Resonance"
-            }
-            if (text == "FrequentlyAskedQuestions") {
-                text = "FAQs"
-            }
+            val currentPageId = modelData.currentPage.collectAsState().value
+            val text = PageRegistry.getPageDisplayName(currentPageId)
 
             DynamicText(
                 text = text,
@@ -138,17 +106,17 @@ class MainMenu (private val modelData: ModelData) {
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                 MenuItem("Dashboard") {
-                    modelData.openDashboardPage()
+                    modelData.openPage("Dashboard")
                     modelData.setMainMenuState(false)
                 }
 
                 MenuItem("Settings") {
-                    modelData.openSettingsPage()
+                    modelData.openPage("Settings")
                     modelData.setMainMenuState(false)
                 }
 
                 MenuItem("Voice Change Guidelines") {
-                    modelData.openVoiceChangeGuidelinesPage()
+                    modelData.openPage("VoiceChangeGuidelines")
                     modelData.setMainMenuState(false)
                 }
 
@@ -156,22 +124,22 @@ class MainMenu (private val modelData: ModelData) {
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                 MenuItem("All Info") {
-                    modelData.openAllInfoPage()
+                    modelData.openPage("AllInfo")
                     modelData.setMainMenuState(false)
                 }
 
                 MenuItem("Spectrum") {
-                    modelData.openSpectrumInfoPage()
+                    modelData.openPage("SpectrumInfo")
                     modelData.setMainMenuState(false)
                 }
 
                 MenuItem("Reading") {
-                    modelData.openReadingPage()
+                    modelData.openPage("Reading")
                     modelData.setMainMenuState(false)
                 }
 
                 MenuItem("Recordings") {
-                    modelData.openRecordingsPage()
+                    modelData.openPage("Recordings")
                     modelData.setMainMenuState(false)
                 }
 
@@ -179,7 +147,7 @@ class MainMenu (private val modelData: ModelData) {
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                 MenuItem("Speaker Voice") {
-                    modelData.openSpeakerVoicePage()
+                    modelData.openPage("SpeakerVoice")
                     modelData.setMainMenuState(false)
                 }
 
@@ -187,7 +155,7 @@ class MainMenu (private val modelData: ModelData) {
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                 MenuItem("Singing") {
-                    modelData.openSingingPage()
+                    modelData.openPage("Singing")
                     modelData.setMainMenuState(false)
                 }
 
@@ -195,12 +163,12 @@ class MainMenu (private val modelData: ModelData) {
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                 MenuItem("Pitch And Resonance") {
-                    modelData.openPitchAndResonancePage()
+                    modelData.openPage("PitchAndResonance")
                     modelData.setMainMenuState(false)
                 }
 
                 MenuItem("Voice Smoothness") {
-                    modelData.openVoiceSmoothnessPage()
+                    modelData.openPage("VoiceSmoothness")
                     modelData.setMainMenuState(false)
                 }
 
@@ -208,22 +176,22 @@ class MainMenu (private val modelData: ModelData) {
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                 MenuItem("Feminine Voice") {
-                    modelData.openFeminineVoicePage()
+                    modelData.openPage("FeminineVoice")
                     modelData.setMainMenuState(false)
                 }
 
                 MenuItem("Feminine Voice Resonance") {
-                    modelData.openFeminineVoiceResonancePage()
+                    modelData.openPage("FeminineVoiceResonance")
                     modelData.setMainMenuState(false)
                 }
 
                 MenuItem("Masculine Voice") {
-                    modelData.openMasculineVoicePage()
+                    modelData.openPage("MasculineVoice")
                     modelData.setMainMenuState(false)
                 }
 
                 MenuItem("Masculine Voice Resonance") {
-                    modelData.openMasculineVoiceResonancePage()
+                    modelData.openPage("MasculineVoiceResonance")
                     modelData.setMainMenuState(false)
                 }
 
@@ -231,7 +199,7 @@ class MainMenu (private val modelData: ModelData) {
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                 MenuItem("FAQs") {
-                    modelData.openFrequentlyAskedQuestionsPage()
+                    modelData.openPage("FrequentlyAskedQuestions")
                     modelData.setMainMenuState(false)
                 }
             }

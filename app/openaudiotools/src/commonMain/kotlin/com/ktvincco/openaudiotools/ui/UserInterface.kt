@@ -19,32 +19,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.ui.basics.Popup
-import com.ktvincco.openaudiotools.ui.pages.Dashboard
-import com.ktvincco.openaudiotools.ui.pages.Recordings
 import com.ktvincco.openaudiotools.ui.screens.AccessDeniedScreen
 import com.ktvincco.openaudiotools.ui.screens.FirstStartScreen
 import com.ktvincco.openaudiotools.ui.screens.LegalInfoScreen
 import com.ktvincco.openaudiotools.ui.screens.LoadingScreenOverlay
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.ui.analysis_mode_pages.AllInfo
-import com.ktvincco.openaudiotools.ui.analysis_mode_pages.FeminineVoice
-import com.ktvincco.openaudiotools.ui.analysis_mode_pages.FeminineVoiceResonance
-import com.ktvincco.openaudiotools.ui.analysis_mode_pages.MasculineVoice
-import com.ktvincco.openaudiotools.ui.analysis_mode_pages.MasculineVoiceResonance
-import com.ktvincco.openaudiotools.ui.analysis_mode_pages.PitchAndResonance
-import com.ktvincco.openaudiotools.ui.analysis_mode_pages.Singing
-import com.ktvincco.openaudiotools.ui.analysis_mode_pages.SpeakerVoice
-import com.ktvincco.openaudiotools.ui.analysis_mode_pages.SpectrumInfo
-import com.ktvincco.openaudiotools.ui.analysis_mode_pages.VoiceSmoothness
 import com.ktvincco.openaudiotools.ui.components.HelpMenu
 import com.ktvincco.openaudiotools.ui.components.MainMenu
-import com.ktvincco.openaudiotools.ui.components.PageWithBottomControls
 import com.ktvincco.openaudiotools.ui.components.ReviewForm
-import com.ktvincco.openaudiotools.ui.pages.FrequentlyAskedQuestions
-import com.ktvincco.openaudiotools.ui.pages.Reading
-import com.ktvincco.openaudiotools.ui.pages.SettingsPage
-import com.ktvincco.openaudiotools.ui.pages.VoiceChangeGuidelines
-import com.sun.jdi.InterfaceType
 
 
 class UserInterface (
@@ -186,72 +168,7 @@ class UserInterface (
 
                         // Page
                         val currentPage = modelData.currentPage.collectAsState().value
-
-                        if (currentPage == "Dashboard") {
-                            Dashboard(modelData).Draw()
-                        }
-                        if (currentPage == "Settings") {
-                            SettingsPage(modelData).Draw()
-                        }
-                        if (currentPage == "VoiceChangeGuidelines") {
-                            PageWithBottomControls(
-                                modelData).Draw(VoiceChangeGuidelines
-                                (modelData).content(), false)
-                        }
-                        if (currentPage == "FrequentlyAskedQuestions") {
-                            FrequentlyAskedQuestions(modelData).Draw()
-                        }
-
-                        if (currentPage == "AllInfo") {
-                            PageWithBottomControls(modelData).Draw(
-                                AllInfo(modelData).content())
-                        }
-                        if (currentPage == "SpectrumInfo") {
-                            PageWithBottomControls(modelData).Draw(
-                                SpectrumInfo(modelData).content())
-                        }
-                        if (currentPage == "Reading") {
-                            Reading(modelData).Draw()
-                        }
-                        if (currentPage == "Recordings") {
-                            Recordings(modelData).Draw()
-                        }
-
-                        if (currentPage == "SpeakerVoice") {
-                            PageWithBottomControls(modelData).Draw(
-                                SpeakerVoice(modelData).content())
-                        }
-
-                        if (currentPage == "Singing") {
-                            PageWithBottomControls(modelData).Draw(
-                                Singing(modelData).content())
-                        }
-
-                        if (currentPage == "PitchAndResonance") {
-                            PageWithBottomControls(modelData).Draw(
-                                PitchAndResonance(modelData).content())
-                        }
-                        if (currentPage == "VoiceSmoothness") {
-                            PageWithBottomControls(modelData).Draw(
-                                VoiceSmoothness(modelData).content())
-                        }
-
-                        if (currentPage == "FeminineVoice") {
-                            PageWithBottomControls(modelData).Draw(
-                                FeminineVoice(modelData).content())
-                        }
-                        if (currentPage == "FeminineVoiceResonance") {
-                            PageWithBottomControls(modelData).Draw(
-                                FeminineVoiceResonance(modelData).content())
-                        }
-                        if (currentPage == "MasculineVoice") {
-                            PageWithBottomControls(modelData).Draw(
-                                MasculineVoice(modelData).content())
-                        }
-                        if (currentPage == "MasculineVoiceResonance") {
-                            PageWithBottomControls(modelData).Draw(
-                                MasculineVoiceResonance(modelData).content())
-                        }
+                        PageRegistry.DrawPage(currentPage, modelData)
 
                         // Main Menu
                         Column(

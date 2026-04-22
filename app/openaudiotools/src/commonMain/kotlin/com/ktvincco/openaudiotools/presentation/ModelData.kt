@@ -172,40 +172,17 @@ class ModelData {
     }
 
 
-    // Current page
+    // Navigation - Current page
     val _currentPage = MutableStateFlow("Dashboard")
     val currentPage: StateFlow<String> = _currentPage
     private var onPageOpenedCallback: () -> Unit = {}
     fun assignOnPageOpenedCallback(callback: () -> Unit) {
         onPageOpenedCallback = callback
     }
-
-
-    // Open page by name - DO NOT USE IT FOR NAVIGATION, THIS IS FOR PAGE REOPENING ONLY
-    fun openPageByName(name: String) { _currentPage.value = name; onPageOpenedCallback() }
-
-
-    // Default pages
-    fun openDashboardPage() { _currentPage.value = "Dashboard"; onPageOpenedCallback() }
-    fun openSettingsPage() { _currentPage.value = "Settings"; onPageOpenedCallback() }
-    fun openRecordingsPage() { _currentPage.value = "Recordings"; onPageOpenedCallback() }
-    fun openAccessDeniedScreen() { _currentPage.value = "AccessDeniedScreen"; onPageOpenedCallback() }
-    fun openVoiceChangeGuidelinesPage() { _currentPage.value = "VoiceChangeGuidelines"; onPageOpenedCallback() }
-    fun openFrequentlyAskedQuestionsPage() { _currentPage.value = "FrequentlyAskedQuestions"; onPageOpenedCallback() }
-
-
-    // Mode pages
-    fun openAllInfoPage() { _currentPage.value = "AllInfo"; onPageOpenedCallback() }
-    fun openSpectrumInfoPage() { _currentPage.value = "SpectrumInfo"; onPageOpenedCallback() }
-    fun openReadingPage() { _currentPage.value = "Reading"; onPageOpenedCallback() }
-    fun openSpeakerVoicePage() { _currentPage.value = "SpeakerVoice"; onPageOpenedCallback() }
-    fun openSingingPage() { _currentPage.value = "Singing"; onPageOpenedCallback() }
-    fun openPitchAndResonancePage() { _currentPage.value = "PitchAndResonance"; onPageOpenedCallback() }
-    fun openVoiceSmoothnessPage() { _currentPage.value = "VoiceSmoothness"; onPageOpenedCallback() }
-    fun openFeminineVoicePage() { _currentPage.value = "FeminineVoice"; onPageOpenedCallback() }
-    fun openFeminineVoiceResonancePage() { _currentPage.value = "FeminineVoiceResonance"; onPageOpenedCallback() }
-    fun openMasculineVoicePage() { _currentPage.value = "MasculineVoice"; onPageOpenedCallback() }
-    fun openMasculineVoiceResonancePage() { _currentPage.value = "MasculineVoiceResonance"; onPageOpenedCallback() }
+    fun openPage(name: String) {
+        _currentPage.value = name
+        onPageOpenedCallback()
+    }
 
 
     // First start screen
