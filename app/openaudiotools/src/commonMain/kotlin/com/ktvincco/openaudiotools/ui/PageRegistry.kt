@@ -6,6 +6,7 @@ import com.ktvincco.openaudiotools.ui.analysis_mode_pages.*
 import com.ktvincco.openaudiotools.ui.components.PageWithBottomControls
 import com.ktvincco.openaudiotools.ui.pages.*
 import com.ktvincco.openaudiotools.ui.user_guide_pages.FrequentlyAskedQuestions
+import com.ktvincco.openaudiotools.ui.user_guide_pages.GenderAffirmingVoicetrainingGuide
 import com.ktvincco.openaudiotools.ui.user_guide_pages.TheGuideIsFinishedPage
 import com.ktvincco.openaudiotools.ui.user_guide_pages.UserGuide
 import com.ktvincco.openaudiotools.ui.user_guide_pages.GeneralVoicetrainingGuide
@@ -50,8 +51,8 @@ object PageRegistry {
         "UserGuide" to PageInfo("User Guide") { UserGuide(it).Draw() },
         "SoundAnalysisGuide" to PageInfo("Sound Analysis Guide") { SoundAnalysisGuide(it).Draw() },
         "GeneralVoicetrainingGuide" to PageInfo("Voicetraining Guide") { GeneralVoicetrainingGuide(it).Draw() },
+        "GenderAffirmingVoicetrainingGuide" to PageInfo("Gender Affirming Voicetraining Guide") { GenderAffirmingVoicetrainingGuide(it).Draw() },
         "TheGuideIsFinishedPage" to PageInfo("The Guide is Finished") { TheGuideIsFinishedPage(it).Draw() },
-
         )
 
     @Composable

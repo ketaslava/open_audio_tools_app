@@ -23,6 +23,7 @@ import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.ui.components.BasicComponents
 import com.ktvincco.openaudiotools.ui.charts.Graph
 import com.ktvincco.openaudiotools.ui.charts.GraphZone
+import com.ktvincco.openaudiotools.ui.charts.Spectrogram
 import com.ktvincco.openaudiotools.ui.components.MultiPageReader
 import com.ktvincco.openaudiotools.ui.components.RecordingControl
 
@@ -75,7 +76,7 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                     .padding(horizontal = 24.dp)
             )
 
-            Spacer(modifier = Modifier.height(96.dp))
+            Spacer(modifier = Modifier.height(128.dp))
         },
         // -------------------- The Data Explained -------------------- //
         {
@@ -97,7 +98,7 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
 
             DynamicText(
                 text = "So, here is the chart:\n" +
-                        "(very real and absolutely adorable)\n",
+                        "(very real and absolutely adorable)",
                 modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 18.sp,
@@ -108,6 +109,8 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                     .padding(horizontal = 24.dp)
             )
 
+            Spacer(modifier = Modifier.height(32.dp))
+
             Graph().draw(
                 data = floatArrayOf(0.0F, 0.33F, 0.1F, 0.5F, 0.75F),
                 modelData = modelData,
@@ -116,7 +119,9 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                 xLabelMax = 100F,
                 isEnableAutoScroll = false,
                 autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
-                modifier = Modifier.fillMaxWidth().height(250.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(256.dp)
             )
 
             Spacer(modifier = Modifier.height(32.dp))
@@ -155,7 +160,9 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                 xLabelMax = dataDurationSec,
                 isEnableAutoScroll = recordingState,
                 autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
-                modifier = Modifier.fillMaxWidth().height(250.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(256.dp)
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -166,8 +173,17 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
             Spacer(modifier = Modifier.height(32.dp))
 
             DynamicText(
-                text = "As you may see, the graph shows the Pitch of your voice over time\n\n" +
-                        "You can scroll and zoom the graph to see the full picture",
+                text = "As you may see, the graph shows the Pitch of your voice over time" +
+                        "\n\n" +
+                        "You can scroll and zoom the graph to see the full picture" +
+                        "\n\n" +
+                        "Take a look at the control buttons. Beside obvious \"Record\" and \"Play\" buttons, you can press " +
+                        "\"Delete\" to delete the recorded sample, or you can save it, using the \"Save\" button." +
+                        "\n\n" +
+                        "Saved recordings are stored inside the recordings library. You can access them trough the menu. " +
+                        "After saving the recording, feel free to reset the recorder" +
+                        "\n\n" +
+                        "You can always load saved recordings to see the parameters",
                 modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 18.sp,
@@ -178,7 +194,137 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                     .padding(horizontal = 24.dp)
             )
 
-            Spacer(modifier = Modifier.height(96.dp))
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        // -------------------- The Spectrogram Explained -------------------- //
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            DynamicText(
+                text = "The Spectrogram Explained",
+                modelData = modelData,
+                color = ColorPalette.getTextColor(),
+                fontSize = 28.sp,
+                lineHeight = 36.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp)
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            DynamicText(
+                text = "This is a Spectrogram:",
+                modelData = modelData,
+                color = ColorPalette.getTextColor(),
+                fontSize = 18.sp,
+                lineHeight = 24.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp)
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            val demoSpectrogramData = arrayOf(
+                floatArrayOf(0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F, 0.0F),
+                floatArrayOf(0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F, 0.0F),
+                floatArrayOf(0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F, 0.0F),
+                floatArrayOf(0.0F, 0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F),
+                floatArrayOf(0.0F, 0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F),
+                floatArrayOf(0.0F, 0.0F, 0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F),
+                floatArrayOf(0.0F, 0.0F, 0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F),
+                floatArrayOf(0.0F, 0.0F, 0.0F, 0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F),
+                floatArrayOf(0.0F, 0.0F, 0.0F, 0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F),
+                floatArrayOf(0.0F, 0.0F, 0.0F, 0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F),
+                floatArrayOf(0.0F, 0.0F, 0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F),
+                floatArrayOf(0.0F, 0.0F, 0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F),
+                floatArrayOf(0.0F, 0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F),
+                floatArrayOf(0.0F, 0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F),
+                floatArrayOf(0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F, 0.0F),
+                floatArrayOf(0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F, 0.0F),
+                floatArrayOf(0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F, 0.0F),
+                floatArrayOf(0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F, 0.0F),
+            )
+
+            Spectrogram().Spectrogram(
+                data = demoSpectrogramData,
+                modelData = modelData,
+                xLabelMin = 0F,
+                xLabelMax = 100F,
+                yLabelMin = 0F,
+                yLabelMax = 100F,
+                horizontalLinesCount = 8,
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(256.dp)
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            DynamicText(
+                text = "It shows us the energy distribution for each frequency over time" +
+                        "\n\n" +
+                        "Low frequencies are on the bottom and high frequencies are on the top. " +
+                        "The brighter the spot, the higher the energy for the frequency" +
+                        "\n\n" +
+                        "In this example, one frequency goes from roughly 30 to around 55 and then goes back to 30 again" +
+                        "\n\n" +
+                        "..." +
+                        "\n\n" +
+                        "If there are several lines, it means that the sound is made from multiple frequencies at once" +
+                        "\n\n" +
+                        "The Spectrogram helps us understand complex sounds, such as the human voice" +
+                        "\n\n" +
+                        "As an example, when we pronounce vowels, the vocal cords are producing harmonic sound, " +
+                        "which means that it has a base frequency H0 + multiple harmonics H1, H2, H3, H4, etc. " +
+                        "You can see them as lines on the spectrogram" +
+                        "\n\n" +
+                        "Try to pronounce vowels with different pitch, and also, try syllables. See how it works!",
+                modelData = modelData,
+                color = ColorPalette.getTextColor(),
+                fontSize = 18.sp,
+                lineHeight = 24.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp)
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            // Integrated Spectrogram
+            val pointerPosition = modelData.pointerPosition.collectAsState().value
+            val spectrogramData = modelData.getSpectrogramData("SpectrogramInHz")
+            val recordingState = modelData.recordingState.collectAsState().value
+            val dataDurationSec = modelData.dataDurationSec.collectAsState().value
+
+            Spectrogram().Spectrogram(
+                data = spectrogramData,
+                modelData = modelData,
+                multiplyValue = 24F,
+                xLabelMin = 0F,
+                xLabelMax = dataDurationSec,
+                yLabelMin = 0F,
+                yLabelMax = 4096F,
+                horizontalLinesCount = 8,
+                pointerPosition = pointerPosition,
+                isEnableAutoScroll = recordingState,
+                autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(384.dp)
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Recording Controls
+            RecordingControl(modelData).Draw()
+
+            Spacer(modifier = Modifier.height(128.dp))
         },
         // -------------------- The Basics of the Voicetraining -------------------- //
         {
@@ -202,9 +348,9 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                 text = "So, Now, Let's talk about how we can use the real-time data to reach the " +
                         "goals of improving your the voice! (or whatever your goals are)" +
                         "\n\n...\n\n" +
-                        "When humans speak, they are making sounds. " +
+                        "When humans speak, they make sounds. " +
                         "Those sounds are not just a random noice, but the handful of patterns. " +
-                        "The way that human voice is perceived by other humans, is directly tied to the presence or absence of some special patterns." +
+                        "The way that human voice is perceived by other humans, is directly tied to the presence or absence of some special patterns" +
                         "\n\n" +
                         "We can use algorithms to analyze the voice and extract specific characteristics a.k. parameters. " +
                         "There are a lot of parameters that can be extracted, and there are no complete list of them. " +
@@ -220,23 +366,25 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                         "In order to do that, we need to change parameters of the voice that are associated with the gender preception " +
                         "from the masculine range to the feminine range. " +
                         "\n\n" +
-                        "The good news are, that in our case, it is completely possible! " +
-                        "It is possible for any human being to learn how to speak with different voice parameters. " +
+                        "The good news is, that in our case, it is completely possible! " +
+                        "It is possible for any human being to learn how to speak with voice parameters that are belong to the range of any desired gender! " +
                         "The process of that learning is called the Voicetraining" +
                         "\n\n" +
-                        "Keep in mind, that in order to speak in some parameter ranges, it is crucial to have a trained vocal muscles, " +
-                        "that are can be trained by practicing speech, but this process takes time... Sometimes a very long long time. " +
+                        "Keep in mind, that in order to speak in some ranges, it is crucial to have a trained vocal muscles, " +
+                        "that are can be trained by practicing speech, but this process takes time... Sometimes, a very long long time. " +
                         "Oftentimes, it is physically impossible to reach some ranges without prior voicetraining" +
                         "\n\n" +
                         "K" +
                         "\n\n" +
                         "The Pitch, of which we talked about before, is one of the most common parameters of the voice, " +
                         "and it is directly associated with the gender preception. " +
-                        "(But, keep in mind, that if we are gonna change only the pitch, the voice will sound very strange, " +
-                        "because the Pitch is not the only parameter that needs to be changed. However, it is the easiest parameter to start with)" +
+                        "(But keep in mind, that if we're gonna change only the pitch, the voice will sound very strange, " +
+                        "because the Pitch is not the only parameter that needs to be changed, however, it is the easiest parameter to start with)" +
                         "\n\n" +
-                        "The graph below shows the Pitch, " +
-                        "",
+                        "The graph below shows the Pitch" +
+                        "\n\n" +
+                        "Choose the pitch range for a desired or the most comfortable gender " +
+                        "and try to hold the pitch inside the green zone while you pronounce the vowel \"A\"",
                 modelData = modelData,
                 color = ColorPalette.getTextColor(),
                 fontSize = 18.sp,
@@ -306,11 +454,19 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                     )
                 )
 
+                "Enby" -> listOf(
+                    GraphZone(
+                        145F,
+                        185F,
+                        ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
+                    )
+                )
+
                 "Masculine" -> listOf(
                     GraphZone(
                         85F,
                         155F,
-                        ColorPalette.getSoftBlueColor().copy(alpha = 0.25F)
+                        ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
                     )
                 )
 
@@ -320,13 +476,15 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
             Graph().draw(
                 data = pitchData,
                 modelData = modelData,
-                yLabelMin = 50F,
-                yLabelMax = 500F,
+                yLabelMin = 0F,
+                yLabelMax = 512F,
                 graphZones = zones,
                 xLabelMax = dataDurationSec,
                 isEnableAutoScroll = recordingState,
                 autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
-                modifier = Modifier.fillMaxWidth().height(250.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(384.dp)
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -334,7 +492,140 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
             // Recording Controls Integrated
             RecordingControl(modelData).Draw()
 
-            Spacer(modifier = Modifier.height(96.dp))
+            Spacer(modifier = Modifier.height(32.dp))
+
+            DynamicText(
+                text = "Here, you may experience some struggles of holding your voice inside the chosen range. " +
+                        "That's normal. It means that your muscles are not trained enough to consistently reach the desired range. " +
+                        "You need to spent time practicing to train them. " +
+                        "Just try to reach the chosen range over and over again and eventually, you will get there" +
+                        "\n\n" +
+                        "During the voicetraining, it is important to not overexert yourself. Drink water and take breaks! " +
+                        "Muscle training can take month" +
+                        "\n\n" +
+                        "But" +
+                        "\n\n" +
+                        "It is also completely possible that you're not experiencing any problems of holding your voice inside the chosen range, " +
+                        "however, your voice still sound not as you want it to" +
+                        "\n\n" +
+                        "That means that your muscles are well trained, but you still have problems with your technique, " +
+                        "or you may not account some other, very important parameters, " +
+                        "like in our case, to change the perceived gender of the voice, " +
+                        "the changes in Pitch are not enough, you also need to work on Resonance" +
+                        "\n\n" +
+                        "Don't worry, the success is absolutely possible!",
+                modelData = modelData,
+                color = ColorPalette.getTextColor(),
+                fontSize = 18.sp,
+                lineHeight = 24.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp)
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        // -------------------- Conclusion -------------------- //
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            DynamicText(
+                text = "Conclusion",
+                modelData = modelData,
+                color = ColorPalette.getTextColor(),
+                fontSize = 28.sp,
+                lineHeight = 36.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp)
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            DynamicText(
+                text = "Yaay!" +
+                        "\n\n" +
+                        "Now you know the basics of the Voicetraining!" +
+                        "\n\n" +
+                        "Here, We talked only about one example, " +
+                        "but the same principle of building muscles and improving technique is " +
+                        "can be applied for any voice improvements that you wanna make!" +
+                        "\n\n" +
+                        "Keep trying smart, and, We believe in You!",
+                modelData = modelData,
+                color = ColorPalette.getTextColor(),
+                fontSize = 18.sp,
+                lineHeight = 24.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp)
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        // -------------------- What's next? -------------------- //
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            DynamicText(
+                text = "What's next?",
+                modelData = modelData,
+                color = ColorPalette.getTextColor(),
+                fontSize = 28.sp,
+                lineHeight = 36.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp)
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            DynamicText(
+                text = "Choose the option",
+                modelData = modelData,
+                color = ColorPalette.getTextColor(),
+                fontSize = 18.sp,
+                lineHeight = 24.sp,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp)
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            BasicComponents().Button(
+                modelData,
+                text = "Gender Affirming Voicetraining >",
+                fontSize = 18.sp,
+                modifier = Modifier
+                    .height(64.dp)
+                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp)
+            ) {
+                modelData.navigation.setPreviousPage("GeneralVoicetrainingGuide")
+                modelData.openPage("GenderAffirmingVoicetrainingGuide")
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            BasicComponents().Button(
+                modelData,
+                text = "Finish the Guide >",
+                fontSize = 18.sp,
+                modifier = Modifier
+                    .height(64.dp)
+                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp)
+            ) {
+                modelData.openPage("TheGuideIsFinishedPage")
+            }
+
+            Spacer(modifier = Modifier.height(128.dp))
         }
     )
 }

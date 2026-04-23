@@ -105,7 +105,7 @@ class UserGuide (modelData: ModelData) : MultiPageReader(modelData) {
         Spacer(modifier = Modifier.height(32.dp))
 
         DynamicText(
-        text = "Select the option",
+        text = "Choose the option",
         modelData = modelData,
         color = ColorPalette.getTextColor(),
         fontSize = 18.sp,
