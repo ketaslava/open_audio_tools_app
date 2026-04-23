@@ -42,17 +42,17 @@ class BasicComponents {
     @Composable
     fun Checkbox(text: String, modelData: ModelData,
                  modifier: Modifier, fontSize: TextUnit = 16.sp,
-                 checkboxCodingColorForEnabled: Color = Color.Companion.White,
-                 checkboxCodingColorForDisabled: Color = Color.Companion.White,
-                 textCodingColorForEnabled: Color = ColorPalette.Companion.getTextColor(),
-                 textCodingColorForDisabled: Color = ColorPalette.Companion.getTextColor(),
+                 checkboxCodingColorForEnabled: Color = Color.White,
+                 checkboxCodingColorForDisabled: Color = Color.White,
+                 textCodingColorForEnabled: Color = ColorPalette.getTextColor(),
+                 textCodingColorForDisabled: Color = ColorPalette.getTextColor(),
                  callback: (state: Boolean) -> Unit) {
 
         var isCheckboxChecked by remember { mutableStateOf(false) }
 
         Row(
             horizontalArrangement = Arrangement.Start,
-            verticalAlignment = Alignment.Companion.CenterVertically,
+            verticalAlignment = Alignment.CenterVertically,
             modifier = modifier
                 .fillMaxWidth()
                 .clickable {
@@ -73,8 +73,8 @@ class BasicComponents {
             Image(
                 painterResource(icon),
                 null,
-                colorFilter = ColorFilter.Companion.tint(checkboxCodingColor),
-                modifier = Modifier.Companion
+                colorFilter = ColorFilter.tint(checkboxCodingColor),
+                modifier = Modifier
                     .width(52.dp)
                     .height(52.dp)
                     //.background(Color.Magenta)
@@ -84,7 +84,7 @@ class BasicComponents {
                         callback.invoke(isCheckboxChecked)
                     }
             )
-            Spacer(modifier = Modifier.Companion.width(5.dp))
+            Spacer(modifier = Modifier.width(5.dp))
             val textCodingColor = if (isCheckboxChecked) {
                 textCodingColorForEnabled
             } else {
@@ -101,21 +101,33 @@ class BasicComponents {
 
 
     @Composable
-    fun Button(modelData: ModelData, text: String, isAppearActive: Boolean = true,
-               fontSize: TextUnit = 16.sp, modifier: Modifier, onClick: () -> Unit) {
+    fun Button(
+        modelData: ModelData,
+        text: String,
+        isAppearActive: Boolean = true,
+        activeButtonColor: Color = ColorPalette.getButtonColor(),
+        inactiveButtonColor: Color = ColorPalette.getButtonColor().copy(alpha = 0.33F),
+        activeTextColor: Color = ColorPalette.getTextColor(),
+        inactiveTextColor: Color = ColorPalette.getTextColor().copy(alpha = 0.33F),
+        cornerRadius: Dp = 16.dp,
+        fontSize: TextUnit = 16.sp,
+        textPadding: Dp = 16.dp,
+        modifier: Modifier,
+        onClick: () -> Unit
+    ) {
 
-        var buttonColor = ColorPalette.Companion.getButtonColor()
-        var textColor = ColorPalette.Companion.getTextColor()
+        var buttonColor = activeButtonColor
+        var textColor = activeTextColor
         if (!isAppearActive) {
-            buttonColor = ColorPalette.Companion.getButtonColor().copy(alpha = 0.33F)
-            textColor = ColorPalette.Companion.getTextColor().copy(alpha = 0.33F)
+            buttonColor = inactiveButtonColor
+            textColor = inactiveTextColor
         }
 
         Row(
-            verticalAlignment = Alignment.Companion.CenterVertically,
+            verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center,
             modifier = modifier
-                .clip(shape = RoundedCornerShape(12.dp))
+                .clip(shape = RoundedCornerShape(cornerRadius))
                 .background(buttonColor)
                 .clickable {
                     onClick()
@@ -127,7 +139,7 @@ class BasicComponents {
                 modelData = modelData,
                 color = textColor,
                 fontSize = fontSize,
-                modifier = Modifier.Companion.padding(horizontal = 16.dp)
+                modifier = Modifier.padding(textPadding)
             )
         }
     }
@@ -135,7 +147,7 @@ class BasicComponents {
 
     @Composable
     fun HorizontalDivider(
-        modifier: Modifier = Modifier.Companion,
+        modifier: Modifier = Modifier,
         thickness: Dp = DividerDefaults.Thickness,
         color: Color = DividerDefaults.color,
     ) = Canvas(modifier.fillMaxWidth().height(thickness)) {
@@ -149,7 +161,7 @@ class BasicComponents {
 
     @Composable
     fun VerticalDivider(
-        modifier: Modifier = Modifier.Companion,
+        modifier: Modifier = Modifier,
         thickness: Dp = DividerDefaults.Thickness,
         color: Color = DividerDefaults.color,
     ) = Canvas(modifier.fillMaxHeight().width(thickness)) {
@@ -163,6 +175,6 @@ class BasicComponents {
 
     object DividerDefaults {
         val Thickness: Dp = 1.dp
-        val color: Color = Color.Companion.White
+        val color: Color = Color.White
     }
 }
