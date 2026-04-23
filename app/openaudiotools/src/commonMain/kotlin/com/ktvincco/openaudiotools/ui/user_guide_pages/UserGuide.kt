@@ -40,15 +40,8 @@ import com.ktvincco.openaudiotools.ui.components.RecordingControl
 class UserGuide (modelData: ModelData) : MultiPageReader(modelData) {
 
 
-    override fun getReaderConfiguration(): ReaderConfiguration = ReaderConfiguration(
-        isEnableControls = false,
-        isAllowBackButtonByState = true,
-        isEnableNextButtonDestinationPage = true,
-        nextButtonDestinationPageName = "TheGuideIsFinishedPage",
-    )
-
-
-    override fun getReaderPages(): List<@Composable (ModelData) -> Unit> = listOf( {
+    override fun getReaderPages(): List<@Composable (ModelData) -> Unit> = listOf(
+        {
 
         // -------------------- Hello and Welcome -------------------- //
 
@@ -69,7 +62,8 @@ class UserGuide (modelData: ModelData) : MultiPageReader(modelData) {
         Spacer(modifier = Modifier.height(32.dp))
 
         DynamicText(
-            text = "We're happy to see you!\n\n" +
+            text = "We're happy to see you!" +
+                    "\n\n" +
                     "This app was created to to empower the user with absolutely fantastic tools to analyze sounds (especially human voices)\n\n" +
                     "And now, We're gonna explain to you How Does It Actually Works" +
                     "\n\n" +
@@ -77,7 +71,7 @@ class UserGuide (modelData: ModelData) : MultiPageReader(modelData) {
                     "\n\n" +
                     "Sooo..." +
                     "\n\n" +
-                    "What's your goals are?",
+                    "[ Press the \"Next\" button ]",
             modelData = modelData,
             color = ColorPalette.getTextColor(),
             fontSize = 18.sp,
@@ -88,16 +82,50 @@ class UserGuide (modelData: ModelData) : MultiPageReader(modelData) {
                 .padding(horizontal = 24.dp)
         )
 
+        Spacer(modifier = Modifier.height(256.dp))
+
+    }, {
+
+        // -------------------- What's your goals are? -------------------- //
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        DynamicText(
+            text = "What's your goals are?",
+            modelData = modelData,
+            color = ColorPalette.getTextColor(),
+            fontSize = 28.sp,
+            lineHeight = 36.sp,
+            textAlign = TextAlign.Center,
+            modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 24.dp)
+        )
+
+        Spacer(modifier = Modifier.height(32.dp))
+
+        DynamicText(
+        text = "Select the option",
+        modelData = modelData,
+        color = ColorPalette.getTextColor(),
+        fontSize = 18.sp,
+        lineHeight = 24.sp,
+        textAlign = TextAlign.Center,
+        modifier = Modifier
+        .fillMaxWidth()
+        .padding(horizontal = 24.dp)
+        )
+
         Spacer(modifier = Modifier.height(32.dp))
 
         BasicComponents().Button(
-            modelData,
-            text = "Voice Improvement >",
-            fontSize = 18.sp,
-            modifier = Modifier
-                .height(64.dp)
-                .fillMaxWidth()
-                .padding(horizontal = 24.dp)
+        modelData,
+        text = "Voice Improvement >",
+        fontSize = 18.sp,
+        modifier = Modifier
+        .height(64.dp)
+        .fillMaxWidth()
+        .padding(horizontal = 24.dp)
         ) {
             modelData.navigation.setPreviousPage("UserGuide")
             modelData.openPage("GeneralVoicetrainingGuide")
@@ -106,13 +134,13 @@ class UserGuide (modelData: ModelData) : MultiPageReader(modelData) {
         Spacer(modifier = Modifier.height(16.dp))
 
         BasicComponents().Button(
-            modelData,
-            text = "Sound Analysis >",
-            fontSize = 18.sp,
-            modifier = Modifier
-                .height(64.dp)
-                .fillMaxWidth()
-                .padding(horizontal = 24.dp)
+        modelData,
+        text = "Sound Analysis >",
+        fontSize = 18.sp,
+        modifier = Modifier
+        .height(64.dp)
+        .fillMaxWidth()
+        .padding(horizontal = 24.dp)
         ) {
             modelData.navigation.setPreviousPage("UserGuide")
             modelData.openPage("SoundAnalysisGuide")
