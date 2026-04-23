@@ -42,7 +42,7 @@ open class MultiPageReader (
     @Composable
     fun Draw() {
         val config = getReaderConfiguration()
-        var currentReaderPageIndex by remember { mutableIntStateOf(0) }
+        var currentReaderPageIndex by remember { mutableIntStateOf(config.startPageIndex) }
         val readerPages = getReaderPages()
         val currentReaderPage = readerPages[currentReaderPageIndex]
 
@@ -185,6 +185,7 @@ open class MultiPageReader (
 
         // Controls
         val isEnableControls: Boolean = true,
+        val startPageIndex: Int = 0,
 
         // View
         val isEnableSquareBlockView: Boolean = true,
