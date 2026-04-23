@@ -78,7 +78,7 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
                     .padding(horizontal = 24.dp)
             )
 
-            Spacer(modifier = Modifier.height(96.dp))
+            Spacer(modifier = Modifier.height(128.dp))
         },
         // -------------------- Bragging about the Data -------------------- //
         {
@@ -123,7 +123,9 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
                 xLabelMax = 100F,
                 isEnableAutoScroll = false,
                 autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
-                modifier = Modifier.fillMaxWidth().height(250.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(256.dp)
             )
 
             Spacer(modifier = Modifier.height(32.dp))
@@ -181,7 +183,7 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
                 autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(500.dp)
+                    .height(256.dp)
             )
 
             Spacer(modifier = Modifier.height(32.dp))
@@ -198,7 +200,7 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
                     .padding(horizontal = 24.dp)
             )
 
-            Spacer(modifier = Modifier.height(96.dp))
+            Spacer(modifier = Modifier.height(128.dp))
         },
         // -------------------- Recording live data -------------------- //
         {
@@ -250,7 +252,7 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
                 autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(200.dp)
+                    .height(192.dp)
             )
 
             graphNameText(modelData, "Pitch")
@@ -263,7 +265,9 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
                 isEnableAutoScroll = recordingState,
                 autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
                 pointerPosition = pointerPosition,
-                modifier = Modifier.fillMaxWidth().height(250.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(256.dp)
             )
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -295,7 +299,7 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
                     .padding(horizontal = 24.dp)
             )
 
-            Spacer(modifier = Modifier.height(96.dp))
+            Spacer(modifier = Modifier.height(128.dp))
         },
         // -------------------- Outroduction -------------------- //
         {
@@ -333,7 +337,7 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
                     .padding(horizontal = 24.dp)
             )
 
-            Spacer(modifier = Modifier.height(96.dp))
+            Spacer(modifier = Modifier.height(128.dp))
         },
     )
 }

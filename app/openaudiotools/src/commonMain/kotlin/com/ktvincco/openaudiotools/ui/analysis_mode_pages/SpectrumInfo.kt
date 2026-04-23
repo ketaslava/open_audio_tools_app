@@ -54,8 +54,7 @@ class SpectrumInfo (
 
             // ======= Spectrogram ======= //
 
-            val spectrogramData =
-                modelData.getSpectrogramData("SpectrogramInHz")
+            val spectrogramData = modelData.getSpectrogramData("SpectrogramInHz")
 
             graphNameText(modelData, "SpectrogramInHz")
 

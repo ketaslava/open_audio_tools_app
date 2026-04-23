@@ -82,7 +82,7 @@ class UserGuide (modelData: ModelData) : MultiPageReader(modelData) {
                 .padding(horizontal = 24.dp)
         )
 
-        Spacer(modifier = Modifier.height(256.dp))
+        Spacer(modifier = Modifier.height(128.dp))
 
     }, {
 
@@ -146,6 +146,6 @@ class UserGuide (modelData: ModelData) : MultiPageReader(modelData) {
             modelData.openPage("SoundAnalysisGuide")
         }
 
-        Spacer(modifier = Modifier.height(256.dp))
+        Spacer(modifier = Modifier.height(128.dp))
     })
 }
