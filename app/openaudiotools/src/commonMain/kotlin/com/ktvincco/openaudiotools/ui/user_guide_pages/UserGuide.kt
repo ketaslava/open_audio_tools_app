@@ -35,118 +35,88 @@ import com.ktvincco.openaudiotools.ui.components.BasicComponents
 import com.ktvincco.openaudiotools.ui.charts.Graph
 import com.ktvincco.openaudiotools.ui.charts.GraphZone
 import com.ktvincco.openaudiotools.ui.components.MultiPageReader
+import com.ktvincco.openaudiotools.ui.components.ReaderComponents
 import com.ktvincco.openaudiotools.ui.components.RecordingControl
 
 
 class UserGuide (modelData: ModelData) : MultiPageReader(modelData) {
 
 
+    val readerComponents = ReaderComponents(modelData)
+
+
     override fun getReaderPages(): List<@Composable (ModelData) -> Unit> = listOf(
         {
 
-        // -------------------- Hello and Welcome -------------------- //
+            // -------------------- Hello and Welcome -------------------- //
 
-        Spacer(modifier = Modifier.height(24.dp))
+            Spacer(modifier = Modifier.height(24.dp))
 
-        DynamicText(
-            text = "Hello!\nand Welcome to the OpenAudioTools!",
-            modelData = modelData,
-            color = ColorPalette.getTextColor(),
-            fontSize = 28.sp,
-            lineHeight = 36.sp,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 24.dp)
-        )
+            readerComponents.HeaderTextBlock_Centred(
+                "Hello!\n& Welcome to the OpenAudioTools!"
+            )
 
-        Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(32.dp))
 
-        DynamicText(
-            text = "We're happy to see you!" +
-                    "\n\n" +
-                    "This app was created to to empower the user with absolutely fantastic tools to analyze sounds (especially human voices)\n\n" +
-                    "And now, We're gonna explain to you How Does It Actually Works" +
-                    "\n\n" +
-                    "& How You can use Our App to reach Your Goals!" +
-                    "\n\n" +
-                    "Sooo..." +
-                    "\n\n" +
-                    "[ Press the \"Next\" button ]",
-            modelData = modelData,
-            color = ColorPalette.getTextColor(),
-            fontSize = 18.sp,
-            lineHeight = 24.sp,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 24.dp)
-        )
+            readerComponents.TextBlock_Centred(
+                "We're happy to see you!" +
+                        "\n\n" +
+                        "This app was created to to empower the user with absolutely fantastic tools to analyze sounds (especially human voices)\n\n" +
+                        "And now, We're gonna explain to you How Does It Actually Works" +
+                        "\n\n" +
+                        "& How You can use Our App to reach Your Goals!" +
+                        "\n\n" +
+                        "Sooo..." +
+                        "\n\n" +
+                        "[ Press the \"Next\" button ]")
 
-        Spacer(modifier = Modifier.height(128.dp))
+            Spacer(modifier = Modifier.height(128.dp))
+        }, {
 
-    }, {
+            // -------------------- What's your goals are? -------------------- //
 
-        // -------------------- What's your goals are? -------------------- //
+            Spacer(modifier = Modifier.height(24.dp))
 
-        Spacer(modifier = Modifier.height(24.dp))
+            readerComponents.HeaderTextBlock_Centred(
+                "What's your goals are?"
+            )
 
-        DynamicText(
-            text = "What's your goals are?",
-            modelData = modelData,
-            color = ColorPalette.getTextColor(),
-            fontSize = 28.sp,
-            lineHeight = 36.sp,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 24.dp)
-        )
+            Spacer(modifier = Modifier.height(32.dp))
 
-        Spacer(modifier = Modifier.height(32.dp))
+            readerComponents.TextBlock_Centred(
+                "Choose the option"
+            )
 
-        DynamicText(
-        text = "Choose the option",
-        modelData = modelData,
-        color = ColorPalette.getTextColor(),
-        fontSize = 18.sp,
-        lineHeight = 24.sp,
-        textAlign = TextAlign.Center,
-        modifier = Modifier
-        .fillMaxWidth()
-        .padding(horizontal = 24.dp)
-        )
+            Spacer(modifier = Modifier.height(32.dp))
 
-        Spacer(modifier = Modifier.height(32.dp))
+            BasicComponents().Button(
+                modelData,
+                text = "Voice Improvement >",
+                fontSize = 18.sp,
+                modifier = Modifier
+                    .heightIn(min = 64.dp)
+                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp)
+            ) {
+                modelData.navigation.setPreviousPage("UserGuide")
+                modelData.openPage("GeneralVoicetrainingGuide")
+            }
 
-        BasicComponents().Button(
-            modelData,
-            text = "Voice Improvement >",
-            fontSize = 18.sp,
-            modifier = Modifier
-                .heightIn(min = 64.dp)
-                .fillMaxWidth()
-                .padding(horizontal = 24.dp)
-        ) {
-            modelData.navigation.setPreviousPage("UserGuide")
-            modelData.openPage("GeneralVoicetrainingGuide")
-        }
+            Spacer(modifier = Modifier.height(16.dp))
 
-        Spacer(modifier = Modifier.height(16.dp))
+            BasicComponents().Button(
+                modelData,
+                text = "Sound Analysis >",
+                fontSize = 18.sp,
+                modifier = Modifier
+                    .heightIn(min = 64.dp)
+                    .fillMaxWidth()
+                    .padding(horizontal = 24.dp)
+            ) {
+                modelData.navigation.setPreviousPage("UserGuide")
+                modelData.openPage("SoundAnalysisGuide")
+            }
 
-        BasicComponents().Button(
-            modelData,
-            text = "Sound Analysis >",
-            fontSize = 18.sp,
-            modifier = Modifier
-                .heightIn(min = 64.dp)
-                .fillMaxWidth()
-                .padding(horizontal = 24.dp)
-        ) {
-            modelData.navigation.setPreviousPage("UserGuide")
-            modelData.openPage("SoundAnalysisGuide")
-        }
-
-        Spacer(modifier = Modifier.height(128.dp))
+            Spacer(modifier = Modifier.height(128.dp))
     })
 }

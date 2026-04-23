@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.presentation.ModelData
+import com.ktvincco.openaudiotools.ui.components.ReaderComponents
 import openaudiotools.app.openaudiotools.generated.resources.Res
 import openaudiotools.app.openaudiotools.generated.resources.arrow_downward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import org.jetbrains.compose.resources.painterResource
@@ -30,6 +31,9 @@ import org.jetbrains.compose.resources.painterResource
 class TheGuideIsFinishedPage (
     private val modelData: ModelData
 ) {
+
+
+    val readerComponents = ReaderComponents(modelData)
 
 
     @Composable
@@ -52,32 +56,16 @@ class TheGuideIsFinishedPage (
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        DynamicText(
-            text = "The Guide is Finished!",
-            modelData = modelData,
-            color = ColorPalette.getTextColor(),
-            fontSize = 28.sp,
-            lineHeight = 36.sp,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 24.dp)
+        readerComponents.HeaderTextBlock_Centred(
+            "The Guide is Finished!"
         )
 
         Spacer(modifier = Modifier.height(32.dp))
 
-        DynamicText(
-            text = "Congrats!" +
+        readerComponents.TextBlock_Centred(
+            "Congrats!" +
                     "\n\n" +
-                    "Use the bottom menu to Navigate the App",
-            modelData = modelData,
-            color = ColorPalette.getTextColor(),
-            fontSize = 18.sp,
-            lineHeight = 24.sp,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 24.dp)
+                    "Use the bottom menu to Navigate the App"
         )
 
         Spacer(modifier = Modifier.height(32.dp))

@@ -26,10 +26,14 @@ import com.ktvincco.openaudiotools.ui.charts.Graph
 import com.ktvincco.openaudiotools.ui.charts.GraphZone
 import com.ktvincco.openaudiotools.ui.charts.Spectrogram
 import com.ktvincco.openaudiotools.ui.components.MultiPageReader
+import com.ktvincco.openaudiotools.ui.components.ReaderComponents
 import com.ktvincco.openaudiotools.ui.components.RecordingControl
 
 
 class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelData) {
+
+
+    val readerComponents = ReaderComponents(modelData)
 
 
     override fun getReaderConfiguration(): ReaderConfiguration = ReaderConfiguration(
@@ -43,22 +47,14 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
         {
             Spacer(modifier = Modifier.height(24.dp))
 
-            DynamicText(
-                text = "Voicetraining Guide",
-                modelData = modelData,
-                color = ColorPalette.getTextColor(),
-                fontSize = 28.sp,
-                lineHeight = 36.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
+            readerComponents.HeaderTextBlock_Centred(
+                "Voicetraining Guide"
             )
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            DynamicText(
-                text = "In this guide, We're gonna explain to You, how You can do a lot of Cool Stuff with your voice " +
+            readerComponents.TextBlock_Centred(
+                "In this guide, We're gonna explain to You, how You can do a lot of Cool Stuff with your voice " +
                         "to change it in the way that You want to!" +
                         "\n\n" +
                         "Rn, We're gonna talk about the basics of the voicetraining. " +
@@ -66,15 +62,7 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                         "\n\n" +
                         "Buckle Up &" +
                         "\n\n" +
-                        "Let's GO!",
-                modelData = modelData,
-                color = ColorPalette.getTextColor(),
-                fontSize = 18.sp,
-                lineHeight = 24.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
+                        "Let's GO!"
             )
 
             Spacer(modifier = Modifier.height(128.dp))
@@ -83,31 +71,15 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
         {
             Spacer(modifier = Modifier.height(24.dp))
 
-            DynamicText(
-                text = "Bragging about The Data",
-                modelData = modelData,
-                color = ColorPalette.getTextColor(),
-                fontSize = 28.sp,
-                lineHeight = 36.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
+            readerComponents.HeaderTextBlock_Centred(
+                "Bragging about The Data"
             )
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            DynamicText(
-                text = "So, here is the chart:\n" +
-                        "(very real and absolutely adorable)",
-                modelData = modelData,
-                color = ColorPalette.getTextColor(),
-                fontSize = 18.sp,
-                lineHeight = 24.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
+            readerComponents.TextBlock_Centred(
+                "So, here is the chart:\n" +
+                        "(very real and absolutely adorable)"
             )
 
             Spacer(modifier = Modifier.height(32.dp))
@@ -127,23 +99,15 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            DynamicText(
-                text = "RN, it show us something\n\n" +
+            readerComponents.TextBlock_Centred(
+                "RN, it show us something\n\n" +
                         "idk what exactly it shows, but it's definitely changes over time, " +
                         "from 0.0 to 0.75 in a non linear manner\n\n" +
                         "I hope you already understand it, because it is about to get messy, because...\n\n" +
                         "Your voice is pretty & complex! It has a lot of parameters!\n\n" +
                         "...\n\n" +
                         "The most common parameter of the voice is a Pitch. This graph shows it:\n\n" +
-                        "(use control buttons to record the sample your voice)",
-                modelData = modelData,
-                color = ColorPalette.getTextColor(),
-                fontSize = 18.sp,
-                lineHeight = 24.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
+                        "(use control buttons to record the sample your voice)"
             )
 
             Spacer(modifier = Modifier.height(32.dp))
@@ -173,8 +137,8 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            DynamicText(
-                text = "As you may see, the graph shows the Pitch of your voice over time" +
+            readerComponents.TextBlock_Centred(
+                "As you may see, the graph shows the Pitch of your voice over time" +
                         "\n\n" +
                         "You can scroll and zoom the graph to see the full picture" +
                         "\n\n" +
@@ -184,15 +148,7 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                         "Saved recordings are stored inside the recordings library. You can access them trough the menu. " +
                         "After saving the recording, feel free to reset the recorder" +
                         "\n\n" +
-                        "You can always load saved recordings to see the parameters",
-                modelData = modelData,
-                color = ColorPalette.getTextColor(),
-                fontSize = 18.sp,
-                lineHeight = 24.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
+                        "You can always load saved recordings to see the parameters"
             )
 
             Spacer(modifier = Modifier.height(128.dp))
@@ -201,30 +157,14 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
         {
             Spacer(modifier = Modifier.height(24.dp))
 
-            DynamicText(
-                text = "The Spectrogram Explained",
-                modelData = modelData,
-                color = ColorPalette.getTextColor(),
-                fontSize = 28.sp,
-                lineHeight = 36.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
+            readerComponents.HeaderTextBlock_Centred(
+                "The Spectrogram Explained"
             )
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            DynamicText(
-                text = "This is a Spectrogram:",
-                modelData = modelData,
-                color = ColorPalette.getTextColor(),
-                fontSize = 18.sp,
-                lineHeight = 24.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
+            readerComponents.TextBlock_Centred(
+                "This is a Spectrogram:"
             )
 
             Spacer(modifier = Modifier.height(32.dp))
@@ -266,8 +206,8 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            DynamicText(
-                text = "It shows us the energy distribution for each frequency over time" +
+            readerComponents.TextBlock_Centred(
+                "It shows us the energy distribution for each frequency over time" +
                         "\n\n" +
                         "Low frequencies are on the bottom and high frequencies are on the top. " +
                         "The brighter the spot, the higher the energy for the frequency" +
@@ -284,15 +224,7 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                         "which means that it has a base frequency H0 + multiple harmonics H1, H2, H3, H4, etc. " +
                         "You can see them as lines on the spectrogram" +
                         "\n\n" +
-                        "Try to pronounce vowels with different pitch, and also, try syllables. See how it works!",
-                modelData = modelData,
-                color = ColorPalette.getTextColor(),
-                fontSize = 18.sp,
-                lineHeight = 24.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
+                        "Try to pronounce vowels with different pitch, and also, try syllables. See how it works!"
             )
 
             Spacer(modifier = Modifier.height(32.dp))
@@ -331,22 +263,14 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
         {
             Spacer(modifier = Modifier.height(24.dp))
 
-            DynamicText(
-                text = "The Basics of the Voicetraining",
-                modelData = modelData,
-                color = ColorPalette.getTextColor(),
-                fontSize = 28.sp,
-                lineHeight = 36.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
+            readerComponents.HeaderTextBlock_Centred(
+                "The Basics of the Voicetraining"
             )
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            DynamicText(
-                text = "So, Now, Let's talk about how we can use the real-time data to reach the " +
+            readerComponents.TextBlock_Centred(
+                "So, Now, Let's talk about how we can use the real-time data to reach the " +
                         "goals of improving your the voice! (or whatever your goals are)" +
                         "\n\n...\n\n" +
                         "When humans speak, they make sounds. " +
@@ -385,15 +309,7 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                         "The graph below shows the Pitch" +
                         "\n\n" +
                         "Choose the pitch range for a desired or the most comfortable gender " +
-                        "and try to hold the pitch inside the green zone while you pronounce the vowel \"A\"",
-                modelData = modelData,
-                color = ColorPalette.getTextColor(),
-                fontSize = 18.sp,
-                lineHeight = 24.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
+                        "and try to hold the pitch inside the green zone while you pronounce the vowel \"A\""
             )
 
             Spacer(modifier = Modifier.height(32.dp))
@@ -495,8 +411,8 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            DynamicText(
-                text = "Here, you may experience some struggles of holding your voice inside the chosen range. " +
+            readerComponents.TextBlock_Centred(
+                "Here, you may experience some struggles of holding your voice inside the chosen range. " +
                         "That's normal. It means that your muscles are not trained enough to consistently reach the desired range. " +
                         "You need to spent time practicing to train them. " +
                         "Just try to reach the chosen range over and over again and eventually, you will get there" +
@@ -514,15 +430,7 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                         "like in our case, to change the perceived gender of the voice, " +
                         "the changes in Pitch are not enough, you also need to work on Resonance" +
                         "\n\n" +
-                        "Don't worry, the success is absolutely possible!",
-                modelData = modelData,
-                color = ColorPalette.getTextColor(),
-                fontSize = 18.sp,
-                lineHeight = 24.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
+                        "Don't worry, the success is absolutely possible!"
             )
 
             Spacer(modifier = Modifier.height(128.dp))
@@ -531,22 +439,14 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
         {
             Spacer(modifier = Modifier.height(24.dp))
 
-            DynamicText(
-                text = "Conclusion",
-                modelData = modelData,
-                color = ColorPalette.getTextColor(),
-                fontSize = 28.sp,
-                lineHeight = 36.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
+            readerComponents.HeaderTextBlock_Centred(
+                "Conclusion"
             )
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            DynamicText(
-                text = "Yaay!" +
+            readerComponents.TextBlock_Centred(
+                "Yaay!" +
                         "\n\n" +
                         "Now you know the basics of the Voicetraining!" +
                         "\n\n" +
@@ -554,15 +454,7 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                         "but the same principle of building muscles and improving technique is " +
                         "can be applied for any voice improvements that you wanna make!" +
                         "\n\n" +
-                        "Keep trying smart, and, We believe in You!",
-                modelData = modelData,
-                color = ColorPalette.getTextColor(),
-                fontSize = 18.sp,
-                lineHeight = 24.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
+                        "Keep trying smart, and, We believe in You!"
             )
 
             Spacer(modifier = Modifier.height(128.dp))
@@ -571,30 +463,14 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
         {
             Spacer(modifier = Modifier.height(24.dp))
 
-            DynamicText(
-                text = "What's next?",
-                modelData = modelData,
-                color = ColorPalette.getTextColor(),
-                fontSize = 28.sp,
-                lineHeight = 36.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
+            readerComponents.HeaderTextBlock_Centred(
+                "What's next?"
             )
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            DynamicText(
-                text = "Choose the option",
-                modelData = modelData,
-                color = ColorPalette.getTextColor(),
-                fontSize = 18.sp,
-                lineHeight = 24.sp,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
+            readerComponents.TextBlock_Centred(
+                "Choose the option"
             )
 
             Spacer(modifier = Modifier.height(32.dp))

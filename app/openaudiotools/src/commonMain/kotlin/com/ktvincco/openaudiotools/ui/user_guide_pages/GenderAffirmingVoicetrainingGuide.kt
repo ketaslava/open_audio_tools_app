@@ -24,10 +24,14 @@ import com.ktvincco.openaudiotools.ui.components.BasicComponents
 import com.ktvincco.openaudiotools.ui.charts.Graph
 import com.ktvincco.openaudiotools.ui.charts.GraphZone
 import com.ktvincco.openaudiotools.ui.components.MultiPageReader
+import com.ktvincco.openaudiotools.ui.components.ReaderComponents
 import com.ktvincco.openaudiotools.ui.components.RecordingControl
 
 
 class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelData) {
+
+
+    val readerComponents = ReaderComponents(modelData)
 
 
     override fun getReaderConfiguration(): ReaderConfiguration = ReaderConfiguration(
@@ -40,6 +44,17 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
 
     override fun getReaderPages(): List<@Composable (ModelData) -> Unit> = listOf(
         {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            readerComponents.HeaderTextBlock_Centred(
+                "AAA"
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            readerComponents.TextBlock_Centred(
+                "BBB"
+            )
 
         },
         {
