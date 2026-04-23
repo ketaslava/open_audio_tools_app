@@ -34,8 +34,8 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
 
     override fun getReaderConfiguration(): ReaderConfiguration = ReaderConfiguration(
         isAllowBackButtonByState = true,
-        isEnableFinishButtonDestinationPage = true,
-        finishButtonDestinationPageName = "TheGuideIsFinishedPage",
+        isEnableNextButtonDestinationPage = true,
+        nextButtonDestinationPageName = "TheGuideIsFinishedPage",
     )
 
 

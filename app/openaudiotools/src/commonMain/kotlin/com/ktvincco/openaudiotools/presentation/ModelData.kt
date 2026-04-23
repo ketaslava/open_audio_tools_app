@@ -43,6 +43,22 @@ class ModelData {
         return _appInfo[key] ?: ""
     }
 
+    
+    // Navigation Container for state-based links
+    val navigation = NavigationContainer()
+    class NavigationContainer {
+        private val _previousPage = MutableStateFlow("")
+        val previousPage: StateFlow<String> = _previousPage
+        
+        fun setPreviousPage(name: String) {
+            _previousPage.value = name
+        }
+        
+        fun resetPreviousPage() {
+            _previousPage.value = ""
+        }
+    }
+
 
     // Language code
     private val _languageCode = MutableStateFlow("ru")

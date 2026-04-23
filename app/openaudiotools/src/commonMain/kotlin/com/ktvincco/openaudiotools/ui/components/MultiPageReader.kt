@@ -16,9 +16,11 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
 import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -44,6 +46,14 @@ open class MultiPageReader (
 
         // Use key to recreate scrollState instantly when step changes, preventing flicker
         val scrollState = key(currentReaderPageIndex) { rememberScrollState() }
+
+        // Get state values from modelData, then reset them, but save for use
+        var previousPage by remember { mutableStateOf("") }
+        val previousPageFromState = modelData.navigation.previousPage.collectAsState().value
+        if (previousPageFromState.isNotEmpty()) {
+            previousPage = previousPageFromState
+            modelData.navigation.resetPreviousPage()
+        }
 
         BoxWithConstraints(
             modifier = Modifier
@@ -102,36 +112,52 @@ open class MultiPageReader (
                                     .fillMaxWidth()
                             ) {
                                 // Back Button
+                                val isFirstPage = currentReaderPageIndex == 0
+                                val isBackButtonActive = !isFirstPage ||
+                                        config.isEnableBackButtonDestinationPage ||
+                                        (config.isAllowBackButtonByState && previousPage.isNotEmpty())
+
                                 BasicComponents().Button(
                                     modelData,
                                     text = "< Back",
-                                    isAppearActive = (currentReaderPageIndex > 0),
+                                    isAppearActive = isBackButtonActive,
                                     modifier = Modifier
                                         .height(64.dp)
                                         .fillMaxWidth()
                                         .weight(1f)
-                                )
-                                {
+                                ) {
                                     if (currentReaderPageIndex > 0) {
                                         currentReaderPageIndex--
+                                    } else {
+                                        if (config.isEnableBackButtonDestinationPage) {
+                                            modelData.openPage(config.backButtonDestinationPageName)
+                                        } else if (config.isAllowBackButtonByState && previousPage.isNotEmpty()) {
+                                            modelData.openPage(previousPage)
+                                        }
                                     }
                                 }
 
                                 Spacer(modifier = Modifier.width(16.dp))
 
                                 // Next Button
+                                val isLastPage = currentReaderPageIndex == readerPages.size - 1
+                                val nextButtonIsActive = !isLastPage || config.isEnableNextButtonDestinationPage
+
                                 BasicComponents().Button(
                                     modelData,
                                     text = "Next >",
-                                    isAppearActive = (currentReaderPageIndex < readerPages.size - 1),
+                                    isAppearActive = nextButtonIsActive,
                                     modifier = Modifier
                                         .height(64.dp)
                                         .fillMaxWidth()
                                         .weight(1f)
-                                )
-                                {
+                                ) {
                                     if (currentReaderPageIndex < readerPages.size - 1) {
                                         currentReaderPageIndex++
+                                    } else {
+                                        if (config.isEnableNextButtonDestinationPage) {
+                                            modelData.openPage(config.nextButtonDestinationPageName)
+                                        }
                                     }
                                 }
                             }
@@ -158,8 +184,8 @@ open class MultiPageReader (
         val isEnableBackButtonDestinationPage: Boolean = false,
         val backButtonDestinationPageName: String = "",
         val isAllowBackButtonByState: Boolean = false,
-        val isEnableFinishButtonDestinationPage: Boolean = false,
-        val finishButtonDestinationPageName: String = "",
+        val isEnableNextButtonDestinationPage: Boolean = false,
+        val nextButtonDestinationPageName: String = "",
     )
 
 

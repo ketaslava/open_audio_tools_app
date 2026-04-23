@@ -106,6 +106,7 @@ class UserGuide (
                 .fillMaxWidth()
                 .padding(horizontal = 24.dp)
         ) {
+            modelData.navigation.setPreviousPage("UserGuide")
             modelData.openPage("GeneralVoicetrainingGuide")
         }
 
@@ -120,6 +121,7 @@ class UserGuide (
                 .fillMaxWidth()
                 .padding(horizontal = 24.dp)
         ) {
+            modelData.navigation.setPreviousPage("UserGuide")
             modelData.openPage("SoundAnalysisGuide")
         }
 
