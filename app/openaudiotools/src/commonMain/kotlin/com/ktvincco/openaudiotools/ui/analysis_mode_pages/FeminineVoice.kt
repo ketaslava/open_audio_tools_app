@@ -90,7 +90,7 @@ class FeminineVoice (
                 graphZones = listOf(
                     GraphZone(
                         minLabel = 175F,
-                        maxLabel = 330F,
+                        maxLabel = 350F,
                         color = ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
                     )
                 ),

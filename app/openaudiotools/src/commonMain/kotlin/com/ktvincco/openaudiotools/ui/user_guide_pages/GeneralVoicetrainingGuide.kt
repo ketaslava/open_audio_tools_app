@@ -450,14 +450,14 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                 "Feminine" -> listOf(
                     GraphZone(
                         175F,
-                        330F,
+                        350F,
                         ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
                     )
                 )
 
                 "Enby" -> listOf(
                     GraphZone(
-                        145F,
+                        140F,
                         185F,
                         ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
                     )
@@ -465,8 +465,8 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
 
                 "Masculine" -> listOf(
                     GraphZone(
-                        85F,
-                        155F,
+                        50F,
+                        150F,
                         ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
                     )
                 )
