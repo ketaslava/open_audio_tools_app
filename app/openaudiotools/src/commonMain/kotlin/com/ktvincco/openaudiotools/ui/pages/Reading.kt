@@ -21,7 +21,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -36,7 +35,7 @@ import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.TextForReading
 import com.ktvincco.openaudiotools.Texts
-import com.ktvincco.openaudiotools.ui.basics.BaseComponents
+import com.ktvincco.openaudiotools.ui.components.BasicComponents
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.ui.components.RecordingControl
 import openaudiotools.app.openaudiotools.generated.resources.Res
@@ -180,7 +179,7 @@ class Reading (
             ) {
                 itemsIndexed(textsForReading) { index, textForReading ->
 
-                    BaseComponents().HorizontalDivider(
+                    BasicComponents().HorizontalDivider(
                         color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                     MenuItem(textForReading.getHeadline()) {
@@ -189,7 +188,7 @@ class Reading (
 
                     if (textsForReading.isNotEmpty() &&
                         index == textsForReading.size - 1) {
-                        BaseComponents().HorizontalDivider(
+                        BasicComponents().HorizontalDivider(
                             color = ColorPalette.getMarkupColor(), thickness = 1.dp)
                     }
                 }

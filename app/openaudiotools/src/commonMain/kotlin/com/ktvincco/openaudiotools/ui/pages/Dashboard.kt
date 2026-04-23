@@ -21,9 +21,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
-import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.ui.basics.BaseComponents
+import com.ktvincco.openaudiotools.ui.components.BasicComponents
 import openaudiotools.app.openaudiotools.generated.resources.Res
 import openaudiotools.app.openaudiotools.generated.resources.ktvincco_logo_full_tp
 import openaudiotools.app.openaudiotools.generated.resources.ktvincco_logo_mini_tp
@@ -74,7 +73,7 @@ class Dashboard (
                         .fillMaxWidth()
                 )
 
-                BaseComponents().HorizontalDivider(
+                BasicComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp
                 )
 
@@ -116,7 +115,7 @@ class Dashboard (
                         .fillMaxWidth()
                 )
 
-                BaseComponents().HorizontalDivider(
+                BasicComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp
                 )
 
@@ -146,7 +145,7 @@ class Dashboard (
                         .fillMaxWidth()
                 )
 
-                BaseComponents().HorizontalDivider(
+                BasicComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp
                 )
 
@@ -173,7 +172,7 @@ class Dashboard (
                         .fillMaxWidth()
                 )
 
-                BaseComponents().HorizontalDivider(
+                BasicComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp
                 )
 
@@ -226,7 +225,7 @@ class Dashboard (
                         .fillMaxWidth()
                 )
 
-                BaseComponents().HorizontalDivider(
+                BasicComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                 DynamicText(
@@ -249,7 +248,7 @@ class Dashboard (
                         .padding(start = 16.dp, end = 16.dp, bottom = 24.dp)
                 )
 
-                BaseComponents().HorizontalDivider(
+                BasicComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                 DynamicText(
@@ -279,7 +278,7 @@ class Dashboard (
                         .fillMaxWidth()
                 )
 
-                BaseComponents().HorizontalDivider(
+                BasicComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                 DynamicText(
@@ -310,7 +309,7 @@ class Dashboard (
 
                 Spacer(modifier = Modifier.height(12.dp))
 
-                BaseComponents().HorizontalDivider(
+                BasicComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                 Spacer(modifier = Modifier.height(64.dp))

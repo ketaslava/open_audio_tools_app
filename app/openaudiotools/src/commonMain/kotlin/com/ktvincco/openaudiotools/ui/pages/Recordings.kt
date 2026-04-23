@@ -34,7 +34,7 @@ import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.dynamicTextString
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.ui.basics.BaseComponents
+import com.ktvincco.openaudiotools.ui.components.BasicComponents
 import openaudiotools.app.openaudiotools.generated.resources.Res
 import openaudiotools.app.openaudiotools.generated.resources.data_thresholding_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import openaudiotools.app.openaudiotools.generated.resources.delete_forever_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
@@ -94,7 +94,7 @@ class Recordings (private val modelData: ModelData) {
                 ) {
                     itemsIndexed(recordingFileList) { index, fileName ->
 
-                        BaseComponents().HorizontalDivider(
+                        BasicComponents().HorizontalDivider(
                             color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                         MenuItem(index, fileName, index == currentSelectionId) { id ->
@@ -104,7 +104,7 @@ class Recordings (private val modelData: ModelData) {
 
                         if (recordingFileList.isNotEmpty() &&
                                 index == recordingFileList.size - 1) {
-                            BaseComponents().HorizontalDivider(
+                            BasicComponents().HorizontalDivider(
                                 color = ColorPalette.getMarkupColor(), thickness = 1.dp)
                         }
                     }

@@ -1,4 +1,4 @@
-package com.ktvincco.openaudiotools.ui.basics
+package com.ktvincco.openaudiotools.ui.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -35,7 +35,6 @@ import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.presentation.ModelData
 
-
 class Popup (private val modelData: ModelData) {
 
     @Composable
@@ -49,9 +48,9 @@ class Popup (private val modelData: ModelData) {
         if (!isPopupOpened) { return }
 
         Box(
-            Modifier
+            Modifier.Companion
                 .fillMaxSize()
-                .background(Color.Black.copy(alpha = 0.5f))
+                .background(Color.Companion.Black.copy(alpha = 0.5f))
                 .clickable(
                     onClick = {},
                     indication = null,
@@ -59,74 +58,74 @@ class Popup (private val modelData: ModelData) {
                 )
         ) {
             Column(
-                Modifier
+                Modifier.Companion
                     .fillMaxWidth(0.8f)
                     .wrapContentHeight()
                     .clip(shape = RoundedCornerShape(10.dp))
-                    .background(ColorPalette.getBlockColor())
+                    .background(ColorPalette.Companion.getBlockColor())
                     .padding(16.dp)
-                    .align(Alignment.Center),
-                horizontalAlignment = Alignment.CenterHorizontally
+                    .align(Alignment.Companion.Center),
+                horizontalAlignment = Alignment.Companion.CenterHorizontally
             ) {
                 DynamicText(
                     text = popupHeadline,
                     modelData = modelData,
                     style = MaterialTheme.typography.h6,
-                    color = ColorPalette.getTextColor()
+                    color = ColorPalette.Companion.getTextColor()
                 )
 
-                Spacer(Modifier.height(42.dp))
+                Spacer(Modifier.Companion.height(42.dp))
 
                 DynamicText(
                     text = popupText,
                     modelData = modelData,
                     style = MaterialTheme.typography.body1,
-                    textAlign = TextAlign.Center,
-                    color = ColorPalette.getTextColor()
+                    textAlign = TextAlign.Companion.Center,
+                    color = ColorPalette.Companion.getTextColor()
                 )
 
-                Spacer(Modifier.height(42.dp))
+                Spacer(Modifier.Companion.height(42.dp))
 
                 Row(
-                    Modifier.fillMaxWidth(),
+                    Modifier.Companion.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Column(
-                        verticalArrangement =  Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier =  Modifier
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.Companion.CenterHorizontally,
+                        modifier = Modifier.Companion
                             .fillMaxWidth()
                             .height(56.dp)
-                            .clip(shape = RoundedCornerShape(10.dp))
-                            .background(ColorPalette.getLightButtonColor())
+                            .clip(shape = androidx.compose.foundation.shape.RoundedCornerShape(10.dp))
+                            .background(ColorPalette.Companion.getLightButtonColor())
                             .weight(1F)
                             .clickable { modelData.closePopup("Cancel") }
                     ) {
                         DynamicText(
                             text = "Cancel",
                             modelData = modelData,
-                            color = ColorPalette.getTextColor()
+                            color = ColorPalette.Companion.getTextColor()
                         )
                     }
                     Spacer(
-                        modifier = Modifier
+                        modifier = Modifier.Companion
                             .width(16.dp)
                     )
                     Column(
-                        verticalArrangement =  Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier
+                        verticalArrangement = Arrangement.Center,
+                        horizontalAlignment = Alignment.Companion.CenterHorizontally,
+                        modifier = Modifier.Companion
                             .fillMaxWidth()
                             .height(56.dp)
-                            .clip(shape = RoundedCornerShape(10.dp))
-                            .background(ColorPalette.getLightButtonColor())
+                            .clip(shape = androidx.compose.foundation.shape.RoundedCornerShape(10.dp))
+                            .background(ColorPalette.Companion.getLightButtonColor())
                             .weight(1F)
                             .clickable { modelData.closePopup("Ok") }
                     ) {
                         DynamicText(
                             text = "Ok",
                             modelData = modelData,
-                            color = ColorPalette.getTextColor()
+                            color = ColorPalette.Companion.getTextColor()
                         )
                     }
                 }
@@ -148,9 +147,9 @@ class Popup (private val modelData: ModelData) {
         if (!isPopupWithTextInputOpened) { return }
 
         Box(
-            Modifier
+            Modifier.Companion
                 .fillMaxSize()
-                .background(Color.Black.copy(alpha = 0.5f))
+                .background(Color.Companion.Black.copy(alpha = 0.5f))
                 .clickable(
                     onClick = {},
                     indication = null,
@@ -158,54 +157,54 @@ class Popup (private val modelData: ModelData) {
                 )
         ) {
             Column(
-                Modifier
+                Modifier.Companion
                     .fillMaxWidth(0.8f)
                     .wrapContentHeight()
-                    .clip(shape = RoundedCornerShape(10.dp))
-                    .background(ColorPalette.getBlockColor())
+                    .clip(shape = androidx.compose.foundation.shape.RoundedCornerShape(10.dp))
+                    .background(ColorPalette.Companion.getBlockColor())
                     .padding(16.dp)
-                    .align(Alignment.Center),
-                horizontalAlignment = Alignment.CenterHorizontally
+                    .align(Alignment.Companion.Center),
+                horizontalAlignment = Alignment.Companion.CenterHorizontally
             ) {
                 DynamicText(
                     text = popupHeadline,
                     modelData = modelData,
                     style = MaterialTheme.typography.h6,
-                    color = ColorPalette.getTextColor()
+                    color = ColorPalette.Companion.getTextColor()
                 )
 
-                Spacer(Modifier.height(42.dp))
+                Spacer(Modifier.Companion.height(42.dp))
 
                 TextField(
                     value = textInput,
                     onValueChange = { textInput = it },
                     placeholder = { Text("Enter the text") },
                     colors = TextFieldDefaults.textFieldColors(
-                        textColor = ColorPalette.getTextColor(),
-                        backgroundColor = ColorPalette.getBlockColor(),
-                        cursorColor = ColorPalette.getTextColor(),
-                        placeholderColor = ColorPalette.getTextColor()
+                        textColor = ColorPalette.Companion.getTextColor(),
+                        backgroundColor = ColorPalette.Companion.getBlockColor(),
+                        cursorColor = ColorPalette.Companion.getTextColor(),
+                        placeholderColor = ColorPalette.Companion.getTextColor()
                     ),
-                    modifier = Modifier
+                    modifier = Modifier.Companion
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(8.dp))
-                        .background(ColorPalette.getLightButtonColor())
+                        .clip(androidx.compose.foundation.shape.RoundedCornerShape(8.dp))
+                        .background(ColorPalette.Companion.getLightButtonColor())
                 )
 
-                Spacer(Modifier.height(42.dp))
+                Spacer(Modifier.Companion.height(42.dp))
 
                 Row(
-                    Modifier.fillMaxWidth(),
+                    Modifier.Companion.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
                     Column(
                         verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier
+                        horizontalAlignment = Alignment.Companion.CenterHorizontally,
+                        modifier = Modifier.Companion
                             .fillMaxWidth()
                             .height(56.dp)
-                            .clip(shape = RoundedCornerShape(10.dp))
-                            .background(ColorPalette.getLightButtonColor())
+                            .clip(shape = androidx.compose.foundation.shape.RoundedCornerShape(10.dp))
+                            .background(ColorPalette.Companion.getLightButtonColor())
                             .weight(1F)
                             .clickable {
                                 modelData.closePopupWithTextInput("Cancel", textInput)
@@ -215,21 +214,21 @@ class Popup (private val modelData: ModelData) {
                         DynamicText(
                             text = "Cancel",
                             modelData = modelData,
-                            color = ColorPalette.getTextColor()
+                            color = ColorPalette.Companion.getTextColor()
                         )
                     }
                     Spacer(
-                        modifier = Modifier
+                        modifier = Modifier.Companion
                             .width(16.dp)
                     )
                     Column(
                         verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier
+                        horizontalAlignment = Alignment.Companion.CenterHorizontally,
+                        modifier = Modifier.Companion
                             .fillMaxWidth()
                             .height(56.dp)
-                            .clip(shape = RoundedCornerShape(10.dp))
-                            .background(ColorPalette.getLightButtonColor())
+                            .clip(shape = androidx.compose.foundation.shape.RoundedCornerShape(10.dp))
+                            .background(ColorPalette.Companion.getLightButtonColor())
                             .weight(1F)
                             .clickable {
                                 modelData.closePopupWithTextInput("Ok", textInput)
@@ -239,7 +238,7 @@ class Popup (private val modelData: ModelData) {
                         DynamicText(
                             text = "Ok",
                             modelData = modelData,
-                            color = ColorPalette.getTextColor()
+                            color = ColorPalette.Companion.getTextColor()
                         )
                     }
                 }

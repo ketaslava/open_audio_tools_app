@@ -22,7 +22,7 @@ import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.ui.basics.BaseComponents
+import com.ktvincco.openaudiotools.ui.components.BasicComponents
 import openaudiotools.app.openaudiotools.generated.resources.Res
 import openaudiotools.app.openaudiotools.generated.resources.arrow_back_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import org.jetbrains.compose.resources.painterResource
@@ -77,7 +77,7 @@ class LegalInfoScreen (
                     .padding(horizontal = 16.dp, vertical = 24.dp)
             )
 
-            BaseComponents().HorizontalDivider(
+            BasicComponents().HorizontalDivider(
                 color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
             DynamicText(
@@ -103,7 +103,7 @@ class LegalInfoScreen (
                     .fillMaxWidth()
             )
 
-            BaseComponents().HorizontalDivider(
+            BasicComponents().HorizontalDivider(
                 color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
             DynamicText(
@@ -130,7 +130,7 @@ class LegalInfoScreen (
                     .fillMaxWidth()
             )
 
-            BaseComponents().HorizontalDivider(
+            BasicComponents().HorizontalDivider(
                 color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
             DynamicText(
@@ -188,7 +188,7 @@ class LegalInfoScreen (
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            BaseComponents().HorizontalDivider(
+            BasicComponents().HorizontalDivider(
                 color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
             DynamicText(
@@ -258,7 +258,7 @@ class LegalInfoScreen (
                     .fillMaxWidth()
             )
 
-            BaseComponents().HorizontalDivider(
+            BasicComponents().HorizontalDivider(
                 color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
             // Bottom spacer

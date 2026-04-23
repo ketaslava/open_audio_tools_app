@@ -143,7 +143,7 @@ class Main (private val modelData: ModelData,
                     Configuration.getUserAgreementVersion().toString())
 
                 // Open page
-                modelData.openPage("Dashboard")
+                modelData.openPage("UserGuide")
 
                 // Setup next
                 setup3()

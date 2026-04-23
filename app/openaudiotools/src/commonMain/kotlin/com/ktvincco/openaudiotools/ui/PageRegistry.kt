@@ -5,6 +5,11 @@ import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.ui.analysis_mode_pages.*
 import com.ktvincco.openaudiotools.ui.components.PageWithBottomControls
 import com.ktvincco.openaudiotools.ui.pages.*
+import com.ktvincco.openaudiotools.ui.user_guide_pages.FrequentlyAskedQuestions
+import com.ktvincco.openaudiotools.ui.user_guide_pages.TheGuideIsFinishedPage
+import com.ktvincco.openaudiotools.ui.user_guide_pages.UserGuide
+import com.ktvincco.openaudiotools.ui.user_guide_pages.GeneralVoicetrainingGuide
+import com.ktvincco.openaudiotools.ui.user_guide_pages.SoundAnalysisGuide
 
 
 /**
@@ -21,15 +26,12 @@ object PageRegistry {
     )
 
     private val pages = mapOf(
+
+        // Pages
         "Dashboard" to PageInfo("Dashboard") { Dashboard(it).Draw() },
         "Settings" to PageInfo("Settings") { SettingsPage(it).Draw() },
         "Recordings" to PageInfo("Recordings") { Recordings(it).Draw() },
-        "FrequentlyAskedQuestions" to PageInfo("FAQs") { FrequentlyAskedQuestions(it).Draw() },
         "Reading" to PageInfo("Reading") { Reading(it).Draw() },
-        "UserGuide" to PageInfo("User Guide") { UserGuide(it).Draw() },
-        "VoiceChangeGuidelines" to PageInfo("Voice Change Guidelines") { 
-            PageWithBottomControls(it).Draw(VoiceChangeGuidelines(it).content(), false) 
-        },
         
         // Analysis Pages
         "AllInfo" to PageInfo("All Info") { PageWithBottomControls(it).Draw(AllInfo(it).content()) },
@@ -42,7 +44,15 @@ object PageRegistry {
         "FeminineVoiceResonance" to PageInfo("Feminine Voice Resonance") { PageWithBottomControls(it).Draw(FeminineVoiceResonance(it).content()) },
         "MasculineVoice" to PageInfo("Masculine Voice") { PageWithBottomControls(it).Draw(MasculineVoice(it).content()) },
         "MasculineVoiceResonance" to PageInfo("Masculine Voice Resonance") { PageWithBottomControls(it).Draw(MasculineVoiceResonance(it).content()) },
-    )
+
+        // User Guide Pages
+        "FrequentlyAskedQuestions" to PageInfo("FAQs") { FrequentlyAskedQuestions(it).Draw() },
+        "UserGuide" to PageInfo("User Guide") { UserGuide(it).Draw() },
+        "SoundAnalysisGuide" to PageInfo("Sound Analysis Guide") { SoundAnalysisGuide(it).Draw() },
+        "GeneralVoicetrainingGuide" to PageInfo("Voicetraining Guide") { GeneralVoicetrainingGuide(it).Draw() },
+        "TheGuideIsFinishedPage" to PageInfo("The Guide is Finished") { TheGuideIsFinishedPage(it).Draw() },
+
+        )
 
     @Composable
     fun DrawPage(id: String, modelData: ModelData) {

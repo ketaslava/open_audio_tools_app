@@ -39,7 +39,7 @@ import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.Dictionary
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.ui.basics.BaseComponents
+import com.ktvincco.openaudiotools.ui.components.BasicComponents
 
 
 class SettingsPage (
@@ -97,7 +97,7 @@ class SettingsPage (
 
                     // Language selection
 
-                    BaseComponents().HorizontalDivider(
+                    BasicComponents().HorizontalDivider(
                         color = ColorPalette.getMarkupColor(), thickness = 1.dp
                     )
 
@@ -115,7 +115,7 @@ class SettingsPage (
 
                     // Advertisement Privacy
 
-                    BaseComponents().HorizontalDivider(
+                    BasicComponents().HorizontalDivider(
                         color = ColorPalette.getMarkupColor(), thickness = 1.dp
                     )
 
@@ -133,7 +133,7 @@ class SettingsPage (
                             .padding(horizontal = 16.dp, vertical = 24.dp)
                     )
 
-                    BaseComponents().HorizontalDivider(
+                    BasicComponents().HorizontalDivider(
                         color = ColorPalette.getMarkupColor(), thickness = 1.dp
                     )
                 }
@@ -194,7 +194,7 @@ class SettingsPage (
             ) {
                 itemsIndexed(languages) { index, language ->
 
-                    BaseComponents().HorizontalDivider(
+                    BasicComponents().HorizontalDivider(
                         color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                     MenuItem(language.first) {
@@ -203,7 +203,7 @@ class SettingsPage (
 
                     if (languages.isNotEmpty() &&
                         index == languages.size - 1) {
-                        BaseComponents().HorizontalDivider(
+                        BasicComponents().HorizontalDivider(
                             color = ColorPalette.getMarkupColor(), thickness = 1.dp)
                     }
                 }

@@ -32,7 +32,7 @@ import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.ui.basics.BaseComponents
+import com.ktvincco.openaudiotools.ui.components.BasicComponents
 
 
 class FirstStartScreen (
@@ -52,7 +52,7 @@ class FirstStartScreen (
                 modifier =  Modifier
                     .fillMaxHeight()
                     .fillMaxWidth()
-                    .padding(30.dp)
+                    .padding(32.dp)
             ) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -60,7 +60,6 @@ class FirstStartScreen (
                     modifier = Modifier
                         .fillMaxWidth()
                         .weight(1F)
-
                 ) {
                     val scrollState = rememberScrollState()
 
@@ -82,7 +81,7 @@ class FirstStartScreen (
                                 .padding(horizontal = 16.dp, vertical = 24.dp)
                         )
 
-                        BaseComponents().HorizontalDivider(
+                        BasicComponents().HorizontalDivider(
                             color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                         DynamicText(
@@ -99,7 +98,7 @@ class FirstStartScreen (
                                 .padding(horizontal = 16.dp, vertical = 24.dp)
                         )
 
-                        BaseComponents().HorizontalDivider(
+                        BasicComponents().HorizontalDivider(
                             color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                         Spacer(modifier = Modifier.height(12.dp))
@@ -148,12 +147,12 @@ class FirstStartScreen (
 
                         Spacer(modifier = Modifier.height(12.dp))
 
-                        BaseComponents().HorizontalDivider(
+                        BasicComponents().HorizontalDivider(
                             color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                         Spacer(modifier = Modifier.height(24.dp))
 
-                        BaseComponents().Checkbox(
+                        BasicComponents().Checkbox(
                             "I have read and accept the Terms of Use",
                             modelData = modelData, Modifier,
                             fontSize = 16.sp,
@@ -164,7 +163,7 @@ class FirstStartScreen (
 
                         Spacer(modifier = Modifier.height(24.dp))
 
-                        BaseComponents().Checkbox(
+                        BasicComponents().Checkbox(
                             "I have read and accept the Privacy Policy",
                             modelData = modelData, Modifier,
                             fontSize = 16.sp,

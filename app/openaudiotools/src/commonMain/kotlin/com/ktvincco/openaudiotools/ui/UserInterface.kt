@@ -18,7 +18,7 @@ import androidx.compose.runtime.key
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.ktvincco.openaudiotools.ColorPalette
-import com.ktvincco.openaudiotools.ui.basics.Popup
+import com.ktvincco.openaudiotools.ui.components.Popup
 import com.ktvincco.openaudiotools.ui.screens.AccessDeniedScreen
 import com.ktvincco.openaudiotools.ui.screens.FirstStartScreen
 import com.ktvincco.openaudiotools.ui.screens.LegalInfoScreen

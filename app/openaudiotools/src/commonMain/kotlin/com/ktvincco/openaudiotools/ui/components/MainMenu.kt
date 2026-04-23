@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
@@ -24,7 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
-import com.ktvincco.openaudiotools.ui.basics.BaseComponents
+import com.ktvincco.openaudiotools.ui.components.BasicComponents
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.ui.PageRegistry
 import openaudiotools.app.openaudiotools.generated.resources.Res
@@ -102,7 +101,7 @@ class MainMenu (private val modelData: ModelData) {
                     .verticalScroll(state = ScrollState(0)),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                BaseComponents().HorizontalDivider(
+                BasicComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                 MenuItem("Dashboard") {
@@ -116,11 +115,11 @@ class MainMenu (private val modelData: ModelData) {
                 }
 
                 MenuItem("Voice Change Guidelines") {
-                    modelData.openPage("VoiceChangeGuidelines")
+                    modelData.openPage("GeneralVoicetrainingGuide")
                     modelData.setMainMenuState(false)
                 }
 
-                BaseComponents().HorizontalDivider(
+                BasicComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                 MenuItem("All Info") {
@@ -143,7 +142,7 @@ class MainMenu (private val modelData: ModelData) {
                     modelData.setMainMenuState(false)
                 }
 
-                BaseComponents().HorizontalDivider(
+                BasicComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                 MenuItem("Speaker Voice") {
@@ -151,7 +150,7 @@ class MainMenu (private val modelData: ModelData) {
                     modelData.setMainMenuState(false)
                 }
 
-                BaseComponents().HorizontalDivider(
+                BasicComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                 MenuItem("Singing") {
@@ -159,7 +158,7 @@ class MainMenu (private val modelData: ModelData) {
                     modelData.setMainMenuState(false)
                 }
 
-                BaseComponents().HorizontalDivider(
+                BasicComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                 MenuItem("Pitch And Resonance") {
@@ -172,7 +171,7 @@ class MainMenu (private val modelData: ModelData) {
                     modelData.setMainMenuState(false)
                 }
 
-                BaseComponents().HorizontalDivider(
+                BasicComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                 MenuItem("Feminine Voice") {
@@ -195,7 +194,7 @@ class MainMenu (private val modelData: ModelData) {
                     modelData.setMainMenuState(false)
                 }
 
-                BaseComponents().HorizontalDivider(
+                BasicComponents().HorizontalDivider(
                     color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
                 MenuItem("User Guide") {
