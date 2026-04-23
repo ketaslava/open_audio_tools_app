@@ -133,7 +133,6 @@ class BasicComponents {
                 .clickable {
                     onClick()
                 }
-                .wrapContentSize()
         ) {
             DynamicText(
                 text = text,

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
@@ -119,13 +120,13 @@ class UserGuide (modelData: ModelData) : MultiPageReader(modelData) {
         Spacer(modifier = Modifier.height(32.dp))
 
         BasicComponents().Button(
-        modelData,
-        text = "Voice Improvement >",
-        fontSize = 18.sp,
-        modifier = Modifier
-        .height(64.dp)
-        .fillMaxWidth()
-        .padding(horizontal = 24.dp)
+            modelData,
+            text = "Voice Improvement >",
+            fontSize = 18.sp,
+            modifier = Modifier
+                .heightIn(min = 64.dp)
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp)
         ) {
             modelData.navigation.setPreviousPage("UserGuide")
             modelData.openPage("GeneralVoicetrainingGuide")
@@ -134,13 +135,13 @@ class UserGuide (modelData: ModelData) : MultiPageReader(modelData) {
         Spacer(modifier = Modifier.height(16.dp))
 
         BasicComponents().Button(
-        modelData,
-        text = "Sound Analysis >",
-        fontSize = 18.sp,
-        modifier = Modifier
-        .height(64.dp)
-        .fillMaxWidth()
-        .padding(horizontal = 24.dp)
+            modelData,
+            text = "Sound Analysis >",
+            fontSize = 18.sp,
+            modifier = Modifier
+                .heightIn(min = 64.dp)
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp)
         ) {
             modelData.navigation.setPreviousPage("UserGuide")
             modelData.openPage("SoundAnalysisGuide")
