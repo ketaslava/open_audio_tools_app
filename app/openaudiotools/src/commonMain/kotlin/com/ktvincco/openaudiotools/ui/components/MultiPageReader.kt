@@ -55,14 +55,13 @@ open class MultiPageReader (
             modelData.navigation.resetPreviousPage()
         }
 
+        // Content wrapper
         BoxWithConstraints(
             modifier = Modifier
                 .fillMaxSize()
                 .background(ColorPalette.getBackgroundColor())
         ) {
-            // Use local window size (constraints) instead of global screen size
             val isWideScreen = config.isEnableSquareBlockView && maxWidth > maxHeight
-
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier.fillMaxSize()
@@ -78,12 +77,13 @@ open class MultiPageReader (
                             }
                         )
                 ) {
+                    // Scrollable content
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
                             .verticalScroll(scrollState)
                     ) {
-                        // Step content
+                        // Rendering content
                         currentReaderPage(modelData)
 
                         // Navigation
