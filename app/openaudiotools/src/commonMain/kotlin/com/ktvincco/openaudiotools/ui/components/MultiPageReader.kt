@@ -93,79 +93,82 @@ open class MultiPageReader (
                 }
 
                 // Navigation
-                val bc = ColorPalette.getBlockColor()
-                val navigationBlockColor = Color(bc.red / 2F, bc.green / 2F, bc.blue / 2F)
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(64.dp)
-                        .background(navigationBlockColor)
-                ) {
-
-                    // Back Button
-                    val isFirstPage = currentReaderPageIndex == 0
-                    val isBackButtonActive = !isFirstPage ||
-                            config.isEnableBackButtonDestinationPage ||
-                            (config.isAllowBackButtonByState && previousPage.isNotEmpty())
-
-                    BasicComponents().Button(
-                        modelData,
-                        text = "< Back",
-                        isAppearActive = isBackButtonActive,
-                        cornerRadius = 0.dp,
-                        inactiveButtonColor = navigationBlockColor,
+                if (config.isEnableControls) {
+                    val bc = ColorPalette.getBlockColor()
+                    val navigationBlockColor = Color(bc.red / 2F, bc.green / 2F, bc.blue / 2F)
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier
-                            .height(64.dp)
                             .fillMaxWidth()
-                            .weight(1f)
+                            .height(64.dp)
+                            .background(navigationBlockColor)
                     ) {
-                        if (currentReaderPageIndex > 0) {
-                            currentReaderPageIndex--
-                        } else {
-                            if (config.isEnableBackButtonDestinationPage) {
-                                modelData.openPage(config.backButtonDestinationPageName)
-                            } else if (config.isAllowBackButtonByState && previousPage.isNotEmpty()) {
-                                modelData.openPage(previousPage)
+
+                        // Back Button
+                        val isFirstPage = currentReaderPageIndex == 0
+                        val isBackButtonActive = !isFirstPage ||
+                                config.isEnableBackButtonDestinationPage ||
+                                (config.isAllowBackButtonByState && previousPage.isNotEmpty())
+
+                        BasicComponents().Button(
+                            modelData,
+                            text = "< Back",
+                            isAppearActive = isBackButtonActive,
+                            cornerRadius = 0.dp,
+                            inactiveButtonColor = navigationBlockColor,
+                            modifier = Modifier
+                                .height(64.dp)
+                                .fillMaxWidth()
+                                .weight(1f)
+                        ) {
+                            if (currentReaderPageIndex > 0) {
+                                currentReaderPageIndex--
+                            } else {
+                                if (config.isEnableBackButtonDestinationPage) {
+                                    modelData.openPage(config.backButtonDestinationPageName)
+                                } else if (config.isAllowBackButtonByState && previousPage.isNotEmpty()) {
+                                    modelData.openPage(previousPage)
+                                }
                             }
                         }
-                    }
 
-                    Spacer(modifier = Modifier.width(16.dp))
+                        Spacer(modifier = Modifier.width(16.dp))
 
-                    // Page Counter
-                    DynamicText(
-                        text = "${currentReaderPageIndex + 1} / ${readerPages.size}",
-                        modelData = modelData,
-                        color = ColorPalette.getTextColor(),
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier
-                            .padding(horizontal = 16.dp)
-                    )
+                        // Page Counter
+                        DynamicText(
+                            text = "${currentReaderPageIndex + 1} / ${readerPages.size}",
+                            modelData = modelData,
+                            color = ColorPalette.getTextColor(),
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold,
+                            modifier = Modifier
+                                .padding(horizontal = 16.dp)
+                        )
 
-                    Spacer(modifier = Modifier.width(16.dp))
+                        Spacer(modifier = Modifier.width(16.dp))
 
-                    // Next Button
-                    val isLastPage = currentReaderPageIndex == readerPages.size - 1
-                    val nextButtonIsActive = !isLastPage || config.isEnableNextButtonDestinationPage
+                        // Next Button
+                        val isLastPage = currentReaderPageIndex == readerPages.size - 1
+                        val nextButtonIsActive =
+                            !isLastPage || config.isEnableNextButtonDestinationPage
 
-                    BasicComponents().Button(
-                        modelData,
-                        text = "Next >",
-                        isAppearActive = nextButtonIsActive,
-                        cornerRadius = 0.dp,
-                        inactiveButtonColor = navigationBlockColor,
-                        modifier = Modifier
-                            .height(64.dp)
-                            .fillMaxWidth()
-                            .weight(1f)
-                    ) {
-                        if (currentReaderPageIndex < readerPages.size - 1) {
-                            currentReaderPageIndex++
-                        } else {
-                            if (config.isEnableNextButtonDestinationPage) {
-                                modelData.openPage(config.nextButtonDestinationPageName)
+                        BasicComponents().Button(
+                            modelData,
+                            text = "Next >",
+                            isAppearActive = nextButtonIsActive,
+                            cornerRadius = 0.dp,
+                            inactiveButtonColor = navigationBlockColor,
+                            modifier = Modifier
+                                .height(64.dp)
+                                .fillMaxWidth()
+                                .weight(1f)
+                        ) {
+                            if (currentReaderPageIndex < readerPages.size - 1) {
+                                currentReaderPageIndex++
+                            } else {
+                                if (config.isEnableNextButtonDestinationPage) {
+                                    modelData.openPage(config.nextButtonDestinationPageName)
+                                }
                             }
                         }
                     }
@@ -179,6 +182,9 @@ open class MultiPageReader (
 
 
     class ReaderConfiguration(
+
+        // Controls
+        val isEnableControls: Boolean = true,
 
         // View
         val isEnableSquareBlockView: Boolean = true,

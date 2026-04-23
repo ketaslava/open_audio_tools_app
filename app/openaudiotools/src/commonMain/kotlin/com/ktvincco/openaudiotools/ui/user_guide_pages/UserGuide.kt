@@ -33,29 +33,22 @@ import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.ui.components.BasicComponents
 import com.ktvincco.openaudiotools.ui.charts.Graph
 import com.ktvincco.openaudiotools.ui.charts.GraphZone
+import com.ktvincco.openaudiotools.ui.components.MultiPageReader
 import com.ktvincco.openaudiotools.ui.components.RecordingControl
 
 
-class UserGuide (
-    private val modelData: ModelData
-) {
+class UserGuide (modelData: ModelData) : MultiPageReader(modelData) {
 
 
-    @Composable
-    fun Draw() {
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(ColorPalette.getBackgroundColor())
-                .verticalScroll(rememberScrollState())
-        ) {
-            Content()
-        }
-    }
+    override fun getReaderConfiguration(): ReaderConfiguration = ReaderConfiguration(
+        isEnableControls = false,
+        isAllowBackButtonByState = true,
+        isEnableNextButtonDestinationPage = true,
+        nextButtonDestinationPageName = "TheGuideIsFinishedPage",
+    )
 
 
-    @Composable
-    fun Content() {
+    override fun getReaderPages(): List<@Composable (ModelData) -> Unit> = listOf( {
 
         // -------------------- Hello and Welcome -------------------- //
 
@@ -126,5 +119,5 @@ class UserGuide (
         }
 
         Spacer(modifier = Modifier.height(256.dp))
-    }
+    })
 }
