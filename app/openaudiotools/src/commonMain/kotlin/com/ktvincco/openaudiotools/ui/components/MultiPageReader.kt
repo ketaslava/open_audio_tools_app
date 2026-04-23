@@ -1,9 +1,13 @@
 package com.ktvincco.openaudiotools.ui.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -33,6 +37,7 @@ open class MultiPageReader (
 
     @Composable
     fun Draw() {
+        val config = getReaderConfiguration()
         var currentReaderPageIndex by remember { mutableIntStateOf(0) }
         val readerPages = getReaderPages()
         val currentReaderPage = readerPages[currentReaderPageIndex]
@@ -40,77 +45,101 @@ open class MultiPageReader (
         // Use key to recreate scrollState instantly when step changes, preventing flicker
         val scrollState = key(currentReaderPageIndex) { rememberScrollState() }
 
-        // Scrollable Content
-        Column(
-            modifier = Modifier.Companion
+        BoxWithConstraints(
+            modifier = Modifier
                 .fillMaxSize()
-                .background(ColorPalette.Companion.getBackgroundColor())
-                .verticalScroll(scrollState)
+                .background(ColorPalette.getBackgroundColor())
         ) {
-            // Step content
-            currentReaderPage(modelData)
+            // Use local window size (constraints) instead of global screen size
+            val isWideScreen = config.isEnableSquareBlockView && maxWidth > maxHeight
 
-            // Navigation
             Column(
-                horizontalAlignment = Alignment.Companion.CenterHorizontally,
-                modifier = Modifier.Companion
-                    .fillMaxWidth()
-                    .padding(horizontal = 24.dp)
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier.fillMaxSize()
             ) {
-
-                // Page Counter
-                DynamicText(
-                    text = "${currentReaderPageIndex + 1} / ${readerPages.size}",
-                    modelData = modelData,
-                    color = ColorPalette.Companion.getTextColor(),
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Companion.Bold,
-                    modifier = Modifier.Companion.padding(horizontal = 16.dp)
-                )
-
-                Spacer(modifier = Modifier.Companion.height(16.dp))
-
-                Row(
-                    verticalAlignment = Alignment.Companion.CenterVertically,
-                    modifier = Modifier.Companion
-                        .fillMaxWidth()
+                Box(
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .then(
+                            if (isWideScreen) {
+                                Modifier.aspectRatio(1F)
+                            } else {
+                                Modifier.fillMaxWidth()
+                            }
+                        )
                 ) {
-                    // Back Button
-                    BasicComponents().Button(
-                        modelData,
-                        text = "< Back",
-                        isAppearActive = (currentReaderPageIndex > 0),
-                        modifier = Modifier.Companion
-                            .height(64.dp)
-                            .fillMaxWidth()
-                            .weight(1f)
-                    )
-                    {
-                        if (currentReaderPageIndex > 0) {
-                            currentReaderPageIndex--
-                        }
-                    }
+                    Column(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .verticalScroll(scrollState)
+                    ) {
+                        // Step content
+                        currentReaderPage(modelData)
 
-                    Spacer(modifier = Modifier.Companion.width(16.dp))
+                        // Navigation
+                        Column(
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 24.dp)
+                        ) {
 
-                    // Next Button
-                    BasicComponents().Button(
-                        modelData,
-                        text = "Next >",
-                        isAppearActive = (currentReaderPageIndex < readerPages.size - 1),
-                        modifier = Modifier.Companion
-                            .height(64.dp)
-                            .fillMaxWidth()
-                            .weight(1f)
-                    )
-                    {
-                        if (currentReaderPageIndex < readerPages.size - 1) {
-                            currentReaderPageIndex++
+                            // Page Counter
+                            DynamicText(
+                                text = "${currentReaderPageIndex + 1} / ${readerPages.size}",
+                                modelData = modelData,
+                                color = ColorPalette.getTextColor(),
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.padding(horizontal = 16.dp)
+                            )
+
+                            Spacer(modifier = Modifier.height(16.dp))
+
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                            ) {
+                                // Back Button
+                                BasicComponents().Button(
+                                    modelData,
+                                    text = "< Back",
+                                    isAppearActive = (currentReaderPageIndex > 0),
+                                    modifier = Modifier
+                                        .height(64.dp)
+                                        .fillMaxWidth()
+                                        .weight(1f)
+                                )
+                                {
+                                    if (currentReaderPageIndex > 0) {
+                                        currentReaderPageIndex--
+                                    }
+                                }
+
+                                Spacer(modifier = Modifier.width(16.dp))
+
+                                // Next Button
+                                BasicComponents().Button(
+                                    modelData,
+                                    text = "Next >",
+                                    isAppearActive = (currentReaderPageIndex < readerPages.size - 1),
+                                    modifier = Modifier
+                                        .height(64.dp)
+                                        .fillMaxWidth()
+                                        .weight(1f)
+                                )
+                                {
+                                    if (currentReaderPageIndex < readerPages.size - 1) {
+                                        currentReaderPageIndex++
+                                    }
+                                }
+                            }
+
+                            Spacer(modifier = Modifier.height(24.dp))
                         }
                     }
                 }
-
-                Spacer(modifier = Modifier.Companion.height(24.dp))
             }
         }
     }
