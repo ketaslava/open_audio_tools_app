@@ -52,7 +52,7 @@ class TheGuideIsFinishedPage (
     @Composable
     fun Content() {
 
-        // -------------------- Hello and Welcome -------------------- //
+        // -------------------- The Guide is Finished! -------------------- //
 
         Spacer(modifier = Modifier.height(24.dp))
 
@@ -85,6 +85,6 @@ class TheGuideIsFinishedPage (
             )
         }
 
-        Spacer(modifier = Modifier.height(96.dp))
+        Spacer(modifier = Modifier.height(128.dp))
     }
 }

@@ -47,21 +47,36 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
             Spacer(modifier = Modifier.height(24.dp))
 
             readerComponents.HeaderTextBlock_Centred(
-                "AAA"
+                "Gender Affirming Voicetraining Guide"
             )
 
             Spacer(modifier = Modifier.height(32.dp))
 
             readerComponents.TextBlock_Centred(
-                "BBB"
+                "Hey Hey Hey!" +
+                        "\n\n" +
+                        "This is an ultimate guide on how to Feminize / Enbyize / Masculinize your voice " +
+                        "trough the power of Voicetraining" +
+                        "\n\n" +
+                        "We're gonna teach you a handful of tips and tricks on how to make your voice " +
+                        "sound absolutely astonishing! " +
+                        "\n\n" +
+                        "We're put our best efforts in making this guide useful 4 U, and We hope that you'll enjoy it! " +
+                        "Ngl, this guide is very complex, it involves a lot of in-depth theory and a lot of routine practice. " +
+                        "We wish you high brain power and the great patience with the results! " +
+                        "Don't forget to drink your water and take breaks as needed! " +
+                        "\n\n" +
+                        "We believe in You!" +
+                        "\n\n" +
+                        "btw, If you don't familiar with the Basics of the Voicetraining, " +
+                        "We highly recommend you to take a General Voicetraining Guide first. TY!" +
+                        "\n\n" +
+                        "K..." +
+                        "\n\n" +
+                        "Let's GO!"
             )
 
-        },
-        {
-
-        },
-        {
-
+            Spacer(modifier = Modifier.height(128.dp))
         },
     )
 }
