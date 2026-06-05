@@ -106,7 +106,7 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                         "I hope you already understand it, because it is about to get messy, because...\n\n" +
                         "Your voice is pretty & complex! It has a lot of parameters!\n\n" +
                         "...\n\n" +
-                        "The most common parameter of the voice is a Pitch. This graph shows it:\n\n" +
+                        "The most common parameter of the voice is Pitch. This graph shows it:\n\n" +
                         "(use control buttons to record the sample your voice)"
             )
 
@@ -148,7 +148,7 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                         "Saved recordings are stored inside the recordings library. You can access them trough the menu. " +
                         "After saving the recording, feel free to reset the recorder" +
                         "\n\n" +
-                        "You can always load saved recordings to see the parameters"
+                        "You can always load saved recordings to see the parameters again"
             )
 
             Spacer(modifier = Modifier.height(128.dp))
@@ -212,11 +212,12 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                         "Low frequencies are on the bottom and high frequencies are on the top. " +
                         "The brighter the spot, the higher the energy for the frequency" +
                         "\n\n" +
-                        "In this example, one frequency goes from roughly 30 to around 55 and then goes back to 30 again" +
+                        "In this example, the spectrogram shows us how the main frequency of the sound changes from roughly 30 to around 55 " +
+                        "and then goes back to 30 again in a span of a 100" +
                         "\n\n" +
                         "..." +
                         "\n\n" +
-                        "If there are several lines, it means that the sound is made from multiple frequencies at once" +
+                        "If the spectrogram have several lines, it means that the sound is made from multiple frequencies at once" +
                         "\n\n" +
                         "The Spectrogram helps us understand complex sounds, such as the human voice" +
                         "\n\n" +
@@ -271,7 +272,7 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
 
             readerComponents.TextBlock_Centred(
                 "So, Now, Let's talk about how we can use the real-time data to reach the " +
-                        "goals of improving your the voice! (or whatever your goals are)" +
+                        "goals of improving your voice! (or whatever your goals are)" +
                         "\n\n...\n\n" +
                         "When humans speak, they make sounds. " +
                         "Those sounds are not just a random noice, but the handful of patterns. " +
@@ -280,7 +281,7 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                         "We can use algorithms to analyze the voice and extract specific characteristics a.k. parameters. " +
                         "There are a lot of parameters that can be extracted, and there are no complete list of them. " +
                         "Some parameters are very simple, they are directly influenced by the physical structure of the human's body, " +
-                        "but some are very complex and they describe the patterns of behaviour" +
+                        "but some are very complex and they describe a behaviour" +
                         "\n\n" +
                         "Take a time to think about it" +
                         "\n\n" +
@@ -293,7 +294,7 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                         "\n\n" +
                         "The good news is, that in our case, it is completely possible! " +
                         "It is possible for any human being to learn how to speak with voice parameters that are belong to the range of any desired gender! " +
-                        "The process of that learning is called the Voicetraining" +
+                        "The process of that learning is called a Voicetraining" +
                         "\n\n" +
                         "Keep in mind, that in order to speak in some ranges, it is crucial to have a trained vocal muscles, " +
                         "that are can be trained by practicing speech, but this process takes time... Sometimes, a very long long time. " +
@@ -304,7 +305,8 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                         "The Pitch, of which we talked about before, is one of the most common parameters of the voice, " +
                         "and it is directly associated with the gender preception. " +
                         "(But keep in mind, that if we're gonna change only the pitch, the voice will sound very strange, " +
-                        "because the Pitch is not the only parameter that needs to be changed, however, it is the easiest parameter to start with)" +
+                        "because the Pitch is not the only parameter that needs to be changed, however, " +
+                        "it is the easiest parameter to use as an example)" +
                         "\n\n" +
                         "The graph below shows the Pitch" +
                         "\n\n" +
@@ -425,8 +427,8 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                         "It is also completely possible that you're not experiencing any problems of holding your voice inside the chosen range, " +
                         "however, your voice still sound not as you want it to" +
                         "\n\n" +
-                        "That means that your muscles are well trained, but you still have problems with your technique, " +
-                        "or you may not account some other, very important parameters, " +
+                        "That means that your pitch muscles are already well trained, " +
+                        "but you still have problems with other very important parameters, " +
                         "like in our case, to change the perceived gender of the voice, " +
                         "the changes in Pitch are not enough, you also need to work on Resonance" +
                         "\n\n" +
@@ -452,9 +454,9 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                         "\n\n" +
                         "Here, We talked only about one example, " +
                         "but the same principle of building muscles and improving technique is " +
-                        "can be applied for any voice improvements that you wanna make!" +
+                        "can be applied for any voice improvements that you desire!" +
                         "\n\n" +
-                        "Keep trying smart, and, We believe in You!"
+                        "Keep trying smart, and, We Believe In You!"
             )
 
             Spacer(modifier = Modifier.height(128.dp))

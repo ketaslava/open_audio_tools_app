@@ -228,7 +228,7 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
                         "Saved recordings are stored inside the recordings library. You can access them trough the menu. " +
                         "After saving the recording, feel free to reset the recorder" +
                         "\n\n" +
-                        "You can always load saved recordings to see the parameters"
+                        "You can always load saved recordings to see the parameters again"
             )
 
             Spacer(modifier = Modifier.height(128.dp))
