@@ -47,4 +47,20 @@ class ReaderComponents (
                 .padding(horizontal = 24.dp)
         )
     }
+
+
+    @Composable
+    fun TextBlock_AlignedStart(text: String) {
+        DynamicText(
+            text = text,
+            modelData = modelData,
+            color = ColorPalette.getTextColor(),
+            fontSize = 18.sp,
+            lineHeight = 24.sp,
+            textAlign = TextAlign.Start,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 24.dp)
+        )
+    }
 }
