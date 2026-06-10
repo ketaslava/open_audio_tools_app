@@ -27,7 +27,7 @@ dependencies {
     implementation(libs.androidx.ui.unit.android)
     implementation(libs.androidx.ui.text.android)
     implementation(libs.kotlinx.datetime)
-    debugImplementation(compose.uiTooling)
+    debugImplementation(libs.ui.tooling)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.swing)
     implementation(libs.androidx.activity.ktx)
@@ -75,7 +75,7 @@ kotlin {
     sourceSets {
         val androidMain by getting {
             dependencies {
-                implementation(compose.preview)
+                implementation(libs.ui.tooling.preview)
                 implementation(libs.androidx.activity.compose)
                 implementation(libs.androidx.lifecycle.process)
                 implementation(libs.play.services.ads)
@@ -83,12 +83,12 @@ kotlin {
         }
         val commonMain by getting {
             dependencies {
-                implementation(compose.runtime)
-                implementation(compose.foundation)
-                implementation(compose.material)
-                implementation(compose.ui)
-                implementation(compose.components.resources)
-                implementation(compose.components.uiToolingPreview)
+                implementation(libs.runtime)
+                implementation(libs.foundation)
+                implementation(libs.material)
+                implementation(libs.ui)
+                implementation(libs.components.resources)
+                implementation(libs.ui.tooling.preview)
                 implementation(libs.androidx.lifecycle.viewmodel)
                 implementation(libs.androidx.lifecycle.runtime.compose)
                 implementation(libs.kotlinx.serialization.json)

@@ -13,11 +13,9 @@ import com.ktvincco.openaudiotools.data.SoundFile
 import com.ktvincco.openaudiotools.domain.Main
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.ui.UserInterface
-import org.jetbrains.compose.ui.tooling.preview.Preview
 
 
 @Composable
-@Preview
 fun App(
     logger: Logger,
     permissionController: PermissionController,
