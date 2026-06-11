@@ -161,7 +161,7 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "while occlusives are using pressure bursts to generate subdued pops " +
                         "\n\n" +
                         "The interesting thing here is that a lot of things that control resonance " +
-                        "(lips, tongue, mouth closure) are also can be used to create occlusions, " +
+                        "(lips, tongue, mouth closure) can also be used to create occlusions, " +
                         "so it would be incorrect to separate them, instead we will talk about them " +
                         "as a broader category called Shape of a Vocal Tract a.k.a. the Shape. " +
                         "(Technically, vocal chords are parts of a vocal tract, " +
@@ -273,7 +273,7 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "The conscious understanding and control are crucial for everyone, " +
                         "especially for those who may struggle with " +
                         "auditory processing / neurodivergence / dyslexia. " +
-                        "The mimicry is can be very good and useful as a tool, but it should never be the only option ",
+                        "The mimicry can be very good and useful as a tool, but it should never be the only option ",
             )
 
             Spacer(modifier = Modifier.height(128.dp))
@@ -362,7 +362,7 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "so, we will use the word Resonance interchangeably with the word Shape " +
                         "\n\n" +
                         "The resonance that affects gender perception of a voice " +
-                        "is can be controlled by: \n" +
+                        "can be controlled by: \n" +
                         "\n    * Larynx elevation" +
                         "\n    * Back of the tongue" +
                         "\n    * Mouth space" +
@@ -425,13 +425,13 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                 "" +
                         "Now, let's add a pitch to the equation!" +
                         "\n\n" +
-                        "We hope that now you're understand how to make your whispered voice softer. " +
+                        "We hope that now you're understanding how to make your whispered voice softer. " +
                         "So, let's do the same thing, but at this time, say an A at loud! " +
                         "\n\n" +
                         "Start from whispering wA again. At the middle of whispering wA, gently switch to a normal A. " +
-                        "Place a finger on your larynx to make sure that it is not going down when you making the switch " +
+                        "Place a finger on your larynx to make sure that it is not going down when you're making the switch " +
                         "\n\n" +
-                        "Keep practicing until you will be able to start pronouncing the A softly (with a high resonance). " +
+                        "Keep practicing until you are able to start pronouncing the A softly (with a high resonance). " +
                         "After that, try changing the resonance up and down while you pronouncing the A " +
                         "\n\n" +
                         "Say an A and take a look at the Energy Spectrogram. " +
@@ -538,7 +538,7 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "The Falsetto register is the second most typical voice register. " +
                         "It is on the higher side (typically > 250Hz) " +
                         "\n\n" +
-                        "The Whistle register is can be accessed only by children and people who have trained " +
+                        "The Whistle register can be accessed only by children and people who have trained " +
                         "vocal muscles. It is not a typical register for a voice by any meaning " +
                         "\n\n" +
                         ". . ." +
