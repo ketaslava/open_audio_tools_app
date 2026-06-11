@@ -262,7 +262,7 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "\n\n" +
                         "5. The \"Natural Voice\" concept is a myth. Even though there are some limits on " +
                         "what parameter ranges are available for each person, the default voice of an individual " +
-                        "is not based on them. The default voice, like an accent, is acquired during lifelong " +
+                        "is not based on them. The default voice, like an accent, is acquired during a lifelong " +
                         "development process and can be fully and permanently overwritten through practice. " +
                         "\n\n" +
                         "6. There are two primary ways of developing a voice technique, " +
