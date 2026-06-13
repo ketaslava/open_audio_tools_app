@@ -246,7 +246,7 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "Here are some important things that you need to know before we gonna start the voicetraining:" +
                         "\n\n" +
                         "1. Pitch is not the most important thing for achieving " +
-                        "the desired voice perception; Resonance and Vocal Weight are " +
+                        "the desired gender perception of a voice; Resonance and Vocal Weight are " +
                         "\n\n" +
                         "2. Do not think in ambiguous terminology like the \"Head Voice\" / \"Chest Voice\". " +
                         "For this tutorial, no magical voice movements are permitted! " +
@@ -520,7 +520,7 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "Since you're here, we're pretty sure that you already have some idea of what is a Pitch. " +
                         "So, it is time to go much deeper and fully understand it! " +
                         "\n\n" +
-                        "The vocal chords are vibrating because the air is passing trough them. " +
+                        "The vocal chords are vibrating because the air is passing through them. " +
                         "The vocal chords have specific muscles that can control their tension, " +
                         "which changes the frequency of the vibrations a.k.a. changes the Pitch " +
                         "\n\n" +
@@ -608,6 +608,652 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "The rainbow is a division of white light into many beautiful colors. " +
                         "These take the shape of a long round arch, with its path high above, " +
                         "and its two ends apparently beyond the horizon. $",
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            readerComponents.HeaderTextBlock_Centred(
+                "Subtone",
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
+                        "Subtone does not really affect gender perception of a voice, but " +
+                        "I think, it is important to still explore it to gain a full understanding " +
+                        "\n\n" +
+                        "The vocal chords have 2 distinct types of closure: Adductive and Abductive" +
+                        "\n\n" +
+                        "The Adductive closure is when the vocal chords are fully connected together " +
+                        "and the airways are fully blocked by them. In this case, the amount of air that " +
+                        "is pushed through them is proportional to the air pressure, which is proportional to the loudness " +
+                        "\n\n" +
+                        "The Abductive closure is when the vocal chords are only partially connected " +
+                        "and more air can pass through them without increasing the pressure and the loudness. " +
+                        "In this case, the portion of white noise in a voice is increased, " +
+                        "making the voice sound more airy " +
+                        "\n\n" +
+                        "The sound production with Abductive closure of the vocal chords is called Subtone " +
+                        "\n\n" +
+                        "The Subtone sometimes is used in acting for an epic effect! " +
+                        "and tbh it is cool to just occasionally talk like this " +
+                        "",
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            readerComponents.HeaderTextBlock_Centred(
+                "Subtone - Exercise 1",
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
+                        "Let's learn how to speak with a Subtone" +
+                        "\n\n" +
+                        "While pronouncing a standard A, exhale the additional air. " +
+                        "You'll hear the subtoned sound. In this configuration we're doing a forced subtone " +
+                        "by building up additional pressure in order to push more air through the vocal chords. " +
+                        "Try relaxing the vocal chords closure muscles, but keep the same pitch, " +
+                        "this way you can achieve an effortless Subtone production. " +
+                        "When you're speaking with a Subtone, you may see an additional noise " +
+                        "(light areas around the harmonic lines) on the spectrogram below " +
+                        "\n\n" +
+                        "[PLACE THE PITCH GRAPH AND THE SPECTROGRAM HERE]" +
+                        "",
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            readerComponents.HeaderTextBlock_Centred(
+                "Prosody",
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
+                        "People usually assign many different meanings to Prosody, " +
+                        "but in our case, we will talk about it as " +
+                        "a technical measure of how much a pitch changes during speech " +
+                        "\n\n" +
+                        "Prosody does affect the gender perception of a voice, but not much. " +
+                        "Feminine voices tends to have higher prosody and " +
+                        "masculine voices tends to have lower prosody " +
+                        "\n\n" +
+                        "Prosody, despite being simple enough to measure, is a complex behaviour mechanism " +
+                        "that serves as a way to express emotions and meanings. " +
+                        "Meanwhile, some people are prosody-insensitive (they do not have an " +
+                        "emotional connection between prosody and their emotional expressions), " +
+                        "so they tend to have their own way of speaking with a certain prosody " +
+                        "that is not attached to anything " +
+                        "",
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            readerComponents.HeaderTextBlock_Centred(
+                "Prosody - Exercise 1",
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
+                        "As we already established, the prosody in our context is " +
+                        "a simple measurement of changes in pitch. " +
+                        "So now, try speaking with a rapidly changing or a flat pitch. " +
+                        "See how the dynamic of changes in a pitch affects prosody " +
+                        "\n\n" +
+                        "[PLACE THE PITCH GRAPH AND THE PROSODY GRAPH HERE]" +
+                        "\n\n" +
+                        "$ When the sunlight strikes raindrops in the air, they act as a prism and form a rainbow. " +
+                        "The rainbow is a division of white light into many beautiful colors. " +
+                        "These take the shape of a long round arch, with its path high above, " +
+                        "and its two ends apparently beyond the horizon. $",
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            readerComponents.HeaderTextBlock_Centred(
+                "Twang",
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
+                        "Twang is a special type of resonance that occurs when a person " +
+                        "uses the specific muscles inside the throat or the nose to " +
+                        "partially occlude the airways, creating a sharp nasal sound " +
+                        "\n\n" +
+                        "Twang is not affecting the gender perception of a voice, but " +
+                        "it has a great effect on overall perception. " +
+                        "A high value of twang can make a voice to be perceived as artificial or played ",
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            readerComponents.HeaderTextBlock_Centred(
+                "Twang - Exercise 1",
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
+                        "The easiest way to find a Twang, is to mimic the sound of a cat. " +
+                        "Say prolonged meow and pay attention to the vibrations at the very back of your mouth," +
+                        "that is gonna be the Twang. " +
+                        "\n\n" +
+                        "As the next step, try saying an A, I, O, U with and without twang. " +
+                        "Also try speaking with and without twang " +
+                        "\n\n" +
+                        "[PLACE THE SPECTROGRAM HERE]" +
+                        "\n\n" +
+                        "$ When the sunlight strikes raindrops in the air, they act as a prism and form a rainbow. " +
+                        "The rainbow is a division of white light into many beautiful colors. " +
+                        "These take the shape of a long round arch, with its path high above, " +
+                        "and its two ends apparently beyond the horizon. $",
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            readerComponents.HeaderTextBlock_Centred(
+                "Vocal Weight",
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
+                        "Vocal weight is the second most important parameter for achieving " +
+                        "the desired gender perception of a voice " +
+                        "\n\n" +
+                        "Vocal Weight is also known as Thickness. In this guide, we're gonna call " +
+                        "a voice with a High Vocal Weight as Thick and a voice with a Low Vocal Weight as Thin " +
+                        "\n\n" +
+                        "Vocal Weight is the measurement of buzziness of a voice, " +
+                        "which is influenced by the tension of the peripheral " +
+                        "vocal muscles around the vocal chords. " +
+                        "There is a distinct switching point between thick and thin modes of a voice " +
+                        "\n\n" +
+                        "Masculine voices tends to be more buzzy than feminine voices " +
+                        "\n\n" +
+                        "We can see a presence of buzziness in a voice using the Spectrogram. " +
+                        "The buzziness will show up as an additional noise around bottom harmonic lines, " +
+                        "making the lines thicker " +
+                        "",
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            readerComponents.HeaderTextBlock_Centred(
+                "Vocal Weight - Exercise 1",
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
+                        "As a starting point, we're gonna use a natural tendency of a voice " +
+                        "to get lighter on higher pitches " +
+                        "\n\n" +
+                        "SAY an A and slide the PITCH UP while trying two things: " +
+                        "Try maintaining the same thickness " +
+                        "and try allowing your voice to naturally go thin on its own. " +
+                        "Do not bring your pitch too high, it is better to avoid switching pitch registers. " +
+                        "Your main goal here is to understand how is a thin and thick voice sounds like. " +
+                        "\n\n" +
+                        "Vocal Weight can be controlled by the group of muscles spatially close to the pitch muscles, " +
+                        "but Vocal Weight is Not Pitch and Not Resonance. Remember it " +
+                        "\n\n" +
+                        "After you'll gain control over Vocal Weight in a higher pitch region, " +
+                        "the next step is bringing the thinness to a lower pitch. " +
+                        "Start from a thick and low sound. Bring it up and go thin. " +
+                        "Then, bring the sound back, while maintaining its thinness. " +
+                        "Take a look at the spectrogram. If you're bringing the thin sound down correctly, " +
+                        "you'll see that harmonic lines are becoming thinner " +
+                        "\n\n" +
+                        "[PLACE THE SPECTROGRAM HERE]" +
+                        "",
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            readerComponents.HeaderTextBlock_Centred(
+                "Vocal Weight - Exercise 2",
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
+                        "When you're going from modal voice to falsetto and vice versa, " +
+                        "you can hear the sharp switch that occurs. " +
+                        "Our goal is to do the same thing but with the Vocal Weight " +
+                        "\n\n" +
+                        "Hold an A at the same pitch and try to use your previous knowledge of " +
+                        "muscles to go from thick to thin. If you struggle to make it, " +
+                        "exhale short bursts of air (do not hiss them), " +
+                        "they're supposed to help you to go thin " +
+                        "If you're successfully lowering your Voice Weight, " +
+                        "the harmonic lines on the spectrogram will stay on the same level, " +
+                        "but they'll become thinner " +
+                        "\n\n" +
+                        "[PLACE THE SPECTROGRAM HERE]" +
+                        "\n\n" +
+                        "Now, let's make sure that we're actually doing the right thing. " +
+                        "There is an important difference between breathy thinness and true true thinness. " +
+                        "Breathy thinness is when you utilizing the resonance instead of " +
+                        "the vocal chords peripheral muscles " +
+                        "\n\n" +
+                        "When you're doing a breathy thinness, you still in a thick mode and " +
+                        "it is very difficult to gracefully start a sound. " +
+                        "When you're in a true thin mode, you can start sounds really smooth " +
+                        "\n\n" +
+                        "Try to blandly start an A sound. If you can slowly move from silence to sound, " +
+                        "it means that you're in a thin mode. The abrupt start of the sound means a thick mode " +
+                        "\n\n" +
+                        "Practice thinness and thickness and don't forget to check yourself " +
+                        "",
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            readerComponents.HeaderTextBlock_Centred(
+                "Vocal Weight - Exercise 3",
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
+                        "Now, we are gonna use a semi-occlusion technique to find thinness " +
+                        "\n\n" +
+                        "Say an M sound with your lips closed, then try to go thin. " +
+                        "You'll hear how the sound changes from sharp and buzzy to more gentle and smooth. " +
+                        "\n\n" +
+                        "The important part here is that you need to watch closely for an M sound. " +
+                        "If your sound changes form M to something breathy in between an M and N - " +
+                        "you're doing a thin M incorrectly. " +
+                        "You need to stay inside the M sound, but make it thin " +
+                        "\n\n" +
+                        "You can also do this with an initial N sound. " +
+                        "And also you can block one or both of your nostrils (not fully) " +
+                        "to build up a pressure, which will help you find thinness more easily " +
+                        "\n\n" +
+                        "When you're gonna succeed with finding a thin M or N, " +
+                        "try slowly opening your mouth while maintaining thinness. " +
+                        "You'll hear an A or AE " +
+                        "\n\n" +
+                        "Try speaking with a thin and a thick sound " +
+                        "\n\n" +
+                        "[PLACE THE SPECTROGRAM HERE]" +
+                        "\n\n" +
+                        "$ When the sunlight strikes raindrops in the air, they act as a prism and form a rainbow. " +
+                        "The rainbow is a division of white light into many beautiful colors. " +
+                        "These take the shape of a long round arch, with its path high above, " +
+                        "and its two ends apparently beyond the horizon. $",
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            readerComponents.HeaderTextBlock_Centred(
+                "False Vocal Chords",
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
+                        "False Vocal Chords a.k.a. the False Folds are not very influential to a gender perception of a voice, " +
+                        "however, they are the most important parameter for achieving a natural sounding voice " +
+                        "\n\n" +
+                        "The engaged False Folds are making a sound tense, tight, chocked, constraint, labored " +
+                        "\n\n" +
+                        "The False Folds may seem close to the vocal weight, and they are related in some ways, " +
+                        "but actually, it is a different parameter " +
+                        "\n\n" +
+                        "The False Folds feel higher in the throat compared to the Vocal Chords " +
+                        "\n\n" +
+                        "Retraction of the False Folds is an act of effort, not the absence of constriction " +
+                        "\n\n" +
+                        "The False Folds tends to engage during high resonance, so it is a challenge to " +
+                        "overcome this natural tendency during a feminizing voicetraining " +
+                        "\n\n" +
+                        "Accidental False Folds constriction is one of the most common mistakes during " +
+                        "a voicetraining / voice alteration process " +
+                        "\n\n" +
+                        "In this chapter, we're gonna use the terms Constriction and Retraction to " +
+                        "refer to the False Folds's state " +
+                        "",
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            readerComponents.HeaderTextBlock_Centred(
+                "False Vocal Chords - Exercise 1",
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
+                        "Stick out your tongue and squeeze the airstream as you exhale. " +
+                        "Try using the deepest part of your throat to do so. Feel the constriction. " +
+                        "After you squeezed the airstream, reverse the action to fully open your airways." +
+                        "Feel the retraction " +
+                        "\n\n" +
+                        "Then, try saying an A after you open your airstream. You will hear the clean soft sound. " +
+                        "Practice keeping the sound clean. You may do so even without sticking out your tongue, " +
+                        "just make sure that you're not accidentally squeezing the airflow with your tongue " +
+                        "\n\n" +
+                        "You should see less noise on the spectrogram when you're speaking with retraction " +
+                        "\n\n" +
+                        "[PLACE THE SPECTROGRAM HERE]" +
+                        "",
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            readerComponents.HeaderTextBlock_Centred(
+                "False Vocal Chords - Exercise 2",
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
+                        "Plug your ears with your fingers or with something else. " +
+                        "Say an H sound and then try to squeeze and squeeze the airflow " +
+                        "in the back of your throat, as you did it before. " +
+                        "You'll hear the sound that can be either constrained and squeezed or " +
+                        "unconstrained and almost inaudible. " +
+                        "If the sound is unconstrained, it means that you're successfully retracting " +
+                        "the vocal folds and vice versa. " +
+                        "\n\n" +
+                        "Plugging the ears helps us isolate the sound made by the False Folds from the turbulence. " +
+                        "Many people describe the feeling of retraction as a feeling of " +
+                        "widening / cooling / smiling inside the throat. " +
+                        "You can try using short gasps to achieve an automatic retraction. " +
+                        "Practice switching between constriction and retraction while pronouncing an H " +
+                        "\n\n" +
+                        "The spectrogram will help you see the noise " +
+                        "\n\n" +
+                        "[PLACE THE SPECTROGRAM HERE]" +
+                        "\n\n" +
+                        "Then, practice speaking with constricted or retracted vocal folds " +
+                        "\n\n" +
+                        "$ When the sunlight strikes raindrops in the air, they act as a prism and form a rainbow. " +
+                        "The rainbow is a division of white light into many beautiful colors. " +
+                        "These take the shape of a long round arch, with its path high above, " +
+                        "and its two ends apparently beyond the horizon. $",
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            readerComponents.HeaderTextBlock_Centred(
+                "Front Muscles and Speaking Patterns",
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
+                        "As you can see, in this guide we covered a lot of parameters that are " +
+                        "influencing gender perception of a voice " +
+                        "\n\n" +
+                        "All covered parameters are controlled by the structures at the back of the mouth " +
+                        "and the throat area. They're responsible for 80%+ of gender perception. " +
+                        "Another 10% are behaviour patterns, which are tied with your personality, not your skills. " +
+                        "And the final 10% are tied with the structures at the front of your mouth, " +
+                        "let's call them FMIVP (Front Muscle Influenced Voice Parameters) ... " +
+                        "\n\n" +
+                        "It is important to know that FMIVP exist. " +
+                        "There are some examples: \n" +
+                        "\n    * Sharpness / Dullness " +
+                        "\n    * Projected R / Muffled R " +
+                        "\n    * Aspiration " +
+                        "\n    * Nasalization " +
+                        "\n\n" +
+                        "Some FMIVP can influence the gender perception of a voice. " +
+                        "However, we are not gonna talk about them in this guide for a good reason. " +
+                        "FMIVP are not universal for all people. The defaults of FMIVP values are completely tied " +
+                        "to a specific language and an accent that the person is talking with. " +
+                        "The subtle difference in FMIVP between genders is often overshadowed by a multitude of factors, " +
+                        "that are way different from what we are covering here FMIVP deserve their own guide! " +
+                        "\n\n" +
+                        "So yeah, the FMIVP are acknowledged! " +
+                        "",
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            readerComponents.HeaderTextBlock_Centred(
+                "Voicetraining progression",
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
+                        "Conclusion" +
+                        "\n\n" +
+                        "In this short guide we've explored the basic parameters of a human " +
+                        "voice, and how some of them are affecting the gender perception of the voice" +
+                        "\n\n" +
+                        "Now, We have some Tips&Tricks for You!" +
+                        "",
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            readerComponents.HeaderTextBlock_Centred(
+                "Day to Day training",
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
+                        "We already said so, but it is important to say it again. " +
+                        "Oftentimes it is physically impossible for an unvoicetrained individual " +
+                        "to just hop in and start speaking with a desired voice, " +
+                        "because doing so requires muscles, which we need to build first. " +
+                        "\n\n" +
+                        "It is possible to build the necessary muscles by doing voicetraining a.k.a. practicing. " +
+                        "The muscle building can take about a month or several. " +
+                        "Once muscles are built, they will never go away if " +
+                        "you will use them for your desired voice on a daily basis " +
+                        "\n\n" +
+                        "Warmups are important. Start your voicetraining sessions from a light exercises " +
+                        "and then gradually increase the difficulty " +
+                        "\n\n" +
+                        "Awareness is the key to progress. Keep in mind, that you can always spent " +
+                        "enormous amounts of effort just to achieve nothing, because " +
+                        "a voicetraining, as any other area of life, does not appreciate people who work hard. " +
+                        "If you want to achieve a meaningful results, you need to first build " +
+                        "the understanding of the system that you dealing with. " +
+                        "Work Hard and Work Smart - this is the only path to success! " +
+                        "",
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            readerComponents.HeaderTextBlock_Centred(
+                "Recording the progress",
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
+                        "Recording your progress is very important to success, " +
+                        "because only this way you can truly see the changes and the progress " +
+                        "\n\n" +
+                        "Record your best moments so you can go back to them if you ever feel lost " +
+                        "\n\n" +
+                        "The app has all necessary features to make a recording process as easy as possible. " +
+                        "Use the save button on the recording bar and access your recordings through the recordings menu " +
+                        "\n\n" +
+                        "If the dysphoria hits you hard whenever you're listening to your voice, " +
+                        "then I (Ketaslava Ket) really wanna say that I support you " +
+                        "and wish you a voice that you will like! Keep going and I believe in you! " +
+                        "",
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            readerComponents.HeaderTextBlock_Centred(
+                "Tips&Tricks, Avoiding Mistakes",
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
+                        "1. It is a good idea to have a foundational phrase that you will use " +
+                        "as a sample text that you can say on demand. This way, it will be easier for you " +
+                        "to quickly come back to your voice and to focus on details rather than on pronunciation " +
+                        "",
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            readerComponents.HeaderTextBlock_Centred(
+                "Refinement and Normalization",
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
+                        "There is a very common myth that you can often hear about many things, " +
+                        "including a voicetraining. It says that \"You can never achieve a 100% result " +
+                        "in changing a behaviour. No matter what you do, there always would be some " +
+                        "part that will stay unchangeable. The first acquired behaviour is " +
+                        "hardwired inside the brain forever.\" This is an incorrect statement " +
+                        "\n\n" +
+                        "Any acquired behaviour forms a neural pathways inside your brain, and any means any. " +
+                        "There is no fundamental difference between the first acquisition and all the next. " +
+                        "Even if the first behaviour will not be completely overwritten, the new behaviour " +
+                        "still can fully displace the old through an overcorrection " +
+                        "\n\n" +
+                        "The overcorrection is a situation when the features of a new behavior are " +
+                        "amplified beyond 100%. As an example: If you want to feminize a masculine voice, " +
+                        "there is a good reason to learn a hyper feminine voice. The hyper feminine voice " +
+                        "will be the overcorrective behaviour that will lay on top of the old masculine voice " +
+                        "resulting in a voice baseline shift to a normal feminine voice " +
+                        "\n\n" +
+                        "This logic is fully applicable to any human behaviour, " +
+                        "including habits, routines, accents, thoughts, etc. " +
+                        "The core struggle here is to gain a sufficient conscious understanding of a behaviour " +
+                        "that we want to correct in order to apply overcorrective measures. " +
+                        "Pure mimicry without conscious understanding will not be able to produce " +
+                        "an overcorrective behaviour most of the time " +
+                        "\n\n" +
+                        ". . ." +
+                        "\n\n" +
+                        "The prevalent behaviour is always amplifies itself. If you're speaking with a new " +
+                        "voice only occasionally, it will experience a constant suppression by the old voice, " +
+                        "and it will tend to disappear over time. However, if you'll use the new voice more than " +
+                        "51% of the time, it will amplify itself and it will suppress the old voice, " +
+                        "over time making itself the new baseline " +
+                        "",
+            )
+
+            Spacer(modifier = Modifier.height(128.dp))
+        },
+        {
+            Spacer(modifier = Modifier.height(24.dp))
+
+            readerComponents.HeaderTextBlock_Centred(
+                "Credits, Peace!",
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
+                        "That was the Gender Affirming Voicetraining Guide " +
+                        "for OpenAudioTools " +
+                        "\n\n" +
+                        "The guide was made by Ketaslava Ket and KTVINCCO Team " +
+                        "\n\n" +
+                        "We hope you've enjoyed it! " +
+                        "\n\n" +
+                        "We're really want to say a Big Thank You to all creators who are inspired our work " +
+                        "with a good knowledge and accessible materials. They are probably have " +
+                        "absolutely no idea about our existence, but we want to give them a credit: \n" +
+                        "\n    * YukkoEX " +
+                        "\n    * Zheanna Erose from TranVoiceLessons.com " +
+                        "\n    * FairyPrincessLucy " +
+                        "\n    * AYSL " +
+                        "\n\n" +
+                        "Yaay " +
+                        "\n\n" +
+                        "Peace! " +
+                        "",
             )
 
             Spacer(modifier = Modifier.height(128.dp))
