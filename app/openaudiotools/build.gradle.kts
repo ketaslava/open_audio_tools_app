@@ -42,7 +42,7 @@ val generateAppInfo by tasks.registering {
 
 kotlin {
 
-    androidLibrary {
+    android {
         namespace = "com.ktvincco.openaudiotools"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
