@@ -50,20 +50,21 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
             Spacer(modifier = Modifier.height(24.dp))
 
             readerComponents.HeaderTextBlock_Centred(
-                "Sound Analysis Guide"
+                "Sound Analysis Guide",
             )
 
             Spacer(modifier = Modifier.height(32.dp))
 
             readerComponents.TextBlock_Centred(
-                "In this guide, We're gonna explain to you, how to analyze the sounds using our app" +
+                "" +
+                        "In this guide, We're gonna explain to you, how to analyze a sound using our app " +
                         "\n\n" +
                         "This is a general guide on how our app works. Nothing special. " +
-                        "We have other guides for specific use cases, such as voicetraining" +
+                        "We possess other guides for specific use cases, such as a voicetraining " +
                         "\n\n" +
                         "Whatever..." +
                         "\n\n" +
-                        "Let's GO!"
+                        "Let's GO!",
             )
 
             Spacer(modifier = Modifier.height(128.dp))
@@ -73,16 +74,17 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
             Spacer(modifier = Modifier.height(24.dp))
 
             readerComponents.HeaderTextBlock_Centred(
-                "Bragging about the Data"
+                "Bragging about the Data",
             )
 
             Spacer(modifier = Modifier.height(32.dp))
 
             readerComponents.TextBlock_Centred(
-                "There are several types of data charts in our app" +
+                "" +
+                        "There are several types of data charts in our app " +
                         "\n\n" +
-                        "Here, we have a classic line chart:\n" +
-                        "(very real and absolutely adorable)"
+                        "Here, we have a classic line chart: \n" +
+                        "(very real and absolutely adorable) ",
             )
 
             Spacer(modifier = Modifier.height(32.dp))
@@ -103,14 +105,15 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
             Spacer(modifier = Modifier.height(32.dp))
 
             readerComponents.TextBlock_Centred(
-                "RN, it show us something" +
+                "" +
+                        "RN, it is showing us something " +
                         "\n\n" +
-                        "idk what exactly it shows, but it's definitely changes over time, " +
-                        "from 0.0 to 0.75 in a non linear manner" +
+                        "idk what exactly it shows, but it is definitely changes over time, " +
+                        "from 0.0 to 0.75 in a non linear manner " +
                         "\n\n" +
-                        "..." +
+                        ". . ." +
                         "\n\n" +
-                        "This is a Spectrogram:"
+                        "This is a Spectrogram: ",
             )
 
             Spacer(modifier = Modifier.height(32.dp))
@@ -153,7 +156,7 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
             Spacer(modifier = Modifier.height(32.dp))
 
             readerComponents.TextBlock_Centred(
-                "It shows us the energy distribution for each frequency over time"
+                "It shows us the energy distribution for each frequency over time ",
             )
 
             Spacer(modifier = Modifier.height(128.dp))
@@ -169,8 +172,10 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
             Spacer(modifier = Modifier.height(32.dp))
 
             readerComponents.TextBlock_Centred(
-                "Our app can analyze parameters of the voice in real time\n\n" +
-                        "(use control buttons to record the sample your voice)"
+                "" +
+                        "Our app can analyze parameters of a voice in real time " +
+                        "\n\n" +
+                        "(use control buttons to record a sample of your voice) ",
             )
 
             Spacer(modifier = Modifier.height(32.dp))
@@ -218,17 +223,18 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
             Spacer(modifier = Modifier.height(32.dp))
 
             readerComponents.TextBlock_Centred(
-                "As you may see, the graph shows the Loudness and the Pitch of your voice over time" +
+                "" +
+                        "As you may see, the graph shows us the Loudness and the Pitch of your voice over time " +
                         "\n\n" +
-                        "You can scroll and zoom the graph to see the full picture" +
+                        "You can scroll and zoom the graph to see a full picture " +
                         "\n\n" +
                         "Take a look at the control buttons. Beside obvious \"Record\" and \"Play\" buttons, you can press " +
-                        "\"Delete\" to delete the recorded sample, or you can save it, using the \"Save\" button." +
+                        "the \"Delete\" button to delete the recorded sample, or you can save it, using the \"Save\" button " +
                         "\n\n" +
-                        "Saved recordings are stored inside the recordings library. You can access them trough the menu. " +
-                        "After saving the recording, feel free to reset the recorder" +
+                        "Saved recordings are stored inside a recordings library. You can access them through the menu. " +
+                        "After saving the recording, feel free to reset the recorder " +
                         "\n\n" +
-                        "You can always load saved recordings to see the parameters again"
+                        "You can always load saved recordings to see the parameters again "
             )
 
             Spacer(modifier = Modifier.height(128.dp))
@@ -250,7 +256,7 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
                         "\n\n" +
                         "Now you know how to use our app!" +
                         "\n\n" +
-                        "Happy UX !!!"
+                        "Happy UX !!!!"
             )
 
             Spacer(modifier = Modifier.height(128.dp))

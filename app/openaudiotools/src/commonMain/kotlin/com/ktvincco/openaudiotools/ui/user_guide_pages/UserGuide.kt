@@ -59,10 +59,11 @@ class UserGuide (modelData: ModelData) : MultiPageReader(modelData) {
             Spacer(modifier = Modifier.height(32.dp))
 
             readerComponents.TextBlock_Centred(
-                "We're happy to see you!" +
+                "" +
+                        "We're happy to see you!" +
                         "\n\n" +
-                        "This app was created to to empower the user with absolutely fantastic tools to analyze sounds (especially human voices)\n\n" +
-                        "And now, We're gonna explain to you How Does It Actually Works" +
+                        "This app was created to empower the user with absolutely fantastic tools to analyze sounds (especially human voices)\n\n" +
+                        "And now, We're gonna explain to you How Does It Actually Work" +
                         "\n\n" +
                         "& How You can use Our App to reach Your Goals!" +
                         "\n\n" +
