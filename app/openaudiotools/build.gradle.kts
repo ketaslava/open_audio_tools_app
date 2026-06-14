@@ -11,26 +11,9 @@ repositories {
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
-    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.androidKotlinMultiplatform)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-}
-
-dependencies {
-    implementation(libs.androidx.foundation.layout.android)
-    implementation(libs.androidx.foundation.android)
-    implementation(libs.androidx.material3.android)
-    implementation(libs.androidx.ui.android)
-    implementation(libs.androidx.compose.material)
-    implementation(libs.androidx.runtime.android)
-    implementation(libs.androidx.ui.geometry.android)
-    implementation(libs.androidx.ui.unit.android)
-    implementation(libs.androidx.ui.text.android)
-    implementation(libs.kotlinx.datetime)
-    debugImplementation(libs.ui.tooling)
-    implementation(libs.kotlinx.coroutines.core)
-    implementation(libs.kotlinx.coroutines.swing)
-    implementation(libs.androidx.activity.ktx)
 }
 
 // Settings
@@ -40,48 +23,36 @@ val appName = "OpenAudioTools"
 val version = "2.4.8" // == CHANGE BEFORE RELEASE (1/6) == //
 val androidVersionCode = 20 // == CHANGE BEFORE RELEASE (2/6) == //
 
+// Auto update app version in configs
+val generateAppInfo by tasks.registering {
+    doLast {
+        val dir = project.layout.buildDirectory.dir("generated/appinfo/com/ktvincco/openaudiotools").get().asFile
+        dir.mkdirs()
+        val file = dir.resolve("AppInfo.kt")
+        file.writeText("""
+            package com.ktvincco.openaudiotools
+            
+            object AppInfo {
+                const val NAME = "$appName"
+                const val VERSION = "$version"
+            }
+        """.trimIndent())
+    }
+}
+
 kotlin {
 
-    androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        compilerOptions {
-            jvmTarget.set(JvmTarget.JVM_11)
-        }
+    androidLibrary {
+        namespace = "com.ktvincco.openaudiotools"
+        compileSdk = libs.versions.android.compileSdk.get().toInt()
+        minSdk = libs.versions.android.minSdk.get().toInt()
     }
 
     jvm("desktop")
-
-    /* // DEV // Disabled
-    @OptIn(ExperimentalWasmDsl::class)
-    wasmJs {
-        moduleName = "openaudiotools"
-        browser {
-            val rootDirPath = project.rootDir.path
-            val projectDirPath = project.projectDir.path
-            commonWebpackConfig {
-                outputFileName = "openaudiotools.js"
-                devServer = (devServer ?: KotlinWebpackConfig.DevServer()).apply {
-                    static = (static ?: mutableListOf()).apply {
-                        // Serve sources to debug inside browser
-                        add(rootDirPath)
-                        add(projectDirPath)
-                    }
-                }
-            }
-        }
-        binaries.executable()
-    }*/
     
     sourceSets {
-        val androidMain by getting {
-            dependencies {
-                implementation(libs.ui.tooling.preview)
-                implementation(libs.androidx.activity.compose)
-                implementation(libs.androidx.lifecycle.process)
-                implementation(libs.play.services.ads)
-            }
-        }
         val commonMain by getting {
+            kotlin.srcDir(generateAppInfo)
             dependencies {
                 implementation(libs.runtime)
                 implementation(libs.foundation)
@@ -92,51 +63,36 @@ kotlin {
                 implementation(libs.androidx.lifecycle.viewmodel)
                 implementation(libs.androidx.lifecycle.runtime.compose)
                 implementation(libs.kotlinx.serialization.json)
+                implementation(libs.kotlinx.datetime)
+                implementation(libs.kotlinx.coroutines.core)
+            }
+        }
+        val androidMain by getting {
+            dependencies {
+                implementation(libs.ui.tooling.preview)
+                implementation(libs.androidx.activity.compose)
+                implementation(libs.androidx.lifecycle.process)
+                implementation(libs.play.services.ads)
+                
+                // Moved from top-level
+                implementation(libs.androidx.foundation.layout.android)
+                implementation(libs.androidx.foundation.android)
+                implementation(libs.androidx.material3.android)
+                implementation(libs.androidx.ui.android)
+                implementation(libs.androidx.compose.material)
+                implementation(libs.androidx.runtime.android)
+                implementation(libs.androidx.ui.geometry.android)
+                implementation(libs.androidx.ui.unit.android)
+                implementation(libs.androidx.ui.text.android)
+                implementation(libs.androidx.activity.ktx)
             }
         }
         val desktopMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
+                implementation(libs.kotlinx.coroutines.swing)
             }
         }
-        /*val wasmJsMain by getting {
-            dependencies {
-            }
-        }*/
-    }
-}
-
-android {
-    namespace = "com.ktvincco.openaudiotools"
-    compileSdk = libs.versions.android.compileSdk.get().toInt()
-
-    defaultConfig {
-        applicationId = "com.ktvincco.openaudiotools"
-        minSdk = libs.versions.android.minSdk.get().toInt()
-        targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = androidVersionCode
-        versionName = version
-    }
-    packaging {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
-    }
-    buildTypes {
-        release {
-
-            // Mapping
-            isMinifyEnabled = false
-
-            // Debug symbols
-            ndk {
-                debugSymbolLevel = "FULL"
-            }
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
     }
 }
 
@@ -164,19 +120,3 @@ compose.desktop {
         }
     }
 }
-
-// Auto update app version in configs
-tasks.register("generateAppInfo") {
-    doLast {
-        val file = file("src/commonMain/kotlin/com/ktvincco/openaudiotools/AppInfo.kt")
-        file.writeText("""
-            package com.ktvincco.openaudiotools
-            
-            object AppInfo {
-                const val NAME = "$appName"
-                const val VERSION = "$version"
-            }
-        """.trimIndent())
-    }
-}
-tasks.getByName("preBuild").dependsOn("generateAppInfo")

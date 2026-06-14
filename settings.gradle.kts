@@ -29,3 +29,4 @@ dependencyResolutionManagement {
 }
 
 include(":app:openaudiotools")
+include(":androidApp")
