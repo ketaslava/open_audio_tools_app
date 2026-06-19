@@ -106,9 +106,9 @@ class BasicComponents {
         modelData: ModelData,
         text: String,
         isAppearActive: Boolean = true,
-        activeButtonColor: Color = ColorPalette.getButtonColor(),
+        buttonColor: Color = ColorPalette.getButtonColor(),
+        textColor: Color = ColorPalette.getTextColor(),
         inactiveButtonColor: Color = ColorPalette.getButtonColor().copy(alpha = 0.33F),
-        activeTextColor: Color = ColorPalette.getTextColor(),
         inactiveTextColor: Color = ColorPalette.getTextColor().copy(alpha = 0.33F),
         cornerRadius: Dp = 16.dp,
         fontSize: TextUnit = 16.sp,
@@ -117,11 +117,11 @@ class BasicComponents {
         onClick: () -> Unit
     ) {
 
-        var buttonColor = activeButtonColor
-        var textColor = activeTextColor
+        var currentButtonColor = buttonColor
+        var currentTextColor = textColor
         if (!isAppearActive) {
-            buttonColor = inactiveButtonColor
-            textColor = inactiveTextColor
+            currentButtonColor = inactiveButtonColor
+            currentTextColor = inactiveTextColor
         }
 
         Row(
@@ -129,7 +129,7 @@ class BasicComponents {
             horizontalArrangement = Arrangement.Center,
             modifier = modifier
                 .clip(shape = RoundedCornerShape(cornerRadius))
-                .background(buttonColor)
+                .background(currentButtonColor)
                 .clickable {
                     onClick()
                 }
@@ -138,7 +138,7 @@ class BasicComponents {
                 text = text,
                 isTranslatable = false,
                 modelData = modelData,
-                color = textColor,
+                color = currentTextColor,
                 fontSize = fontSize,
                 modifier = Modifier.padding(textPadding)
             )

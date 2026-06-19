@@ -25,6 +25,7 @@ import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.ui.components.ReaderComponents
 import openaudiotools.app.openaudiotools.generated.resources.Res
 import openaudiotools.app.openaudiotools.generated.resources.arrow_downward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+import openaudiotools.app.openaudiotools.generated.resources.keta_with_a_magic_rod
 import org.jetbrains.compose.resources.painterResource
 
 
@@ -68,7 +69,23 @@ class TheGuideIsFinishedPage (
                     "Use the bottom menu to Navigate the App"
         )
 
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(64.dp))
+
+        Row (
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            Image(
+                painterResource(Res.drawable.keta_with_a_magic_rod),
+                null,
+                modifier = Modifier
+                    .fillMaxWidth()
+            )
+        }
+
+        Spacer(modifier = Modifier.height(64.dp))
 
         Row (
             verticalAlignment = Alignment.CenterVertically,

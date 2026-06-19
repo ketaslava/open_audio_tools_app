@@ -1,5 +1,6 @@
 package com.ktvincco.openaudiotools.ui.user_guide_pages
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -23,6 +24,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -37,6 +39,10 @@ import com.ktvincco.openaudiotools.ui.charts.GraphZone
 import com.ktvincco.openaudiotools.ui.components.MultiPageReader
 import com.ktvincco.openaudiotools.ui.components.ReaderComponents
 import com.ktvincco.openaudiotools.ui.components.RecordingControl
+import openaudiotools.app.openaudiotools.generated.resources.Res
+import openaudiotools.app.openaudiotools.generated.resources.arrow_downward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+import openaudiotools.app.openaudiotools.generated.resources.magic_rod
+import org.jetbrains.compose.resources.painterResource
 
 
 class UserGuide (modelData: ModelData) : MultiPageReader(modelData) {
@@ -71,6 +77,22 @@ class UserGuide (modelData: ModelData) : MultiPageReader(modelData) {
                         "\n\n" +
                         "[ Press the \"Next\" button ]")
 
+            Spacer(modifier = Modifier.height(64.dp))
+
+            Row (
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+            ) {
+                Image(
+                    painterResource(Res.drawable.magic_rod),
+                    null,
+                    modifier = Modifier
+                        .width(240.dp)
+                )
+            }
+
             Spacer(modifier = Modifier.height(128.dp))
         }, {
 
@@ -94,6 +116,7 @@ class UserGuide (modelData: ModelData) : MultiPageReader(modelData) {
                 modelData,
                 text = "Voice Improvement >",
                 fontSize = 18.sp,
+                buttonColor = Color.hsl(0F, 0F, 0.25F),
                 modifier = Modifier
                     .heightIn(min = 64.dp)
                     .fillMaxWidth()
@@ -109,6 +132,7 @@ class UserGuide (modelData: ModelData) : MultiPageReader(modelData) {
                 modelData,
                 text = "Sound Analysis >",
                 fontSize = 18.sp,
+                buttonColor = Color.hsl(0F, 0F, 0.25F),
                 modifier = Modifier
                     .heightIn(min = 64.dp)
                     .fillMaxWidth()

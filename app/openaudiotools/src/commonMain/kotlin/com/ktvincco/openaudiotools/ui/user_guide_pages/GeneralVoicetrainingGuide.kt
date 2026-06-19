@@ -14,6 +14,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -507,6 +508,7 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                 modelData,
                 text = "Gender Affirming Voicetraining >",
                 fontSize = 18.sp,
+                buttonColor = Color.hsl(0F, 0F, 0.25F),
                 modifier = Modifier
                     .heightIn(min = 64.dp)
                     .fillMaxWidth()
@@ -522,6 +524,7 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                 modelData,
                 text = "Finish the Guide >",
                 fontSize = 18.sp,
+                buttonColor = Color.hsl(0F, 0F, 0.25F),
                 modifier = Modifier
                     .heightIn(min = 64.dp)
                     .fillMaxWidth()

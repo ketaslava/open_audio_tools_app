@@ -23,9 +23,11 @@ import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.ui.components.BasicComponents
 import com.ktvincco.openaudiotools.ui.charts.Graph
 import com.ktvincco.openaudiotools.ui.charts.GraphZone
+import com.ktvincco.openaudiotools.ui.charts.Spectrogram
 import com.ktvincco.openaudiotools.ui.components.MultiPageReader
 import com.ktvincco.openaudiotools.ui.components.ReaderComponents
 import com.ktvincco.openaudiotools.ui.components.RecordingControl
+import com.ktvincco.openaudiotools.ui.components.graphNameText
 
 
 class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelData) {
@@ -349,10 +351,18 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "whisper wA, wI, wO, wU. See how some regions of the spectrum gets amplified. " +
                         "F1 and F2 here are 2 of the strongest lines (sometimes, they may be very hard to see). " +
                         "(an Energy Spectrogram is just a standard Spectrogram with a filter that " +
-                        "makes the energy distribution easier to see) " +
-                        "\n\n" +
-                        "[PLACE THE SPECTROGRAM AND THE ENERGY SPECTROGRAM HERE]" +
-                        "\n\n" +
+                        "makes the energy distribution easier to see) ",
+            )
+
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedSpectrogram()
+            IntegratedEnergySpectrogram()
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedRecordingControls()
+            Spacer(modifier = Modifier.height(36.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
                         "As you may see, each vowel corresponds to the specific set of values for F1 and F2. " +
                         "At the same time, those \"vowel specific values\" are higher for a feminine voice " +
                         "and lower for a masculine one. As an example, the formant values for a masculine A are " +
@@ -395,10 +405,17 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "\n\n" +
                         "Take a look at the Energy Spectrogram. While whispering wA, you will see " +
                         "the F1 line probably somewhere between 500 and 2000. This line will go higher " +
-                        "than it used to if you're successfully raising your larynx " +
-                        "\n\n" +
-                        "[PLACE THE ENERGY SPECTROGRAMS HERE]" +
-                        "\n\n" +
+                        "than it used to if you're successfully raising your larynx ",
+            )
+
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedEnergySpectrogram()
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedRecordingControls()
+            Spacer(modifier = Modifier.height(36.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
                         "If you struggle to make the wA softer, try making a hissing sound while again " +
                         "straining the muscles that you normally use to swallow. Make sure that you " +
                         "straining the muscles at the very back of your mouth (not the front or the middle) " +
@@ -442,9 +459,13 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "Remember, that formant values are different for each vowel. " +
                         "\n\n" +
                         "[PLACE THE ENERGY SPECTROGRAM AND THE F1 F2 RESONANCE CHART WITH A MARKINGS " +
-                        "FOR A GENDER PERCEPTION ZONES HERE]" +
-                        "",
+                        "FOR A GENDER PERCEPTION ZONES HERE]",
             )
+
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedEnergySpectrogram()
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedRecordingControls()
 
             Spacer(modifier = Modifier.height(128.dp))
         },
@@ -468,9 +489,15 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "changing the resonance (making the voice harder / softer). " +
                         "Hold an A, I, O, U while changing the resonance up and down " +
                         "\n\n" +
-                        "[PLACE THE PITCH GRAPH AND THE ENERGY SPECTROGRAM + F1 F2 CHART HERE]" +
+                        "[PLACE THE PITCH GRAPH AND THE ENERGY SPECTROGRAM AND F1 F2 CHART HERE]" +
                         "",
             )
+
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedPitchGraph()
+            IntegratedEnergySpectrogram()
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedRecordingControls()
 
             Spacer(modifier = Modifier.height(128.dp))
         },
@@ -493,10 +520,17 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "which I am sure you already have! " +
                         "\n\n" +
                         "The Pitch Graph still works fine for a speech tho, so you can use it as a tool to make sure " +
-                        "that you're not overusing the Pitch instead of changing the Resonance " +
-                        "\n\n" +
-                        "[PLACE THE PITCH GRAPH HERE]" +
-                        "\n\n" +
+                        "that you're not overusing the Pitch instead of changing the Resonance ",
+            )
+
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedPitchGraph()
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedRecordingControls()
+            Spacer(modifier = Modifier.height(36.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
                         "Remember, the muscle building takes time. Keep practicing the resonance, it is the most " +
                         "important factor for achieving the desired gender perception! " +
                         "\n\n" +
@@ -568,10 +602,18 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "Here is the Spectrogram and the Pitch graph. Say an A and see the harmonics (lines) " +
                         "appear on the spectrogram. The bottom line is the H1 a.k.a. Pitch. " +
                         "Move the pitch higher and lower as far as possible to train the full range. " +
-                        "You can focus only on achieving the desired range if you really want to " +
-                        "\n\n" +
-                        "[PLACE THE SPECTROGRAM AND THE PITCH GRAPH HERE]" +
-                        "\n\n" +
+                        "You can focus only on achieving the desired range if you really want to ",
+            )
+
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedSpectrogram()
+            IntegratedPitchGraph()
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedRecordingControls()
+            Spacer(modifier = Modifier.height(36.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
                         "(The pitch detection might get really flimsy if you will go above 512 Hz. " +
                         "We're working on it. You can help us by joining our team. " +
                         "Just send us a message and we'll respond to you with an extra happiness)",
@@ -598,10 +640,18 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "when the voice switches registers (around 250 Hz you'll see a gap in harmonic lines). " +
                         "After you notice the crack, try moving the pitch while staying within a single register " +
                         "(without cracking a voice). Your goal is to move the boundaries of the " +
-                        "Modal and Falsetto registers closer together (they may overlap, that's good) " +
-                        "\n\n" +
-                        "[PLACE THE PITCH GRAPH AND THE SPECTROGRAM HERE]" +
-                        "\n\n" +
+                        "Modal and Falsetto registers closer together (they may overlap, that's good) ",
+            )
+
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedPitchGraph()
+            IntegratedSpectrogram()
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedRecordingControls()
+            Spacer(modifier = Modifier.height(36.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
                         "Now, try speaking with the borderline pitch. Use the following text if you have nothing to say: " +
                         "\n\n" +
                         "$ When the sunlight strikes raindrops in the air, they act as a prism and form a rainbow. " +
@@ -665,11 +715,14 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "Try relaxing the vocal chords closure muscles, but keep the same pitch, " +
                         "this way you can achieve an effortless Subtone production. " +
                         "When you're speaking with a Subtone, you may see an additional noise " +
-                        "(light areas around the harmonic lines) on the spectrogram below " +
-                        "\n\n" +
-                        "[PLACE THE PITCH GRAPH AND THE SPECTROGRAM HERE]" +
-                        "",
+                        "(light areas around the harmonic lines) on the spectrogram below ",
             )
+
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedPitchGraph()
+            IntegratedSpectrogram()
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedRecordingControls()
 
             Spacer(modifier = Modifier.height(128.dp))
         },
@@ -717,10 +770,18 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "As we already established, the prosody in our context is " +
                         "a simple measurement of changes in pitch. " +
                         "So now, try speaking with a rapidly changing or a flat pitch. " +
-                        "See how the dynamic of changes in a pitch affects prosody " +
-                        "\n\n" +
-                        "[PLACE THE PITCH GRAPH AND THE PROSODY GRAPH HERE]" +
-                        "\n\n" +
+                        "See how the dynamic of changes in a pitch affects prosody ",
+            )
+
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedPitchGraph()
+            IntegratedProsodyGraph()
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedRecordingControls()
+            Spacer(modifier = Modifier.height(36.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
                         "$ When the sunlight strikes raindrops in the air, they act as a prism and form a rainbow. " +
                         "The rainbow is a division of white light into many beautiful colors. " +
                         "These take the shape of a long round arch, with its path high above, " +
@@ -767,10 +828,17 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "that is gonna be the Twang. " +
                         "\n\n" +
                         "As the next step, try saying an A, I, O, U with and without twang. " +
-                        "Also try speaking with and without twang " +
-                        "\n\n" +
-                        "[PLACE THE SPECTROGRAM HERE]" +
-                        "\n\n" +
+                        "Also try speaking with and without twang ",
+            )
+
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedSpectrogram()
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedRecordingControls()
+            Spacer(modifier = Modifier.height(36.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
                         "$ When the sunlight strikes raindrops in the air, they act as a prism and form a rainbow. " +
                         "The rainbow is a division of white light into many beautiful colors. " +
                         "These take the shape of a long round arch, with its path high above, " +
@@ -839,11 +907,13 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "Start from a thick and low sound. Bring it up and go thin. " +
                         "Then, bring the sound back, while maintaining its thinness. " +
                         "Take a look at the spectrogram. If you're bringing the thin sound down correctly, " +
-                        "you'll see that harmonic lines are becoming thinner " +
-                        "\n\n" +
-                        "[PLACE THE SPECTROGRAM HERE]" +
-                        "",
+                        "you'll see that harmonic lines are becoming thinner ",
             )
+
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedSpectrogram()
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedRecordingControls()
 
             Spacer(modifier = Modifier.height(128.dp))
         },
@@ -868,10 +938,17 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "they're supposed to help you to go thin " +
                         "If you're successfully lowering your Voice Weight, " +
                         "the harmonic lines on the spectrogram will stay on the same level, " +
-                        "but they'll become thinner " +
-                        "\n\n" +
-                        "[PLACE THE SPECTROGRAM HERE]" +
-                        "\n\n" +
+                        "but they'll become thinner ",
+            )
+
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedSpectrogram()
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedRecordingControls()
+            Spacer(modifier = Modifier.height(36.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
                         "Now, let's make sure that we're actually doing the right thing. " +
                         "There is an important difference between breathy thinness and true true thinness. " +
                         "Breathy thinness is when you utilizing the resonance instead of " +
@@ -917,12 +994,17 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "\n\n" +
                         "When you're gonna succeed with finding a thin M or N, " +
                         "try slowly opening your mouth while maintaining thinness. " +
-                        "You'll hear an A or AE " +
-                        "\n\n" +
-                        "Try speaking with a thin and a thick sound " +
-                        "\n\n" +
-                        "[PLACE THE SPECTROGRAM HERE]" +
-                        "\n\n" +
+                        "You'll hear an A or AE ",
+            )
+
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedSpectrogram()
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedRecordingControls()
+            Spacer(modifier = Modifier.height(36.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
                         "$ When the sunlight strikes raindrops in the air, they act as a prism and form a rainbow. " +
                         "The rainbow is a division of white light into many beautiful colors. " +
                         "These take the shape of a long round arch, with its path high above, " +
@@ -987,11 +1069,13 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "Practice keeping the sound clean. You may do so even without sticking out your tongue, " +
                         "just make sure that you're not accidentally squeezing the airflow with your tongue " +
                         "\n\n" +
-                        "You should see less noise on the spectrogram when you're speaking with retraction " +
-                        "\n\n" +
-                        "[PLACE THE SPECTROGRAM HERE]" +
-                        "",
+                        "You should see less noise on the spectrogram when you're speaking with retraction ",
             )
+
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedSpectrogram()
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedRecordingControls()
 
             Spacer(modifier = Modifier.height(128.dp))
         },
@@ -1020,10 +1104,17 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "You can try using short gasps to achieve an automatic retraction. " +
                         "Practice switching between constriction and retraction while pronouncing an H " +
                         "\n\n" +
-                        "The spectrogram will help you see the noise " +
-                        "\n\n" +
-                        "[PLACE THE SPECTROGRAM HERE]" +
-                        "\n\n" +
+                        "The spectrogram will help you see the noise ",
+            )
+
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedSpectrogram()
+            Spacer(modifier = Modifier.height(36.dp))
+            IntegratedRecordingControls()
+            Spacer(modifier = Modifier.height(36.dp))
+
+            readerComponents.TextBlock_AlignedStart(
+                "" +
                         "Then, practice speaking with constricted or retracted vocal folds " +
                         "\n\n" +
                         "$ When the sunlight strikes raindrops in the air, they act as a prism and form a rainbow. " +
@@ -1259,4 +1350,130 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
             Spacer(modifier = Modifier.height(128.dp))
         },
     )
+
+
+    @Composable
+    fun IntegratedSpectrogram() {
+
+        val pointerPosition = modelData.pointerPosition.collectAsState().value
+        val dataDurationSec = modelData.dataDurationSec.collectAsState().value
+        val recordingState = modelData.recordingState.collectAsState().value
+        val spectrogramData = modelData.getSpectrogramData("SpectrogramInHz")
+
+        graphNameText(modelData, "SpectrogramInHz")
+
+        Spectrogram().Spectrogram(
+            data = spectrogramData,
+            modelData = modelData,
+            xLabelMin = 0F,
+            xLabelMax = dataDurationSec,
+            yLabelMin = 0F,
+            yLabelMax = 100F,
+            horizontalLinesCount = 8,
+            autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
+            pointerPosition = pointerPosition,
+            isEnableAutoScroll = recordingState,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(256.dp)
+        )
+    }
+
+
+    @Composable
+    fun IntegratedEnergySpectrogram() {
+
+        val pointerPosition = modelData.pointerPosition.collectAsState().value
+        val dataDurationSec = modelData.dataDurationSec.collectAsState().value
+        val recordingState = modelData.recordingState.collectAsState().value
+        val energySpectrogramData = modelData.getSpectrogramData("EnergySpectrogramInHz")
+
+        graphNameText(modelData, "SpectrogramInHz")
+
+        Spectrogram().Spectrogram(
+            data = energySpectrogramData,
+            modelData = modelData,
+            xLabelMin = 0F,
+            xLabelMax = dataDurationSec,
+            yLabelMin = 0F,
+            yLabelMax = 100F,
+            horizontalLinesCount = 8,
+            autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
+            pointerPosition = pointerPosition,
+            isEnableAutoScroll = recordingState,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(256.dp)
+        )
+    }
+
+
+    @Composable
+    fun IntegratedPitchGraph() {
+
+        val pointerPosition = modelData.pointerPosition.collectAsState().value
+        val dataDurationSec = modelData.dataDurationSec.collectAsState().value
+        val recordingState = modelData.recordingState.collectAsState().value
+        val pitchData = modelData.getGraphData("Pitch")
+
+        graphNameText(modelData, "Pitch")
+
+        Graph().draw(
+            data = pitchData,
+            modelData = modelData,
+            xLabelMax = dataDurationSec,
+            yLabelMin = 50F,
+            yLabelMax = 500F,
+            horizontalLinesCount = 9,
+            pointerPosition = pointerPosition,
+            graphZones = listOf(
+                GraphZone(
+                    minLabel = 175F,
+                    maxLabel = 350F,
+                    color = ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
+                )
+            ),
+            isEnableAutoScroll = recordingState,
+            autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(350.dp)
+        )
+    }
+
+
+    @Composable
+    fun IntegratedProsodyGraph() {
+
+        val pointerPosition = modelData.pointerPosition.collectAsState().value
+        val dataDurationSec = modelData.dataDurationSec.collectAsState().value
+        val recordingState = modelData.recordingState.collectAsState().value
+        val prosody = modelData.getGraphData("Prosody")
+
+        graphNameText(modelData, "Prosody")
+        Graph().draw(
+            data = prosody,
+            modelData = modelData,
+            xLabelMax = dataDurationSec,
+            pointerPosition = pointerPosition,
+            graphZones = listOf(
+                GraphZone(
+                    minLabel = 0.25F,
+                    maxLabel = 0.75F,
+                    color = ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
+                )
+            ),
+            isEnableAutoScroll = recordingState,
+            autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(200.dp)
+        )
+    }
+
+
+    @Composable
+    fun IntegratedRecordingControls() {
+        RecordingControl(modelData).Draw()
+    }
 }
