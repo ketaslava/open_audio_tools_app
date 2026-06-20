@@ -315,6 +315,8 @@ class MainMenu (private val modelData: ModelData) {
 
             BasicComponents().HorizontalDivider(
                 color = ColorPalette.getMarkupColor(), thickness = 1.dp)
+
+            Spacer(modifier = Modifier.height(64.dp))
         }
     }
 
