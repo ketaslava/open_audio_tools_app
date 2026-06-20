@@ -34,10 +34,10 @@ import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.ui.components.BasicComponents
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.ui.PageRegistry
-import openaudiotools.app.openaudiotools.generated.resources.Res
-import openaudiotools.app.openaudiotools.generated.resources.arrow_downward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
-import openaudiotools.app.openaudiotools.generated.resources.arrow_forward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
-import openaudiotools.app.openaudiotools.generated.resources.menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+import com.ktvincco.openaudiotools.Res
+import com.ktvincco.openaudiotools.arrow_downward_24dp_e8eaed_fill0_wght400_grad0_opsz24
+import com.ktvincco.openaudiotools.arrow_forward_24dp_e8eaed_fill0_wght400_grad0_opsz24
+import com.ktvincco.openaudiotools.menu_24dp_e8eaed_fill0_wght400_grad0_opsz24
 import org.jetbrains.compose.resources.painterResource
 
 class MainMenu (private val modelData: ModelData) {
@@ -67,7 +67,7 @@ class MainMenu (private val modelData: ModelData) {
             )
 
             Image(
-                painterResource(Res.drawable.menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24),
+                painterResource(Res.drawable.menu_24dp_e8eaed_fill0_wght400_grad0_opsz24),
                 null,
                 modifier = Modifier
                     .width(32.dp)
@@ -346,8 +346,8 @@ class MainMenu (private val modelData: ModelData) {
 
                 Spacer(modifier = Modifier.width(16.dp))
 
-                val arrowIcon = if (isExpanded) Res.drawable.arrow_downward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
-                else Res.drawable.arrow_forward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+                val arrowIcon = if (isExpanded) Res.drawable.arrow_downward_24dp_e8eaed_fill0_wght400_grad0_opsz24
+                else Res.drawable.arrow_forward_24dp_e8eaed_fill0_wght400_grad0_opsz24
 
                 Image(
                     painterResource(arrowIcon),

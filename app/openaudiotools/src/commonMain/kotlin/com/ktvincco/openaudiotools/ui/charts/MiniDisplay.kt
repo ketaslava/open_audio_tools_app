@@ -31,8 +31,8 @@ import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.map
 import com.ktvincco.openaudiotools.presentation.ModelData
-import openaudiotools.app.openaudiotools.generated.resources.Res
-import openaudiotools.app.openaudiotools.generated.resources.triangle_pointer
+import com.ktvincco.openaudiotools.Res
+import com.ktvincco.openaudiotools.triangle_pointer
 import org.jetbrains.compose.resources.painterResource
 import kotlin.math.abs
 

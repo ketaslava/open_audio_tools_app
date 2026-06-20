@@ -41,9 +41,9 @@ import com.ktvincco.openaudiotools.getPlasmaColor
 import com.ktvincco.openaudiotools.map
 import com.ktvincco.openaudiotools.normalizeDecibels
 import com.ktvincco.openaudiotools.presentation.ModelData
-import openaudiotools.app.openaudiotools.generated.resources.Res
-import openaudiotools.app.openaudiotools.generated.resources.arrow_back_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
-import openaudiotools.app.openaudiotools.generated.resources.arrow_forward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+import com.ktvincco.openaudiotools.Res
+import com.ktvincco.openaudiotools.arrow_back_24dp_e8eaed_fill0_wght400_grad0_opsz24
+import com.ktvincco.openaudiotools.arrow_forward_24dp_e8eaed_fill0_wght400_grad0_opsz24
 import org.jetbrains.compose.resources.painterResource
 import kotlin.math.abs
 import kotlin.math.roundToInt
@@ -425,7 +425,7 @@ class Spectrogram {
                 ) {
                     Image(
                         painterResource(
-                            Res.drawable.arrow_back_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+                            Res.drawable.arrow_back_24dp_e8eaed_fill0_wght400_grad0_opsz24
                         ),
                         null,
                         modifier = Modifier
@@ -444,7 +444,7 @@ class Spectrogram {
 
                     Image(
                         painterResource(
-                            Res.drawable.arrow_forward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+                            Res.drawable.arrow_forward_24dp_e8eaed_fill0_wght400_grad0_opsz24
                         ),
                         null,
                         modifier = Modifier

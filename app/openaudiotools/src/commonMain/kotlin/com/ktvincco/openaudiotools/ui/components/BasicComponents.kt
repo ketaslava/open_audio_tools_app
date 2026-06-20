@@ -32,9 +32,9 @@ import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.presentation.ModelData
-import openaudiotools.app.openaudiotools.generated.resources.Res
-import openaudiotools.app.openaudiotools.generated.resources.check_box_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
-import openaudiotools.app.openaudiotools.generated.resources.check_box_outline_blank_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+import com.ktvincco.openaudiotools.Res
+import com.ktvincco.openaudiotools.check_box_24dp_e8eaed_fill0_wght400_grad0_opsz24
+import com.ktvincco.openaudiotools.check_box_outline_blank_24dp_e8eaed_fill0_wght400_grad0_opsz24
 import org.jetbrains.compose.resources.painterResource
 
 class BasicComponents {
@@ -62,9 +62,9 @@ class BasicComponents {
                     callback.invoke(isCheckboxChecked)
                 }
         ) {
-            var icon = Res.drawable.check_box_outline_blank_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+            var icon = Res.drawable.check_box_outline_blank_24dp_e8eaed_fill0_wght400_grad0_opsz24
             if (isCheckboxChecked) {
-                icon = Res.drawable.check_box_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+                icon = Res.drawable.check_box_24dp_e8eaed_fill0_wght400_grad0_opsz24
             }
             val checkboxCodingColor = if (isCheckboxChecked) {
                 checkboxCodingColorForEnabled

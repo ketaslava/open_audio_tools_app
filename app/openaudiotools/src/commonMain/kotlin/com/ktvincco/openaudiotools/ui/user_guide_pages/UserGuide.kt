@@ -39,9 +39,9 @@ import com.ktvincco.openaudiotools.ui.charts.GraphZone
 import com.ktvincco.openaudiotools.ui.components.MultiPageReader
 import com.ktvincco.openaudiotools.ui.components.ReaderComponents
 import com.ktvincco.openaudiotools.ui.components.RecordingControl
-import openaudiotools.app.openaudiotools.generated.resources.Res
-import openaudiotools.app.openaudiotools.generated.resources.arrow_downward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
-import openaudiotools.app.openaudiotools.generated.resources.magic_rod
+import com.ktvincco.openaudiotools.Res
+import com.ktvincco.openaudiotools.arrow_downward_24dp_e8eaed_fill0_wght400_grad0_opsz24
+import com.ktvincco.openaudiotools.magic_rod
 import org.jetbrains.compose.resources.painterResource
 
 

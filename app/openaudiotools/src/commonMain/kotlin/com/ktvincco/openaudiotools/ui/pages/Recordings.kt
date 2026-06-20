@@ -35,13 +35,13 @@ import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.dynamicTextString
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.ui.components.BasicComponents
-import openaudiotools.app.openaudiotools.generated.resources.Res
-import openaudiotools.app.openaudiotools.generated.resources.data_thresholding_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
-import openaudiotools.app.openaudiotools.generated.resources.delete_forever_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
-import openaudiotools.app.openaudiotools.generated.resources.first_page_96dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
-import openaudiotools.app.openaudiotools.generated.resources.pause_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
-import openaudiotools.app.openaudiotools.generated.resources.play_arrow_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
-import openaudiotools.app.openaudiotools.generated.resources.save_as_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+import com.ktvincco.openaudiotools.Res
+import com.ktvincco.openaudiotools.data_thresholding_24dp_e8eaed_fill0_wght400_grad0_opsz24
+import com.ktvincco.openaudiotools.delete_forever_24dp_e8eaed_fill0_wght400_grad0_opsz24
+import com.ktvincco.openaudiotools.first_page_96dp_e3e3e3_fill0_wght400_grad0_opsz24
+import com.ktvincco.openaudiotools.pause_24dp_e3e3e3_fill0_wght400_grad0_opsz24
+import com.ktvincco.openaudiotools.play_arrow_24dp_e3e3e3_fill0_wght400_grad0_opsz24
+import com.ktvincco.openaudiotools.save_as_24dp_e8eaed_fill0_wght400_grad0_opsz24
 import org.jetbrains.compose.resources.painterResource
 
 
@@ -175,7 +175,7 @@ class Recordings (private val modelData: ModelData) {
                 ) {
                     Image(
                         painterResource(
-                            Res.drawable.first_page_96dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+                            Res.drawable.first_page_96dp_e3e3e3_fill0_wght400_grad0_opsz24
                         ),
                         null,
                         modifier = Modifier
@@ -198,9 +198,9 @@ class Recordings (private val modelData: ModelData) {
                     // Play-Pause
                     val playbackState = modelData.playbackState.collectAsState().value
                     val icon = if (playbackState) {
-                        Res.drawable.pause_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+                        Res.drawable.pause_24dp_e3e3e3_fill0_wght400_grad0_opsz24
                     } else {
-                        Res.drawable.play_arrow_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+                        Res.drawable.play_arrow_24dp_e3e3e3_fill0_wght400_grad0_opsz24
                     }
 
                     Image(
@@ -243,7 +243,7 @@ class Recordings (private val modelData: ModelData) {
                 ) {
                     Image(
                         painterResource(
-                            Res.drawable.delete_forever_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+                            Res.drawable.delete_forever_24dp_e8eaed_fill0_wght400_grad0_opsz24
                         ),
                         null,
                         modifier = Modifier
@@ -273,7 +273,7 @@ class Recordings (private val modelData: ModelData) {
                 ) {
                     Image(
                         painterResource(
-                            Res.drawable.save_as_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+                            Res.drawable.save_as_24dp_e8eaed_fill0_wght400_grad0_opsz24
                         ),
                         null,
                         modifier = Modifier
@@ -295,7 +295,7 @@ class Recordings (private val modelData: ModelData) {
                 ) {
                     Image(
                         painterResource(
-                            Res.drawable.data_thresholding_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+                            Res.drawable.data_thresholding_24dp_e8eaed_fill0_wght400_grad0_opsz24
                         ),
                         null,
                         modifier = Modifier

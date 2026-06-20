@@ -23,9 +23,9 @@ import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.ui.components.BasicComponents
-import openaudiotools.app.openaudiotools.generated.resources.Res
-import openaudiotools.app.openaudiotools.generated.resources.ktvincco_logo_full_tp
-import openaudiotools.app.openaudiotools.generated.resources.ktvincco_logo_mini_tp
+import com.ktvincco.openaudiotools.Res
+import com.ktvincco.openaudiotools.ktvincco_logo_full_tp
+import com.ktvincco.openaudiotools.ktvincco_logo_mini_tp
 import org.jetbrains.compose.resources.painterResource
 
 

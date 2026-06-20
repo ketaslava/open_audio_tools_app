@@ -32,6 +32,18 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    sourceSets["main"].assets.srcDirs(
+        file("build/generated/assets")
+    )
+}
+
+val copyComposeResources = tasks.register<Copy>("copyComposeResources") {
+    from(project(":app:openaudiotools").file("src/commonMain/composeResources"))
+    into("build/generated/assets/composeResources/com.ktvincco.openaudiotools")
+}
+
+tasks.named("preBuild").configure {
+    dependsOn(copyComposeResources)
 }
 
 dependencies {

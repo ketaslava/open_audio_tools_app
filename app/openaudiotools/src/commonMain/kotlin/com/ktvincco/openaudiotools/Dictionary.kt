@@ -3,7 +3,7 @@ package com.ktvincco.openaudiotools
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import com.ktvincco.openaudiotools.presentation.ModelData
-import openaudiotools.app.openaudiotools.generated.resources.Res
+import com.ktvincco.openaudiotools.Res
 import kotlinx.coroutines.*
 import org.jetbrains.compose.resources.ExperimentalResourceApi
 

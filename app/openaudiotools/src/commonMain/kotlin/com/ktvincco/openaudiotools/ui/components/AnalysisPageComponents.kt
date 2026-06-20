@@ -26,8 +26,8 @@ import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.Texts
 import com.ktvincco.openaudiotools.ui.charts.MiniDisplay
 import com.ktvincco.openaudiotools.presentation.ModelData
-import openaudiotools.app.openaudiotools.generated.resources.Res
-import openaudiotools.app.openaudiotools.generated.resources.developer_guide_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+import com.ktvincco.openaudiotools.Res
+import com.ktvincco.openaudiotools.developer_guide_24dp_e8eaed_fill0_wght400_grad0_opsz24
 import org.jetbrains.compose.resources.painterResource
 
 
@@ -60,7 +60,7 @@ fun graphNameText(modelData: ModelData, parameterId: String,
 
         Image(
             painterResource(
-                Res.drawable.developer_guide_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+                Res.drawable.developer_guide_24dp_e8eaed_fill0_wght400_grad0_opsz24
             ),
             null,
             modifier = Modifier

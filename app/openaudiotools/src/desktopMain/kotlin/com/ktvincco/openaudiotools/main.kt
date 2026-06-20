@@ -13,8 +13,8 @@ import com.ktvincco.openaudiotools.data.DesktopEnvironmentConnector
 import com.ktvincco.openaudiotools.data.DesktopLogger
 import com.ktvincco.openaudiotools.data.DesktopPermissionController
 import com.ktvincco.openaudiotools.data.DesktopSoundFile
-import openaudiotools.app.openaudiotools.generated.resources.Res
-import openaudiotools.app.openaudiotools.generated.resources.icon
+import com.ktvincco.openaudiotools.Res
+import com.ktvincco.openaudiotools.icon
 import org.jetbrains.compose.resources.painterResource
 import java.awt.Toolkit
 

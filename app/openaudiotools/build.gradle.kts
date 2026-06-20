@@ -20,8 +20,8 @@ plugins {
 val appName = "OpenAudioTools"
 
 // Configs
-val version = "2.4.8" // == CHANGE BEFORE RELEASE (1/6) == //
-val androidVersionCode = 20 // == CHANGE BEFORE RELEASE (2/6) == //
+val version = "2.4.8" // == CHANGE BEFORE RELEASE (1/6) //
+val androidVersionCode = 20 // == CHANGE BEFORE RELEASE (2/6) //
 
 // Auto update app version in configs
 val generateAppInfo by tasks.registering {
@@ -46,6 +46,10 @@ kotlin {
         namespace = "com.ktvincco.openaudiotools"
         compileSdk = libs.versions.android.compileSdk.get().toInt()
         minSdk = libs.versions.android.minSdk.get().toInt()
+        
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_11)
+        }
     }
 
     jvm("desktop")
@@ -94,6 +98,10 @@ kotlin {
             }
         }
     }
+}
+
+compose.resources {
+    packageOfResClass = "com.ktvincco.openaudiotools"
 }
 
 compose.desktop {

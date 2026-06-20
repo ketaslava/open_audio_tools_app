@@ -38,8 +38,8 @@ import com.ktvincco.openaudiotools.Texts
 import com.ktvincco.openaudiotools.ui.components.BasicComponents
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.ui.components.RecordingControl
-import openaudiotools.app.openaudiotools.generated.resources.Res
-import openaudiotools.app.openaudiotools.generated.resources.menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+import com.ktvincco.openaudiotools.Res
+import com.ktvincco.openaudiotools.menu_24dp_e8eaed_fill0_wght400_grad0_opsz24
 import org.jetbrains.compose.resources.painterResource
 
 
@@ -104,7 +104,7 @@ class Reading (
                         )
 
                         Image(
-                            painterResource(Res.drawable.menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24),
+                            painterResource(Res.drawable.menu_24dp_e8eaed_fill0_wght400_grad0_opsz24),
                             null,
                             modifier = Modifier
                                 .width(32.dp)

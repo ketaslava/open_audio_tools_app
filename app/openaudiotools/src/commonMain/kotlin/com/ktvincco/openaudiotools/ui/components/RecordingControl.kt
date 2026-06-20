@@ -35,14 +35,14 @@ import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.getScreenSizeInPx
 import com.ktvincco.openaudiotools.presentation.ModelData
-import openaudiotools.app.openaudiotools.generated.resources.Res
-import openaudiotools.app.openaudiotools.generated.resources.arrow_back_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
-import openaudiotools.app.openaudiotools.generated.resources.arrow_forward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
-import openaudiotools.app.openaudiotools.generated.resources.close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
-import openaudiotools.app.openaudiotools.generated.resources.delete_forever_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
-import openaudiotools.app.openaudiotools.generated.resources.download_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
-import openaudiotools.app.openaudiotools.generated.resources.pause_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
-import openaudiotools.app.openaudiotools.generated.resources.play_arrow_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+import com.ktvincco.openaudiotools.Res
+import com.ktvincco.openaudiotools.arrow_back_24dp_e8eaed_fill0_wght400_grad0_opsz24
+import com.ktvincco.openaudiotools.arrow_forward_24dp_e8eaed_fill0_wght400_grad0_opsz24
+import com.ktvincco.openaudiotools.close_24dp_e8eaed_fill0_wght400_grad0_opsz24
+import com.ktvincco.openaudiotools.delete_forever_24dp_e8eaed_fill0_wght400_grad0_opsz24
+import com.ktvincco.openaudiotools.download_24dp_e8eaed_fill0_wght400_grad0_opsz24
+import com.ktvincco.openaudiotools.pause_24dp_e3e3e3_fill0_wght400_grad0_opsz24
+import com.ktvincco.openaudiotools.play_arrow_24dp_e3e3e3_fill0_wght400_grad0_opsz24
 import org.jetbrains.compose.resources.painterResource
 
 
@@ -146,7 +146,7 @@ class RecordingControl (
                     ) {
                         Image(
                             painterResource(
-                                Res.drawable.delete_forever_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24),
+                                Res.drawable.delete_forever_24dp_e8eaed_fill0_wght400_grad0_opsz24),
                             null,
                             modifier = Modifier
                                 .width(32.dp)
@@ -164,7 +164,7 @@ class RecordingControl (
                     ) {
                         Image(
                             painterResource(
-                                Res.drawable.download_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24),
+                                Res.drawable.download_24dp_e8eaed_fill0_wght400_grad0_opsz24),
                             null,
                             modifier = Modifier
                                 .width(32.dp)
@@ -183,9 +183,9 @@ class RecordingControl (
                         // Play-Pause
                         val playbackState = modelData.playbackState.collectAsState().value
                         val icon = if (playbackState) {
-                            Res.drawable.pause_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+                            Res.drawable.pause_24dp_e3e3e3_fill0_wght400_grad0_opsz24
                         } else {
-                            Res.drawable.play_arrow_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+                            Res.drawable.play_arrow_24dp_e3e3e3_fill0_wght400_grad0_opsz24
                         }
 
                         Image(
@@ -221,7 +221,7 @@ class RecordingControl (
                     ) {
                         Image(
                             painterResource(
-                                Res.drawable.close_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24),
+                                Res.drawable.close_24dp_e8eaed_fill0_wght400_grad0_opsz24),
                             null,
                             modifier = Modifier
                                 .width(32.dp)
@@ -240,9 +240,9 @@ class RecordingControl (
                         // Play-Pause
                         val playbackState = modelData.playbackState.collectAsState().value
                         val icon = if (playbackState) {
-                            Res.drawable.pause_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+                            Res.drawable.pause_24dp_e3e3e3_fill0_wght400_grad0_opsz24
                         } else {
-                            Res.drawable.play_arrow_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24
+                            Res.drawable.play_arrow_24dp_e3e3e3_fill0_wght400_grad0_opsz24
                         }
 
                         Image(
@@ -341,7 +341,7 @@ class RecordingControl (
             ) {
                 Image(
                     painterResource(
-                        Res.drawable.arrow_back_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+                        Res.drawable.arrow_back_24dp_e8eaed_fill0_wght400_grad0_opsz24
                     ),
                     null,
                     modifier = Modifier
@@ -360,7 +360,7 @@ class RecordingControl (
 
                 Image(
                     painterResource(
-                        Res.drawable.arrow_forward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+                        Res.drawable.arrow_forward_24dp_e8eaed_fill0_wght400_grad0_opsz24
                     ),
                     null,
                     modifier = Modifier
