@@ -42,7 +42,11 @@ open class MultiPageReader (
     @Composable
     fun Draw() {
         val config = getReaderConfiguration()
-        var currentReaderPageIndex by remember { mutableIntStateOf(config.startPageIndex) }
+        val startPageIndexFromModel = modelData.currentInReaderPageIndex.collectAsState().value
+        var currentReaderPageIndex by remember { mutableIntStateOf(
+            if (startPageIndexFromModel != 0) startPageIndexFromModel else config.startPageIndex
+        ) }
+
         val readerPages = getReaderPages()
         val currentReaderPage = readerPages[currentReaderPageIndex]
 
@@ -51,9 +55,12 @@ open class MultiPageReader (
 
         // Get state values from modelData, then reset them, but save for use
         var previousPage by remember { mutableStateOf("") }
+        var previousReaderPageIndex by remember { mutableIntStateOf(0) }
         val previousPageFromState = modelData.navigation.previousPage.collectAsState().value
+        val previousReaderPageIndexFromState = modelData.navigation.previousInReaderPageIndex.collectAsState().value
         if (previousPageFromState.isNotEmpty()) {
             previousPage = previousPageFromState
+            previousReaderPageIndex = previousReaderPageIndexFromState
             modelData.navigation.resetPreviousPage()
         }
 
@@ -123,11 +130,12 @@ open class MultiPageReader (
                         ) {
                             if (currentReaderPageIndex > 0) {
                                 currentReaderPageIndex--
+                                modelData.setCurrentInReaderPageIndex(currentReaderPageIndex)
                             } else {
                                 if (config.isEnableBackButtonDestinationPage) {
                                     modelData.openPage(config.backButtonDestinationPageName)
                                 } else if (config.isAllowBackButtonByState && previousPage.isNotEmpty()) {
-                                    modelData.openPage(previousPage)
+                                    modelData.openPage(previousPage, previousReaderPageIndex)
                                 }
                             }
                         }
@@ -165,6 +173,7 @@ open class MultiPageReader (
                         ) {
                             if (currentReaderPageIndex < readerPages.size - 1) {
                                 currentReaderPageIndex++
+                                modelData.setCurrentInReaderPageIndex(currentReaderPageIndex)
                             } else {
                                 if (config.isEnableNextButtonDestinationPage) {
                                     modelData.openPage(config.nextButtonDestinationPageName)

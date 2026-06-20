@@ -475,7 +475,8 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                     .fillMaxWidth()
                     .padding(horizontal = 24.dp)
             ) {
-                modelData.navigation.setPreviousPage("GeneralVoicetrainingGuide")
+                modelData.navigation.setPreviousPage("GeneralVoicetrainingGuide",
+                    modelData.currentInReaderPageIndex.value)
                 modelData.openPage("GenderAffirmingVoicetrainingGuide")
             }
 

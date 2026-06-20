@@ -49,13 +49,18 @@ class ModelData {
     class NavigationContainer {
         private val _previousPage = MutableStateFlow("")
         val previousPage: StateFlow<String> = _previousPage
+
+        private val _previousInReaderPageIndex = MutableStateFlow(0)
+        val previousInReaderPageIndex: StateFlow<Int> = _previousInReaderPageIndex
         
-        fun setPreviousPage(name: String) {
+        fun setPreviousPage(name: String, inReaderPageIndex: Int = 0) {
             _previousPage.value = name
+            _previousInReaderPageIndex.value = inReaderPageIndex
         }
         
         fun resetPreviousPage() {
             _previousPage.value = ""
+            _previousInReaderPageIndex.value = 0
         }
     }
 
@@ -191,12 +196,18 @@ class ModelData {
     // Navigation - Current page
     val _currentPage = MutableStateFlow("Dashboard")
     val currentPage: StateFlow<String> = _currentPage
+    val _currentInReaderPageIndex = MutableStateFlow(0)
+    val currentInReaderPageIndex: StateFlow<Int> = _currentInReaderPageIndex
+    fun setCurrentInReaderPageIndex(index: Int) {
+        _currentInReaderPageIndex.value = index
+    }
     private var onPageOpenedCallback: () -> Unit = {}
     fun assignOnPageOpenedCallback(callback: () -> Unit) {
         onPageOpenedCallback = callback
     }
-    fun openPage(name: String) {
+    fun openPage(name: String, inReaderPageIndex: Int = 0) {
         _currentPage.value = name
+        _currentInReaderPageIndex.value = inReaderPageIndex
         onPageOpenedCallback()
     }
 

@@ -122,7 +122,8 @@ class UserGuide (modelData: ModelData) : MultiPageReader(modelData) {
                     .fillMaxWidth()
                     .padding(horizontal = 24.dp)
             ) {
-                modelData.navigation.setPreviousPage("UserGuide")
+                modelData.navigation.setPreviousPage("UserGuide",
+                    modelData.currentInReaderPageIndex.value)
                 modelData.openPage("GeneralVoicetrainingGuide")
             }
 
@@ -138,7 +139,8 @@ class UserGuide (modelData: ModelData) : MultiPageReader(modelData) {
                     .fillMaxWidth()
                     .padding(horizontal = 24.dp)
             ) {
-                modelData.navigation.setPreviousPage("UserGuide")
+                modelData.navigation.setPreviousPage("UserGuide",
+                    modelData.currentInReaderPageIndex.value)
                 modelData.openPage("SoundAnalysisGuide")
             }
 
