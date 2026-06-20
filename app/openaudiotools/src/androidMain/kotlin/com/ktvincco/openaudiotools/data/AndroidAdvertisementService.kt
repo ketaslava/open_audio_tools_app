@@ -39,6 +39,11 @@ import com.ktvincco.openaudiotools.Configuration
 
 class AndroidAdvertisementService (private val activity: Activity): AdvertisementService {
 
+
+    // Configuration
+    val admobBannerAdId = "ca-app-pub-2048316563269126/2764483453"
+
+
     private val consentInformation by lazy {
         UserMessagingPlatform.getConsentInformation(activity)
     }
@@ -48,10 +53,10 @@ class AndroidAdvertisementService (private val activity: Activity): Advertisemen
     override fun initialize(initializationCallback: (result: Boolean) -> Unit) {
 
         // Check AD switch
-        /*if (!Configuration.IS_ENABLE_ADS) {
+        if (!Configuration.IS_ENABLE_ADS) {
             initializationCallback(false)
             return
-        }*/
+        }
 
         // Open privacy consent popup or skip if not required
         activity.runOnUiThread {
@@ -119,9 +124,7 @@ class AndroidAdvertisementService (private val activity: Activity): Advertisemen
         // 3. Select ID
         val adUnitIdStr = if (Configuration.IS_ENABLE_ADS_IN_TEST_MODE) {
             "ca-app-pub-3940256099942544/9214589741"
-        } else {
-            "ca-app-pub-3343103877905532/3608260139"
-        }
+        } else { admobBannerAdId }
 
         // 4. Create AdView and attach a Listener
         val adView = remember(adSize) {

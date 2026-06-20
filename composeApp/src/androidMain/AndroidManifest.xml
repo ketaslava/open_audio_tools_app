@@ -23,7 +23,7 @@
         <!-- AdMob -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3343103877905532~8773645264"/>
+            android:value="ca-app-pub-2048316563269126~9550373337"/>
         <!-- /AdMob -->
         <activity
             android:exported="true"
