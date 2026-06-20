@@ -13,10 +13,13 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.key
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.ui.components.Popup
 import com.ktvincco.openaudiotools.ui.screens.AccessDeniedScreen
@@ -35,25 +38,27 @@ class UserInterface (
 
     @Composable
     fun InterfaceRoot() {
-        Column (
-            Modifier
-                .fillMaxHeight()
-                .fillMaxWidth()
-                .background(ColorPalette.getBackgroundColor()),
-        ) {
-            Box(
+        CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr) {
+            Column(
                 Modifier
                     .fillMaxHeight()
                     .fillMaxWidth()
-                    .weight(1F)
+                    .background(ColorPalette.getBackgroundColor()),
             ) {
-                InterfaceOrigin()
-            }
-            Box(
-                Modifier
-                    .fillMaxWidth()
-            ) {
-                BottomSpace()
+                Box(
+                    Modifier
+                        .fillMaxHeight()
+                        .fillMaxWidth()
+                        .weight(1F)
+                ) {
+                    InterfaceOrigin()
+                }
+                Box(
+                    Modifier
+                        .fillMaxWidth()
+                ) {
+                    BottomSpace()
+                }
             }
         }
     }
