@@ -347,38 +347,17 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                 modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp),
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                BasicComponents().Button(
-                    modelData,
-                    text = "Feminine",
-                    modifier = Modifier
-                        .height(64.dp)
-                        .fillMaxWidth()
-                        .weight(1f)
-                ) {
-                    targetMode = "Feminine"
-                }
+                BasicComponents().Button(modelData, text = "Feminine",
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f)) {
+                    targetMode = "Feminine" }
 
-                BasicComponents().Button(
-                    modelData,
-                    text = "Enby",
-                    modifier = Modifier
-                        .height(64.dp)
-                        .fillMaxWidth()
-                        .weight(1f)
-                ) {
-                    targetMode = "Enby"
-                }
+                BasicComponents().Button(modelData, text = "Enby",
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f)) {
+                    targetMode = "Enby" }
 
-                BasicComponents().Button(
-                    modelData,
-                    text = "Masculine",
-                    modifier = Modifier
-                        .height(64.dp)
-                        .fillMaxWidth()
-                        .weight(1f)
-                ) {
-                    targetMode = "Masculine"
-                }
+                BasicComponents().Button(modelData, text = "Masculine",
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f)) {
+                    targetMode = "Masculine" }
             }
 
             Spacer(modifier = Modifier.height(24.dp))
@@ -389,29 +368,14 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
             val dataDurationSec = modelData.dataDurationSec.collectAsState().value
 
             val zones = when (targetMode) {
-                "Feminine" -> listOf(
-                    GraphZone(
-                        175F,
-                        350F,
-                        ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
-                    )
-                )
+                "Feminine" -> listOf(GraphZone(175F, 350F,
+                    ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)))
 
-                "Enby" -> listOf(
-                    GraphZone(
-                        140F,
-                        185F,
-                        ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
-                    )
-                )
+                "Enby" -> listOf(GraphZone(140F, 185F,
+                    ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)))
 
-                "Masculine" -> listOf(
-                    GraphZone(
-                        50F,
-                        150F,
-                        ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)
-                    )
-                )
+                "Masculine" -> listOf(GraphZone(50F, 150F,
+                        ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)))
 
                 else -> listOf()
             }

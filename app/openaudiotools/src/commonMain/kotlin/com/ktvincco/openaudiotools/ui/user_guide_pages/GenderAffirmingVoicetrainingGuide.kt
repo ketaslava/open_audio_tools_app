@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -451,19 +452,16 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "Keep practicing until you are able to start pronouncing the A softly (with a high resonance). " +
                         "After that, try changing the resonance up and down while you pronouncing the A " +
                         "\n\n" +
-                        "Say an A and take a look at the Energy Spectrogram. " +
-                        "As you may see, there are some formant lines in the 500 - 2000 Hz region. " +
+                        "Say an A or an I and take a look at the Energy Spectrogram. " +
+                        "As you may see, there are some formant lines in the 500 - 2000 Hz region (for the A). " +
                         "They are the same resonance indicators as they were before, but this time, they might " +
                         "be more consolidated into the actual lines. Your goal is to move your resonance to " +
                         "the default zone of the desired gender perception. " +
-                        "Remember, that formant values are different for each vowel. " +
-                        "\n\n" +
-                        "[PLACE THE ENERGY SPECTROGRAM AND THE F1 F2 RESONANCE CHART WITH A MARKINGS " +
-                        "FOR A GENDER PERCEPTION ZONES HERE]",
+                        "Remember, default formant values are different for each vowel. ",
             )
 
             Spacer(modifier = Modifier.height(36.dp))
-            IntegratedEnergySpectrogram()
+            IntegratedVowelGenderAnalysis()
             Spacer(modifier = Modifier.height(36.dp))
             IntegratedRecordingControls()
 
@@ -487,15 +485,11 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                         "Your goal is to practice changing the resonance while " +
                         "holding the pitch at the same level, i.e. your pitch should not change while you " +
                         "changing the resonance (making the voice harder / softer). " +
-                        "Hold an A, I, O, U while changing the resonance up and down " +
-                        "\n\n" +
-                        "[PLACE THE PITCH GRAPH AND THE ENERGY SPECTROGRAM AND F1 F2 CHART HERE]" +
-                        "",
+                        "Hold an A, I, O, U while changing the resonance up and down ",
             )
 
             Spacer(modifier = Modifier.height(36.dp))
-            IntegratedPitchGraph()
-            IntegratedEnergySpectrogram()
+            IntegratedVowelGenderAnalysis()
             Spacer(modifier = Modifier.height(36.dp))
             IntegratedRecordingControls()
 
@@ -531,6 +525,11 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
 
             readerComponents.TextBlock_AlignedStart(
                 "" +
+                        "$ When the sunlight strikes raindrops in the air, they act as a prism and form a rainbow. " +
+                        "The rainbow is a division of white light into many beautiful colors. " +
+                        "These take the shape of a long round arch, with its path high above, " +
+                        "and its two ends apparently beyond the horizon. $" +
+                        "\n\n" +
                         "Remember, the muscle building takes time. Keep practicing the resonance, it is the most " +
                         "important factor for achieving the desired gender perception! " +
                         "\n\n" +
@@ -1368,7 +1367,7 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
             xLabelMin = 0F,
             xLabelMax = dataDurationSec,
             yLabelMin = 0F,
-            yLabelMax = 100F,
+            yLabelMax = 4096F,
             horizontalLinesCount = 8,
             autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
             pointerPosition = pointerPosition,
@@ -1396,7 +1395,7 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
             xLabelMin = 0F,
             xLabelMax = dataDurationSec,
             yLabelMin = 0F,
-            yLabelMax = 100F,
+            yLabelMax = 4096F,
             horizontalLinesCount = 8,
             autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
             pointerPosition = pointerPosition,
@@ -1468,6 +1467,193 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
             modifier = Modifier
                 .fillMaxWidth()
                 .height(200.dp)
+        )
+    }
+
+
+    @Composable
+    fun IntegratedVowelGenderAnalysis() {
+
+        var targetMode by remember { mutableStateOf("Feminine A") }
+
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            BasicComponents().Button(modelData, text = "Feminine A",
+                modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f)) {
+                targetMode = "Feminine A" }
+
+            BasicComponents().Button(modelData, text = "Enby A",
+                modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f)) {
+                targetMode = "Enby A" }
+
+            BasicComponents().Button(modelData, text = "Masculine A",
+                modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f)) {
+                targetMode = "Masculine A" }
+        }
+
+        Spacer(modifier = Modifier.height(32.dp))
+
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            BasicComponents().Button(modelData, text = "Feminine I",
+                modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f)) {
+                targetMode = "Feminine I" }
+
+            BasicComponents().Button(modelData, text = "Enby I",
+                modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f)) {
+                targetMode = "Enby I" }
+
+            BasicComponents().Button(modelData, text = "Masculine I",
+                modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f)) {
+                targetMode = "Masculine I" }
+        }
+
+        Spacer(modifier = Modifier.height(32.dp))
+
+        val f1Zones = when (targetMode) {
+            "Feminine A" -> listOf(GraphZone(700F, 900F,
+                ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)))
+
+            "Enby A" -> listOf(GraphZone(600F, 800F,
+                ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)))
+
+            "Masculine A" -> listOf(GraphZone(500F, 700F,
+                ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)))
+
+            "Feminine I" -> listOf(GraphZone(350F, 550F,
+                ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)))
+
+            "Enby I" -> listOf(GraphZone(250F, 450F,
+                ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)))
+
+            "Masculine I" -> listOf(GraphZone(150F, 350F,
+                ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)))
+
+            else -> listOf()
+        }
+
+        val f2Zones = when (targetMode) {
+
+            "Feminine A" -> listOf(GraphZone(1200F, 1500F,
+                ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)))
+
+            "Enby A" -> listOf(GraphZone(1050F, 1350F,
+                ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)))
+
+            "Masculine A" -> listOf(GraphZone(900F, 1200F,
+                ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)))
+
+            "Feminine I" -> listOf(GraphZone(2200F, 2800F,
+                ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)))
+
+            "Enby I" -> listOf(GraphZone(2000F, 2600F,
+                ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)))
+
+            "Masculine I" -> listOf(GraphZone(1800F, 2400F,
+                ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)))
+
+            else -> listOf()
+        }
+
+        val pitchZones = when (targetMode) {
+            "Feminine A" -> listOf(GraphZone(175F, 350F,
+                ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)))
+
+            "Enby A" -> listOf(GraphZone(140F, 185F,
+                ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)))
+
+            "Masculine A" -> listOf(GraphZone(50F, 150F,
+                ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)))
+
+            "Feminine I" -> listOf(GraphZone(175F, 350F,
+                ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)))
+
+            "Enby I" -> listOf(GraphZone(140F, 185F,
+                ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)))
+
+            "Masculine I" -> listOf(GraphZone(50F, 150F,
+                ColorPalette.getSoftGreenColor().copy(alpha = 0.25F)))
+
+            else -> listOf()
+        }
+
+        val pointerPosition = modelData.pointerPosition.collectAsState().value
+        val dataDurationSec = modelData.dataDurationSec.collectAsState().value
+        val recordingState = modelData.recordingState.collectAsState().value
+
+        val pitchData = modelData.getGraphData("Pitch")
+        graphNameText(modelData, "Pitch")
+        Graph().draw(
+            data = pitchData,
+            modelData = modelData,
+            xLabelMax = dataDurationSec,
+            yLabelMin = 50F,
+            yLabelMax = 500F,
+            horizontalLinesCount = 9,
+            pointerPosition = pointerPosition,
+            graphZones = pitchZones,
+            isEnableAutoScroll = recordingState,
+            autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(256.dp)
+        )
+
+        val energySpectrogramData = modelData.getSpectrogramData("EnergySpectrogramInHz")
+        graphNameText(modelData, "SpectrogramInHz")
+        Spectrogram().Spectrogram(
+            data = energySpectrogramData,
+            modelData = modelData,
+            xLabelMin = 0F,
+            xLabelMax = dataDurationSec,
+            yLabelMin = 0F,
+            yLabelMax = 4096F,
+            horizontalLinesCount = 8,
+            graphZones = f1Zones + f2Zones,
+            autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
+            pointerPosition = pointerPosition,
+            isEnableAutoScroll = recordingState,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(256.dp)
+        )
+
+        val activeFirstFormantGraph = modelData.getGraphData("ActiveFirstFormant")
+        graphNameText(modelData, "ActiveFirstFormant")
+        Graph().draw(
+            data = activeFirstFormantGraph,
+            modelData = modelData,
+            xLabelMax = dataDurationSec,
+            yLabelMax = 4096F,
+            horizontalLinesCount = 16,
+            pointerPosition = pointerPosition,
+            isEnableAutoScroll = recordingState,
+            autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
+            graphZones = f1Zones,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(256.dp)
+        )
+
+        val activeSecondFormantGraph = modelData.getGraphData("ActiveSecondFormant")
+        graphNameText(modelData, "ActiveSecondFormant")
+        Graph().draw(
+            data = activeSecondFormantGraph,
+            modelData = modelData,
+            xLabelMax = dataDurationSec,
+            yLabelMax = 4096F,
+            horizontalLinesCount = 16,
+            pointerPosition = pointerPosition,
+            isEnableAutoScroll = recordingState,
+            autoScrollXWindowSize = Configuration.getAutoScrollXWindowSize(),
+            graphZones = f2Zones,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(256.dp)
         )
     }
 
