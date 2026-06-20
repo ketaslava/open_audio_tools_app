@@ -57,7 +57,7 @@ class SpeakerVoice (
 
             val loudnessData = modelData.getGraphData("Loudness")
             graphNameText(modelData, "Loudness")
-            Graph().draw(
+            Graph().Draw(
                 data = loudnessData,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -73,7 +73,7 @@ class SpeakerVoice (
 
             val pitchData = modelData.getGraphData("Pitch")
             graphNameText(modelData, "Pitch")
-            Graph().draw(
+            Graph().Draw(
                 data = pitchData,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -92,7 +92,7 @@ class SpeakerVoice (
 
             val prosody = modelData.getGraphData("Prosody")
             graphNameText(modelData, "Prosody")
-            Graph().draw(
+            Graph().Draw(
                 data = prosody,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -108,7 +108,7 @@ class SpeakerVoice (
 
             val rythm = modelData.getGraphData("Rythm")
             graphNameText(modelData, "Rythm")
-            Graph().draw(
+            Graph().Draw(
                 data = rythm,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -127,7 +127,7 @@ class SpeakerVoice (
 
             val clarity = modelData.getGraphData("Clarity")
             graphNameText(modelData, "Clarity")
-            Graph().draw(
+            Graph().Draw(
                 data = clarity,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -143,7 +143,7 @@ class SpeakerVoice (
 
             val pausesDuration = modelData.getGraphData("PausesDuration")
             graphNameText(modelData, "PausesDuration")
-            Graph().draw(
+            Graph().Draw(
                 data = pausesDuration,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,

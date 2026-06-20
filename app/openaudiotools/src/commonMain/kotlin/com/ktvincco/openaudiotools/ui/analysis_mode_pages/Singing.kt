@@ -43,7 +43,7 @@ class Singing (
 
             graphNameText(modelData, "NoteGraph")
 
-            NoteGraph().draw(
+            NoteGraph().Draw(
                 data = pitchData,
                 modelData = modelData,
                 xLabelMin = 0F,
@@ -60,7 +60,7 @@ class Singing (
 
             val loudnessData = modelData.getGraphData("Loudness")
             graphNameText(modelData, "Loudness")
-            Graph().draw(
+            Graph().Draw(
                 data = loudnessData,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -76,7 +76,7 @@ class Singing (
 
             val rythm = modelData.getGraphData("Rythm")
             graphNameText(modelData, "Rythm")
-            Graph().draw(
+            Graph().Draw(
                 data = rythm,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -95,7 +95,7 @@ class Singing (
 
             val voiceWeight = modelData.getGraphData("VoiceWeight")
             graphNameText(modelData, "VoiceWeight")
-            Graph().draw(
+            Graph().Draw(
                 data = voiceWeight,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -111,7 +111,7 @@ class Singing (
 
             val clarity = modelData.getGraphData("Clarity")
             graphNameText(modelData, "Clarity")
-            Graph().draw(
+            Graph().Draw(
                 data = clarity,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -127,7 +127,7 @@ class Singing (
 
             val jitter = modelData.getGraphData("Jitter")
             graphNameText(modelData, "Jitter")
-            Graph().draw(
+            Graph().Draw(
                 data = jitter,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -143,7 +143,7 @@ class Singing (
 
             val shimmer = modelData.getGraphData("Shimmer")
             graphNameText(modelData, "Shimmer")
-            Graph().draw(
+            Graph().Draw(
                 data = shimmer,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,

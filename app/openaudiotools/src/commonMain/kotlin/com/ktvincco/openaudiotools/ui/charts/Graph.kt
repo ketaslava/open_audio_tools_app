@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -21,9 +20,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.drawText
@@ -66,9 +67,10 @@ class Graph {
 
 
     @Composable
-    fun draw(
+    fun Draw(
         data: FloatArray,
         modelData: ModelData,
+        modifier: Modifier = Modifier,
         isScaleDataByYLabels: Boolean = false,
         yLabelMin: Float = 0F,
         yLabelMax: Float = 1F,
@@ -79,7 +81,6 @@ class Graph {
         pointerPosition: Float = -1F,
         isEnableAutoScroll: Boolean = false,
         autoScrollXWindowSize: Float = 1F,
-        modifier: Modifier = Modifier
     ) {
 
         // Configuration
@@ -137,8 +138,7 @@ class Graph {
         }
 
         Column(
-            Modifier
-                .fillMaxWidth(),
+            Modifier.fillMaxWidth().clip(shape = RectangleShape),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top
         ) {
@@ -307,6 +307,7 @@ class Graph {
                 var allX = 0F
                 var allY = 0F
                 var count = 0
+                var isTheFirstDrawComplete = false
                 var lastX = 0F
                 var lastY = 0F
                 // Optimization text
@@ -318,7 +319,7 @@ class Graph {
                     // Get value
                     val v = data[i]
                     // Check range
-                    if (v < yLabelMin || v > yLabelMax) {
+                    if (v !in yLabelMin..yLabelMax) {
                         continue
                     }
 
@@ -387,7 +388,8 @@ class Graph {
                     }
 
                     // Draw line
-                    if (lastX in 0f..graphWidth || x in 0f..graphWidth){
+                    if ((lastX in 0f..graphWidth || x in 0f..graphWidth) &&
+                            isTheFirstDrawComplete){
                         drawLine(
                             color = lineColor,
                             start = Offset(lastX, lastY),
@@ -399,6 +401,7 @@ class Graph {
                     // Assign state
                     lastX = x
                     lastY = y
+                    isTheFirstDrawComplete = true
                 }
 
 

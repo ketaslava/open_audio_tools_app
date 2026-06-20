@@ -15,12 +15,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.Configuration
-import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.ui.components.BasicComponents
 import com.ktvincco.openaudiotools.ui.charts.Graph
@@ -88,7 +86,7 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            Graph().draw(
+            Graph().Draw(
                 data = floatArrayOf(0.0F, 0.33F, 0.1F, 0.5F, 0.75F),
                 modelData = modelData,
                 yLabelMin = 0F,
@@ -128,7 +126,7 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
             val recordingState = modelData.recordingState.collectAsState().value
             val dataDurationSec = modelData.dataDurationSec.collectAsState().value
 
-            Graph().draw(
+            Graph().Draw(
                 data = pitchData,
                 modelData = modelData,
                 yLabelMin = 50F,
@@ -198,7 +196,6 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                 floatArrayOf(0.0F, 0.0F, 0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F),
                 floatArrayOf(0.0F, 0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F),
                 floatArrayOf(0.0F, 0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F),
-                floatArrayOf(0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F, 0.0F),
                 floatArrayOf(0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F, 0.0F),
                 floatArrayOf(0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F, 0.0F),
                 floatArrayOf(0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F, 0.0F),
@@ -380,7 +377,7 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                 else -> listOf()
             }
 
-            Graph().draw(
+            Graph().Draw(
                 data = pitchData,
                 modelData = modelData,
                 yLabelMin = 0F,

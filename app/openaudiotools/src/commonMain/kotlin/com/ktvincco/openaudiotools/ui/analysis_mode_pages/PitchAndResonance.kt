@@ -54,7 +54,7 @@ class PitchAndResonance (
 
             val loudnessData = modelData.getGraphData("Loudness")
             graphNameText(modelData, "Loudness")
-            Graph().draw(
+            Graph().Draw(
                 data = loudnessData,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -70,7 +70,7 @@ class PitchAndResonance (
 
             val voiceWeight = modelData.getGraphData("VoiceWeight")
             graphNameText(modelData, "VoiceWeight")
-            Graph().draw(
+            Graph().Draw(
                 data = voiceWeight,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -86,7 +86,7 @@ class PitchAndResonance (
 
             val pitchData = modelData.getGraphData("Pitch")
             graphNameText(modelData, "Pitch")
-            Graph().draw(
+            Graph().Draw(
                 data = pitchData,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -105,7 +105,7 @@ class PitchAndResonance (
 
             val firstFormantGraph = modelData.getGraphData("FirstFormant")
             graphNameText(modelData, "FirstFormant")
-            Graph().draw(
+            Graph().Draw(
                 data = firstFormantGraph,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -123,7 +123,7 @@ class PitchAndResonance (
 
             val secondFormantGraph = modelData.getGraphData("SecondFormant")
             graphNameText(modelData, "SecondFormant")
-            Graph().draw(
+            Graph().Draw(
                 data = secondFormantGraph,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,

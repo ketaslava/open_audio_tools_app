@@ -1,28 +1,15 @@
 package com.ktvincco.openaudiotools.ui.user_guide_pages
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.Configuration
-import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.presentation.ModelData
-import com.ktvincco.openaudiotools.ui.components.BasicComponents
 import com.ktvincco.openaudiotools.ui.charts.Graph
-import com.ktvincco.openaudiotools.ui.charts.GraphZone
 import com.ktvincco.openaudiotools.ui.charts.Spectrogram
 import com.ktvincco.openaudiotools.ui.components.MultiPageReader
 import com.ktvincco.openaudiotools.ui.components.ReaderComponents
@@ -89,7 +76,7 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            Graph().draw(
+            Graph().Draw(
                 data = floatArrayOf(0.0F, 0.33F, 0.1F, 0.5F, 0.75F),
                 modelData = modelData,
                 yLabelMin = 0F,
@@ -133,7 +120,6 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
                 floatArrayOf(0.0F, 0.0F, 0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F),
                 floatArrayOf(0.0F, 0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F),
                 floatArrayOf(0.0F, 0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F),
-                floatArrayOf(0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F, 0.0F),
                 floatArrayOf(0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F, 0.0F),
                 floatArrayOf(0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F, 0.0F),
                 floatArrayOf(0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F, 0.0F),
@@ -188,7 +174,7 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
             val pitchData = modelData.getGraphData("Pitch")
 
             graphNameText(modelData, "Loudness")
-            Graph().draw(
+            Graph().Draw(
                 data = loudnessData,
                 modelData = modelData,
                 pointerPosition = pointerPosition,
@@ -201,7 +187,7 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
             )
 
             graphNameText(modelData, "Pitch")
-            Graph().draw(
+            Graph().Draw(
                 data = pitchData,
                 modelData = modelData,
                 yLabelMin = 50F,

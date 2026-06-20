@@ -15,9 +15,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -41,7 +41,7 @@ class MiniDisplay (
 ) {
 
     @Composable
-    fun miniDisplay(
+    fun Draw(
         text: String,
         value: Float,
         isEnableNegativeValues: Boolean = false,
@@ -53,7 +53,7 @@ class MiniDisplay (
     ) {
 
         // Current value which is filtered
-        var currentValue by remember { mutableStateOf(0F) }
+        var currentValue by remember { mutableFloatStateOf(0F) }
         if (value >= 0F || (isEnableNegativeValues && value > -abs(normalRangeMin) * 2F)) {
             currentValue = value
         }

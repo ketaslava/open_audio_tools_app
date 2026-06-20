@@ -40,7 +40,7 @@ class SpectrumInfo (
 
             graphNameText(modelData, "Loudness")
 
-            Graph().draw(
+            Graph().Draw(
                 data = loudnessData,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -102,7 +102,7 @@ class SpectrumInfo (
 
             graphNameText(modelData, "Spectrum")
 
-            Spectrum().Spectrum(
+            Spectrum().Draw(
                 inputData = spectrogramData,
                 modelData = modelData,
                 isUseLogScale = true,

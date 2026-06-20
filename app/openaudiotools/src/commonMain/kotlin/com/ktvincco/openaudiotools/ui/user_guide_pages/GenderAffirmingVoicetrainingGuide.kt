@@ -14,12 +14,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
 import com.ktvincco.openaudiotools.Configuration
-import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.ui.components.BasicComponents
 import com.ktvincco.openaudiotools.ui.charts.Graph
@@ -1417,7 +1414,7 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
 
         graphNameText(modelData, "Pitch")
 
-        Graph().draw(
+        Graph().Draw(
             data = pitchData,
             modelData = modelData,
             xLabelMax = dataDurationSec,
@@ -1450,7 +1447,7 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
         val prosody = modelData.getGraphData("Prosody")
 
         graphNameText(modelData, "Prosody")
-        Graph().draw(
+        Graph().Draw(
             data = prosody,
             modelData = modelData,
             xLabelMax = dataDurationSec,
@@ -1587,7 +1584,7 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
 
         val pitchData = modelData.getGraphData("Pitch")
         graphNameText(modelData, "Pitch")
-        Graph().draw(
+        Graph().Draw(
             data = pitchData,
             modelData = modelData,
             xLabelMax = dataDurationSec,
@@ -1624,7 +1621,7 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
 
         val activeFirstFormantGraph = modelData.getGraphData("ActiveFirstFormant")
         graphNameText(modelData, "ActiveFirstFormant")
-        Graph().draw(
+        Graph().Draw(
             data = activeFirstFormantGraph,
             modelData = modelData,
             xLabelMax = dataDurationSec,
@@ -1641,7 +1638,7 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
 
         val activeSecondFormantGraph = modelData.getGraphData("ActiveSecondFormant")
         graphNameText(modelData, "ActiveSecondFormant")
-        Graph().draw(
+        Graph().Draw(
             data = activeSecondFormantGraph,
             modelData = modelData,
             xLabelMax = dataDurationSec,

@@ -12,18 +12,22 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.TextStyle
@@ -69,15 +73,15 @@ class NoteGraph {
 
 
     @Composable
-    fun draw(
+    fun Draw(
         data: FloatArray,
         modelData: ModelData,
+        modifier: Modifier = Modifier,
         xLabelMin: Float = 0F,
         xLabelMax: Float = 1F,
         pointerPosition: Float = -1F,
         isEnableAutoScroll: Boolean = false,
         autoScrollXWindowSize: Float = 1F,
-        modifier: Modifier = Modifier
     ) {
 
         // Configuration
@@ -109,25 +113,25 @@ class NoteGraph {
         // Variables
 
         // Scaling
-        var scaleX by remember { mutableStateOf(1f) }
-        var oldScaleX by remember { mutableStateOf(1f) }
-        var centerOffset by remember { mutableStateOf(0f) }
-        var offsetX by remember { mutableStateOf(0f) }
-        var offsetY by remember { mutableStateOf(0f) }
+        var scaleX by remember { mutableFloatStateOf(1f) }
+        var oldScaleX by remember { mutableFloatStateOf(1f) }
+        var centerOffset by remember { mutableFloatStateOf(0f) }
+        var offsetX by remember { mutableFloatStateOf(0f) }
+        var offsetY by remember { mutableFloatStateOf(0f) }
 
         // Gestures
         var isCurrentGestureCaptured by remember { mutableStateOf(false) }
         var isCurrentGestureHorizontal by remember { mutableStateOf(false) }
 
         // Auto Offset and note selection
-        var lastNoteIndex by remember { mutableStateOf(0) }
-        var autoOffsetNoteIndex by remember { mutableStateOf(0) }
-        var lastCanvasHeight by remember { mutableStateOf(0F) }
+        var lastNoteIndex by remember { mutableIntStateOf(0) }
+        var autoOffsetNoteIndex by remember { mutableIntStateOf(0) }
+        var lastCanvasHeight by remember { mutableFloatStateOf(0F) }
 
         // Scroll
         var isDragging by remember { mutableStateOf(false) }
-        var inertiaY by remember { mutableStateOf(0f) }
-        var lastUpdateTime by remember { mutableStateOf(0L) }
+        var inertiaY by remember { mutableFloatStateOf(0f) }
+        var lastUpdateTime by remember { mutableLongStateOf(0L) }
         val inertiaDrag = 1F
         val nowMs = System.currentTimeMillis()
         if (!isDragging && inertiaY != 0F) {
@@ -252,7 +256,7 @@ class NoteGraph {
                                 }
                             }
                         }
-                    }
+                    }.clip(shape = RectangleShape)
             ) {
                 // Sizes
                 val graphWidth = size.width
@@ -335,143 +339,64 @@ class NoteGraph {
                 }
 
                 // Draw
-                clipRect(left = 0f, top = 0f, right = graphWidth, bottom = graphHeight) {
 
-                    // ===== Draw horizontal elements ===== //
-                    // Optimization graph
-                    val drawRes = graphWidth * graphXMaximalResolution
-                    var lastDrawX = 0F
-                    var allX = 0F
-                    var allY = 0F
-                    var count = 0
-                    var lastX = 0F
-                    var lastY = 0F
-                    // Optimization text
-                    val textMaximalDrawRes = graphWidth * textXMaximalResolution
-                    var textLastDrawX = 0F
+                // ===== Draw horizontal elements ===== //
+                // Optimization graph
+                val drawRes = graphWidth * graphXMaximalResolution
+                var lastDrawX = 0F
+                var allX = 0F
+                var allY = 0F
+                var count = 0
+                var lastX = 0F
+                var lastY = 0F
+                // Optimization text
+                val textMaximalDrawRes = graphWidth * textXMaximalResolution
+                var textLastDrawX = 0F
 
-                    for (i in data.indices) {
+                for (i in data.indices) {
 
-                        // Calculate base
-                        var x = i * xStep + offsetX
-                        val value = linearToNote(data[i])
-                        var y = (graphHeight - (value * (
-                                horizontalElementHeightProportion * graphHeight))) + offsetY
+                    // Calculate base
+                    var x = i * xStep + offsetX
+                    val value = linearToNote(data[i])
+                    var y = (graphHeight - (value * (
+                            horizontalElementHeightProportion * graphHeight))) + offsetY
 
-                        // Apply limit (no draw beyond graph)
-                        if (data[i] < 0F) {
-                            // Skip
-                            continue
-                        }
-
-                        // Combine average value
-                        allX += x
-                        allY += y
-                        count += 1
-
-                        // Process resolution skip
-                        if (x - lastDrawX < drawRes && lastDrawX > 0F) {
-                            continue
-                        }
-                        lastDrawX = x
-
-                        // Use and reset average value
-                        x = allX / count.toFloat()
-                        y = allY / count.toFloat()
-                        allX = 0F
-                        allY = 0F
-                        count = 0
-
-                        // Draw text
-                        if (x - textLastDrawX > textMaximalDrawRes) {
-                            val text = (xLabelMin + (xLabelMax - xLabelMin) *
-                                    (i / data.size)).toString()
-                            val textY = graphHeight - (textLayoutResult.size.height * 1.25F)
-
-                            if (x in 0F..graphWidth && textY in 0F..graphHeight) {
-                                drawText(
-                                    text = text,
-                                    textMeasurer = textMeasurer,
-                                    topLeft = Offset(
-                                        x = x,
-                                        y = textY
-                                    ),
-                                    style = TextStyle(
-                                        fontSize = fontSize,
-                                        fontWeight = FontWeight.Bold,
-                                        color = textColor
-                                    )
-                                )
-                            }
-                            textLastDrawX = x
-                        }
-
-                        // Draw point
-                        if (x in 0F..graphWidth) {
-                            drawCircle(
-                                color = pointsColor,
-                                radius = 3F,
-                                center = Offset(x, y)
-                            )
-                        }
-
-                        // Draw line
-                        if (lastX in 0f..graphWidth || x in 0f..graphWidth) {
-                            drawLine(
-                                color = lineColor,
-                                start = Offset(lastX, lastY),
-                                end = Offset(x, y),
-                                strokeWidth = 2f
-                            )
-                        }
-
-                        // Assign state
-                        lastX = x
-                        lastY = y
+                    // Apply limit (no draw beyond graph)
+                    if (data[i] < 0F) {
+                        // Skip
+                        continue
                     }
 
-                    // ===== Draw vertical elements ===== //
-                    for (i in 0..notesCount) {
+                    // Combine average value
+                    allX += x
+                    allY += y
+                    count += 1
 
-                        // Calculate
-                        val y = (graphHeight - (
-                                horizontalElementHeightProportion * graphHeight * i)) + offsetY
-                        val elementHeight = horizontalElementHeightProportion * graphHeight
+                    // Process resolution skip
+                    if (x - lastDrawX < drawRes && lastDrawX > 0F) {
+                        continue
+                    }
+                    lastDrawX = x
 
-                        // Draw lines and note place
-                        if (y in 0F..graphHeight + elementHeight) {
+                    // Use and reset average value
+                    x = allX / count.toFloat()
+                    y = allY / count.toFloat()
+                    allX = 0F
+                    allY = 0F
+                    count = 0
 
-                            drawLine(
-                                color = gridColor,
-                                start = Offset(0f, y),
-                                end = Offset(graphWidth, y),
-                                strokeWidth = 1f
-                            )
+                    // Draw text
+                    if (x - textLastDrawX > textMaximalDrawRes) {
+                        val text = (xLabelMin + (xLabelMax - xLabelMin) *
+                                (i / data.size)).toString()
+                        val textY = graphHeight - (textLayoutResult.size.height * 1.25F)
 
-                            val rectColor = if (i == lastNoteIndex)
-                                ColorPalette.getSoftGreenColor() else ColorPalette.getSoftRedColor()
-
-                            drawRect(
-                                color = rectColor,
-                                topLeft = Offset(0f, y),
-                                size = Size(
-                                    width = levelLabelWidthProportion * graphHeight,
-                                    height = -elementHeight
-                                )
-                            )
-                        }
-
-                        // Text
-                        val textX = ((levelLabelWidthProportion * graphHeight) -
-                                textLayoutResult.size.width.toFloat()) * 0.5F
-                        val textY = y - ((elementHeight + textLayoutResult.size.height) * 0.5F)
-
-                        if (textX in 0F..graphWidth && textY in 0F..graphHeight) {
+                        if (x in 0F..graphWidth && textY in 0F..graphHeight) {
                             drawText(
-                                text = getNoteName(i),
+                                text = text,
                                 textMeasurer = textMeasurer,
                                 topLeft = Offset(
-                                    x = textX,
+                                    x = x,
                                     y = textY
                                 ),
                                 style = TextStyle(
@@ -481,18 +406,95 @@ class NoteGraph {
                                 )
                             )
                         }
+                        textLastDrawX = x
                     }
 
-                    // Pointer
-                    if (pointerPosition in 0F..1F) {
-                        val pointerX = pointerPosition * graphWidth * scaleX + offsetX
+                    // Draw point
+                    if (x in 0F..graphWidth) {
+                        drawCircle(
+                            color = pointsColor,
+                            radius = 3F,
+                            center = Offset(x, y)
+                        )
+                    }
+
+                    // Draw line
+                    if (lastX in 0f..graphWidth || x in 0f..graphWidth) {
                         drawLine(
-                            color = pointerColor,
-                            start = Offset(pointerX, 0F),
-                            end = Offset(pointerX, graphHeight),
+                            color = lineColor,
+                            start = Offset(lastX, lastY),
+                            end = Offset(x, y),
                             strokeWidth = 2f
                         )
                     }
+
+                    // Assign state
+                    lastX = x
+                    lastY = y
+                }
+
+                // ===== Draw vertical elements ===== //
+                for (i in 0..notesCount) {
+
+                    // Calculate
+                    val y = (graphHeight - (
+                            horizontalElementHeightProportion * graphHeight * i)) + offsetY
+                    val elementHeight = horizontalElementHeightProportion * graphHeight
+
+                    // Draw lines and note place
+                    if (y in 0F..graphHeight + elementHeight) {
+
+                        drawLine(
+                            color = gridColor,
+                            start = Offset(0f, y),
+                            end = Offset(graphWidth, y),
+                            strokeWidth = 1f
+                        )
+
+                        val rectColor = if (i == lastNoteIndex)
+                            ColorPalette.getSoftGreenColor() else ColorPalette.getSoftRedColor()
+
+                        drawRect(
+                            color = rectColor,
+                            topLeft = Offset(0f, y),
+                            size = Size(
+                                width = levelLabelWidthProportion * graphHeight,
+                                height = -elementHeight
+                            )
+                        )
+                    }
+
+                    // Text
+                    val textX = ((levelLabelWidthProportion * graphHeight) -
+                            textLayoutResult.size.width.toFloat()) * 0.5F
+                    val textY = y - ((elementHeight + textLayoutResult.size.height) * 0.5F)
+
+                    if (textX in 0F..graphWidth && textY in 0F..graphHeight) {
+                        drawText(
+                            text = getNoteName(i),
+                            textMeasurer = textMeasurer,
+                            topLeft = Offset(
+                                x = textX,
+                                y = textY
+                            ),
+                            style = TextStyle(
+                                fontSize = fontSize,
+                                fontWeight = FontWeight.Bold,
+                                color = textColor
+                            )
+                        )
+                    }
+                }
+
+                // Pointer
+                if (pointerPosition in 0F..1F) {
+                    val pointerX = pointerPosition * graphWidth * scaleX + offsetX
+                    drawLine(
+                        color = pointerColor,
+                        start = Offset(pointerX, 0F),
+                        end = Offset(pointerX, graphHeight),
+                        strokeWidth = 2f
+                    )
                 }
             }
 

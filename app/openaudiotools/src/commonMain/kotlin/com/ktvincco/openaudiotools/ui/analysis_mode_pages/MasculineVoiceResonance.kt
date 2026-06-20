@@ -58,7 +58,7 @@ class MasculineVoiceResonance (
 
             val loudnessData = modelData.getGraphData("Loudness")
             graphNameText(modelData, "Loudness")
-            Graph().draw(
+            Graph().Draw(
                 data = loudnessData,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -74,7 +74,7 @@ class MasculineVoiceResonance (
 
             val pitchData = modelData.getGraphData("Pitch")
             graphNameText(modelData, "Pitch")
-            Graph().draw(
+            Graph().Draw(
                 data = pitchData,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -100,7 +100,7 @@ class MasculineVoiceResonance (
 
             val voiceWeight = modelData.getGraphData("VoiceWeight")
             graphNameText(modelData, "VoiceWeight")
-            Graph().draw(
+            Graph().Draw(
                 data = voiceWeight,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -147,7 +147,7 @@ class MasculineVoiceResonance (
 
             graphNameText(modelData, "ActiveFirstFormant",
                 nameAdditions = listOf(" ", "for", " ", "--", "A", "--"))
-            Graph().draw(
+            Graph().Draw(
                 data = activeFirstFormantGraph,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -172,7 +172,7 @@ class MasculineVoiceResonance (
 
             graphNameText(modelData, "ActiveSecondFormant",
                 nameAdditions = listOf(" ", "for", " ", "--", "A", "--"))
-            Graph().draw(
+            Graph().Draw(
                 data = activeSecondFormantGraph,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -217,7 +217,7 @@ class MasculineVoiceResonance (
 
             graphNameText(modelData, "ActiveFirstFormant",
                 nameAdditions = listOf(" ", "for", " ", "--", "I", "--"))
-            Graph().draw(
+            Graph().Draw(
                 data = activeFirstFormantGraph,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -242,7 +242,7 @@ class MasculineVoiceResonance (
 
             graphNameText(modelData, "ActiveSecondFormant",
                 nameAdditions = listOf(" ", "for", " ", "--", "I", "--"))
-            Graph().draw(
+            Graph().Draw(
                 data = activeSecondFormantGraph,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -287,7 +287,7 @@ class MasculineVoiceResonance (
 
             graphNameText(modelData, "ActiveFirstFormant",
                 nameAdditions = listOf(" ", "for", " ", "--", "U", "--"))
-            Graph().draw(
+            Graph().Draw(
                 data = activeFirstFormantGraph,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -312,7 +312,7 @@ class MasculineVoiceResonance (
 
             graphNameText(modelData, "ActiveSecondFormant",
                 nameAdditions = listOf(" ", "for", " ", "--", "U", "--"))
-            Graph().draw(
+            Graph().Draw(
                 data = activeSecondFormantGraph,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,

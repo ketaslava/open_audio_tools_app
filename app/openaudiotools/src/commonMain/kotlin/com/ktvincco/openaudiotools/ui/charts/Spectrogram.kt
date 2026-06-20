@@ -21,9 +21,12 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.drawText
@@ -42,6 +45,7 @@ import openaudiotools.app.openaudiotools.generated.resources.Res
 import openaudiotools.app.openaudiotools.generated.resources.arrow_back_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import openaudiotools.app.openaudiotools.generated.resources.arrow_forward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.skiko.ClipRectangle
 import kotlin.math.abs
 import kotlin.math.roundToInt
 
@@ -102,7 +106,7 @@ class Spectrogram {
         val textMeasurer = rememberTextMeasurer()
 
         // Check data -> reset graph when there is no data
-        if (data.isEmpty() || data.size <= 1 || yLabelMin >= yLabelMax) {
+        if (data.isEmpty() || data.size <= 1 || yLabelMin >= yLabelMax || data[0].size <= 1) {
 
             // Reset graph there is no data
             scaleX = 1F
@@ -111,7 +115,6 @@ class Spectrogram {
             offsetX = 0F
         }
 
-
         Column(
             Modifier
                 .fillMaxWidth(),
@@ -119,11 +122,9 @@ class Spectrogram {
             verticalArrangement = Arrangement.Top
         ) {
 
-
             // Draw canvas
             Canvas(
                 modifier = modifier
-
                     // Detect horizontal gesture for drag
                     .pointerInput(Unit) {
                         awaitPointerEventScope {
@@ -161,7 +162,7 @@ class Spectrogram {
                                 }
                             }
                         }
-                    }
+                    }.clip(shape = RectangleShape)
             ) {
                 // Sizes
                 val graphWidth = size.width
@@ -187,11 +188,11 @@ class Spectrogram {
                 offsetX = ((offsetX - centerOffset) * change) + centerOffset
 
                 // Steps
-                val xStep = graphWidth / (data.size - 1) * scaleX
+                val xStep = graphWidth / data.size * scaleX
 
                 // Limit offset
                 val maxOffset = 0f
-                var minOffset = -(xStep * (data.size - 1) - graphWidth)
+                var minOffset = -(xStep * data.size - graphWidth)
                 if (minOffset > 0F) {
                     minOffset = 0F
                 }
@@ -231,7 +232,7 @@ class Spectrogram {
                     }
                     lastDrawX = x
 
-                    // Reset and skip blocks outside of the canvas
+                    // Reset and skip blocks outside the canvas
                     if (x < -xStep || x > graphWidth + (xStep * xCount)) {
                         xCount = 0
                         continue
@@ -239,7 +240,7 @@ class Spectrogram {
 
                     // Draw spectrum
                     val lineData = data[i]
-                    val lineDataS = lineData.size
+                    val lineDataS = lineData.size - 1
                     val lineDataMaxValue = lineData.maxOrNull() ?: 1F
                     var lastDrawY = graphHeight
                     var allYVal = 0F

@@ -136,7 +136,7 @@ fun miniDisplayBox(
             .padding(horizontal = 24.dp, vertical = 12.dp)
     ) {
         // Draw display 1
-        MiniDisplay(modelData).miniDisplay(
+        MiniDisplay(modelData).Draw(
             display1Name, display1Value, isEnableNegativeValues, normalRangeMin,
             normalRangeMax, isEnableDeadZoneLow, isEnableDeadZoneHigh, Modifier.weight(1F))
 
@@ -145,7 +145,7 @@ fun miniDisplayBox(
             Spacer(Modifier.width(24.dp))
 
             // Draw display 2
-            MiniDisplay(modelData).miniDisplay(
+            MiniDisplay(modelData).Draw(
                 display2Name, display2Value, d2IsEnableNegativeValues,
                 d2NormalRangeMin, d2NormalRangeMax, d2IsEnableDeadZoneLow,
                 d2IsEnableDeadZoneHigh, Modifier.weight(1F)

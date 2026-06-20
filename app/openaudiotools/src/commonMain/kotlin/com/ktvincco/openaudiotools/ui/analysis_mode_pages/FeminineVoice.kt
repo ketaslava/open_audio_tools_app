@@ -63,7 +63,7 @@ class FeminineVoice (
 
             val loudnessData = modelData.getGraphData("Loudness")
             graphNameText(modelData, "Loudness")
-            Graph().draw(
+            Graph().Draw(
                 data = loudnessData,
                 modelData = modelData,
                 pointerPosition = pointerPosition,
@@ -79,7 +79,7 @@ class FeminineVoice (
 
             val pitchData = modelData.getGraphData("Pitch")
             graphNameText(modelData, "Pitch")
-            Graph().draw(
+            Graph().Draw(
                 data = pitchData,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -105,7 +105,7 @@ class FeminineVoice (
 
             val prosody = modelData.getGraphData("Prosody")
             graphNameText(modelData, "Prosody")
-            Graph().draw(
+            Graph().Draw(
                 data = prosody,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -128,7 +128,7 @@ class FeminineVoice (
 
             val harmonicToNoiseRatio = modelData.getGraphData("HarmonicToNoiseRatio")
             graphNameText(modelData, "HarmonicToNoiseRatio")
-            Graph().draw(
+            Graph().Draw(
                 data = harmonicToNoiseRatio,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -151,7 +151,7 @@ class FeminineVoice (
 
             val rythm = modelData.getGraphData("Rythm")
             graphNameText(modelData, "Rythm")
-            Graph().draw(
+            Graph().Draw(
                 data = rythm,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -170,7 +170,7 @@ class FeminineVoice (
 
             val pausesDuration = modelData.getGraphData("PausesDuration")
             graphNameText(modelData, "PausesDuration")
-            Graph().draw(
+            Graph().Draw(
                 data = pausesDuration,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,

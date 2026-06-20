@@ -88,7 +88,7 @@ class AllInfo (
 
             val loudnessData = modelData.getGraphData("Loudness")
             graphNameText(modelData, "Loudness")
-            Graph().draw(
+            Graph().Draw(
                 data = loudnessData,
                 modelData = modelData,
                 pointerPosition = pointerPosition,
@@ -104,7 +104,7 @@ class AllInfo (
 
             val pitchData = modelData.getGraphData("Pitch")
             graphNameText(modelData, "Pitch")
-            Graph().draw(
+            Graph().Draw(
                 data = pitchData,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -123,7 +123,7 @@ class AllInfo (
 
             val firstFormantGraph = modelData.getGraphData("FirstFormant")
             graphNameText(modelData, "FirstFormant")
-            Graph().draw(
+            Graph().Draw(
                 data = firstFormantGraph,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -141,7 +141,7 @@ class AllInfo (
 
             val secondFormantGraph = modelData.getGraphData("SecondFormant")
             graphNameText(modelData, "SecondFormant")
-            Graph().draw(
+            Graph().Draw(
                 data = secondFormantGraph,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -159,7 +159,7 @@ class AllInfo (
 
             val activeFirstFormantGraph = modelData.getGraphData("ActiveFirstFormant")
             graphNameText(modelData, "ActiveFirstFormant")
-            Graph().draw(
+            Graph().Draw(
                 data = activeFirstFormantGraph,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -177,7 +177,7 @@ class AllInfo (
 
             val activeSecondFormantGraph = modelData.getGraphData("ActiveSecondFormant")
             graphNameText(modelData, "ActiveSecondFormant")
-            Graph().draw(
+            Graph().Draw(
                 data = activeSecondFormantGraph,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -195,7 +195,7 @@ class AllInfo (
 
             val energy = modelData.getGraphData("Energy")
             graphNameText(modelData, "Energy")
-            Graph().draw(
+            Graph().Draw(
                 data = energy,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -211,7 +211,7 @@ class AllInfo (
 
             val h1h2EnergyBalance = modelData.getGraphData("H1H2EnergyBalance")
             graphNameText(modelData, "H1H2EnergyBalance")
-            Graph().draw(
+            Graph().Draw(
                 data = h1h2EnergyBalance,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -229,7 +229,7 @@ class AllInfo (
 
             val harmonicToNoiseRatio = modelData.getGraphData("HarmonicToNoiseRatio")
             graphNameText(modelData, "HarmonicToNoiseRatio")
-            Graph().draw(
+            Graph().Draw(
                 data = harmonicToNoiseRatio,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -245,7 +245,7 @@ class AllInfo (
 
             val bandEnergyRatioLow = modelData.getGraphData("BandEnergyRatioLow")
             graphNameText(modelData, "BandEnergyRatioLow")
-            Graph().draw(
+            Graph().Draw(
                 data = bandEnergyRatioLow,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -263,7 +263,7 @@ class AllInfo (
                 "BandEnergyRatioMedium"
             )
             graphNameText(modelData, "BandEnergyRatioMedium")
-            Graph().draw(
+            Graph().Draw(
                 data = bandEnergyRatioMedium,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -281,7 +281,7 @@ class AllInfo (
                 "BandEnergyRatioHigh"
             )
             graphNameText(modelData, "BandEnergyRatioHigh")
-            Graph().draw(
+            Graph().Draw(
                 data = bandEnergyRatioHigh,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -297,7 +297,7 @@ class AllInfo (
 
             val hlRatio = modelData.getGraphData("HLRatio")
             graphNameText(modelData, "HLRatio")
-            Graph().draw(
+            Graph().Draw(
                 data = hlRatio,
                 modelData = modelData,
                 yLabelMin = -1F,
@@ -324,7 +324,7 @@ class AllInfo (
                 graphColorDescriptionBlock(Color.Green, "Okay")
                 graphColorDescriptionBlock(Color.Red, "Not Okay")
             }*/
-            Graph().draw(
+            Graph().Draw(
                 data = vad,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -340,7 +340,7 @@ class AllInfo (
 
             val spectralCentroid = modelData.getGraphData("SpectralCentroid")
             graphNameText(modelData, "SpectralCentroid")
-            Graph().draw(
+            Graph().Draw(
                 data = spectralCentroid,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -359,7 +359,7 @@ class AllInfo (
 
             val spectralTilt = modelData.getGraphData("SpectralTilt")
             graphNameText(modelData, "SpectralTilt")
-            Graph().draw(
+            Graph().Draw(
                 data = spectralTilt,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -377,7 +377,7 @@ class AllInfo (
 
             val spectralSpread = modelData.getGraphData("SpectralSpread")
             graphNameText(modelData, "SpectralSpread")
-            Graph().draw(
+            Graph().Draw(
                 data = spectralSpread,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -393,7 +393,7 @@ class AllInfo (
 
             val jitter = modelData.getGraphData("Jitter")
             graphNameText(modelData, "Jitter")
-            Graph().draw(
+            Graph().Draw(
                 data = jitter,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -409,7 +409,7 @@ class AllInfo (
 
             val shimmer = modelData.getGraphData("Shimmer")
             graphNameText(modelData, "Shimmer")
-            Graph().draw(
+            Graph().Draw(
                 data = shimmer,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -425,7 +425,7 @@ class AllInfo (
 
             val prosody = modelData.getGraphData("Prosody")
             graphNameText(modelData, "Prosody")
-            Graph().draw(
+            Graph().Draw(
                 data = prosody,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -441,7 +441,7 @@ class AllInfo (
 
             val rythm = modelData.getGraphData("Rythm")
             graphNameText(modelData, "Rythm")
-            Graph().draw(
+            Graph().Draw(
                 data = rythm,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -460,7 +460,7 @@ class AllInfo (
 
             val clarity = modelData.getGraphData("Clarity")
             graphNameText(modelData, "Clarity")
-            Graph().draw(
+            Graph().Draw(
                 data = clarity,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
@@ -476,7 +476,7 @@ class AllInfo (
 
             val pausesDuration = modelData.getGraphData("PausesDuration")
             graphNameText(modelData, "PausesDuration")
-            Graph().draw(
+            Graph().Draw(
                 data = pausesDuration,
                 modelData = modelData,
                 xLabelMax = dataDurationSec,
