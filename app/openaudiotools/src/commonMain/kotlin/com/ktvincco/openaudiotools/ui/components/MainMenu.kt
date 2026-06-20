@@ -131,14 +131,14 @@ class MainMenu (private val modelData: ModelData) {
             ) {
                 BasicComponents().Button(modelData, text = "Dashboard",
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f),
-                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
+                    buttonColor = Color.hsl(120F, 0.5F, 0.5F)) {
                     modelData.openPage("Dashboard")
                     modelData.setMainMenuState(false)
                 }
 
                 BasicComponents().Button(modelData, text = "Settings",
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f),
-                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
+                    buttonColor = Color.hsl(240F, 0.5F, 0.5F)) {
                     modelData.openPage("Settings")
                     modelData.setMainMenuState(false)
                 }
@@ -150,17 +150,17 @@ class MainMenu (private val modelData: ModelData) {
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                BasicComponents().Button(modelData, text = "Recordings",
+                BasicComponents().Button(modelData, text = "Reading",
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f),
-                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
-                    modelData.openPage("Recordings")
+                    buttonColor = Color.hsl(30F, 0.66F, 0.5F)) {
+                    modelData.openPage("Reading")
                     modelData.setMainMenuState(false)
                 }
 
-                BasicComponents().Button(modelData, text = "Reading",
+                BasicComponents().Button(modelData, text = "Recordings",
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f),
-                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
-                    modelData.openPage("Reading")
+                    buttonColor = Color.hsl(0F, 0.66F, 0.5F)) {
+                    modelData.openPage("Recordings")
                     modelData.setMainMenuState(false)
                 }
             }
@@ -169,7 +169,7 @@ class MainMenu (private val modelData: ModelData) {
 
             BasicComponents().Button(modelData, text = "All Info",
                 modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
-                buttonColor = Color.hsl(0F, 0F, 0.25F)) {
+                buttonColor = Color.hsl(0F, 0F, 0.33F)) {
                 modelData.openPage("AllInfo")
                 modelData.setMainMenuState(false)
             }
@@ -178,8 +178,8 @@ class MainMenu (private val modelData: ModelData) {
 
             BasicComponents().Button(modelData, text = "Spectrum",
                 modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
-                buttonColor = Color.hsl(0F, 0F, 0.25F)) {
-                modelData.openPage("Spectrum")
+                buttonColor = Color.hsl(0F, 0F, 0.33F)) {
+                modelData.openPage("SpectrumInfo")
                 modelData.setMainMenuState(false)
             }
 
@@ -193,7 +193,7 @@ class MainMenu (private val modelData: ModelData) {
                 Spacer(modifier = Modifier.height(16.dp))
                 BasicComponents().Button(modelData, text = "Singing",
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
-                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
+                    buttonColor = Color.hsl(0F, 0F, 0.33F)) {
                     modelData.openPage("Singing")
                     modelData.setMainMenuState(false)
                 }
@@ -201,7 +201,7 @@ class MainMenu (private val modelData: ModelData) {
                 Spacer(modifier = Modifier.height(16.dp))
                 BasicComponents().Button(modelData, text = "Pitch And Resonance",
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
-                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
+                    buttonColor = Color.hsl(0F, 0F, 0.33F)) {
                     modelData.openPage("PitchAndResonance")
                     modelData.setMainMenuState(false)
                 }
@@ -209,7 +209,7 @@ class MainMenu (private val modelData: ModelData) {
                 Spacer(modifier = Modifier.height(16.dp))
                 BasicComponents().Button(modelData, text = "Speaker Voice",
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
-                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
+                    buttonColor = Color.hsl(0F, 0F, 0.33F)) {
                     modelData.openPage("SpeakerVoice")
                     modelData.setMainMenuState(false)
                 }
@@ -217,7 +217,7 @@ class MainMenu (private val modelData: ModelData) {
                 Spacer(modifier = Modifier.height(16.dp))
                 BasicComponents().Button(modelData, text = "Voice Smoothness",
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
-                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
+                    buttonColor = Color.hsl(0F, 0F, 0.33F)) {
                     modelData.openPage("VoiceSmoothness")
                     modelData.setMainMenuState(false)
                 }
@@ -233,7 +233,7 @@ class MainMenu (private val modelData: ModelData) {
                 Spacer(modifier = Modifier.height(16.dp))
                 BasicComponents().Button(modelData, text = "Feminine Voice",
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
-                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
+                    buttonColor = Color.hsl(0F, 0F, 0.33F)) {
                     modelData.openPage("FeminineVoice")
                     modelData.setMainMenuState(false)
                 }
@@ -241,7 +241,7 @@ class MainMenu (private val modelData: ModelData) {
                 Spacer(modifier = Modifier.height(16.dp))
                 BasicComponents().Button(modelData, text = "Feminine Voice Resonance",
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
-                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
+                    buttonColor = Color.hsl(0F, 0F, 0.33F)) {
                     modelData.openPage("FeminineVoiceResonance")
                     modelData.setMainMenuState(false)
                 }
@@ -249,7 +249,7 @@ class MainMenu (private val modelData: ModelData) {
                 Spacer(modifier = Modifier.height(16.dp))
                 BasicComponents().Button(modelData, text = "Masculine Voice",
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
-                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
+                    buttonColor = Color.hsl(0F, 0F, 0.33F)) {
                     modelData.openPage("MasculineVoice")
                     modelData.setMainMenuState(false)
                 }
@@ -257,7 +257,7 @@ class MainMenu (private val modelData: ModelData) {
                 Spacer(modifier = Modifier.height(16.dp))
                 BasicComponents().Button(modelData, text = "Masculine Voice Resonance",
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
-                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
+                    buttonColor = Color.hsl(0F, 0F, 0.33F)) {
                     modelData.openPage("MasculineVoiceResonance")
                     modelData.setMainMenuState(false)
                 }
@@ -271,9 +271,9 @@ class MainMenu (private val modelData: ModelData) {
             ExpandableCategory("Real Guides") {
 
                 Spacer(modifier = Modifier.height(16.dp))
-                BasicComponents().Button(modelData, text = "User Guide",
+                BasicComponents().Button(modelData, text = "==> User Guide <==",
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
-                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
+                    buttonColor = Color.hsl(0F, 0F, 0.33F)) {
                     modelData.openPage("UserGuide")
                     modelData.setMainMenuState(false)
                 }
@@ -281,7 +281,7 @@ class MainMenu (private val modelData: ModelData) {
                 Spacer(modifier = Modifier.height(16.dp))
                 BasicComponents().Button(modelData, text = "Sound Analysis Guide",
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
-                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
+                    buttonColor = Color.hsl(0F, 0F, 0.33F)) {
                     modelData.openPage("SoundAnalysisGuide")
                     modelData.setMainMenuState(false)
                 }
@@ -289,7 +289,7 @@ class MainMenu (private val modelData: ModelData) {
                 Spacer(modifier = Modifier.height(16.dp))
                 BasicComponents().Button(modelData, text = "General Voicetraining Guide",
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
-                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
+                    buttonColor = Color.hsl(0F, 0F, 0.33F)) {
                     modelData.openPage("GeneralVoicetrainingGuide")
                     modelData.setMainMenuState(false)
                 }
@@ -297,7 +297,7 @@ class MainMenu (private val modelData: ModelData) {
                 Spacer(modifier = Modifier.height(16.dp))
                 BasicComponents().Button(modelData, text = "Gender Affirming Voicetraining Guide",
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
-                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
+                    buttonColor = Color.hsl(0F, 0F, 0.33F)) {
                     modelData.openPage("GenderAffirmingVoicetrainingGuide")
                     modelData.setMainMenuState(false)
                 }
@@ -305,13 +305,16 @@ class MainMenu (private val modelData: ModelData) {
                 Spacer(modifier = Modifier.height(16.dp))
                 BasicComponents().Button(modelData, text = "FAQs",
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
-                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
+                    buttonColor = Color.hsl(0F, 0F, 0.33F)) {
                     modelData.openPage("FrequentlyAskedQuestions")
                     modelData.setMainMenuState(false)
                 }
 
                 Spacer(modifier = Modifier.height(32.dp))
             }
+
+            BasicComponents().HorizontalDivider(
+                color = ColorPalette.getMarkupColor(), thickness = 1.dp)
         }
     }
 
@@ -327,8 +330,9 @@ class MainMenu (private val modelData: ModelData) {
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier
                     .fillMaxWidth()
+                    .heightIn(min = 64.dp)
                     .clickable { isExpanded = !isExpanded }
-                    .padding(horizontal = 24.dp, vertical = 16.dp)
+                    .padding(horizontal = 24.dp)
             ) {
                 DynamicText(
                     text = title,

@@ -149,7 +149,7 @@ class ColorPalette {
         }
 
         fun getSoftBlueColor(): Color {
-            return Color.hsv(240F, 0.75F, 0.75F)
+            return Color.hsv(240F, 0.5F, 0.75F)
         }
 
         fun getSoftMagentaColor(): Color {
