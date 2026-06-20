@@ -88,7 +88,7 @@ class MainMenu (private val modelData: ModelData) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Top
         ) {
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(32.dp))
 
             DynamicText(
                 text = "Main Menu",
@@ -97,11 +97,11 @@ class MainMenu (private val modelData: ModelData) {
                 fontSize = 24.sp,
                 lineHeight = 24.sp,
                 modifier = Modifier
-                    .padding(horizontal = 16.dp, vertical = 20.dp)
+                    .padding(horizontal = 16.dp)
                     .align(Alignment.CenterHorizontally),
             )
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(32.dp))
 
             Column(
                 modifier = Modifier
@@ -120,13 +120,13 @@ class MainMenu (private val modelData: ModelData) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 16.dp)
+                .padding(horizontal = 32.dp)
                 .verticalScroll(state = ScrollState(0)),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
 
             Row(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp),
+                modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 BasicComponents().Button(modelData, text = "Dashboard",
@@ -145,7 +145,7 @@ class MainMenu (private val modelData: ModelData) {
             Spacer(modifier = Modifier.height(16.dp))
 
             Row(
-                modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp),
+                modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 BasicComponents().Button(modelData, text = "Recordings",
@@ -164,7 +164,7 @@ class MainMenu (private val modelData: ModelData) {
             Spacer(modifier = Modifier.height(16.dp))
 
             BasicComponents().Button(modelData, text = "All Info",
-                modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().padding(horizontal = 24.dp),
+                modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
                 buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                 modelData.openPage("AllInfo")
             }
@@ -172,91 +172,126 @@ class MainMenu (private val modelData: ModelData) {
             Spacer(modifier = Modifier.height(16.dp))
 
             BasicComponents().Button(modelData, text = "Spectrum",
-                modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().padding(horizontal = 24.dp),
+                modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
                 buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                 modelData.openPage("Spectrum")
             }
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(32.dp))
 
             BasicComponents().HorizontalDivider(
                 color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
             ExpandableCategory("Voice Analysis") {
-                MenuItem("Singing") {
+
+                Spacer(modifier = Modifier.height(16.dp))
+                BasicComponents().Button(modelData, text = "Singing",
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
+                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("Singing")
-                    modelData.setMainMenuState(false)
                 }
 
-                MenuItem("Pitch And Resonance") {
+                Spacer(modifier = Modifier.height(16.dp))
+                BasicComponents().Button(modelData, text = "Pitch And Resonance",
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
+                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("PitchAndResonance")
-                    modelData.setMainMenuState(false)
                 }
 
-                MenuItem("Speaker Voice") {
+                Spacer(modifier = Modifier.height(16.dp))
+                BasicComponents().Button(modelData, text = "Speaker Voice",
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
+                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("SpeakerVoice")
-                    modelData.setMainMenuState(false)
                 }
 
-                MenuItem("Voice Smoothness") {
+                Spacer(modifier = Modifier.height(16.dp))
+                BasicComponents().Button(modelData, text = "Voice Smoothness",
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
+                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("VoiceSmoothness")
-                    modelData.setMainMenuState(false)
                 }
+
+                Spacer(modifier = Modifier.height(32.dp))
             }
 
             BasicComponents().HorizontalDivider(
                 color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
             ExpandableCategory("Voice Gender Analysis") {
-                MenuItem("Feminine Voice") {
+
+                Spacer(modifier = Modifier.height(16.dp))
+                BasicComponents().Button(modelData, text = "Feminine Voice",
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
+                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("FeminineVoice")
-                    modelData.setMainMenuState(false)
                 }
 
-                MenuItem("Feminine Voice Resonance") {
+                Spacer(modifier = Modifier.height(16.dp))
+                BasicComponents().Button(modelData, text = "Feminine Voice Resonance",
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
+                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("FeminineVoiceResonance")
-                    modelData.setMainMenuState(false)
                 }
 
-                MenuItem("Masculine Voice") {
+                Spacer(modifier = Modifier.height(16.dp))
+                BasicComponents().Button(modelData, text = "Masculine Voice",
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
+                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("MasculineVoice")
-                    modelData.setMainMenuState(false)
                 }
 
-                MenuItem("Masculine Voice Resonance") {
+                Spacer(modifier = Modifier.height(16.dp))
+                BasicComponents().Button(modelData, text = "Masculine Voice Resonance",
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
+                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("MasculineVoiceResonance")
-                    modelData.setMainMenuState(false)
                 }
+
+                Spacer(modifier = Modifier.height(32.dp))
             }
 
             BasicComponents().HorizontalDivider(
                 color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
             ExpandableCategory("Real Guides") {
-                MenuItem("User Guide") {
+
+                Spacer(modifier = Modifier.height(16.dp))
+                BasicComponents().Button(modelData, text = "User Guide",
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
+                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("UserGuide")
-                    modelData.setMainMenuState(false)
                 }
 
-                MenuItem("Sound Analysis Guide") {
+                Spacer(modifier = Modifier.height(16.dp))
+                BasicComponents().Button(modelData, text = "Sound Analysis Guide",
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
+                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("SoundAnalysisGuide")
-                    modelData.setMainMenuState(false)
                 }
 
-                MenuItem("Voice Change Guidelines") {
+                Spacer(modifier = Modifier.height(16.dp))
+                BasicComponents().Button(modelData, text = "General Voicetraining Guide",
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
+                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("GeneralVoicetrainingGuide")
-                    modelData.setMainMenuState(false)
                 }
 
-                MenuItem("Gender Affirming Voicetraining Guide") {
+                Spacer(modifier = Modifier.height(16.dp))
+                BasicComponents().Button(modelData, text = "Gender Affirming Voicetraining Guide",
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
+                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("GenderAffirmingVoicetrainingGuide")
-                    modelData.setMainMenuState(false)
                 }
 
-                MenuItem("FAQs") {
+                Spacer(modifier = Modifier.height(16.dp))
+                BasicComponents().Button(modelData, text = "FAQs",
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
+                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("FrequentlyAskedQuestions")
-                    modelData.setMainMenuState(false)
                 }
+
+                Spacer(modifier = Modifier.height(32.dp))
             }
         }
     }
