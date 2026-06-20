@@ -22,6 +22,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.dp
+import android.util.Log
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
@@ -39,6 +42,7 @@ import com.ktvincco.openaudiotools.Configuration
 
 class AndroidAdvertisementService (private val activity: Activity): AdvertisementService {
 
+    private val TAG = "AdMobService"
 
     // Configuration
     val admobBannerAdId = "ca-app-pub-2048316563269126/2764483453"
@@ -54,6 +58,7 @@ class AndroidAdvertisementService (private val activity: Activity): Advertisemen
 
         // Check AD switch
         if (!Configuration.IS_ENABLE_ADS) {
+            Log.d(TAG, "Ads are disabled in Configuration")
             initializationCallback(false)
             return
         }
@@ -62,23 +67,31 @@ class AndroidAdvertisementService (private val activity: Activity): Advertisemen
         activity.runOnUiThread {
             val params = ConsentRequestParameters.Builder().build()
 
+            Log.d(TAG, "Requesting consent info update...")
             consentInformation.requestConsentInfoUpdate(
                 activity,
                 params,
                 {
                     // Consent info updated successfully
+                    Log.d(TAG, "Consent info updated. Loading and showing form if required...")
                     UserMessagingPlatform.loadAndShowConsentFormIfRequired(
                         activity
                     ) { formError ->
+                        if (formError != null) {
+                            Log.e(TAG, "Consent form error: ${formError.message}")
+                        }
                         // After form dismissed (or not required)
                         if (consentInformation.canRequestAds()) {
+                            Log.d(TAG, "Can request ads now. Initializing MobileAds...")
                             initializeMobileAds(initializationCallback)
                         } else {
+                            Log.w(TAG, "Cannot request ads yet.")
                             initializationCallback(false)
                         }
                     }
                 },
                 { error ->
+                    Log.e(TAG, "Consent update error: ${error.message}")
                     initializationCallback(false)
                 }
             )
@@ -91,7 +104,8 @@ class AndroidAdvertisementService (private val activity: Activity): Advertisemen
             return
         }
 
-        MobileAds.initialize(activity) {
+        MobileAds.initialize(activity) { status ->
+            Log.d(TAG, "MobileAds initialized: $status")
             adsInitialized = true
             callback(true)
         }
@@ -102,19 +116,19 @@ class AndroidAdvertisementService (private val activity: Activity): Advertisemen
     @Composable
     override fun BannerAdBlock() {
         // Check if we can request ads based on CMP status
-        if (!consentInformation.canRequestAds()) return
+        if (!consentInformation.canRequestAds()) {
+            Log.w(TAG, "BannerAdBlock: cannot request ads based on CMP status")
+            return
+        }
 
         val context = LocalContext.current
-        val density = LocalDensity.current
-        val windowInfo = LocalWindowInfo.current
+        val configuration = LocalConfiguration.current
 
         // State to track if the ad has successfully loaded
         val isAdLoaded = remember { mutableStateOf(false) }
 
-        // 1. Get width from LocalWindowInfo and convert to DP
-        val screenWidthDp = remember(windowInfo.containerSize, density) {
-            with(density) { windowInfo.containerSize.width.toDp().value.toInt() }
-        }
+        // 1. Get width from LocalConfiguration (more reliable for full-width)
+        val screenWidthDp = configuration.screenWidthDp
 
         // 2. Calculate the standard adaptive ad size
         val adSize = remember(screenWidthDp) {
@@ -128,16 +142,29 @@ class AndroidAdvertisementService (private val activity: Activity): Advertisemen
 
         // 4. Create AdView and attach a Listener
         val adView = remember(adSize) {
+            Log.d(TAG, "Creating AdView with unitId: $adUnitIdStr and size: $adSize")
             AdView(activity).apply {
                 adUnitId = adUnitIdStr
                 setAdSize(adSize)
                 adListener = object : com.google.android.gms.ads.AdListener() {
                     override fun onAdLoaded() {
                         super.onAdLoaded()
+                        Log.d(TAG, "Ad loaded successfully")
                         isAdLoaded.value = true // Show the UI when loaded
+                    }
+                    override fun onAdFailedToLoad(error: com.google.android.gms.ads.LoadAdError) {
+                        super.onAdFailedToLoad(error)
+                        Log.e(TAG, "Ad failed to load: ${error.message}, code: ${error.code}")
                     }
                 }
                 loadAd(AdRequest.Builder().build())
+            }
+        }
+
+        DisposableEffect(adView) {
+            onDispose {
+                Log.d(TAG, "Destroying AdView")
+                adView.destroy()
             }
         }
 
