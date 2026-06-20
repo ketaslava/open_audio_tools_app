@@ -202,6 +202,11 @@ class MainMenu (private val modelData: ModelData) {
                     modelData.setMainMenuState(false)
                 }
 
+                MenuItem("Gender Affirming Voicetraining Guide") {
+                    modelData.openPage("GenderAffirmingVoicetrainingGuide")
+                    modelData.setMainMenuState(false)
+                }
+
                 MenuItem("FAQs") {
                     modelData.openPage("FrequentlyAskedQuestions")
                     modelData.setMainMenuState(false)
