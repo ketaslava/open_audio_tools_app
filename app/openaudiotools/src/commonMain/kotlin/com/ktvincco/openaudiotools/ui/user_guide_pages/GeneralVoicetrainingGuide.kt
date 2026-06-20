@@ -204,7 +204,7 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
                 floatArrayOf(0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F, 0.0F),
             )
 
-            Spectrogram().Spectrogram(
+            Spectrogram().Draw(
                 data = demoSpectrogramData,
                 modelData = modelData,
                 xLabelMin = 0F,
@@ -254,7 +254,7 @@ class GeneralVoicetrainingGuide (modelData: ModelData) : MultiPageReader(modelDa
             val recordingState = modelData.recordingState.collectAsState().value
             val dataDurationSec = modelData.dataDurationSec.collectAsState().value
 
-            Spectrogram().Spectrogram(
+            Spectrogram().Draw(
                 data = spectrogramData,
                 modelData = modelData,
                 multiplyValue = 24F,

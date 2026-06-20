@@ -58,7 +58,7 @@ class SpectrumInfo (
 
             graphNameText(modelData, "SpectrogramInHz")
 
-            Spectrogram().Spectrogram(
+            Spectrogram().Draw(
                 data = spectrogramData,
                 modelData = modelData,
                 multiplyValue = 24F,
@@ -82,7 +82,7 @@ class SpectrumInfo (
 
             graphNameText(modelData, "EnergySpectrogramInHz")
 
-            Spectrogram().Spectrogram(
+            Spectrogram().Draw(
                 data = formantSpectrogramData,
                 modelData = modelData,
                 xLabelMin = 0F,

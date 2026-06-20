@@ -139,7 +139,7 @@ class SoundAnalysisGuide (modelData: ModelData) : MultiPageReader(modelData) {
                 floatArrayOf(0.0F, 0.025F, 0.1F, 0.3F, 0.8F, 0.3F, 0.1F, 0.025F, 0.0F, 0.0F, 0.0F, 0.0F),
             )
 
-            Spectrogram().Spectrogram(
+            Spectrogram().Draw(
                 data = demoSpectrogramData,
                 modelData = modelData,
                 xLabelMin = 0F,

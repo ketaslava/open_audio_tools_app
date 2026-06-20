@@ -1361,7 +1361,7 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
 
         graphNameText(modelData, "SpectrogramInHz")
 
-        Spectrogram().Spectrogram(
+        Spectrogram().Draw(
             data = spectrogramData,
             modelData = modelData,
             xLabelMin = 0F,
@@ -1389,7 +1389,7 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
 
         graphNameText(modelData, "SpectrogramInHz")
 
-        Spectrogram().Spectrogram(
+        Spectrogram().Draw(
             data = energySpectrogramData,
             modelData = modelData,
             xLabelMin = 0F,
@@ -1605,7 +1605,7 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
 
         val energySpectrogramData = modelData.getSpectrogramData("EnergySpectrogramInHz")
         graphNameText(modelData, "SpectrogramInHz")
-        Spectrogram().Spectrogram(
+        Spectrogram().Draw(
             data = energySpectrogramData,
             modelData = modelData,
             xLabelMin = 0F,

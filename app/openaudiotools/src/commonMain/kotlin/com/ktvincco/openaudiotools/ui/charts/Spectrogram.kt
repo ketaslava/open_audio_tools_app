@@ -12,9 +12,9 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -49,9 +49,10 @@ import kotlin.math.roundToInt
 class Spectrogram {
 
     @Composable
-    fun Spectrogram(
+    fun Draw(
         data: Array<FloatArray>,
         modelData: ModelData,
+        modifier: Modifier = Modifier,
         isNormalizeValue: Boolean = false,
         isUseLogScale: Boolean = false,
         multiplyValue: Float = 1F,
@@ -64,7 +65,6 @@ class Spectrogram {
         pointerPosition: Float = -1F,
         isEnableAutoScroll: Boolean = false,
         autoScrollXWindowSize: Float = 1F,
-        modifier: Modifier = Modifier
     ) {
 
         // Configuration
@@ -89,10 +89,10 @@ class Spectrogram {
         // Variables
 
         // Scaling
-        var scaleX by remember { mutableStateOf(1f) }
-        var oldScaleX by remember { mutableStateOf(1f) }
-        var centerOffset by remember { mutableStateOf(0f) }
-        var offsetX by remember { mutableStateOf(0f) }
+        var scaleX by remember { mutableFloatStateOf(1f) }
+        var oldScaleX by remember { mutableFloatStateOf(1f) }
+        var centerOffset by remember { mutableFloatStateOf(0f) }
+        var offsetX by remember { mutableFloatStateOf(0f) }
 
         // Gestures
         var isCurrentGestureCaptured by remember { mutableStateOf(false) }
