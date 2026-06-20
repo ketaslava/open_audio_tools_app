@@ -130,13 +130,15 @@ class MainMenu (private val modelData: ModelData) {
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 BasicComponents().Button(modelData, text = "Dashboard",
-                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f)) {
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f),
+                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("Dashboard")
                     modelData.setMainMenuState(false)
                 }
 
                 BasicComponents().Button(modelData, text = "Settings",
-                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f)) {
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f),
+                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("Settings")
                     modelData.setMainMenuState(false)
                 }
@@ -149,13 +151,15 @@ class MainMenu (private val modelData: ModelData) {
                 horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 BasicComponents().Button(modelData, text = "Recordings",
-                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f)) {
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f),
+                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("Recordings")
                     modelData.setMainMenuState(false)
                 }
 
                 BasicComponents().Button(modelData, text = "Reading",
-                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f)) {
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f),
+                    buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("Reading")
                     modelData.setMainMenuState(false)
                 }
@@ -167,6 +171,7 @@ class MainMenu (private val modelData: ModelData) {
                 modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
                 buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                 modelData.openPage("AllInfo")
+                modelData.setMainMenuState(false)
             }
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -175,6 +180,7 @@ class MainMenu (private val modelData: ModelData) {
                 modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
                 buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                 modelData.openPage("Spectrum")
+                modelData.setMainMenuState(false)
             }
 
             Spacer(modifier = Modifier.height(32.dp))
@@ -189,6 +195,7 @@ class MainMenu (private val modelData: ModelData) {
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
                     buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("Singing")
+                    modelData.setMainMenuState(false)
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -196,6 +203,7 @@ class MainMenu (private val modelData: ModelData) {
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
                     buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("PitchAndResonance")
+                    modelData.setMainMenuState(false)
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -203,6 +211,7 @@ class MainMenu (private val modelData: ModelData) {
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
                     buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("SpeakerVoice")
+                    modelData.setMainMenuState(false)
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -210,6 +219,7 @@ class MainMenu (private val modelData: ModelData) {
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
                     buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("VoiceSmoothness")
+                    modelData.setMainMenuState(false)
                 }
 
                 Spacer(modifier = Modifier.height(32.dp))
@@ -225,6 +235,7 @@ class MainMenu (private val modelData: ModelData) {
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
                     buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("FeminineVoice")
+                    modelData.setMainMenuState(false)
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -232,6 +243,7 @@ class MainMenu (private val modelData: ModelData) {
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
                     buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("FeminineVoiceResonance")
+                    modelData.setMainMenuState(false)
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -239,6 +251,7 @@ class MainMenu (private val modelData: ModelData) {
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
                     buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("MasculineVoice")
+                    modelData.setMainMenuState(false)
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -246,6 +259,7 @@ class MainMenu (private val modelData: ModelData) {
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
                     buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("MasculineVoiceResonance")
+                    modelData.setMainMenuState(false)
                 }
 
                 Spacer(modifier = Modifier.height(32.dp))
@@ -261,6 +275,7 @@ class MainMenu (private val modelData: ModelData) {
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
                     buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("UserGuide")
+                    modelData.setMainMenuState(false)
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -268,6 +283,7 @@ class MainMenu (private val modelData: ModelData) {
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
                     buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("SoundAnalysisGuide")
+                    modelData.setMainMenuState(false)
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -275,6 +291,7 @@ class MainMenu (private val modelData: ModelData) {
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
                     buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("GeneralVoicetrainingGuide")
+                    modelData.setMainMenuState(false)
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -282,6 +299,7 @@ class MainMenu (private val modelData: ModelData) {
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
                     buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("GenderAffirmingVoicetrainingGuide")
+                    modelData.setMainMenuState(false)
                 }
 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -289,6 +307,7 @@ class MainMenu (private val modelData: ModelData) {
                     modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
                     buttonColor = Color.hsl(0F, 0F, 0.25F)) {
                     modelData.openPage("FrequentlyAskedQuestions")
+                    modelData.setMainMenuState(false)
                 }
 
                 Spacer(modifier = Modifier.height(32.dp))
