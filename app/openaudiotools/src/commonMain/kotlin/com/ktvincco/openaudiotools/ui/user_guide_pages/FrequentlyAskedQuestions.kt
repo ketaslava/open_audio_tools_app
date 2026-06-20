@@ -44,20 +44,25 @@ class FrequentlyAskedQuestions(
 
     private val faqList = listOf(
         FAQItem(
-            question = "How can I speak to a manager?",
-            answer = "You can always find the developer's contacts on the Dashboard. Talk to us freely, we will always try to reply to you. Maybe, we are not even that busy as you might think... (I hope)"
+            question = "How can I speak to the manager?",
+            answer = "You can always find developer's contacts on the Dashboard. Talk to us freely, we will always try to reply to you. Maybe, we are not even that busy as you might think... (I hope)"
         ),
         FAQItem(
-            question = "Where are the recordings saved on my device?",
+            question = "Where are the recordings stored on my device?",
             answer = "== Desktop ==\n" +
                     "Your recordings are stored in:\n" +
                     "~/OpenAudioTools\n" +
-                    "(\"~\" stands for User's Home Directory)\n\n" +
+                    "(\"~\" stands for the User's Home Directory)\n" +
+                    "For example:\n" +
+                    "(Linux) /home/<username>/OpenAudioTools\n" +
+                    "(Windows) C:\\Users\\<Username>\\OpenAudioTools\n" +
+                    "(MacOS) /Users/<Username>/OpenAudioTools" +
+                    "\n\n" +
                     "== Android ==\n" +
                     "Your recordings are stored in:\n" +
                     "#/storage/emulated/0/Music/OpenAudioTools\n" +
-                    "Or, if you using just a regular file explorer, it's gonna be just:\n" +
-                    "~$/Music/OpenAudioTools"
+                    "Or, if you using a regular file explorer, it's gonna be just:\n" +
+                    "$/Music/OpenAudioTools"
         ),
         // Add more questions here easily
     )

@@ -1490,7 +1490,7 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                 targetMode = "Masculine A" }
         }
 
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         Row(
             modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp),
@@ -1509,7 +1509,7 @@ class GenderAffirmingVoicetrainingGuide (modelData: ModelData) : MultiPageReader
                 targetMode = "Masculine I" }
         }
 
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(16.dp))
 
         val f1Zones = when (targetMode) {
             "Feminine A" -> listOf(GraphZone(700F, 900F,

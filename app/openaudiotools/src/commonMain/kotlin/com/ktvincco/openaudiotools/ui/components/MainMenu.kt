@@ -11,14 +11,15 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
@@ -96,124 +97,161 @@ class MainMenu (private val modelData: ModelData) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .weight(1f)
-                    .padding(horizontal = 16.dp)
-                    .verticalScroll(state = ScrollState(0)),
+                    .weight(1f),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                BasicComponents().HorizontalDivider(
-                    color = ColorPalette.getMarkupColor(), thickness = 1.dp)
+                NavigationButtons()
+            }
+        }
+    }
 
-                MenuItem("Dashboard") {
+
+    @Composable
+    fun NavigationButtons() {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp)
+                .verticalScroll(state = ScrollState(0)),
+            horizontalAlignment = Alignment.CenterHorizontally,
+        ) {
+
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp),
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                BasicComponents().Button(modelData, text = "Dashboard",
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f)) {
                     modelData.openPage("Dashboard")
                     modelData.setMainMenuState(false)
                 }
 
-                MenuItem("Settings") {
+                BasicComponents().Button(modelData, text = "Settings",
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f)) {
                     modelData.openPage("Settings")
                     modelData.setMainMenuState(false)
                 }
+            }
 
-                MenuItem("Voice Change Guidelines") {
-                    modelData.openPage("GeneralVoicetrainingGuide")
-                    modelData.setMainMenuState(false)
-                }
+            Spacer(modifier = Modifier.height(16.dp))
 
-                BasicComponents().HorizontalDivider(
-                    color = ColorPalette.getMarkupColor(), thickness = 1.dp)
-
-                MenuItem("All Info") {
-                    modelData.openPage("AllInfo")
-                    modelData.setMainMenuState(false)
-                }
-
-                MenuItem("Spectrum") {
-                    modelData.openPage("SpectrumInfo")
-                    modelData.setMainMenuState(false)
-                }
-
-                MenuItem("Reading") {
-                    modelData.openPage("Reading")
-                    modelData.setMainMenuState(false)
-                }
-
-                MenuItem("Recordings") {
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp),
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                BasicComponents().Button(modelData, text = "Recordings",
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f)) {
                     modelData.openPage("Recordings")
                     modelData.setMainMenuState(false)
                 }
 
-                BasicComponents().HorizontalDivider(
-                    color = ColorPalette.getMarkupColor(), thickness = 1.dp)
-
-                MenuItem("Speaker Voice") {
-                    modelData.openPage("SpeakerVoice")
-                    modelData.setMainMenuState(false)
-                }
-
-                BasicComponents().HorizontalDivider(
-                    color = ColorPalette.getMarkupColor(), thickness = 1.dp)
-
-                MenuItem("Singing") {
-                    modelData.openPage("Singing")
-                    modelData.setMainMenuState(false)
-                }
-
-                BasicComponents().HorizontalDivider(
-                    color = ColorPalette.getMarkupColor(), thickness = 1.dp)
-
-                MenuItem("Pitch And Resonance") {
-                    modelData.openPage("PitchAndResonance")
-                    modelData.setMainMenuState(false)
-                }
-
-                MenuItem("Voice Smoothness") {
-                    modelData.openPage("VoiceSmoothness")
-                    modelData.setMainMenuState(false)
-                }
-
-                BasicComponents().HorizontalDivider(
-                    color = ColorPalette.getMarkupColor(), thickness = 1.dp)
-
-                MenuItem("Feminine Voice") {
-                    modelData.openPage("FeminineVoice")
-                    modelData.setMainMenuState(false)
-                }
-
-                MenuItem("Feminine Voice Resonance") {
-                    modelData.openPage("FeminineVoiceResonance")
-                    modelData.setMainMenuState(false)
-                }
-
-                MenuItem("Masculine Voice") {
-                    modelData.openPage("MasculineVoice")
-                    modelData.setMainMenuState(false)
-                }
-
-                MenuItem("Masculine Voice Resonance") {
-                    modelData.openPage("MasculineVoiceResonance")
-                    modelData.setMainMenuState(false)
-                }
-
-                BasicComponents().HorizontalDivider(
-                    color = ColorPalette.getMarkupColor(), thickness = 1.dp)
-
-                MenuItem("User Guide") {
-                    modelData.openPage("UserGuide")
-                    modelData.setMainMenuState(false)
-                }
-
-                MenuItem("Gender Affirming Voicetraining Guide") {
-                    modelData.openPage("GenderAffirmingVoicetrainingGuide")
-                    modelData.setMainMenuState(false)
-                }
-
-                MenuItem("FAQs") {
-                    modelData.openPage("FrequentlyAskedQuestions")
+                BasicComponents().Button(modelData, text = "Reading",
+                    modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().weight(1f)) {
+                    modelData.openPage("Reading")
                     modelData.setMainMenuState(false)
                 }
             }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            BasicComponents().Button(modelData, text = "All Info",
+                modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().padding(horizontal = 24.dp),
+                buttonColor = Color.hsl(0F, 0F, 0.25F)) {
+                modelData.openPage("AllInfo")
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            BasicComponents().Button(modelData, text = "Spectrum",
+                modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth().padding(horizontal = 24.dp),
+                buttonColor = Color.hsl(0F, 0F, 0.25F)) {
+                modelData.openPage("Spectrum")
+            }
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            // Shall be: Voice Analysis
+
+            BasicComponents().HorizontalDivider(
+                color = ColorPalette.getMarkupColor(), thickness = 1.dp)
+
+            MenuItem("Singing") {
+                modelData.openPage("Singing")
+                modelData.setMainMenuState(false)
+            }
+
+            MenuItem("Pitch And Resonance") {
+                modelData.openPage("PitchAndResonance")
+                modelData.setMainMenuState(false)
+            }
+
+            MenuItem("Speaker Voice") {
+                modelData.openPage("SpeakerVoice")
+                modelData.setMainMenuState(false)
+            }
+
+            MenuItem("Voice Smoothness") {
+                modelData.openPage("VoiceSmoothness")
+                modelData.setMainMenuState(false)
+            }
+
+            // Shall be: Voice Gender Analysis
+
+            BasicComponents().HorizontalDivider(
+                color = ColorPalette.getMarkupColor(), thickness = 1.dp)
+
+            MenuItem("Feminine Voice") {
+                modelData.openPage("FeminineVoice")
+                modelData.setMainMenuState(false)
+            }
+
+            MenuItem("Feminine Voice Resonance") {
+                modelData.openPage("FeminineVoiceResonance")
+                modelData.setMainMenuState(false)
+            }
+
+            MenuItem("Masculine Voice") {
+                modelData.openPage("MasculineVoice")
+                modelData.setMainMenuState(false)
+            }
+
+            MenuItem("Masculine Voice Resonance") {
+                modelData.openPage("MasculineVoiceResonance")
+                modelData.setMainMenuState(false)
+            }
+
+            // Shall be: Real Guides
+
+            BasicComponents().HorizontalDivider(
+                color = ColorPalette.getMarkupColor(), thickness = 1.dp)
+
+            MenuItem("User Guide") {
+                modelData.openPage("UserGuide")
+                modelData.setMainMenuState(false)
+            }
+
+            MenuItem("Sound Analysis Guide") {
+                modelData.openPage("SoundAnalysisGuide")
+                modelData.setMainMenuState(false)
+            }
+
+            MenuItem("Voice Change Guidelines") {
+                modelData.openPage("GeneralVoicetrainingGuide")
+                modelData.setMainMenuState(false)
+            }
+
+            MenuItem("Gender Affirming Voicetraining Guide") {
+                modelData.openPage("GenderAffirmingVoicetrainingGuide")
+                modelData.setMainMenuState(false)
+            }
+
+            MenuItem("FAQs") {
+                modelData.openPage("FrequentlyAskedQuestions")
+                modelData.setMainMenuState(false)
+            }
         }
     }
+
 
     @Composable
     fun MenuItem(text: String, callback: () -> Unit) {
@@ -230,7 +268,6 @@ class MainMenu (private val modelData: ModelData) {
                 text = text,
                 modelData = modelData,
                 color = ColorPalette.getTextColor(),
-                style = MaterialTheme.typography.body1
             )
         }
     }
