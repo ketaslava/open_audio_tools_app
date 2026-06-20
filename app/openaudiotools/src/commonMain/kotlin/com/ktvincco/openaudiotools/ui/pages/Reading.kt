@@ -20,9 +20,9 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -46,11 +46,13 @@ import org.jetbrains.compose.resources.painterResource
 class Reading (
     private val modelData: ModelData
 ) {
+
+
     @Composable
     fun Draw() {
 
         var isOpenTextSelectionMenu by remember { mutableStateOf(false) }
-        var currentTextId by remember { mutableStateOf(0) }
+        var currentTextId by remember { mutableIntStateOf(0) }
         val texts = Texts.getTextsForReading()
 
         val scrollState = rememberScrollState()
@@ -142,7 +144,6 @@ class Reading (
     }
 
 
-
     @Composable
     fun TextSelectionMenu(textsForReading: Array<TextForReading>,
                           onTextSelection: (selectedTextId: Int) -> Unit) {
@@ -213,7 +214,6 @@ class Reading (
                 isTranslatable = false,
                 modelData = modelData,
                 color = ColorPalette.getTextColor(),
-                style = MaterialTheme.typography.body1
             )
         }
     }
