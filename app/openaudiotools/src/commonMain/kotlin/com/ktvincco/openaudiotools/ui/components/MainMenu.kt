@@ -1,11 +1,13 @@
 package com.ktvincco.openaudiotools.ui.components
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -17,9 +19,14 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
@@ -28,6 +35,8 @@ import com.ktvincco.openaudiotools.ui.components.BasicComponents
 import com.ktvincco.openaudiotools.presentation.ModelData
 import com.ktvincco.openaudiotools.ui.PageRegistry
 import openaudiotools.app.openaudiotools.generated.resources.Res
+import openaudiotools.app.openaudiotools.generated.resources.arrow_downward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+import openaudiotools.app.openaudiotools.generated.resources.arrow_forward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import openaudiotools.app.openaudiotools.generated.resources.menu_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
 import org.jetbrains.compose.resources.painterResource
 
@@ -170,84 +179,129 @@ class MainMenu (private val modelData: ModelData) {
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Shall be: Voice Analysis
+            BasicComponents().HorizontalDivider(
+                color = ColorPalette.getMarkupColor(), thickness = 1.dp)
+
+            ExpandableCategory("Voice Analysis") {
+                MenuItem("Singing") {
+                    modelData.openPage("Singing")
+                    modelData.setMainMenuState(false)
+                }
+
+                MenuItem("Pitch And Resonance") {
+                    modelData.openPage("PitchAndResonance")
+                    modelData.setMainMenuState(false)
+                }
+
+                MenuItem("Speaker Voice") {
+                    modelData.openPage("SpeakerVoice")
+                    modelData.setMainMenuState(false)
+                }
+
+                MenuItem("Voice Smoothness") {
+                    modelData.openPage("VoiceSmoothness")
+                    modelData.setMainMenuState(false)
+                }
+            }
 
             BasicComponents().HorizontalDivider(
                 color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-            MenuItem("Singing") {
-                modelData.openPage("Singing")
-                modelData.setMainMenuState(false)
-            }
+            ExpandableCategory("Voice Gender Analysis") {
+                MenuItem("Feminine Voice") {
+                    modelData.openPage("FeminineVoice")
+                    modelData.setMainMenuState(false)
+                }
 
-            MenuItem("Pitch And Resonance") {
-                modelData.openPage("PitchAndResonance")
-                modelData.setMainMenuState(false)
-            }
+                MenuItem("Feminine Voice Resonance") {
+                    modelData.openPage("FeminineVoiceResonance")
+                    modelData.setMainMenuState(false)
+                }
 
-            MenuItem("Speaker Voice") {
-                modelData.openPage("SpeakerVoice")
-                modelData.setMainMenuState(false)
-            }
+                MenuItem("Masculine Voice") {
+                    modelData.openPage("MasculineVoice")
+                    modelData.setMainMenuState(false)
+                }
 
-            MenuItem("Voice Smoothness") {
-                modelData.openPage("VoiceSmoothness")
-                modelData.setMainMenuState(false)
+                MenuItem("Masculine Voice Resonance") {
+                    modelData.openPage("MasculineVoiceResonance")
+                    modelData.setMainMenuState(false)
+                }
             }
-
-            // Shall be: Voice Gender Analysis
 
             BasicComponents().HorizontalDivider(
                 color = ColorPalette.getMarkupColor(), thickness = 1.dp)
 
-            MenuItem("Feminine Voice") {
-                modelData.openPage("FeminineVoice")
-                modelData.setMainMenuState(false)
+            ExpandableCategory("Real Guides") {
+                MenuItem("User Guide") {
+                    modelData.openPage("UserGuide")
+                    modelData.setMainMenuState(false)
+                }
+
+                MenuItem("Sound Analysis Guide") {
+                    modelData.openPage("SoundAnalysisGuide")
+                    modelData.setMainMenuState(false)
+                }
+
+                MenuItem("Voice Change Guidelines") {
+                    modelData.openPage("GeneralVoicetrainingGuide")
+                    modelData.setMainMenuState(false)
+                }
+
+                MenuItem("Gender Affirming Voicetraining Guide") {
+                    modelData.openPage("GenderAffirmingVoicetrainingGuide")
+                    modelData.setMainMenuState(false)
+                }
+
+                MenuItem("FAQs") {
+                    modelData.openPage("FrequentlyAskedQuestions")
+                    modelData.setMainMenuState(false)
+                }
+            }
+        }
+    }
+
+
+    @Composable
+    fun ExpandableCategory(title: String, content: @Composable ColumnScope.() -> Unit) {
+        var isExpanded by remember { mutableStateOf(false) }
+
+        Column(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { isExpanded = !isExpanded }
+                    .padding(horizontal = 24.dp, vertical = 16.dp)
+            ) {
+                DynamicText(
+                    text = title,
+                    modelData = modelData,
+                    color = ColorPalette.getTextColor(),
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold
+                )
+
+                val arrowIcon = if (isExpanded) Res.drawable.arrow_downward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+                else Res.drawable.arrow_forward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
+
+                Image(
+                    painterResource(arrowIcon),
+                    null,
+                    modifier = Modifier.width(24.dp).height(24.dp)
+                )
             }
 
-            MenuItem("Feminine Voice Resonance") {
-                modelData.openPage("FeminineVoiceResonance")
-                modelData.setMainMenuState(false)
-            }
-
-            MenuItem("Masculine Voice") {
-                modelData.openPage("MasculineVoice")
-                modelData.setMainMenuState(false)
-            }
-
-            MenuItem("Masculine Voice Resonance") {
-                modelData.openPage("MasculineVoiceResonance")
-                modelData.setMainMenuState(false)
-            }
-
-            // Shall be: Real Guides
-
-            BasicComponents().HorizontalDivider(
-                color = ColorPalette.getMarkupColor(), thickness = 1.dp)
-
-            MenuItem("User Guide") {
-                modelData.openPage("UserGuide")
-                modelData.setMainMenuState(false)
-            }
-
-            MenuItem("Sound Analysis Guide") {
-                modelData.openPage("SoundAnalysisGuide")
-                modelData.setMainMenuState(false)
-            }
-
-            MenuItem("Voice Change Guidelines") {
-                modelData.openPage("GeneralVoicetrainingGuide")
-                modelData.setMainMenuState(false)
-            }
-
-            MenuItem("Gender Affirming Voicetraining Guide") {
-                modelData.openPage("GenderAffirmingVoicetrainingGuide")
-                modelData.setMainMenuState(false)
-            }
-
-            MenuItem("FAQs") {
-                modelData.openPage("FrequentlyAskedQuestions")
-                modelData.setMainMenuState(false)
+            AnimatedVisibility(visible = isExpanded) {
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    content()
+                }
             }
         }
     }
