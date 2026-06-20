@@ -306,7 +306,6 @@ class MainMenu (private val modelData: ModelData) {
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable { isExpanded = !isExpanded }
@@ -316,9 +315,11 @@ class MainMenu (private val modelData: ModelData) {
                     text = title,
                     modelData = modelData,
                     color = ColorPalette.getTextColor(),
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Bold
+                    fontSize = 16.sp,
+                    modifier = Modifier.weight(1f)
                 )
+
+                Spacer(modifier = Modifier.width(16.dp))
 
                 val arrowIcon = if (isExpanded) Res.drawable.arrow_downward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
                 else Res.drawable.arrow_forward_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24
