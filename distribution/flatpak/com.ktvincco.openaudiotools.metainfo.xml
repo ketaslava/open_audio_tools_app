@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.ktvincco.openaudiotools</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>OpenAudioTools</name>
+  <summary>Real-time voice analysis and feminization training tool</summary>
+
+  <description>
+    <p>
+      OpenAudioTools is a comprehensive voice analysis platform designed to help users understand
+      and modify their vocal characteristics through objective, real-time feedback.
+      While useful for any vocal analysis, the app is specifically optimized for voice feminization.
+    </p>
+    <p>Key features include:</p>
+    <ul>
+      <li>Real-time spectrograms and target zones for vocal training.</li>
+      <li>Advanced resonance tracking via F1 and F2 formant analysis.</li>
+      <li>Detailed metrics for pitch, jitter, shimmer, and prosody.</li>
+      <li>Objective feedback loops to assist in gender-affirming voice transitions.</li>
+    </ul>
+  </description>
+
+  <launchable type="desktop-id">com.ktvincco.openaudiotools.desktop</launchable>
+
+  <url type="homepage">https://ktvincco.com/openaudiotools/</url>
+  <url type="bugtracker">https://github.com/ketaslava/open_audio_tools_app/issues</url>
+  <url type="vcs-browser">https://github.com/ketaslava/open_audio_tools_app</url>
+
+  <screenshots>
+    <screenshot type="default">
+      <caption>Main analysis interface</caption>
+      <image>https://raw.githubusercontent.com/ketaslava/open_audio_tools_app/main/distribution/screenshots/screenshot1.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Spectrogram and Pitch tracking</caption>
+      <image>https://raw.githubusercontent.com/ketaslava/open_audio_tools_app/main/distribution/screenshots/screenshot2.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Resonance and Formant analysis</caption>
+      <image>https://raw.githubusercontent.com/ketaslava/open_audio_tools_app/main/distribution/screenshots/screenshot3.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Vocal Stability (Jitter/Shimmer)</caption>
+      <image>https://raw.githubusercontent.com/ketaslava/open_audio_tools_app/main/distribution/screenshots/screenshot4.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Note and Scale tracking</caption>
+      <image>https://raw.githubusercontent.com/ketaslava/open_audio_tools_app/main/distribution/screenshots/screenshot5.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Detailed Spectral Metrics</caption>
+      <image>https://raw.githubusercontent.com/ketaslava/open_audio_tools_app/main/distribution/screenshots/screenshot6.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Energy and Loudness Balance</caption>
+      <image>https://raw.githubusercontent.com/ketaslava/open_audio_tools_app/main/distribution/screenshots/screenshot7.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Voice Activity and Prosody</caption>
+      <image>https://raw.githubusercontent.com/ketaslava/open_audio_tools_app/main/distribution/screenshots/screenshot8.png</image>
+    </screenshot>
+  </screenshots>
+
+  <releases>
+    <release version="2.4.8" date="2023-11-20" />
+  </releases>
+
+  <provides>
+    <binary>openaudiotools</binary>
+  </provides>
+
+  <content_rating type="oars-1.1" />
+</component>

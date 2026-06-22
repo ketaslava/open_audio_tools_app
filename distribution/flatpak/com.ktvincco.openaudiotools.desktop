@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=OpenAudioTools
+Comment=Real-time voice analysis and training tool
+Exec=openaudiotools
+Icon=com.ktvincco.openaudiotools
+Terminal=false
+Categories=AudioVideo;Audio;Education;
+Keywords=voice;training;feminization;spectrogram;pitch;resonance;
+StartupWMClass=OpenAudioTools

@@ -1,0 +1,41 @@
+app-id: com.ktvincco.openaudiotools
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.openjdk11
+command: openaudiotools
+finish-args:
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --socket=pulseaudio
+  - --device=all # Needed for microphone access
+modules:
+  - name: openaudiotools
+    buildsystem: simple
+    build-commands:
+      # Set up JDK from extension
+      - . /usr/lib/sdk/openjdk11/enable.sh
+      # Build the application using the offline repo
+      - ./gradlew :app:openaudiotools:createDistributable --no-daemon --offline --init-script distribution/flatpak/init.gradle
+      # Install the files to /app
+      - cp -r app/openaudiotools/build/compose/binaries/main/app/* /app/
+      # Make binary executable and rename to command
+      - chmod +x /app/bin/OpenAudioTools
+      - ln -s /app/bin/OpenAudioTools /app/bin/openaudiotools
+      # Install metadata
+      - install -Dm644 com.ktvincco.openaudiotools.desktop /app/share/applications/com.ktvincco.openaudiotools.desktop
+      - install -Dm644 com.ktvincco.openaudiotools.metainfo.xml /app/share/metainfo/com.ktvincco.openaudiotools.metainfo.xml
+      - install -Dm644 icon.png /app/share/icons/hicolor/256x256/apps/com.ktvincco.openaudiotools.png
+    sources:
+      - type: git
+        url: https://github.com/ketaslava/open_audio_tools_app.git
+        tag: v2.4.8 # Update this to your latest git tag
+      - type: file
+        path: com.ktvincco.openaudiotools.desktop
+      - type: file
+        path: com.ktvincco.openaudiotools.metainfo.xml
+      - type: file
+        path: ../logo/icon.png
+        dest-filename: icon.png

@@ -1,0 +1,10 @@
+allprojects {
+    buildscript {
+        repositories {
+            maven { url "file:///run/build/openaudiotools/flatpak-gradle/res" }
+        }
+    }
+    repositories {
+        maven { url "file:///run/build/openaudiotools/flatpak-gradle/res" }
+    }
+}
