@@ -29,9 +29,9 @@ modules:
       - install -Dm644 com.ktvincco.openaudiotools.metainfo.xml /app/share/metainfo/com.ktvincco.openaudiotools.metainfo.xml
       - install -Dm644 icon.png /app/share/icons/hicolor/256x256/apps/com.ktvincco.openaudiotools.png
     sources:
-      - type: git
-        url: https://github.com/ketaslava/open_audio_tools_app.git
-        tag: v2.4.8 # Update this to your latest git tag
+      - generated-sources.json
+      - type: dir
+        path: ../..
       - type: file
         path: com.ktvincco.openaudiotools.desktop
       - type: file
