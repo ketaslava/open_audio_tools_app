@@ -2,7 +2,7 @@
 <component type="desktop-application">
 
   <metadata_license>CC0-1.0</metadata_license>
-  <project_license>GPL-3.0 (binaries are distributed as closed source builds)</project_license>
+  <project_license>GPL-3.0</project_license>
 
   <id>com.ktvincco.openaudiotools</id>
 
@@ -11,7 +11,7 @@
   <name>OpenAudioTools</name>
   <summary>OpenAudioTools: Voice Analyzer</summary>
 
-  <!--> ==== CHANGE BEFORE RELEASE (1/1) ==== </-->
+  <!-- ==== CHANGE BEFORE RELEASE (1/1) ==== -->
   <releases>
     <release version="2.4.8" date="Jun 23 of 2026" />
   </releases>
@@ -20,7 +20,7 @@
     <name translatable="no">Ketaslava Ket and KTVINCCO Team</name>
   </developer>
 
-  <!--> DESCRIPTION START </-->
+  <!-- DESCRIPTION START -->
   <description>
     <p>
       Open Audio Tools is a powerful tool (in my opinion) that is designed to break down your voice (not literally) into its parameters, helping you understand how it works and what you can change
@@ -107,7 +107,7 @@
       If you read all this text and are still not convinced that this application is worth installing, then I'm gonna cry, IG, because I am making my project for the people, not for clankers. If you have any suggestions or ideas to improve it, or any other question, you can contact us any time!! I'm waiting 4 U ...
     </p>
   </description>
-  <!--> DESCRIPTION END </-->
+  <!-- DESCRIPTION END -->
 
   <screenshots>
     <screenshot type="default">
