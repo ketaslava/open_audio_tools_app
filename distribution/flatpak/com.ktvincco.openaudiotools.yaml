@@ -19,14 +19,14 @@ modules:
     build-commands:
       # Extract the debian package
       - ar x openaudiotools.deb
-      - tar xf data.tar.xz
+      - tar xf data.tar.zst
       
-      # The deb usually installs to /opt/OpenAudioTools
+      # The deb usually installs to /opt/openaudiotools
       # We move everything to /app/ which is the Flatpak standard
       - mkdir -p /app/bin /app/share/applications /app/share/icons/hicolor/scalable/apps
       
       # Move the actual application files
-      - cp -r opt/OpenAudioTools/* /app/
+      - cp -r opt/openaudiotools/* /app/
       
       # Create a symlink to the binary in /app/bin so it's in the PATH
       - ln -s /app/bin/OpenAudioTools /app/bin/openaudiotools

@@ -11,16 +11,16 @@
   <name>OpenAudioTools</name>
   <summary>OpenAudioTools: Voice Analyzer</summary>
 
-  <!-- ==== CHANGE BEFORE RELEASE (1/1) ==== -->
+  <!-- Change before release -->
   <releases>
-    <release version="2.4.8" date="Jun 23 of 2026" />
+    <release version="2.4.8" date="2026-06-23" />
   </releases>
 
   <developer>
     <name translatable="no">Ketaslava Ket and KTVINCCO Team</name>
   </developer>
 
-  <!-- DESCRIPTION START -->
+  <!-- Description start -->
   <description>
     <p>
       Open Audio Tools is a powerful tool (in my opinion) that is designed to break down your voice (not literally) into its parameters, helping you understand how it works and what you can change
@@ -107,7 +107,7 @@
       If you read all this text and are still not convinced that this application is worth installing, then I'm gonna cry, IG, because I am making my project for the people, not for clankers. If you have any suggestions or ideas to improve it, or any other question, you can contact us any time!! I'm waiting 4 U ...
     </p>
   </description>
-  <!-- DESCRIPTION END -->
+  <!-- Description end -->
 
   <screenshots>
     <screenshot type="default">
