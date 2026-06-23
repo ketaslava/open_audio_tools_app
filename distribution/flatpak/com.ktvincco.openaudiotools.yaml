@@ -40,7 +40,7 @@ modules:
 
     sources:
       - type: file
-        path: openaudiotools.deb
+        path: openaudiotools.deb # DEV TEST
         #url: https://github.com/KTVINCCO/OpenAudioTools/releases/download/v2.4.8/OpenAudioTools-2.4.8.deb
         #sha256: 0000000000000000000000000000000000000000000000000000000000000000 # Run 'sha256sum your.deb' to get this
         #dest-filename: openaudiotools.deb
