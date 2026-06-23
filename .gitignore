@@ -2,6 +2,8 @@
 .kotlin
 .gradle
 .gradle_temp
+gradle_raw.log
+gradle_clean.log
 **/build/
 xcuserdata
 !src/**/build/
@@ -21,6 +23,4 @@ captures
 # Flatpak
 .flatpak-builder/
 build-dir/
-gradle_raw.log
-gradle_clean.log
-scripts/flatpak-gradle-generator.py
+distribution/flatpak/openaudiotools.deb

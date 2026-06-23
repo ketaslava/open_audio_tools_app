@@ -1,0 +1,55 @@
+app-id: com.ktvincco.openaudiotools
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: OpenAudioTools
+
+finish-args:
+  - --share=ipc
+  - --socket=fallback-x11
+  - --socket=wayland
+  - --socket=pulseaudio
+  - --share=network
+  - --device=all
+  - --filesystem=xdg-run/pipewire-0
+
+modules:
+  - name: openaudiotools
+    buildsystem: simple
+    build-commands:
+      # Extract the debian package
+      - ar x openaudiotools.deb
+      - tar xf data.tar.xz
+      
+      # The deb usually installs to /opt/OpenAudioTools
+      # We move everything to /app/ which is the Flatpak standard
+      - mkdir -p /app/bin /app/share/applications /app/share/icons/hicolor/scalable/apps
+      
+      # Move the actual application files
+      - cp -r opt/OpenAudioTools/* /app/
+      
+      # Create a symlink to the binary in /app/bin so it's in the PATH
+      - ln -s /app/bin/OpenAudioTools /app/bin/openaudiotools
+      
+      # Install the desktop file and icons
+      - install -Dm644 com.ktvincco.openaudiotools.desktop /app/share/applications/com.ktvincco.openaudiotools.desktop
+      - install -Dm644 com.ktvincco.openaudiotools.metainfo.xml /app/share/metainfo/com.ktvincco.openaudiotools.metainfo.xml
+      
+      # Note: You should also include your icon. Check where your deb puts it or add it as a source
+      - install -Dm644 icon.png /app/share/icons/hicolor/256x256/apps/com.ktvincco.openaudiotools.png
+
+    sources:
+      - type: file
+        path: openaudiotools.deb
+        #url: https://github.com/KTVINCCO/OpenAudioTools/releases/download/v2.4.8/OpenAudioTools-2.4.8.deb
+        #sha256: 0000000000000000000000000000000000000000000000000000000000000000 # Run 'sha256sum your.deb' to get this
+        #dest-filename: openaudiotools.deb
+      
+      - type: file
+        path: com.ktvincco.openaudiotools.desktop
+      
+      - type: file
+        path: com.ktvincco.openaudiotools.metainfo.xml
+        
+      - type: file
+        path: icon.png
