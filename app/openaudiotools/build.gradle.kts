@@ -26,7 +26,7 @@ val androidVersionCode = 21 // == CHANGE BEFORE RELEASE (2/7) //
 // Auto update app version in configs
 val generateAppInfo by tasks.registering {
     doLast {
-        val dir = project.layout.buildDirectory.dir("generated/appinfo/com/ktvincco/openaudiotools").get().asFile
+        val dir = project.file("src/commonMain/kotlin/com/ktvincco/openaudiotools")
         dir.mkdirs()
         val file = dir.resolve("AppInfo.kt")
         file.writeText("""
@@ -36,8 +36,13 @@ val generateAppInfo by tasks.registering {
                 const val NAME = "$appName"
                 const val VERSION = "$version"
             }
-        """.trimIndent())
+        """.trimIndent() + "\n")
     }
+}
+
+// Ensure the task runs before compilation
+tasks.matching { it.name.contains("compile") }.configureEach {
+    dependsOn(generateAppInfo)
 }
 
 kotlin {
@@ -56,7 +61,6 @@ kotlin {
     
     sourceSets {
         val commonMain by getting {
-            kotlin.srcDir(generateAppInfo)
             dependencies {
                 implementation(libs.runtime)
                 implementation(libs.foundation)
