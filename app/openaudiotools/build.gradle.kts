@@ -23,6 +23,10 @@ val appName = "OpenAudioTools"
 val version = "2.5.0" // == CHANGE BEFORE RELEASE (1/7) //
 val androidVersionCode = 21 // == CHANGE BEFORE RELEASE (2/7) //
 
+// Synchronize versioning with the Android application module
+rootProject.extra["appVersion"] = version
+rootProject.extra["androidVersionCode"] = androidVersionCode
+
 // Auto update app version in configs
 val generateAppInfo by tasks.registering {
     doLast {

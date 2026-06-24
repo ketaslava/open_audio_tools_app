@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.composeCompiler)
 }
 
+evaluationDependsOn(":app:openaudiotools")
+
 android {
     namespace = "com.ktvincco.openaudiotools.android"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
@@ -12,8 +14,8 @@ android {
         applicationId = "com.ktvincco.openaudiotools"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 20
-        versionName = "2.4.8"
+        versionCode = rootProject.extra["androidVersionCode"] as Int
+        versionName = rootProject.extra["appVersion"] as String
     }
     packaging {
         resources {
@@ -32,9 +34,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    sourceSets["main"].assets.srcDirs(
-        file("build/generated/assets")
-    )
+    sourceSets["main"].assets.directories.add("build/generated/assets")
 }
 
 val copyComposeResources = tasks.register<Copy>("copyComposeResources") {
