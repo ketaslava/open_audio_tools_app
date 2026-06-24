@@ -40,10 +40,9 @@ modules:
 
     sources:
       - type: file
-        # path: openaudiotools.deb # DEV TEST
         url: https://github.com/ketaslava/open_audio_tools_app/releases/download/2.5.0/openaudiotools_2.5.0_amd64.deb
-        dest-filename: openaudiotools_2.5.0_amd64.deb
         sha256: 78ac135c7fc62985d4d933d225652c7d403f46ef55b870dcd338280c6423a216
+        dest-filename: openaudiotools.deb
       
       - type: file
         path: com.ktvincco.openaudiotools.desktop
