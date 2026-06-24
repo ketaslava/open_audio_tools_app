@@ -11,7 +11,7 @@
   <name>OpenAudioTools</name>
   <summary>OpenAudioTools: Voice Analyzer</summary>
 
-  <!-- Change before release -->
+  <!-- == CHANGE BEFORE RELEASE (7/7) -->
   <releases>
     <release version="2.4.8" date="2026-06-23" />
   </releases>

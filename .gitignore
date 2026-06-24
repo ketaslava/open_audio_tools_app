@@ -6,6 +6,7 @@ gradle_raw.log
 gradle_clean.log
 **/build/
 xcuserdata
+androidApp/release/
 !src/**/build/
 local.properties
 .idea

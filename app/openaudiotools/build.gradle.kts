@@ -20,8 +20,8 @@ plugins {
 val appName = "OpenAudioTools"
 
 // Configs
-val version = "2.4.8" // == CHANGE BEFORE RELEASE (1/6) //
-val androidVersionCode = 20 // == CHANGE BEFORE RELEASE (2/6) //
+val version = "2.5.0" // == CHANGE BEFORE RELEASE (1/7) //
+val androidVersionCode = 21 // == CHANGE BEFORE RELEASE (2/7) //
 
 // Auto update app version in configs
 val generateAppInfo by tasks.registering {
