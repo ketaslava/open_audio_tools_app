@@ -1,5 +1,7 @@
 package com.ktvincco.openaudiotools.domain
 
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.data.AdvertisementService
 import com.ktvincco.openaudiotools.data.Database
@@ -8,7 +10,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlin.time.Clock
 import kotlin.math.ceil
 
 
@@ -30,7 +31,8 @@ class AdvertisementManager (
         advertisementService.initialize { result ->
             if (result) {
                 modelData.setBannerAdBlock {
-                    if (getIsAdsActive()) {
+                    val isAdsActive by modelData.isAdsActive.collectAsState()
+                    if (isAdsActive) {
                         advertisementService.BannerAdBlock()
                     }
                 }
@@ -66,7 +68,7 @@ class AdvertisementManager (
     }
 
     private fun rewardUser() {
-        val currentTime =  System.currentTimeMillis()
+        val currentTime = getCurrentUnixTimeMs()
         val currentExpiration = getExpirationTime()
         val newExpiration = if (currentExpiration > currentTime) {
             currentExpiration + adFreeTimePerAdMs
@@ -78,9 +80,12 @@ class AdvertisementManager (
     }
 
     private fun updateBatteryState() {
-        val currentTime = System.currentTimeMillis()
+        val currentTime = getCurrentUnixTimeMs()
         val expirationTime = getExpirationTime()
         val remainingMs = expirationTime - currentTime
+
+        // Update Ads active status in model data for instant UI reaction
+        modelData.setIsAdsActive(remainingMs <= 0L)
 
         if (remainingMs > 0L) {
 
@@ -102,10 +107,7 @@ class AdvertisementManager (
         return timeStr.toLongOrNull() ?: 0L
     }
 
-
-    private fun getIsAdsActive(): Boolean {
-        if (!Configuration.IS_ENABLE_ADS) return false
-        val currentTime = System.currentTimeMillis()
-        return currentTime > getExpirationTime()
+    private fun getCurrentUnixTimeMs(): Long {
+        return System.currentTimeMillis()
     }
 }

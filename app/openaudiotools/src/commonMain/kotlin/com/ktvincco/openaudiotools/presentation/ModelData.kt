@@ -447,6 +447,11 @@ class ModelData {
     }
     fun watchScreenBlockingAd() { watchScreenBlockingAdCallback() }
 
+    // Ads Active status
+    private val _isAdsActive = MutableStateFlow(true)
+    val isAdsActive: StateFlow<Boolean> = _isAdsActive
+    fun setIsAdsActive(newValue: Boolean) { _isAdsActive.value = newValue }
+
     // Banner Ad
     private val _bannerAdvertisement = MutableStateFlow<@Composable () -> Unit>({})
     val bannerAdBlock: StateFlow<@Composable () -> Unit> = _bannerAdvertisement
