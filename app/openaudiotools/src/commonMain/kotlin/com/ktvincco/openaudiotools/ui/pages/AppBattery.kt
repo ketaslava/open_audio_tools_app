@@ -85,7 +85,7 @@ class AppBattery (
 
                     Spacer(modifier = Modifier.height(32.dp))
 
-                    val batteryText by modelData.appBatteryText.collectAsState()
+                    val batteryText by modelData.appBatteryTimeText.collectAsState()
                     val batteryCharge by modelData.appBatteryCharge.collectAsState()
 
                     AppBatteryIndicator("$batteryText days", batteryCharge) {}

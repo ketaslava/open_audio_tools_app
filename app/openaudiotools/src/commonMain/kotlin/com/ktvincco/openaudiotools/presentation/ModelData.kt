@@ -432,6 +432,21 @@ class ModelData {
         openAdPrivacySettingsCallback = callback }
     fun openAdPrivacySettings() { openAdPrivacySettingsCallback() }
 
+    // App Battery
+    private val _appBatteryTimeText = MutableStateFlow("0")
+    val appBatteryTimeText: StateFlow<String> = _appBatteryTimeText
+    fun setAppBatteryTimeText(newValue: String) { _appBatteryTimeText.value = newValue }
+
+    private val _appBatteryCharge = MutableStateFlow(0F)
+    val appBatteryCharge: StateFlow<Float> = _appBatteryCharge
+    fun setAppBatteryCharge(newValue: Float) { _appBatteryCharge.value = newValue }
+
+    private var watchScreenBlockingAdCallback: () -> Unit = {}
+    fun assignWatchScreenBlockingAdCallback(callback: () -> Unit) {
+        watchScreenBlockingAdCallback = callback
+    }
+    fun watchScreenBlockingAd() { watchScreenBlockingAdCallback() }
+
     // Banner Ad
     private val _bannerAdvertisement = MutableStateFlow<@Composable () -> Unit>({})
     val bannerAdBlock: StateFlow<@Composable () -> Unit> = _bannerAdvertisement
