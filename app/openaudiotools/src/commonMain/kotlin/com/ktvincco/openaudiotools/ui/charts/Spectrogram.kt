@@ -104,7 +104,7 @@ class Spectrogram {
         // Create components
         val textMeasurer = rememberTextMeasurer()
 
-        // Check data -> reset graph when there is no data
+        // Check the data -> reset the graph when there is no data
         if (data.isEmpty() || data.size <= 1 || yLabelMin >= yLabelMax || data[0].size <= 1) {
 
             // Reset graph there is no data

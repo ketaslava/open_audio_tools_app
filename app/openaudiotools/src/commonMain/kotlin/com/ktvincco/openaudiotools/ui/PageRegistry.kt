@@ -33,6 +33,7 @@ object PageRegistry {
         "Settings" to PageInfo("Settings") { SettingsPage(it).Draw() },
         "Recordings" to PageInfo("Recordings") { Recordings(it).Draw() },
         "Reading" to PageInfo("Reading") { Reading(it).Draw() },
+        "AppBattery" to PageInfo("App Battery") { AppBattery(it).Draw() },
         
         // Analysis Pages
         "AllInfo" to PageInfo("All Info") { PageWithBottomControls(it).Draw(AllInfo(it).content()) },

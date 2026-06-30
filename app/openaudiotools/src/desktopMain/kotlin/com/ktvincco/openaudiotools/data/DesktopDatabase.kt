@@ -84,13 +84,13 @@ class DesktopDatabase (private val appName: String): Database {
 
     override fun saveString(key: String, string: String) {
         preferences.put(key, string)
-        println("By key [$key] saved string: $string")
+        // println("By key [$key] saved string: $string")
     }
 
 
     override fun loadString(key: String): String? {
         val string = preferences.get(key, "")
-        println("By key [$key] loaded string: $string")
+        // println("By key [$key] loaded string: $string")
         return if (string == "") null else string
     }
 }

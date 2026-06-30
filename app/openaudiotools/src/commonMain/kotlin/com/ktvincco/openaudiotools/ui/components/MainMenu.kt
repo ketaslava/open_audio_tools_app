@@ -1,5 +1,6 @@
 package com.ktvincco.openaudiotools.ui.components
 
+
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollState
@@ -30,6 +31,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ktvincco.openaudiotools.ColorPalette
+import com.ktvincco.openaudiotools.Configuration
 import com.ktvincco.openaudiotools.DynamicText
 import com.ktvincco.openaudiotools.ui.components.BasicComponents
 import com.ktvincco.openaudiotools.presentation.ModelData
@@ -38,7 +40,9 @@ import com.ktvincco.openaudiotools.Res
 import com.ktvincco.openaudiotools.arrow_downward_24dp_e8eaed_fill0_wght400_grad0_opsz24
 import com.ktvincco.openaudiotools.arrow_forward_24dp_e8eaed_fill0_wght400_grad0_opsz24
 import com.ktvincco.openaudiotools.menu_24dp_e8eaed_fill0_wght400_grad0_opsz24
+import com.ktvincco.openaudiotools.ui.pages.AppBattery
 import org.jetbrains.compose.resources.painterResource
+
 
 class MainMenu (private val modelData: ModelData) {
 
@@ -124,6 +128,20 @@ class MainMenu (private val modelData: ModelData) {
                 .verticalScroll(state = ScrollState(0)),
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
+
+            if (Configuration.IS_ENABLE_ADS) {
+
+                AppBattery(modelData).AppBatteryIndicator("App Battery: 0 days", 0F) {
+                    modelData.openPage("AppBattery")
+                    modelData.setMainMenuState(false)
+                }
+
+                Spacer(modifier = Modifier.height(32.dp))
+                BasicComponents().HorizontalDivider(
+                    color = ColorPalette.getMarkupColor(), thickness = 1.dp
+                )
+                Spacer(modifier = Modifier.height(32.dp))
+            }
 
             Row(
                 modifier = Modifier.fillMaxWidth(),
@@ -366,25 +384,4 @@ class MainMenu (private val modelData: ModelData) {
             }
         }
     }
-
-
-    @Composable
-    fun MenuItem(text: String, callback: () -> Unit) {
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(vertical = 8.dp)
-                .clickable { callback.invoke() }
-                .padding(16.dp)
-        ) {
-            DynamicText(
-                text = text,
-                modelData = modelData,
-                color = ColorPalette.getTextColor(),
-            )
-        }
-    }
-
 }

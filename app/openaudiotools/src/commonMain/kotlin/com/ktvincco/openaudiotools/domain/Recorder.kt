@@ -48,6 +48,7 @@ class Recorder (
     private var isPlayingNow = false
     private var pointerPosition = 0F
     private var playbackStartPosition = 0
+    private var dataSessionId = 0
 
     // Preview State
     private var isPlayingRecordingPreviewNow = false
@@ -180,10 +181,13 @@ class Recorder (
 
 
     private fun processRawData() {
+        val sessionId = dataSessionId
+
         // Process data
         while (rawData.size - processedLength > sampleLength) {
-            audioProcessor.processData(rawData.copyOfRange(processedLength,
-                processedLength + sampleLength))
+            audioProcessor.processData(rawData.copyOfRange(processedLength, processedLength + sampleLength))
+            // Check for reset
+            if (sessionId != dataSessionId) return
             processedLength += sampleLength
         }
 
@@ -198,6 +202,7 @@ class Recorder (
 
 
     private fun resetData() {
+        dataSessionId++
         audioRecorder.stopRecording()
         isRecordingNow = false
         modelData.setRecordingState(false)
