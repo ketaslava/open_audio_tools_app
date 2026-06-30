@@ -54,8 +54,12 @@ class AdvertisementManager (
         }
 
         modelData.assignWatchScreenBlockingAdCallback {
+            if (modelData.isAdLoading.value) return@assignWatchScreenBlockingAdCallback
+
             if (Configuration.IS_ENABLE_ADS) {
+                modelData.setIsAdLoading(true)
                 advertisementService.showScreenBlockingAd { result ->
+                    modelData.setIsAdLoading(false)
                     if (result) {
                         rewardUser()
                     }

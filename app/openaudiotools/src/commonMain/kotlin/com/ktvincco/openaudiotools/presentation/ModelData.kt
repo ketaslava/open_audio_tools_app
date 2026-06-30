@@ -452,6 +452,10 @@ class ModelData {
     val isAdsActive: StateFlow<Boolean> = _isAdsActive
     fun setIsAdsActive(newValue: Boolean) { _isAdsActive.value = newValue }
 
+    private val _isAdLoading = MutableStateFlow(false)
+    val isAdLoading: StateFlow<Boolean> = _isAdLoading
+    fun setIsAdLoading(newValue: Boolean) { _isAdLoading.value = newValue }
+
     // Banner Ad
     private val _bannerAdvertisement = MutableStateFlow<@Composable () -> Unit>({})
     val bannerAdBlock: StateFlow<@Composable () -> Unit> = _bannerAdvertisement

@@ -95,8 +95,12 @@ class AppBattery (
 
                     Spacer(modifier = Modifier.height(32.dp))
 
+                    val isAdLoading by modelData.isAdLoading.collectAsState()
+                    val buttonText = if (isAdLoading) "Loading AD..." else "Watch one AD"
+
                     BasicComponents().Button(
-                        modelData, text = "Watch one AD",
+                        modelData, text = buttonText,
+                        isAppearActive = !isAdLoading,
                         modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
                         buttonColor = Color.hsl(240F, 0.5F, 0.5F)
                     ) {
