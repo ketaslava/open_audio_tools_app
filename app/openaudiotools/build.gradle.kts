@@ -20,8 +20,8 @@ plugins {
 val appName = "OpenAudioTools"
 
 // Configs
-val version = "2.5.0" // == CHANGE BEFORE RELEASE (1/7) //
-val androidVersionCode = 21 // == CHANGE BEFORE RELEASE (2/7) //
+val version = "2.5.2" // == CHANGE BEFORE RELEASE (1/7) //
+val androidVersionCode = 22 // == CHANGE BEFORE RELEASE (2/7) //
 
 // Synchronize versioning with the Android application module
 rootProject.extra["appVersion"] = version

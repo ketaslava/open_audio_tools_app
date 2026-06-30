@@ -8,12 +8,12 @@
 
   <launchable type="desktop-id">com.ktvincco.openaudiotools.desktop</launchable>
 
-  <name>OpenAudioTools</name>
+  <name>OpenAudioTools: Voice Analyzer</name>
   <summary>OpenAudioTools: Voice Analyzer</summary>
 
   <!-- == CHANGE BEFORE RELEASE (7/7) -->
   <releases>
-    <release version="2.4.8" date="2026-06-23" />
+    <release version="2.5.2" date="2026-06-30" />
   </releases>
 
   <developer>
