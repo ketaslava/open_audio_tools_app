@@ -46,7 +46,7 @@ class AndroidAdvertisementService (private val activity: Activity): Advertisemen
 
     // Configuration
     val admobBannerAdId = "ca-app-pub-2048316563269126/2764483453"
-    val admobScreenBlockingAdId = "" // Blank ad-id as requested
+    val admobScreenBlockingAdId = "ca-app-pub-2048316563269126/8439529690"
 
 
     private val consentInformation by lazy {
