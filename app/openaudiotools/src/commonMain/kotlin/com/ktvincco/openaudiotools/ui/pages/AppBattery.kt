@@ -88,7 +88,7 @@ class AppBattery (
 
                     TextBlock_Centred(
                         "" +
-                                "Fight fire with fire!" +
+                                "Fight fire with Fire!" +
                                 "\n\n" +
                                 "Watch just One full screen ad to Disable All Ads and Enable All Features for an Entire Day!"
                     )
