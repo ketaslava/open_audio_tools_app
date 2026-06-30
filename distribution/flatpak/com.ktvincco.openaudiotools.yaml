@@ -40,8 +40,8 @@ modules:
 
     sources:
       - type: file
-        url: https://github.com/ketaslava/open_audio_tools_app/releases/download/2.5.0/openaudiotools_2.5.0_amd64.deb
-        sha256: d1422efca4c9e168ef6ecf23ab9fe046aa67e1ff8062fc4a57dc925269321f4c
+        url: https://github.com/ketaslava/open_audio_tools_app/releases/download/2.5.2/openaudiotools_2.5.2_amd64.deb
+        sha256: 984855772b61b99ea412dadb51aadfd0214dc49f4b8262281eac29eac04572e5
         dest-filename: openaudiotools.deb
       
       - type: file
