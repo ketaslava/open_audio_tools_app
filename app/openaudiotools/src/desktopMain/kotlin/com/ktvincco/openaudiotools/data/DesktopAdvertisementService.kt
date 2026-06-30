@@ -18,7 +18,7 @@ class DesktopAdvertisementService: AdvertisementService {
     }
 
     override fun showScreenBlockingAd(resultCallback: (Boolean) -> Unit) {
-        TODO("Not yet implemented")
+        resultCallback(true)
     }
 
     @Composable

@@ -36,7 +36,7 @@ class Main (private val modelData: ModelData,
         database, environmentConnector, soundFile, audioPlayer, telemetry)
     private val feedbackService = FeedbackService(
         modelData, logger, database, telemetry, environmentConnector)
-    private val advertisementManager = AdvertisementManager(modelData, advertisementService)
+    private val advertisementManager = AdvertisementManager(modelData, advertisementService, database)
 
 
     fun setup() {

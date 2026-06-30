@@ -24,6 +24,8 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -83,7 +85,10 @@ class AppBattery (
 
                     Spacer(modifier = Modifier.height(32.dp))
 
-                    AppBatteryIndicator("Current Charge: 8 days", 1F) {}
+                    val batteryText by modelData.appBatteryText.collectAsState()
+                    val batteryCharge by modelData.appBatteryCharge.collectAsState()
+
+                    AppBatteryIndicator("$batteryText days", batteryCharge) {}
 
                     Spacer(modifier = Modifier.height(32.dp))
 
@@ -101,8 +106,7 @@ class AppBattery (
                         modifier = Modifier.heightIn(min = 64.dp).fillMaxWidth(),
                         buttonColor = Color.hsl(240F, 0.5F, 0.5F)
                     ) {
-                        modelData.openPage("AppBattery")
-                        modelData.setMainMenuState(false)
+                        modelData.watchScreenBlockingAd()
                     }
                 }
             }

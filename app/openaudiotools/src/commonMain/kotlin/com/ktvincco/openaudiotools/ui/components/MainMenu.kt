@@ -131,7 +131,10 @@ class MainMenu (private val modelData: ModelData) {
 
             if (Configuration.IS_ENABLE_ADS) {
 
-                AppBattery(modelData).AppBatteryIndicator("App Battery: 0 days", 0F) {
+                val batteryText by modelData.appBatteryText.collectAsState()
+                val batteryCharge by modelData.appBatteryCharge.collectAsState()
+
+                AppBattery(modelData).AppBatteryIndicator("$batteryText days", batteryCharge) {
                     modelData.openPage("AppBattery")
                     modelData.setMainMenuState(false)
                 }

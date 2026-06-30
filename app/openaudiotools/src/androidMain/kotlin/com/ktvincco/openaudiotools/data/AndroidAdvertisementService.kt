@@ -46,6 +46,7 @@ class AndroidAdvertisementService (private val activity: Activity): Advertisemen
 
     // Configuration
     val admobBannerAdId = "ca-app-pub-2048316563269126/2764483453"
+    val admobScreenBlockingAdId = "" // Blank ad-id as requested
 
 
     private val consentInformation by lazy {
@@ -187,7 +188,43 @@ class AndroidAdvertisementService (private val activity: Activity): Advertisemen
     }
 
     override fun showScreenBlockingAd(resultCallback: (Boolean) -> Unit) {
-        TODO("Not yet implemented")
+        if (!adsInitialized) {
+            Log.w(TAG, "showScreenBlockingAd: MobileAds not initialized")
+            resultCallback(false)
+            return
+        }
+
+        val adUnitIdStr = if (Configuration.IS_ENABLE_ADS_IN_TEST_MODE) {
+            "ca-app-pub-3940256099942544/5224354917"
+        } else { admobScreenBlockingAdId }
+
+        if (adUnitIdStr.isEmpty()) {
+            Log.w(TAG, "showScreenBlockingAd: adUnitId is empty")
+            resultCallback(false)
+            return
+        }
+
+        activity.runOnUiThread {
+            com.google.android.gms.ads.rewarded.RewardedAd.load(
+                activity,
+                adUnitIdStr,
+                AdRequest.Builder().build(),
+                object : com.google.android.gms.ads.rewarded.RewardedAdLoadCallback() {
+                    override fun onAdLoaded(rewardedAd: com.google.android.gms.ads.rewarded.RewardedAd) {
+                        Log.d(TAG, "Screen blocking ad loaded")
+                        rewardedAd.show(activity) { rewardItem ->
+                            Log.d(TAG, "User earned reward: ${rewardItem.amount} ${rewardItem.type}")
+                            resultCallback(true)
+                        }
+                    }
+
+                    override fun onAdFailedToLoad(error: com.google.android.gms.ads.LoadAdError) {
+                        Log.e(TAG, "Screen blocking ad failed to load: ${error.message}")
+                        resultCallback(false)
+                    }
+                }
+            )
+        }
     }
 
     @Composable
